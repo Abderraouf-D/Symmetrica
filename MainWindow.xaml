@@ -5,9 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet2Cp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="430" Width="800">
     <DockPanel>
-       
+
+
+        <Rectangle DockPanel.Dock="Top" Stroke="Black" Fill="Gray" Height="20" Width="800"/>
+        <Rectangle DockPanel.Dock="Left" Fill="Green" Height="400" Width="100"/>
+
+
+
+        <StackPanel  Background="LightGray" Width="100" DockPanel.Dock="Right">
+        </StackPanel>
+        
+        <StackPanel Background="LightGray" DockPanel.Dock="Top" Orientation="Horizontal" Height="40" Width="600">
+        </StackPanel>
+
+        <Canvas Name="canvas" 
+                Background="{StaticResource MyGrayGridBrush}" Margin="-1,-1,-1,-1">
+
+
+            
+        </Canvas>
+
+
+
 
 
     </DockPanel>
