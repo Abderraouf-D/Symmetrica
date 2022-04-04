@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Projet2Cp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <DockPanel>
         
-    </Grid>
+
+
+    </DockPanel>
 </Window>
