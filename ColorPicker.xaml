@@ -6,8 +6,38 @@
              xmlns:local="clr-namespace:Projet2Cp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+
+
+    <StackPanel>
         
-            
-    </Grid>
+        <Grid x:Name="grid" Height="70" Width="87.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+
+
+            </Grid.RowDefinitions>
+
+
+
+
+
+
+
+
+
+
+        </Grid>
+    </StackPanel>
+
 </UserControl>
