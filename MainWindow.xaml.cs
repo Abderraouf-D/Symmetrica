@@ -15,11 +15,19 @@ using System.Windows.Shapes;
 
 namespace Projet2Cp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
+    
     public partial class MainWindow : Window
+
     {
+        private List<ShapePair> shapes; 
+        private double mousePosition; // to save the mouse position when needed 
+        private double actualPoint;
+        private PointCollection drawingPoints; 
+
+
+
+
         public MainWindow()
         {
             InitializeComponent();

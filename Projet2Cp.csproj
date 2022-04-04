@@ -58,6 +58,7 @@
     <Compile Include="niveauxLibre.xaml.cs">
       <DependentUpon>niveauxLibre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShapePair.cs" />
     <Compile Include="toolBarLibreLibre.xaml.cs">
       <DependentUpon>toolBarLibreLibre.xaml</DependentUpon>
     </Compile>
