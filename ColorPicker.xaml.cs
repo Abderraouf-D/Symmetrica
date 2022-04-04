@@ -20,8 +20,12 @@ namespace Projet2Cp
     /// </summary>
     public partial class ColorPicker : UserControl
     {
-        private Brush pickedColor { get; set; }
-        private Border hit; 
+        private Brush pickedColorTrace { get; set; }
+        private Brush pickedColorRempli { get; set; }
+
+        Boolean choice=true;  // true for "tracé"
+
+        private Border hitTrace , hitRempli; 
         public ColorPicker()
         {
             InitializeComponent();
@@ -51,18 +55,51 @@ namespace Projet2Cp
             }
 
             grid.MouseLeftButtonDown += pickColor;
+            Trace.BorderBrush = Brushes.White;
 
           
         }
+
+        private void Trace_Click(object sender, RoutedEventArgs e)
+        {
+            if (hitRempli != null) hitRempli.BorderBrush = Brushes.Black;
+            if (hitTrace != null) hitTrace.BorderBrush = Brushes.White;
+            Trace.Background = (Brush)(new BrushConverter().ConvertFrom("#FFCC00"));
+            Rempli.Background = Brushes.Transparent;
+            choice = true;
+
+        }
+
+        private void Rempli_Click(object sender, RoutedEventArgs e)
+        {
+            if (hitTrace != null) hitTrace.BorderBrush = Brushes.Black;
+            if (hitRempli != null) hitRempli.BorderBrush = Brushes.White;
+            Trace.Background = Brushes.Transparent;
+            Rempli.Background = (Brush)(new BrushConverter().ConvertFrom("#FFCC00"));
+            choice = false;
+
+        }
+
         private void pickColor(Object sender , MouseButtonEventArgs e)
         {
             if(e.Source is Border)
             {
-                if(hit != null ) hit.BorderBrush = Brushes.Black;
-                hit = ((Border)e.Source);
-                pickedColor = hit.Background;
-                hit.BorderBrush = Brushes.White;
-                //MessageBox.Show(String.Format("Picked color is{0}", pickedColor));
+                if (choice)
+                {
+                    if (hitTrace != null) hitTrace.BorderBrush = Brushes.Black;
+                    hitTrace = ((Border)e.Source);
+                    pickedColorTrace = hitTrace.Background;
+                    hitTrace.BorderBrush = Brushes.White;
+                    //MessageBox.Show(String.Format("Picked color is{0}", pickedColor));
+                }
+                else
+                {
+                    if (hitRempli != null) hitRempli.BorderBrush = Brushes.Black;
+                    hitRempli = ((Border)e.Source);
+                    pickedColorRempli = hitTrace.Background;
+                    hitRempli.BorderBrush = Brushes.White;
+
+                }
             }
         }
 

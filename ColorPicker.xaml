@@ -7,9 +7,58 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="44" />
 
-    <StackPanel>
-        
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="Black" BorderThickness="1.5" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Grid>
+
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0"  />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gray" />
+                                <Setter Property="Foreground" Value="White" />
+
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFCC00" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        </UserControl.Resources>
+
+
+
+            <StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button  x:Name="Trace" Click="Trace_Click">
+                <TextBlock Text="Tracé" Foreground="Black" FontSize="8"/>
+            </Button>
+            <Button  x:Name="Rempli" Click="Rempli_Click">
+                <TextBlock Text="Remplissage" Foreground="Black" FontSize="7"/>
+            </Button>
+
+
+        </StackPanel>
+
         <Grid x:Name="grid" Height="70" Width="87.5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
