@@ -50,7 +50,9 @@
 
     </UserControl.Resources>
 
-    <Grid  Background="LightGray" Width="100">
+    <Border BorderThickness="2" BorderBrush="Black">
+
+        <Grid  Background="LightGray" Width="100">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -101,6 +103,8 @@
             </RadioButton>
             <RadioButton GroupName="axe">
             </RadioButton>
+            <RadioButton GroupName="axe">
+            </RadioButton>
 
         </StackPanel>
 
@@ -115,4 +119,5 @@
 
 
     </Grid>
+        </Border>
 </UserControl>

@@ -3,13 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="430" Width="800">
 
-    
-         <DockPanel>
+
+    <DockPanel>
 
 
         <Rectangle DockPanel.Dock="Top" Stroke="Black" Fill="Gray" Height="20" />
@@ -24,14 +23,13 @@
         <local:toolBarLibreLibre  DockPanel.Dock="Right"  />
         <local:niveauxLibre DockPanel.Dock="Top"/>
 
-
         <Canvas Name="canvas" 
-                Background="{StaticResource MyGrayGridBrush}" Margin="-1,-1,-1,-1">
+                Background="{StaticResource MyGrayGridBrush}" >
 
 
-            
+
         </Canvas>
-
+        
 
 
 
