@@ -61,23 +61,8 @@
 
         </StackPanel>
 
-        <Grid x:Name="grid" Height="70" Width="87.5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-
-
-
-            </Grid.RowDefinitions>
+        <UniformGrid  Columns="5" Rows="4" x:Name="grid" Height="70" Width="87.5">
+            
 
 
 
@@ -88,7 +73,7 @@
 
 
 
-        </Grid>
+        </UniformGrid>
     </StackPanel>
 
 </UserControl>

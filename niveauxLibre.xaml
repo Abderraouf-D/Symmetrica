@@ -8,30 +8,88 @@
              d:DesignHeight="450" d:DesignWidth="800">
     
     <UserControl.Resources>
+        
+            
 
-        <Style TargetType="Button" x:Key="s1" >
+
+        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}" x:Key="s1" >
+            
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#A2DBA1"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="#A2DBA1"/>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#A2DBA1" />
+                                <Setter Property="Opacity" Value="0.7" />
+                                <Setter Property="Foreground" Value="White" />
+
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#A2DBA1" />
+                                <Setter Property="Opacity" Value="0.7" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="Button" x:Key="s2">
-            <Setter Property="Template">
+        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}" x:Key="s2">
+            <Setter Property="Background" Value="#FFCC00"/>
+                <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="#FFCC00"/>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFCC00" />
+                                <Setter Property="Opacity" Value="0.7" />
+
+                                <Setter Property="Foreground" Value="White" />
+
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#FFCC00" />
+                                <Setter Property="Opacity" Value="0.7" />
+
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="Button" x:Key="s3">
+        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}" x:Key="s3">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#EC3D3D"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="#EC3D3D"/>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#EC3D3D" />
+                                <Setter Property="Opacity" Value="0.7" />
+
+                                <Setter Property="Foreground" Value="White" />
+
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#EC3D3D" />
+                                <Setter Property="Opacity" Value="0.7" />
+
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -57,18 +115,15 @@
             <RowDefinition Height="13"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="b1" Style="{StaticResource s1}">
-
-        </Button>
-
-        <Button x:Name="b2" Grid.Column="1" Style="{StaticResource s1}"/>
-        <Button x:Name="b3" Grid.Column="2" Style="{StaticResource s1}"/>
-        <Button x:Name="b4" Grid.Column="3" Style="{StaticResource s2}"/>
-        <Button x:Name="b5" Grid.Column="4" Style="{StaticResource s2}"/>
-        <Button x:Name="b6" Grid.Column="5" Style="{StaticResource s2}"/>
-        <Button x:Name="b7" Grid.Column="6" Style="{StaticResource s3}"/>
-        <Button x:Name="b8" Grid.Column="7" Style="{StaticResource s3}"/>
-        <Button x:Name="b9" Grid.Column="8" Style="{StaticResource s3}"/>
+        <RadioButton x:Name="b1" Grid.Column="0" Style="{StaticResource s1}"/>
+        <RadioButton x:Name="b2" Grid.Column="1" Style="{StaticResource s1}"/>
+        <RadioButton x:Name="b3" Grid.Column="2" Style="{StaticResource s1}"/>
+        <RadioButton x:Name="b4" Grid.Column="3" Style="{StaticResource s2}"/>
+        <RadioButton x:Name="b5" Grid.Column="4" Style="{StaticResource s2}"/>
+        <RadioButton x:Name="b6" Grid.Column="5" Style="{StaticResource s2}"/>
+        <RadioButton x:Name="b7" Grid.Column="6" Style="{StaticResource s3}"/>
+        <RadioButton x:Name="b8" Grid.Column="7" Style="{StaticResource s3}"/>
+        <RadioButton x:Name="b9" Grid.Column="8" Style="{StaticResource s3}"/>
 
         <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#A2DBA1" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
             <TextBlock Text="NIVEAU 1" FontSize="9"  Height="13" HorizontalAlignment="Center" />

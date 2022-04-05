@@ -59,8 +59,17 @@
       <DependentUpon>niveauxLibre.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShapePair.cs" />
+    <Compile Include="toolBarEnseignant.xaml.cs">
+      <DependentUpon>toolBarEnseignant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="toolBarLibreExercice.xaml.cs">
+      <DependentUpon>toolBarLibreExercice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="toolBarLibreLibre.xaml.cs">
       <DependentUpon>toolBarLibreLibre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="toolButtons.xaml.cs">
+      <DependentUpon>toolButtons.xaml</DependentUpon>
     </Compile>
     <Page Include="ColorPicker.xaml">
       <SubType>Designer</SubType>
@@ -85,7 +94,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="toolBarEnseignant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="toolBarLibreExercice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="toolBarLibreLibre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="toolButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
