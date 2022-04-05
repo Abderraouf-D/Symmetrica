@@ -59,7 +59,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border BorderBrush="Black" BorderThickness="1.5" CornerRadius="10" Background="{TemplateBinding Background}">
+                        <Border BorderBrush="Black" BorderThickness="1.5" CornerRadius="5" Background="{TemplateBinding Background}">
                             <Grid>
 
                                 <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
@@ -89,7 +89,7 @@
 
     <Border BorderThickness="2" BorderBrush="Black">
 
-        <Grid  Background="LightGray" Width="100">
+        <Grid  Background="LightGray" Width="110">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -128,7 +128,7 @@
         <Button Grid.Row="3"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
         </Button>
 
-            <local:ColorPicker Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Row="5" />
+            <local:ColorPicker  Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Row="5" />
 
             <StackPanel Orientation="Horizontal"
                         Grid.ColumnSpan="2"
@@ -137,22 +137,48 @@
                         HorizontalAlignment="center"
                         Margin="0">
             <RadioButton  GroupName="axe">
-            </RadioButton>
+                   
+                    <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
+                        <Path.Data>
+                            <LineGeometry StartPoint="0.5,0.5" EndPoint="1,0.5" />
+                        </Path.Data>
+                    </Path>
+
+                </RadioButton>
             <RadioButton GroupName="axe">
-            </RadioButton>
+                    <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
+                        <Path.Data>
+                            <LineGeometry StartPoint="0.5,0" EndPoint="0.5,1" />
+                        </Path.Data>
+                    </Path>
+
+
+                </RadioButton>
             <RadioButton GroupName="axe">
-            </RadioButton>
+                    <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
+                        <Path.Data>
+                            <LineGeometry StartPoint="0,0" EndPoint="1,1" />
+                        </Path.Data>
+                    </Path>
+                </RadioButton>
             <RadioButton GroupName="axe">
-            </RadioButton>
+                    <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
+                        <Path.Data>
+                            <LineGeometry StartPoint="0,1" EndPoint="1,0" />
+                        </Path.Data>
+                    </Path>
+                </RadioButton>
             <RadioButton GroupName="axe">
-            </RadioButton>
+                    <Ellipse Height="3" Width="3" Fill="Black" /> 
+
+                </RadioButton>
 
         </StackPanel>
 
 
 
         <Button 
-                   Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Foreground="Black" Width="70" Height="40" x:Name="genSym" Margin="5" Background="#FFCC00" >
+             Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Foreground="Black" Width="70" Height="40" x:Name="genSym" Margin="5"  >
             <TextBlock Text="Génerer"/>
         </Button>
 

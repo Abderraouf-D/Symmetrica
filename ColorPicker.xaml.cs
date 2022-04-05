@@ -94,7 +94,7 @@ namespace Projet2Cp
                 {
                     if (hitRempli != null) hitRempli.BorderBrush = Brushes.Black;
                     hitRempli = ((Border)e.Source);
-                    pickedColorRempli = hitTrace.Background;
+                    pickedColorRempli = hitRempli.Background;
                     hitRempli.BorderBrush = Brushes.White;
 
                 }

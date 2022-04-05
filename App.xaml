@@ -6,14 +6,14 @@
     <Application.Resources>
 
         <DrawingBrush x:Key="MyGrayGridBrush" TileMode="Tile"
-        Viewport="0,0,30,30" ViewportUnits="Absolute"
-        Viewbox="0,0,30,30" ViewboxUnits="Absolute">
+        Viewport="0,0,25,25" ViewportUnits="Absolute"
+        Viewbox="0,0,25,25" ViewboxUnits="Absolute">
             <DrawingBrush.Drawing>
                 <GeometryDrawing>
                     <GeometryDrawing.Geometry>
                         <GeometryGroup>
-                            <LineGeometry EndPoint="0,30"/>
-                            <LineGeometry EndPoint="30,0"/>
+                            <LineGeometry EndPoint="0,25"/>
+                            <LineGeometry EndPoint="25,0"/>
                         </GeometryGroup>
                     </GeometryDrawing.Geometry>
                     <GeometryDrawing.Pen>
