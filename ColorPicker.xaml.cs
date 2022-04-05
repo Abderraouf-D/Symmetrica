@@ -53,8 +53,8 @@ namespace Projet2Cp
                         BorderThickness = new Thickness(1),
                         CornerRadius = new CornerRadius(5, 5, 5, 5),
                         BorderBrush = Brushes.Black,
-                        Height = 17.5,
-                        Width = 17.5,
+                        Height = 20,
+                        Width = 20,
 
                     };
                     BORD.Background= (Brush)(new BrushConverter().ConvertFrom(colors[k]));

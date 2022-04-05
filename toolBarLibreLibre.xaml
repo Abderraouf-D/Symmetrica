@@ -28,9 +28,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+             <RowDefinition Height="*"/>
 
 
-        </Grid.RowDefinitions>
+
+            </Grid.RowDefinitions>
 
         <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
                Outils
@@ -59,7 +61,7 @@
 
             </RadioButton>
 
-            <StackPanel Grid.ColumnSpan="2" Grid.Row="4" Orientation="Horizontal">
+            <StackPanel Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal">
                 <Button ToolTip="Ajouter Polygon" Margin="5,0,0,0"    Grid.Column="0" Width="20" Height="20" x:Name="addPolygon" >
                     <Image Margin="2" Source="./icons/new.png" />
                 </Button>
@@ -77,9 +79,7 @@
 
                 </ComboBox>
                 <ComboBox x:Name="nbCote" SelectionChanged="nbCote_SelectionChanged" ToolTip="Nombre de cotés" Text="Rayon" Margin="1,0,0,0" Height="20" Width="40">
-                    <ComboBoxItem  IsSelected="True">1</ComboBoxItem>
-                    <ComboBoxItem>2</ComboBoxItem>
-                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True" >3</ComboBoxItem>
                     <ComboBoxItem>4</ComboBoxItem>
                     <ComboBoxItem>5</ComboBoxItem>
                     <ComboBoxItem>6</ComboBoxItem>
@@ -87,28 +87,26 @@
                 </ComboBox>
             </StackPanel>
 
+            <Button 
+             Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Foreground="Black" Width="80" Height="20" x:Name="clear" Margin="5"  >
+                <TextBlock FontSize="12" Text="Effacer tout"/>
+            </Button>
+
+            
 
 
 
 
-            <local:ColorPicker x:Name="CP"  Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Row="5" />
 
-            <StackPanel Margin="0,0,0,5" Orientation="Horizontal"
+            <local:ColorPicker  x:Name="CP"  Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="6"  />
+
+                <StackPanel  Margin="0,0,0,5" Orientation="Horizontal"
                         Grid.ColumnSpan="2"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Height="30"
                         HorizontalAlignment="center"
                       >
-            <RadioButton  GroupName="axe">
-                   
-                    <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
-                        <Path.Data>
-                            <LineGeometry StartPoint="0.5,0.5" EndPoint="1,0.5" />
-                        </Path.Data>
-                    </Path>
-
-                </RadioButton>
-            <RadioButton GroupName="axe">
+                <RadioButton x:Name="horiz"   GroupName="axe">
                     <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
                         <Path.Data>
                             <LineGeometry StartPoint="0.5,0" EndPoint="0.5,1" />
@@ -117,31 +115,41 @@
 
 
                 </RadioButton>
-            <RadioButton GroupName="axe">
-                    <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
-                        <Path.Data>
-                            <LineGeometry StartPoint="0,0" EndPoint="1,1" />
-                        </Path.Data>
-                    </Path>
-                </RadioButton>
-            <RadioButton GroupName="axe">
-                    <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
-                        <Path.Data>
-                            <LineGeometry StartPoint="0,1" EndPoint="1,0" />
-                        </Path.Data>
-                    </Path>
-                </RadioButton>
-            <RadioButton GroupName="axe">
-                    <Ellipse Height="3" Width="3" Fill="Black" /> 
+                <RadioButton x:Name="verti"  GroupName="axe">
 
-                </RadioButton>
+                        <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
+                            <Path.Data>
+                                <LineGeometry StartPoint="0.5,0.5" EndPoint="1,0.5" />
+                            </Path.Data>
+                        </Path>
 
-        </StackPanel>
+                    </RadioButton>
+                    
+                    <RadioButton x:Name="diag1"  GroupName="axe">
+                        <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
+                            <Path.Data>
+                                <LineGeometry StartPoint="0,0" EndPoint="1,1" />
+                            </Path.Data>
+                        </Path>
+                    </RadioButton>
+                    <RadioButton x:Name="diag2"  GroupName="axe">
+                        <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
+                            <Path.Data>
+                                <LineGeometry StartPoint="0,1" EndPoint="1,0" />
+                            </Path.Data>
+                        </Path>
+                    </RadioButton>
+                    <RadioButton x:Name="centre"  GroupName="axe">
+                        <Ellipse Height="3" Width="3" Fill="Black" />
+
+                    </RadioButton>
+
+                </StackPanel>
 
 
 
-        <Button 
-             Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Foreground="Black" Width="70" Height="40" x:Name="genSym" Margin="5"  >
+            <Button 
+             Grid.Row="9" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="Black" Width="70" Height="40" x:Name="genSym" Margin="5"  >
             <TextBlock Text="Génerer"/>
         </Button>
 

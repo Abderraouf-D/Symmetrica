@@ -5,35 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="430" Width="800">
+        Title="MainWindow" Height="1080" Width="1920">
+
+    
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
 
-    <DockPanel>
-
-
-        <Rectangle DockPanel.Dock="Top" Stroke="Black" Fill="Gray" Height="20" />
-        <Rectangle DockPanel.Dock="Left" Fill="Green"  Width="100"/>
-
-
-
+            <Rectangle DockPanel.Dock="Top" Stroke="Black" Fill="Gray" Height="20" />
+            <Rectangle DockPanel.Dock="Left" Fill="Green"  Width="100"/>
 
 
 
 
-        <local:toolBarLibreLibre x:Name="toolBar" DockPanel.Dock="Right"  />
-        <local:niveauxLibre DockPanel.Dock="Top"/>
 
-        <Canvas x:Name="canvas" 
+
+
+            <local:toolBarLibreLibre x:Name="toolBar" DockPanel.Dock="Right"  />
+            <local:niveauxLibre DockPanel.Dock="Top"/>
+
+
+            <Canvas x:Name="canvas" 
                 Background="{StaticResource MyGrayGridBrush}" 
-                MouseMove="DrawPolygon">
+                MouseMove="DrawPolygon"
+                    ClipToBounds="True">
 
 
 
-        </Canvas>
-        
+            </Canvas>
 
 
 
 
-    </DockPanel>
+
+
+        </DockPanel>
+    
 </Window>
