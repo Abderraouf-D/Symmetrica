@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace Projet2Cp
 {
 
-    
+
     public partial class MainWindow : Window
 
     {
-        private List<ShapePair> shapes; 
+        private List<ShapePair> shapes;
         private double mousePosition; // to save the mouse position when needed 
         private double actualPoint;
-        private PointCollection drawingPoints; 
+        private PointCollection drawingPoints;
 
 
 
@@ -31,6 +31,17 @@ namespace Projet2Cp
         public MainWindow()
         {
             InitializeComponent();
+            toolBar.addPolygon.Click += addPolgon;
+
+        }
+
+
+        private void addPolgon(Object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show(toolBar.CP.pickedColorRempli.ToString());
+
+
         }
     }
 }

@@ -35,13 +35,35 @@
         <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
                Outils
         </TextBlock>
-            <local:toolButtons Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3" />
+            <RadioButton ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
+                    <Image Margin="5,0,0,0" Source="./icons/move.png"/>
+                    <Image Margin="5,0,0,0" Source="./icons/polygone.png"/>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton ToolTip="maelblich wch ndir hhh" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShapeSeg" >
+            </RadioButton>
+            <RadioButton ToolTip="Rotation" Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
+                <Image Source="./icons/rotate.png" />
+            </RadioButton>
+
+            <RadioButton ToolTip="Dupliquer" Grid.Column="0" Grid.Row="3" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="duplicate" >
+                <Image Source="./icons/duplicate.png" />
+
+            </RadioButton>
+            <RadioButton ToolTip="Effacer" Grid.Row="3"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
+                <Image Source="./icons/eraser.png" />
+
+
+            </RadioButton>
 
             <StackPanel Grid.ColumnSpan="2" Grid.Row="4" Orientation="Horizontal">
                 <Button ToolTip="Ajouter Polygon" Margin="5,0,0,0"    Grid.Column="0" Width="20" Height="20" x:Name="addPolygon" >
                     <Image Margin="2" Source="./icons/new.png" />
                 </Button>
-                <ComboBox  ToolTip="Rayon"  Margin="3,0,0,0" Height="20" Width="40" >
+                <ComboBox x:Name="rayon" SelectionChanged="rayon_SelectionChanged" ToolTip="Rayon"  Margin="3,0,0,0" Height="20" Width="40" >
                     <ComboBoxItem  IsSelected="True">1</ComboBoxItem>
                     <ComboBoxItem>2</ComboBoxItem>
                     <ComboBoxItem>3</ComboBoxItem>
@@ -54,7 +76,7 @@
 
 
                 </ComboBox>
-                <ComboBox ToolTip="Nombre de cotés" Text="Rayon" Margin="1,0,0,0" Height="20" Width="40">
+                <ComboBox x:Name="nbCote" SelectionChanged="nbCote_SelectionChanged" ToolTip="Nombre de cotés" Text="Rayon" Margin="1,0,0,0" Height="20" Width="40">
                     <ComboBoxItem  IsSelected="True">1</ComboBoxItem>
                     <ComboBoxItem>2</ComboBoxItem>
                     <ComboBoxItem>3</ComboBoxItem>
@@ -69,7 +91,7 @@
 
 
 
-            <local:ColorPicker  Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Row="5" />
+            <local:ColorPicker x:Name="CP"  Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Row="5" />
 
             <StackPanel Margin="0,0,0,5" Orientation="Horizontal"
                         Grid.ColumnSpan="2"

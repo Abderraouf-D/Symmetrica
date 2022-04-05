@@ -20,7 +20,7 @@
 
 
 
-        <local:toolBarLibreLibre  DockPanel.Dock="Right"  />
+        <local:toolBarLibreLibre x:Name="toolBar" DockPanel.Dock="Right"  />
         <local:niveauxLibre DockPanel.Dock="Top"/>
 
         <Canvas Name="canvas" 

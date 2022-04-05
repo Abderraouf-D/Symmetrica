@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,16 @@ namespace Projet2Cp
     /// </summary>
     public partial class ColorPicker : UserControl
     {
-        private Brush pickedColorTrace { get; set; }
-        private Brush pickedColorRempli { get; set; }
+        
+        public Brush pickedColorTrace { get; set; }
+        public Brush pickedColorRempli { get; set; }
+
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Bindable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+
+
+
+
 
         Boolean choice=true;  // true for "tracé"
 
