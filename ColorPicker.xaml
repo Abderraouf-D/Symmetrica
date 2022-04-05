@@ -8,22 +8,23 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type Button}">
+        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Height" Value="20" />
             <Setter Property="Width" Value="44" />
+            <Setter Property="Margin" Value="0.5" />
 
 
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border BorderBrush="Black" BorderThickness="1.5" CornerRadius="10" Background="{TemplateBinding Background}">
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Border BorderBrush="Black" BorderThickness="1.5" CornerRadius="5" Background="{TemplateBinding Background}">
                             <Grid>
 
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0"  />
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Grid>
                         </Border>
 
@@ -34,27 +35,28 @@
 
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
+                            <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Background" Value="#FFCC00" />
                                 <Setter Property="Foreground" Value="White" />
                             </Trigger>
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        </UserControl.Resources>
+    </UserControl.Resources>
 
 
 
             <StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button  x:Name="Trace" Click="Trace_Click">
+            <RadioButton  x:Name="Trace" Click="Trace_Click">
                 <TextBlock Text="Tracé" Foreground="Black" FontSize="8"/>
-            </Button>
-            <Button  x:Name="Rempli" Click="Rempli_Click">
+            </RadioButton>
+            <RadioButton  x:Name="Rempli" Click="Rempli_Click">
                 <TextBlock Text="Remplissage" Foreground="Black" FontSize="7"/>
-            </Button>
+            </RadioButton>
 
 
         </StackPanel>

@@ -55,7 +55,7 @@ namespace Projet2Cp
             }
 
             grid.MouseLeftButtonDown += pickColor;
-            Trace.BorderBrush = Brushes.White;
+            Trace.IsChecked = true;
 
           
         }
@@ -64,8 +64,7 @@ namespace Projet2Cp
         {
             if (hitRempli != null) hitRempli.BorderBrush = Brushes.Black;
             if (hitTrace != null) hitTrace.BorderBrush = Brushes.White;
-            Trace.Background = (Brush)(new BrushConverter().ConvertFrom("#FFCC00"));
-            Rempli.Background = Brushes.Transparent;
+            
             choice = true;
 
         }
@@ -74,8 +73,7 @@ namespace Projet2Cp
         {
             if (hitTrace != null) hitTrace.BorderBrush = Brushes.Black;
             if (hitRempli != null) hitRempli.BorderBrush = Brushes.White;
-            Trace.Background = Brushes.Transparent;
-            Rempli.Background = (Brush)(new BrushConverter().ConvertFrom("#FFCC00"));
+           
             choice = false;
 
         }
