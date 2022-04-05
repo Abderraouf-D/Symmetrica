@@ -59,7 +59,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border BorderBrush="Black" BorderThickness="1.5" CornerRadius="5" Background="{TemplateBinding Background}">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="{TemplateBinding Background}">
                             <Grid>
 
                                 <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
@@ -115,27 +115,58 @@
         <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
                Outils
         </TextBlock>
-        <Button Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
-        </Button>
+        <RadioButton ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
+                    <Image Margin="5,0,0,0" Source="./icons/move.png"/>
+                    <Image Margin="5,0,0,0" Source="./icons/polygone.png"/>
+                </StackPanel>
+        </RadioButton>
 
-        <Button Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShapeSeg" >
-        </Button>
-        <Button Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
-        </Button>
+        <RadioButton ToolTip="maelblich wch ndir hhh" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShapeSeg" >
+            </RadioButton>
+        <RadioButton ToolTip="Rotation" Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
+              <Image Source="./icons/rotate.png" />
+        </RadioButton>
 
-        <Button Grid.Column="0" Grid.Row="3" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="duplicate" >
-        </Button>
-        <Button Grid.Row="3"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
-        </Button>
+        <RadioButton ToolTip="Dupliquer" Grid.Column="0" Grid.Row="3" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="duplicate" >
+                <Image Source="./icons/duplicate.png" />
+
+            </RadioButton>
+        <RadioButton ToolTip="Effacer" Grid.Row="3"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
+                <Image Source="./icons/eraser.png" />
+                
+
+            </RadioButton>
+
+            <StackPanel Grid.ColumnSpan="2" Grid.Row="4" Orientation="Horizontal">
+                <Button ToolTip="Ajouter Polygon" Margin="5,0,0,0"    Grid.Column="0" Width="20" Height="20" x:Name="addPolygon" >
+                    <Image Margin="2" Source="./icons/new.png" />
+                </Button>
+                <ComboBox  ToolTip="Rayon"  Margin="3,0,0,0" Height="20" Width="40" >
+                    <ComboBoxItem  IsSelected="True">1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                </ComboBox>
+                <ComboBox ToolTip="Nombre de cotés" Text="Rayon" Margin="1,0,0,0" Height="20" Width="40">
+                    <ComboBoxItem  IsSelected="True">1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+
+
+
 
             <local:ColorPicker  Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Row="5" />
 
-            <StackPanel Orientation="Horizontal"
+            <StackPanel Margin="0,0,0,5" Orientation="Horizontal"
                         Grid.ColumnSpan="2"
                         Grid.Row="8"
                         Height="30"
                         HorizontalAlignment="center"
-                        Margin="0">
+                      >
             <RadioButton  GroupName="axe">
                    
                     <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">

@@ -116,5 +116,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\duplicate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\rotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\polygone.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
