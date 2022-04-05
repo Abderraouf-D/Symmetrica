@@ -38,6 +38,8 @@ namespace Projet2Cp
         public ColorPicker()
         {
             InitializeComponent();
+           pickedColorTrace=Brushes.Black;
+            pickedColorRempli= Brushes.White;
 
             Border BORD;
             int k = 0; 

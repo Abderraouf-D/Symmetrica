@@ -29,25 +29,25 @@ namespace Projet2Cp
         {
             InitializeComponent();
 
-      
+
+
            
-            Int32.TryParse(rayon.SelectedItem.ToString(), out ray );
-            Rayon = ray;
+            Rayon = rayon.SelectedIndex + 1;
+            NbCote = nbCote.SelectedIndex + 1;
         }
 
         private void nbCote_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
           
-            Int32.TryParse(nbCote.SelectedItem.ToString(), out ray);
-            Rayon = ray;
+           
+            NbCote = nbCote.SelectedIndex + 1; 
 
         }
 
         private void rayon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-        
-            Int32.TryParse(rayon.SelectedItem.ToString(), out ray);
-            Rayon = ray;
+            
+            Rayon = rayon.SelectedIndex+1;
 
         }
     }
