@@ -14,7 +14,7 @@
                     </GeometryGroup>
                 </GeometryDrawing.Geometry>
                 <GeometryDrawing.Pen>
-                    <Pen Brush="DarkGray" Thickness="1" DashCap="Flat">
+                    <Pen Brush="Black" Thickness="1" DashCap="Flat">
                         <Pen.DashStyle>
                             <DashStyle Dashes="5,3"/>
                         </Pen.DashStyle>

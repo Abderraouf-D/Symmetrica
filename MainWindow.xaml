@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920">
+        Title="MainWindow" Height="1080" Width="1920"
+        >
 
     
         <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
@@ -24,22 +25,25 @@
             <local:niveauxLibre DockPanel.Dock="Top"/>
 
 
-           
-                    <Canvas Name="canvas" 
+        
+
+            <Canvas Name="canvas" 
                 Background="{StaticResource MyGrayGridBrush}"
                 MouseLeftButtonDown="canvas_MouseLeftButtonDown"
+                            ClipToBounds="true"
                             
                 MouseMove="canvas_MouseMove"
                 MouseRightButtonDown="canvas_MouseRightButtonDown"
                 MouseLeftButtonUp="canvas_MouseLeftButtonUp">
-            <TextBlock x:Name="txt" FontSize="15"  Canvas.Left="0" Canvas.Top="0"/>
-        </Canvas>
+                <TextBlock x:Name="txt" FontSize="15"  Canvas.Left="0" Canvas.Top="0"/>
+            </Canvas>
+      
 
 
 
 
 
 
-        </DockPanel>
+    </DockPanel>
     
 </Window>

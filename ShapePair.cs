@@ -33,21 +33,21 @@ namespace Projet2Cp
             if(origin is Polygon)
                 canvas.Children.Add(origin);
             drawEllipses(true);
-
+          
             //------------------------test
-           /* sline = new Line()
-            {
-                X1 = 400,
-                Y1 = 0,
-                X2 = 400,
-                Y2 = 300,
-                Stroke = Brushes.Blue,
-                StrokeThickness = 3,
-            };
+            /* sline = new Line()
+             {
+                 X1 = 400,
+                 Y1 = 0,
+                 X2 = 400,
+                 Y2 = 300,
+                 Stroke = Brushes.Blue,
+                 StrokeThickness = 3,
+             };
 
-            canvas.Children.Add(sline);
+             canvas.Children.Add(sline);
 
-            symGen(shapeMouseEnter, shapeMouseLeave);*/
+             symGen(shapeMouseEnter, shapeMouseLeave);*/
 
         }
 

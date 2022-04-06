@@ -22,8 +22,9 @@ namespace Projet2Cp
      
        
         Point centrePoly = new Point();
-        Line axeSym; // l'axe de symetrie selectionné
-        Ellipse centreSym; // le centre de symetrie 
+
+        public static Line axeSym { get; set; } // l'axe de symetrie selectionné
+        public static  Ellipse centreSym { get; set; } // le centre de symetrie 
 
 
 
