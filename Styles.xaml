@@ -70,7 +70,7 @@
 
 
     <Style TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="EC3D3D" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -102,6 +102,8 @@
         </Setter>
     </Style>
 
+
+    
 
 
 
