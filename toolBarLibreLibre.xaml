@@ -37,7 +37,7 @@
         <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
                Outils
         </TextBlock>
-            <RadioButton ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
+            <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
                     <Image Margin="5,0,0,0" Source="./icons/move.png"/>
@@ -88,7 +88,9 @@
             </StackPanel>
 
             <Button Style="{StaticResource  effSty}"
-             Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Width="80" Height="20" x:Name="clear" Margin="5"  >
+                  Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  
+                    HorizontalAlignment="Center"  
+                    Width="80" Height="20" x:Name="effacerTout" Margin="5"  >
                 <TextBlock FontSize="12" Text="Effacer tout"/>
             </Button>
 

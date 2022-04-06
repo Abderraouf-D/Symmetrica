@@ -24,14 +24,16 @@
             <local:niveauxLibre DockPanel.Dock="Top"/>
 
 
-            <Canvas x:Name="canvas" 
-                Background="{StaticResource MyGrayGridBrush}" 
-                MouseMove="DrawPolygon"
-                    ClipToBounds="True">
-
-
-
-            </Canvas>
+           
+                    <Canvas Name="canvas" 
+                Background="{StaticResource MyGrayGridBrush}"
+                MouseLeftButtonDown="canvas_MouseLeftButtonDown"
+                            
+                MouseMove="canvas_MouseMove"
+                MouseRightButtonDown="canvas_MouseRightButtonDown"
+                MouseLeftButtonUp="canvas_MouseLeftButtonUp">
+            <TextBlock x:Name="txt" FontSize="15"  Canvas.Left="0" Canvas.Top="0"/>
+        </Canvas>
 
 
 
