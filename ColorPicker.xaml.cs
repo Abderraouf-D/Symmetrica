@@ -21,12 +21,8 @@ namespace Projet2Cp
     /// </summary>
     public partial class ColorPicker : UserControl
     {
-        
-        public Brush pickedColorTrace { get; set; }
-        public Brush pickedColorRempli { get; set; }
 
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Bindable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+       
 
 
 
@@ -38,8 +34,8 @@ namespace Projet2Cp
         public ColorPicker()
         {
             InitializeComponent();
-           pickedColorTrace=Brushes.Black;
-            pickedColorRempli= Brushes.White;
+           MainWindow.trace=Brushes.Black;
+            MainWindow.rempli= Brushes.White;
 
             Border BORD;
             int k = 0; 
@@ -97,15 +93,16 @@ namespace Projet2Cp
                 {
                     if (hitTrace != null) hitTrace.BorderBrush = Brushes.Black;
                     hitTrace = ((Border)e.Source);
-                    pickedColorTrace = hitTrace.Background;
+                    MainWindow.trace = hitTrace.Background;
+                   
                     hitTrace.BorderBrush = Brushes.White;
-                    //MessageBox.Show(String.Format("Picked color is{0}", pickedColor));
+                   
                 }
                 else
                 {
                     if (hitRempli != null) hitRempli.BorderBrush = Brushes.Black;
                     hitRempli = ((Border)e.Source);
-                    pickedColorRempli = hitRempli.Background;
+                    MainWindow.rempli = hitRempli.Background;
                     hitRempli.BorderBrush = Brushes.White;
 
                 }

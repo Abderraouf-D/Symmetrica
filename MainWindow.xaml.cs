@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,20 +29,23 @@ namespace Projet2Cp
 
 
 
-
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Bindable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public static bool teacherMode { get; set; } //  tells wether we're in the teacher mode  or not 
+        public static bool exoMode { get; set; } //  tells wether we're in the exercices mode  or not 
 
         private List<ShapePair> shapePairs; //represents the pairs of shapes
         private Point mousePosition; //mouse position in canvas
         private Point actualPoint;//actual point to draw in 
         private PointCollection drawingPoints;
-        private double step; // the step of the grid 
+        private double step=25; // the step of the grid 
         private PointCollection shapepc, shapeSym; // the current shape being drawn  , and a holder for his symetrix 
 
         private ShapePair currentShapePair;
         private Polygon polygone;
         private Polyline polyline;
         private Ellipse ellipse;// to represent a point in the canvas
-        private Line line;
+        public  Line line;
 
 
 
@@ -54,11 +58,16 @@ namespace Projet2Cp
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
 
 
-
+        public static  Brush trace;
+        public static Brush rempli;
 
         public MainWindow()
         {
             InitializeComponent();
+       
+
+            teacherMode =false;
+            exoMode=false;
 
             toolBar.addPolygon.Click += addPolygon;
             toolBar.horiz.Click += updateAxe;
@@ -67,23 +76,41 @@ namespace Projet2Cp
             toolBar.diag2.Click += updateAxe;
             toolBar.centre.Click += updateAxe;
             toolBar.effacerTout.Click += effacerTout;
+            toolBar.genSym.Click += GenSym_Click;
 
+           
+            toolBarEns.horiz.Click += updateAxe;
+            toolBarEns.verti.Click += updateAxe;
+            toolBarEns.diag1.Click += updateAxe;
+            toolBarEns.diag2.Click += updateAxe;
+            toolBarEns.centre.Click += updateAxe;
+
+            toolBarEns.effacerTout.Click += effacerTout;
+            toolBarEns.valider.Click += valider_Click;
+
+            myDock.Children.Remove(toolBarExo);
+            myDock.Children.Remove(toolBar);
+            myDock.Children.Remove(toolBarEns);
+
+            //afficher la barre d'outil qui convient au mode courant 
+            if (exoMode)
+            {
+                if (teacherMode) myBorder.Child = toolBarEns;
+                else myBorder.Child = toolBarExo;
+      
+            }
+            else myBorder.Child = toolBar;
 
             //initialiser le centre de symetrie 
-            if (centreSym == null)
-            {
-                centreSym = new Ellipse()
+
+            centreSym = new Ellipse()
                 {
                     Height = 10,
                     Width = 10,
-                    Fill = toolBar.CP.pickedColorRempli,
-                    Stroke = toolBar.CP.pickedColorTrace,
+                    Fill = rempli,
+                    Stroke = trace,
                 };
-            }
-
-
-
-            step = 25;
+     
             isDrawing = true; //for now the only option available
             //canvas.MouseMove += rotating;
             canvas.MouseMove += mouseCursor;
@@ -91,12 +118,21 @@ namespace Projet2Cp
             canvas.MouseLeave += ellipseCleaner;
             canvas.MouseMove += currentMousePosition;
             canvas.MouseMove += translating;
+
             initCanvas();
+            
+            
+        }
+
+        private void GenSym_Click(object sender, RoutedEventArgs e)
+        {
+            if(currentShapePair != null) currentShapePair.symGen(shapeMouseEnter, shapeMouseLeave);
+            
+        }
 
 
-
-
-
+        private void EditEns_Click(Object sender,RoutedEventArgs e)
+        {
 
         }
 
@@ -117,12 +153,12 @@ namespace Projet2Cp
         private void initCanvas()
         {
             shapePairs = new List<ShapePair>();
-
+            currentShapePair = null;
             shapepc = new PointCollection();
 
             polyline = new Polyline()
             {
-                Stroke = toolBar.CP.pickedColorTrace,
+                Stroke = trace,
                 StrokeThickness = 1,
                 Points = shapepc,
             };
@@ -131,19 +167,16 @@ namespace Projet2Cp
 
             line = new Line()
             {
-                Stroke = toolBar.CP.pickedColorTrace,
+                Stroke = trace,
                 StrokeThickness = 1,
             };
 
             canvas.Children.Add(line);
             uncheckAxes();
 
-
-
-
         }
 
-      
+
 
         //====================================================================================================================//
         //  TRANSLATING: if we are drawing + leftButton pressed + we are on a shape, we translate the shape or its corner     //  
@@ -156,11 +189,11 @@ namespace Projet2Cp
             if (isTransforming && (e.LeftButton == MouseButtonState.Pressed) && isDrawing)
             {
                 Vector vec = e.GetPosition(canvas) - mousePosition;
+                currentShapePair.translating(vec, isOrigin, mousePosition);
                 mousePosition = e.GetPosition(canvas); //on reactulise clickPosition pour le prochain move
-                currentShapePair.translating(vec, isOrigin);
             }
 
-        
+
         }
 
         //====================================================================================================================//
@@ -180,7 +213,7 @@ namespace Projet2Cp
         private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             clickPosition = e.GetPosition(canvas); //On recupere la position du click a toute fin utiles ...
-                                                   
+            if(polyline != null ) polyline.Stroke = trace;                                       //
             if (isDrawing)
             {
                 if (!isOverShape)
@@ -192,14 +225,25 @@ namespace Projet2Cp
                     int i;
                     for (i = 0; i < shapePairs.Count && !stop; i++)
                     {
-                        stop = (shapePairs[i].origin == e.Source || shapePairs[i].sym == e.Source);
+                        stop = (shapePairs[i].origin == e.Source);
+                        for (int j = 0; j < shapePairs[i].oEllipse.Count && !stop; j++)
+                            stop = (shapePairs[i].oEllipse[j] == e.Source);
+                        if (stop) isOrigin = true;
+                        else
+                        {
+                            stop = (shapePairs[i].sym == e.Source);
+                            for (int j = 0; j < shapePairs[i].sEllipse.Count && !stop; j++)
+                                stop = (shapePairs[i].sEllipse[j] == e.Source);
+                            if (stop) isOrigin = false; //hiya normalement bla ma endir if mais ma3lih ....
+                        }
+
                     }
 
                     if (stop) //hiya nrmlm bla ma nverifyi ...
                     {
                         i--;
                         currentShapePair = shapePairs[i];
-                        isOrigin = (shapePairs[i].origin == e.Source);
+
                     }
                 }
 
@@ -225,10 +269,6 @@ namespace Projet2Cp
         {
             if (isDrawing && !isOverShape && !isTransforming)
             {
-                //Update the color incase it's changes 
-                if (line != null) line.Stroke = toolBar.CP.pickedColorTrace;
-                if(polyline!=null) polyline.Stroke = toolBar.CP.pickedColorTrace;
-
                 canvas.Children.Remove(ellipse);
                 mousePosition = e.GetPosition(canvas);
 
@@ -244,7 +284,8 @@ namespace Projet2Cp
                         Height = 10,
                         Fill = Brushes.Black,
                     };
-                    ellipse.MouseLeftButtonDown += canvas_MouseLeftButtonDown; // C'EST PROVISOIR !!
+                    ellipse.MouseLeftButtonDown += canvas_MouseLeftButtonDown;
+                    ellipse.MouseRightButtonDown += canvas_MouseRightButtonDown;// C'EST PROVISOIR !!
                     canvas.Children.Add(ellipse);
                     Canvas.SetLeft(ellipse, actualPoint.X - 5);
                     Canvas.SetTop(ellipse, actualPoint.Y - 5);
@@ -254,10 +295,9 @@ namespace Projet2Cp
 
                 if (polyline.Points.Count > 0 && canvas.IsMouseOver) // ie il a engagé un dessin
                 {
-
+                    line.Stroke = trace;
                     line.X1 = polyline.Points[polyline.Points.Count - 1].X;
                     line.Y1 = polyline.Points[polyline.Points.Count - 1].Y;
-
                     line.X2 = actualPoint.X;
                     line.Y2 = actualPoint.Y;
 
@@ -302,15 +342,15 @@ namespace Projet2Cp
                     polygone = new Polygon()
                     {
                         Points = shapepc,
-                        Fill = toolBar.CP.pickedColorRempli,
-                        Stroke = toolBar.CP.pickedColorTrace,
+                        Fill = rempli,
+                        Stroke = trace,
                         StrokeThickness = 3,
                     };
 
                     polygone.MouseEnter += shapeMouseEnter;
                     polygone.MouseLeave += shapeMouseLeave;
                     canvas.Children.Remove(polyline); //we remove the preview polyline
-                    shapePairs.Add(new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave)); //we create a new shapePair with origin = polygon "linked to canvas"
+                    shapePairs.Add(new ShapePair(polygone, canvas,axeSym, shapeMouseEnter, shapeMouseLeave)); //we create a new shapePair with origin = polygon "linked to canvas"
                 }
 
                 else
@@ -319,7 +359,7 @@ namespace Projet2Cp
                     polyline.StrokeThickness = 8;
                     polyline.MouseMove += shapeMouseEnter;
                     polyline.MouseLeave += shapeMouseLeave;
-                    shapePairs.Add(new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave));
+                    shapePairs.Add(new ShapePair(polyline, canvas,axeSym, shapeMouseEnter, shapeMouseLeave));
                 }
             }
 
@@ -329,7 +369,7 @@ namespace Projet2Cp
 
             polyline = new Polyline()
             {
-                Stroke = toolBar.CP.pickedColorTrace,
+                Stroke = trace,
                 StrokeThickness = 1,
                 Points = shapepc,
             };
@@ -341,7 +381,7 @@ namespace Projet2Cp
 
             line = new Line()
             {
-                Stroke = toolBar.CP.pickedColorTrace,
+                Stroke = trace,
                 StrokeThickness = 1,
             };
 
@@ -395,46 +435,8 @@ namespace Projet2Cp
             canvas.Children.Clear();
             initCanvas();
 
+
         }
-
-        private void drawPoint(Point p, SolidColorBrush c)
-        {
-            ellipse = new Ellipse
-            {
-                Width = 10,
-                Height = 10,
-                Fill = c,
-            };
-
-
-            canvas.Children.Add(ellipse);
-            Canvas.SetLeft(ellipse, actualPoint.X - 5);
-
-            Canvas.SetTop(ellipse, actualPoint.Y - 5);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         private void uncheckAxes()
         {
@@ -444,27 +446,42 @@ namespace Projet2Cp
 
         }
 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
+
+        private void toolBar_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void updateAxe(Object sender, RoutedEventArgs e)
         {
             
             canvas.Children.Remove(centreSym);
 
 
+            for (int i = 0; i < shapePairs.Count; i++)
+            {
+                if(shapePairs[i].sym!=null) canvas.Children.Remove((Shape)shapePairs[i].sym);
+                shapePairs[i].sym = null;
+            }
             if (axeSym == null)
             {
                 axeSym = new Line();
                 axeSym.StrokeThickness = 1;
-                axeSym.Stroke = toolBar.CP.pickedColorTrace;
+                axeSym.Stroke = trace;
                 axeSym.X1 = canvas.ActualWidth / 2;
                 axeSym.Y1 = 0.5;
                 axeSym.X2 = canvas.ActualWidth / 2;
                 axeSym.Y2 = canvas.ActualHeight;
                 canvas.Children.Add(axeSym);
             }
-            axeSym.Stroke = toolBar.CP.pickedColorTrace;
+            axeSym.Stroke = trace;
             switch (true)
             {
-                case true when (bool) toolBar.horiz.IsChecked:
+                case true when ((bool)toolBar.horiz.IsChecked || (bool)toolBarEns.horiz.IsChecked) :
                     {
                         axeSym.X1 = canvas.ActualWidth / 2;
                         axeSym.Y1 = 0.5;
@@ -477,7 +494,7 @@ namespace Projet2Cp
                         break;
 
                     }
-               case true when (bool)toolBar.verti.IsChecked:
+               case true when ((bool)toolBar.verti.IsChecked || (bool)toolBarEns.verti.IsChecked):
                     {
                         axeSym.X1 = 0.5;
                         axeSym.Y1 = canvas.ActualHeight/ 2;
@@ -488,7 +505,7 @@ namespace Projet2Cp
 
                         break;
                     }
-                case true when (bool)toolBar.diag1.IsChecked:
+                case true when ((bool)toolBar.diag1.IsChecked || (bool)toolBarEns.diag1.IsChecked):
                     {
                         axeSym.X1 = 0.5;
                         axeSym.Y1 =  0.5;
@@ -499,7 +516,7 @@ namespace Projet2Cp
 
                         break;
                     }
-                case true when (bool)toolBar.diag2.IsChecked:
+                case true when ((bool)toolBar.diag2.IsChecked || (bool)toolBarEns.diag2.IsChecked):
                     {
                         axeSym.X1 = canvas.ActualWidth;
                         axeSym.Y1 = 0.5;
@@ -509,7 +526,7 @@ namespace Projet2Cp
 
                         break;
                     }
-                case true when (bool)toolBar.centre.IsChecked:
+                case true when ((bool)toolBar.centre.IsChecked || (bool)toolBarEns.centre.IsChecked):
                     {
                         canvas.Children.Remove(axeSym);
                         if (!(canvas.Children.Contains(centreSym))) { 
@@ -541,8 +558,8 @@ namespace Projet2Cp
             
             double angle = 360/toolBar.NbCote;
             Polygon poly = new Polygon() {
-                Fill = toolBar.CP.pickedColorRempli,
-                Stroke = toolBar.CP.pickedColorTrace,
+                Fill = rempli,
+                Stroke = trace,
 
             };
             Point fstPt = new Point(centrePoly.X + toolBar.Rayon*step, centrePoly.Y);
@@ -565,8 +582,18 @@ namespace Projet2Cp
 
             poly.MouseEnter += shapeMouseEnter;
             poly.MouseLeave += shapeMouseLeave;
-            shapePairs.Add(new ShapePair(poly, canvas, shapeMouseEnter, shapeMouseLeave));
+            shapePairs.Add(new ShapePair(poly, canvas,axeSym, shapeMouseEnter, shapeMouseLeave));
 
+
+
+        }
+
+        //==================================================================================================//
+        //                                   Methodes  du mode enseignant                                   //          //
+        //==================================================================================================//
+            
+         private void valider_Click(Object sender,RoutedEventArgs e)
+        {
 
 
         }

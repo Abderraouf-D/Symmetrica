@@ -68,6 +68,7 @@
     <Compile Include="toolBarLibreLibre.xaml.cs">
       <DependentUpon>toolBarLibreLibre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utili.cs" />
     <Page Include="ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\polygone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\editer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

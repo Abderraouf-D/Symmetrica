@@ -5,10 +5,13 @@
              StartupUri="MainWindow.xaml">
     
     <Application.Resources>
+        
 
-        <ResourceDictionary>
+        <ResourceDictionary >
+            <BooleanToVisibilityConverter x:Key="cnv" /> 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
 
             

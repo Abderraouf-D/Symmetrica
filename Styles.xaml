@@ -102,8 +102,46 @@
         </Setter>
     </Style>
     
-    <Style x:Key="genSty" TargetType="{x:Type Button}">
+    <Style x:Key="genSty" TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="#FFCC00" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="{TemplateBinding Background}">
+                        <Grid>
+
+                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFCC00" />
+                            <Setter Property="Opacity" Value="0.5" />
+
+
+
+                            <Setter Property="Foreground" Value="White" />
+
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="#0F6F0F" />
+                            <Setter Property="Opacity" Value="0.5" />
+
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="validSty" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#A2DBA1" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -120,15 +158,13 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FFCC00" />
-
-
+                            <Setter Property="Background" Value="#A2DBA1" />
                             <Setter Property="Foreground" Value="White" />
 
                         </Trigger>
-
+                        
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="#FFCC00" />
+                            <Setter Property="Background" Value="#A2DBA1" />
                             <Setter Property="Opacity" Value="0.5" />
 
                             <Setter Property="Foreground" Value="White" />
@@ -138,7 +174,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 
     <Style x:Key="effSty" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#EC3D3D" />
@@ -159,8 +194,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#EC3D3D" />
-
-
                             <Setter Property="Foreground" Value="White" />
 
                         </Trigger>

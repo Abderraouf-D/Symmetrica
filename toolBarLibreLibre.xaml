@@ -5,38 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-   
-    <Border BorderThickness="2" BorderBrush="Black">
+             d:DesignHeight="450" d:DesignWidth="800" >
+
+    
 
         <Grid  Background="LightGray" Width="110">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
 
-        </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-             <RowDefinition Height="*"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
 
 
 
             </Grid.RowDefinitions>
 
-        <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
+            <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
                Outils
-        </TextBlock>
+            </TextBlock>
             <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
@@ -61,7 +61,7 @@
 
             </RadioButton>
 
-            <StackPanel Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal">
+            <StackPanel Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" Margin="0,40,0,40" Grid.RowSpan="3">
                 <Button ToolTip="Ajouter Polygon" Margin="5,0,0,0"    Grid.Column="0" Width="20" Height="20" x:Name="addPolygon" >
                     <Image Margin="2" Source="./icons/new.png" />
                 </Button>
@@ -88,25 +88,31 @@
             </StackPanel>
 
             <Button Style="{StaticResource  effSty}"
-                  Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  
+                  Grid.Row="8" Grid.ColumnSpan="2" VerticalAlignment="Center"  
                     HorizontalAlignment="Center"  
-                    Width="80" Height="20" x:Name="effacerTout" Margin="5"  >
+                    Width="70" Height="40" x:Name="effacerTout"  >
                 <TextBlock FontSize="12" Text="Effacer tout"/>
             </Button>
-
             
+            <ToggleButton Style="{StaticResource genSty}"
+             Grid.Row="10" Grid.ColumnSpan="2" VerticalAlignment="Center"  
+             HorizontalAlignment="Center"  Width="70" Height="40" x:Name="genSym"  >
+                <TextBlock Text="Symétrie!"/>
+            </ToggleButton>
 
 
 
 
 
-            <local:ColorPicker  x:Name="CP"  Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Row="6"  />
 
-                <StackPanel  Margin="0,0,0,5" Orientation="Horizontal"
+
+            <local:ColorPicker  x:Name="CP" Grid.RowSpan="4" Grid.Row="5" Margin="0,40,0,40" Grid.ColumnSpan="2"  />
+
+            <StackPanel  Margin="5,0,0,10" Orientation="Horizontal"
                         Grid.ColumnSpan="2"
                         Grid.Row="9"
                         Height="30"
-                        HorizontalAlignment="center"
+                        HorizontalAlignment="Left"
                       >
                 <RadioButton x:Name="horiz"   GroupName="axe">
                     <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
@@ -119,45 +125,41 @@
                 </RadioButton>
                 <RadioButton x:Name="verti"  GroupName="axe">
 
-                        <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
-                            <Path.Data>
-                                <LineGeometry StartPoint="0.5,0.5" EndPoint="1,0.5" />
-                            </Path.Data>
-                        </Path>
+                    <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
+                        <Path.Data>
+                            <LineGeometry StartPoint="0.5,0.5" EndPoint="1,0.5" />
+                        </Path.Data>
+                    </Path>
 
-                    </RadioButton>
-                    
-                    <RadioButton x:Name="diag1"  GroupName="axe">
-                        <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
-                            <Path.Data>
-                                <LineGeometry StartPoint="0,0" EndPoint="1,1" />
-                            </Path.Data>
-                        </Path>
-                    </RadioButton>
-                    <RadioButton x:Name="diag2"  GroupName="axe">
-                        <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
-                            <Path.Data>
-                                <LineGeometry StartPoint="0,1" EndPoint="1,0" />
-                            </Path.Data>
-                        </Path>
-                    </RadioButton>
-                    <RadioButton x:Name="centre"  GroupName="axe">
-                        <Ellipse Height="3" Width="3" Fill="Black" />
+                </RadioButton>
 
-                    </RadioButton>
+                <RadioButton x:Name="diag1"  GroupName="axe">
+                    <Path  Stroke="Black"  StrokeThickness="1.5" Stretch="Fill">
+                        <Path.Data>
+                            <LineGeometry StartPoint="0,0" EndPoint="1,1" />
+                        </Path.Data>
+                    </Path>
+                </RadioButton>
+                <RadioButton x:Name="diag2"  GroupName="axe">
+                    <Path  Stroke="Black" HorizontalAlignment="Center" StrokeThickness="1.5" Stretch="Fill">
+                        <Path.Data>
+                            <LineGeometry StartPoint="0,1" EndPoint="1,0" />
+                        </Path.Data>
+                    </Path>
+                </RadioButton>
+                <RadioButton x:Name="centre"  GroupName="axe">
+                    <Ellipse Height="3" Width="3" Fill="Black" />
+                </RadioButton>
 
-                </StackPanel>
-
-
-
-            <Button Style="{StaticResource genSty}"
-             Grid.Row="9" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Center"  Width="70" Height="40" x:Name="genSym" Margin="5"  >
-            <TextBlock Text="Génerer"/>
-        </Button>
+            </StackPanel>
 
 
 
 
-    </Grid>
-        </Border>
+
+
+
+
+        </Grid>
+  
 </UserControl>
