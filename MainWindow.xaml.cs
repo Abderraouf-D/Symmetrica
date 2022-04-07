@@ -46,6 +46,7 @@ namespace Projet2Cp
         private Polyline polyline;
         private Ellipse ellipse;// to represent a point in the canvas
         public  Line line;
+        public Point centresym;
 
 
 
@@ -528,6 +529,7 @@ namespace Projet2Cp
                     }
                 case true when ((bool)toolBar.centre.IsChecked || (bool)toolBarEns.centre.IsChecked):
                     {
+                         centresym = new Point(canvas.ActualWidth/2, canvas.ActualHeight/2);
                         canvas.Children.Remove(axeSym);
                         if (!(canvas.Children.Contains(centreSym))) { 
                             canvas.Children.Add(centreSym);
@@ -583,13 +585,18 @@ namespace Projet2Cp
             poly.MouseEnter += shapeMouseEnter;
             poly.MouseLeave += shapeMouseLeave;
             shapePairs.Add(new ShapePair(poly, canvas,axeSym, shapeMouseEnter, shapeMouseLeave));
-
+            /*
+            Utili.strTofile(@"C:\Users\raouf\Desktop\shapesExo.txt", Utili.CanvasToString(poly.Points, Brushes.Black, Brushes.White,axeSym,centresym), 3);
+            poly = (Polygon)Utili.StringToShape(Utili.fileTostr(@"C:\Users\raouf\Desktop\shapesExo.txt", 3));
+            poly.MouseEnter += shapeMouseEnter;
+            poly.MouseLeave += shapeMouseLeave;
+            shapePairs.Add(new ShapePair(poly, canvas, axeSym, shapeMouseEnter, shapeMouseLeave)); */
 
 
         }
 
         //==================================================================================================//
-        //                                   Methodes  du mode enseignant                                   //          //
+        //                                   Methodes  du mode enseignant                                   //
         //==================================================================================================//
             
          private void valider_Click(Object sender,RoutedEventArgs e)
