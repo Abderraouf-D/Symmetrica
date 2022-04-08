@@ -133,7 +133,7 @@ namespace Projet2Cp
             {
                 dessinsModeExo = chargerDessins(@".\shapesExo.txt");
                 myBorderNiv.Child = niv;
-                dessinerDessinNum(0);
+                //dessinerDessinNum(0);
          
                 if (teacherMode) myBorder.Child = toolBarEns;
                 else myBorder.Child = toolBarExo;
@@ -157,7 +157,7 @@ namespace Projet2Cp
             isDrawing = true; //for now the only option available
             //canvas.MouseMove += rotating;
             // canvas.MouseLeftButtonDown += hitShape;
-            
+
 
 
 
@@ -180,6 +180,7 @@ namespace Projet2Cp
 
         void currentMousePosition(object sender, MouseEventArgs e)
         {
+
             if (e.LeftButton != MouseButtonState.Pressed)
                 mousePosition = e.GetPosition(canvas);
         }
