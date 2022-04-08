@@ -53,5 +53,19 @@ namespace Projet2Cp
 
 
         }
+
+        public string selectedAxe()
+        {
+            foreach (RadioButton elem in ensStack.Children)
+            {
+                if (elem.IsChecked != null)
+                {
+                    if ((bool)(elem).IsChecked) return elem.Name;
+
+                }
+
+            }
+            return null;
+        }
     }
 }

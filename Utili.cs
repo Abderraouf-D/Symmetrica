@@ -12,8 +12,14 @@ namespace Projet2Cp
 {
     internal class Utili
     {
-        public static String CanvasToString(PointCollection pts, Brush rempli, Brush trace, Line axe, Point centre) {
-            return String.Format("{0}-{1}-{2}-{3}-{4}", rempli == null, axe == null, pts.ToString(), rempli.ToString(), trace.ToString(), axe == null ? axe.ToString() : centre.ToString()); ; 
+        public struct dessinExo
+        {
+            public Shape shape;
+            public Boolean type; // true for polygon 
+            public string repere;
+        }
+        public static String CanvasToString(PointCollection pts, Brush rempli, Brush trace,string repere) {
+            return String.Format("{0}-{1}-{2}-{3}-{4}", rempli == null, pts.ToString(), (rempli != null)? rempli.ToString():null, trace.ToString(),repere);  
         } 
         public static void strTofile(string filename, string str, int ind)
         {
@@ -43,12 +49,14 @@ namespace Projet2Cp
             }
         }
 
-        public static Shape StringToShape(string shape)
+        public static Shape StringToShape(string shape,out Boolean polyg,out string repere) // polyg== true if shape is polygnoe 
         {
+            polyg = true;
             char[] delimiterChars = { '-' };
             string[] data = shape.Split(delimiterChars);
+            repere = data[4];
             PointCollection pts = new PointCollection();
-            string[] strpointarray = data[2].Split(' ');
+            string[] strpointarray = data[1].Split(' ');
             foreach (string item in strpointarray)
             {
                 string[] newitem = item.Split(';');    
@@ -56,10 +64,11 @@ namespace Projet2Cp
             }
             if (Boolean.Parse(data[0]))
             {     // false if polygon true if polyline 
+                polyg = false;
                 Polyline poly = new Polyline()
                 {
                     Points = pts,
-                    Stroke= (Brush)(new BrushConverter().ConvertFrom(data[4])),
+                    Stroke= (Brush)(new BrushConverter().ConvertFrom(data[3])),
                     StrokeThickness = 8 ,
 
                 };
@@ -70,13 +79,28 @@ namespace Projet2Cp
                 Polygon poly = new Polygon()
                 {
                     Points = pts,
-                    Fill = (Brush)(new BrushConverter().ConvertFrom(data[4])),
+                    Fill = (Brush)(new BrushConverter().ConvertFrom(data[2])),
                     Stroke = (Brush)(new BrushConverter().ConvertFrom(data[3])),
-                    StrokeThickness = 1,
+                    StrokeThickness = 3,
                 };
                 return poly; 
             }
-            Boolean.Parse(data[1]);// false if centrale true if axiale
+            
+        }
+
+
+        public static  List<dessinExo> chargerDessins(string filename)
+        {
+            List<dessinExo> dessins = new List<dessinExo>();
+            dessinExo dessin = new dessinExo();
+            for (int i=1; i<=9; i++)
+            {
+                Shape poly = Utili.StringToShape(Utili.fileTostr(@".\shapesExo.txt", i), out dessin.type, out dessin.repere);
+                dessin.shape = poly;
+                dessins.Add(dessin);
+            }
+            return dessins;
+
         }
     }
 }

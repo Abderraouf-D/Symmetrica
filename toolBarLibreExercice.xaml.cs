@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,36 @@ namespace Projet2Cp
     /// </summary>
     public partial class toolBarLibreExercice : UserControl
     {
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Bindable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public int Rayon;
+        public int NbCote;
+        public int ray;
         public toolBarLibreExercice()
         {
             InitializeComponent();
+
+
+
+
+            Rayon = rayon.SelectedIndex + 3;
+            NbCote = nbCote.SelectedIndex + 3;
+        }
+
+        private void nbCote_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            NbCote = nbCote.SelectedIndex + 3;
+
+        }
+
+        private void rayon_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            Rayon = rayon.SelectedIndex + 3;
+
+
         }
     }
 }

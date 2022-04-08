@@ -6,20 +6,24 @@
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920"
-        MinHeight="720" MinWidth="640" WindowStartupLocation="Manual">
+        MinHeight="720" MinWidth="640" >
 
     <DockPanel x:Name="myDock" ClipToBounds="True"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Rectangle DockPanel.Dock="Top" Stroke="Black" Fill="Gray" Height="20" />
         <Rectangle DockPanel.Dock="Left" Fill="#0F6F0F"  Width="100"/>
         <Border x:Name="myBorder" DockPanel.Dock="Right" BorderThickness="2" BorderBrush="Black">
-            
+         
         </Border>
+        
         <local:toolBarLibreLibre  x:Name="toolBar"   />
         <local:toolBarEnseignant  x:Name="toolBarEns" />
         <local:toolBarLibreExercice  x:Name="toolBarExo"  />
-                <local:niveauxLibre DockPanel.Dock="Top"/>
+        <Border x:Name="myBorderNiv" BorderThickness="0" BorderBrush="Transparent" DockPanel.Dock="Top">
+
+        </Border>
+        <local:niveauxLibre x:Name="niv" />
         
-        <Canvas x:Name="canvas" 
+            <Canvas x:Name="canvas" 
                 Background="{StaticResource MyGrayGridBrush}"
                 MouseLeftButtonDown="canvas_MouseLeftButtonDown"
                 ClipToBounds="true"

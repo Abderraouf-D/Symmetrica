@@ -87,7 +87,7 @@
 
 
 
-        <StackPanel  Margin="5,0,0,10" Orientation="Horizontal"
+        <StackPanel x:Name="ensStack" Margin="5,0,0,10" Orientation="Horizontal"
                         Grid.ColumnSpan="2"
                         Grid.Row="5"
                         Height="30"
@@ -162,13 +162,13 @@
             <Button 
                 Style="{StaticResource validSty}" Grid.ColumnSpan="2" Grid.Row="8"  Grid.RowSpan="2" 
                 VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Width="70" Height="40" x:Name="valider" Margin="5"  >
-                <TextBlock Text="Valider"/>
+                <TextBlock x:Name="vld" Text="Valider"/>
             </Button>
             <Button 
                 Style="{StaticResource effSty}" Grid.ColumnSpan="2" 
                 Grid.Row="9" Grid.RowSpan="2"  VerticalAlignment="Bottom"  
                 HorizontalAlignment="Center" 
-                Width="70" Height="40" x:Name="annuler" Margin="5"  >
+                Width="70" Height="40" x:Name="annuler" Margin="5" IsCancel="True" Visibility="Collapsed" >
                 <TextBlock Text="Annuler"/>
             </Button>
 

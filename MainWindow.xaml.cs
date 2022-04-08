@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Projet2Cp.Utili; 
 
 namespace Projet2Cp
 {
@@ -29,8 +31,6 @@ namespace Projet2Cp
 
 
 
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Bindable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public static bool teacherMode { get; set; } //  tells wether we're in the teacher mode  or not 
         public static bool exoMode { get; set; } //  tells wether we're in the exercices mode  or not 
 
@@ -45,16 +45,21 @@ namespace Projet2Cp
         private Polygon polygone;
         private Polyline polyline;
         private Ellipse ellipse;// to represent a point in the canvas
-        public  Line line;
-        public Point centresym;
+        public  Line line ;
+        public  Nullable<Point> centresym;
+        TextBlock tb;
 
+        
+        List <dessinExo> dessinsModeExo;  
 
 
 
         private bool isDrawing, isRotating = false;
         private bool isOverShape = false;
-        private bool isTransforming = false;
+        private bool isTransforming  = false;
         private bool isOrigin = true;
+        private bool isEditing = false;
+
 
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
 
@@ -65,10 +70,10 @@ namespace Projet2Cp
         public MainWindow()
         {
             InitializeComponent();
-       
 
-            teacherMode =false;
-            exoMode=false;
+           
+            teacherMode =true;
+            exoMode=true;
 
             toolBar.addPolygon.Click += addPolygon;
             toolBar.horiz.Click += updateAxe;
@@ -79,63 +84,95 @@ namespace Projet2Cp
             toolBar.effacerTout.Click += effacerTout;
             toolBar.genSym.Click += GenSym_Click;
 
-           
+            niv.b1.Click += Niv_Click;
+            niv.b2.Click += Niv_Click;
+            niv.b3.Click += Niv_Click;
+            niv.b4.Click += Niv_Click;
+            niv.b5.Click += Niv_Click;
+            niv.b6.Click += Niv_Click;
+            niv.b7.Click += Niv_Click;
+            niv.b8.Click += Niv_Click;
+            niv.b9.Click += Niv_Click;
+
+
+
+
+            toolBarExo.addPolygon.Click += addPolygon;
+            toolBarExo.effacerTout.Click += effacerTout;
+            toolBarExo.valider.Click += valider_Click;
+     
+
             toolBarEns.horiz.Click += updateAxe;
             toolBarEns.verti.Click += updateAxe;
             toolBarEns.diag1.Click += updateAxe;
             toolBarEns.diag2.Click += updateAxe;
             toolBarEns.centre.Click += updateAxe;
-
+            toolBarEns.addPolygon.Click += addPolygon;
+            toolBarEns.EditEns.Click += EditEns_Click;
             toolBarEns.effacerTout.Click += effacerTout;
             toolBarEns.valider.Click += valider_Click;
+            toolBarEns.annuler.Click += annuler_Click;
+
+
+            canvas.MouseLeave += ellipseCleaner;
+            canvas.MouseMove += currentMousePosition;
+            canvas.MouseMove += translating;
+            canvas.MouseMove += mouseCursor;
+
+
 
             myDock.Children.Remove(toolBarExo);
             myDock.Children.Remove(toolBar);
             myDock.Children.Remove(toolBarEns);
+            myDock.Children.Remove(niv);
+
+            initCanvas();
 
             //afficher la barre d'outil qui convient au mode courant 
             if (exoMode)
             {
+                dessinsModeExo = chargerDessins(@".\shapesExo.txt");
+                myBorderNiv.Child = niv;
+                dessinerDessinNum(0);
+         
                 if (teacherMode) myBorder.Child = toolBarEns;
                 else myBorder.Child = toolBarExo;
-      
             }
-            else myBorder.Child = toolBar;
-
+            else
+            {
+                myBorder.Child = toolBar;
+                myDock.Children.Remove(myBorderNiv);
+            }
             //initialiser le centre de symetrie 
-
             centreSym = new Ellipse()
                 {
                     Height = 10,
                     Width = 10,
-                    Fill = rempli,
+                    Fill = Brushes.Red,
                     Stroke = trace,
                 };
-     
+
+
+
             isDrawing = true; //for now the only option available
             //canvas.MouseMove += rotating;
-            canvas.MouseMove += mouseCursor;
             // canvas.MouseLeftButtonDown += hitShape;
-            canvas.MouseLeave += ellipseCleaner;
-            canvas.MouseMove += currentMousePosition;
-            canvas.MouseMove += translating;
+            
 
-            initCanvas();
-            
-            
+
+
         }
+
+        
 
         private void GenSym_Click(object sender, RoutedEventArgs e)
         {
-            if(currentShapePair != null) currentShapePair.symGen(shapeMouseEnter, shapeMouseLeave);
+          //  if(currentShapePair != null) currentShapePair.symGen(shapeMouseEnter, shapeMouseLeave);
             
         }
 
 
-        private void EditEns_Click(Object sender,RoutedEventArgs e)
-        {
-
-        }
+   
 
         //=======================================================================================================//
         // CurrentMousePosition : continuously updates "mousePosition" in canvas while not clicking on anything  //
@@ -363,7 +400,13 @@ namespace Projet2Cp
                     shapePairs.Add(new ShapePair(polyline, canvas,axeSym, shapeMouseEnter, shapeMouseLeave));
                 }
             }
+            cleaningTheMess();
+            
+        }
 
+
+        private void cleaningTheMess()
+        {
             //We clean the mess
 
             shapepc = new PointCollection();
@@ -387,6 +430,7 @@ namespace Projet2Cp
             };
 
             canvas.Children.Add(line); //we add the new empty line...GarbageCollector use 100 ! XDDD
+
 
         }
 
@@ -432,40 +476,46 @@ namespace Projet2Cp
 
         private void effacerTout(object sender, RoutedEventArgs e)
         {
-            //reset
+            clear();
+            if (isEditing) { 
+                canvas.Children.Add(tb);
+                Canvas.SetTop(tb, 0);
+            }
+
+
+        }
+        private void clear()
+        {
             canvas.Children.Clear();
             initCanvas();
-
-
         }
 
         private void uncheckAxes()
         {
             toolBar.horiz.IsChecked = toolBar.verti.IsChecked = toolBar.diag1.IsChecked = toolBar.diag2.IsChecked = toolBar.centre.IsChecked = false;
+            toolBarEns.horiz.IsChecked = toolBarEns.verti.IsChecked = toolBarEns.diag1.IsChecked = toolBarEns.diag2.IsChecked = toolBarEns.centre.IsChecked = false;
+
             canvas.Children.Remove(axeSym);
             axeSym = null;
 
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-
-        }
-
-        private void toolBar_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
+       
 
         private void updateAxe(Object sender, RoutedEventArgs e)
         {
-            
+            checkAxes();
+        }
+        private void checkAxes()
+        {
             canvas.Children.Remove(centreSym);
+             centresym = null ;
 
 
             for (int i = 0; i < shapePairs.Count; i++)
             {
-                if(shapePairs[i].sym!=null) canvas.Children.Remove((Shape)shapePairs[i].sym);
+                if (shapePairs[i].sym != null) canvas.Children.Remove((Shape)shapePairs[i].sym);
                 shapePairs[i].sym = null;
             }
             if (axeSym == null)
@@ -473,21 +523,17 @@ namespace Projet2Cp
                 axeSym = new Line();
                 axeSym.StrokeThickness = 1;
                 axeSym.Stroke = trace;
-                axeSym.X1 = canvas.ActualWidth / 2;
-                axeSym.Y1 = 0.5;
-                axeSym.X2 = canvas.ActualWidth / 2;
-                axeSym.Y2 = canvas.ActualHeight;
                 canvas.Children.Add(axeSym);
             }
             axeSym.Stroke = trace;
             switch (true)
             {
-                case true when ((bool)toolBar.horiz.IsChecked || (bool)toolBarEns.horiz.IsChecked) :
+                case true when ((bool)toolBar.horiz.IsChecked || (bool)toolBarEns.horiz.IsChecked):
                     {
                         axeSym.X1 = canvas.ActualWidth / 2;
                         axeSym.Y1 = 0.5;
                         axeSym.X2 = canvas.ActualWidth / 2;
-                        axeSym.Y2 = canvas.ActualHeight ;
+                        axeSym.Y2 = canvas.ActualHeight;
                         if (!canvas.Children.Contains(axeSym)) canvas.Children.Add(axeSym);
 
 
@@ -495,10 +541,10 @@ namespace Projet2Cp
                         break;
 
                     }
-               case true when ((bool)toolBar.verti.IsChecked || (bool)toolBarEns.verti.IsChecked):
+                case true when ((bool)toolBar.verti.IsChecked || (bool)toolBarEns.verti.IsChecked):
                     {
                         axeSym.X1 = 0.5;
-                        axeSym.Y1 = canvas.ActualHeight/ 2;
+                        axeSym.Y1 = canvas.ActualHeight / 2;
                         axeSym.X2 = canvas.ActualWidth;
                         axeSym.Y2 = canvas.ActualHeight / 2;
                         if (!canvas.Children.Contains(axeSym)) canvas.Children.Add(axeSym);
@@ -509,7 +555,7 @@ namespace Projet2Cp
                 case true when ((bool)toolBar.diag1.IsChecked || (bool)toolBarEns.diag1.IsChecked):
                     {
                         axeSym.X1 = 0.5;
-                        axeSym.Y1 =  0.5;
+                        axeSym.Y1 = 0.5;
                         axeSym.X2 = canvas.ActualWidth;
                         axeSym.Y2 = canvas.ActualHeight;
                         if (!canvas.Children.Contains(axeSym)) canvas.Children.Add(axeSym);
@@ -529,12 +575,13 @@ namespace Projet2Cp
                     }
                 case true when ((bool)toolBar.centre.IsChecked || (bool)toolBarEns.centre.IsChecked):
                     {
-                         centresym = new Point(canvas.ActualWidth/2, canvas.ActualHeight/2);
+                        centresym = new Point(canvas.ActualWidth / 2, canvas.ActualHeight / 2);
                         canvas.Children.Remove(axeSym);
-                        if (!(canvas.Children.Contains(centreSym))) { 
+                        if (!(canvas.Children.Contains(centreSym)))
+                        {
                             canvas.Children.Add(centreSym);
-                            Canvas.SetLeft(centreSym, canvas.ActualWidth / 2-5);
-                            Canvas.SetTop(centreSym, canvas.ActualHeight / 2-5);
+                            Canvas.SetLeft(centreSym, canvas.ActualWidth / 2 - 5);
+                            Canvas.SetTop(centreSym, canvas.ActualHeight / 2 - 5);
                         }
 
 
@@ -546,7 +593,7 @@ namespace Projet2Cp
 
                         break;
                     }
-              
+
 
 
             }
@@ -555,20 +602,33 @@ namespace Projet2Cp
      
         private void addPolygon(Object sender, RoutedEventArgs e)
         {
+
+
+            int cote, rayon;
+            if (teacherMode)
+            {
+                cote = toolBarEns.NbCote;
+                rayon = toolBarEns.Rayon;
+            }
+            else
+            {
+                cote = toolBar.NbCote;
+                rayon = toolBar.Rayon;
+            }
             centrePoly.X=(double)canvas.ActualWidth/(double)2;
             centrePoly.Y=(double)canvas.ActualHeight/(double)2;
             
-            double angle = 360/toolBar.NbCote;
+            double angle = 360/cote;
             Polygon poly = new Polygon() {
                 Fill = rempli,
                 Stroke = trace,
 
             };
-            Point fstPt = new Point(centrePoly.X + toolBar.Rayon*step, centrePoly.Y);
+            Point fstPt = new Point(centrePoly.X + rayon*step, centrePoly.Y);
             poly.Points.Add(fstPt);
             RotateTransform trans;
 
-            for (int i = 1; i < toolBar.NbCote; i++)
+            for (int i = 1; i < cote; i++)
             {
                 trans = new RotateTransform()
                 {
@@ -585,24 +645,165 @@ namespace Projet2Cp
             poly.MouseEnter += shapeMouseEnter;
             poly.MouseLeave += shapeMouseLeave;
             shapePairs.Add(new ShapePair(poly, canvas,axeSym, shapeMouseEnter, shapeMouseLeave));
-            /*
-            Utili.strTofile(@"C:\Users\raouf\Desktop\shapesExo.txt", Utili.CanvasToString(poly.Points, Brushes.Black, Brushes.White,axeSym,centresym), 3);
-            poly = (Polygon)Utili.StringToShape(Utili.fileTostr(@"C:\Users\raouf\Desktop\shapesExo.txt", 3));
-            poly.MouseEnter += shapeMouseEnter;
-            poly.MouseLeave += shapeMouseLeave;
-            shapePairs.Add(new ShapePair(poly, canvas, axeSym, shapeMouseEnter, shapeMouseLeave)); */
-
+            
 
         }
 
         //==================================================================================================//
         //                                   Methodes  du mode enseignant                                   //
         //==================================================================================================//
-            
-         private void valider_Click(Object sender,RoutedEventArgs e)
+
+
+        private void EditEns_Click(Object sender, RoutedEventArgs e)
         {
+            isEditing = true;
+            clear();
+            tb = new TextBlock();
+            tb.Text = "Veuillez créer UNE forme, selectionner le repère de symetrie, Puis cliquer sur Confirmer.";
+            tb.Foreground = Brushes.Red;
+            tb.FontSize = 18;
+            tb.TextAlignment = TextAlignment.Center;    
+            tb.Width = canvas.ActualWidth;
+            tb.Height = canvas.ActualHeight;
+            canvas.Children.Add(tb);
+            Canvas.SetTop(tb, 0);
+           // toolBarEns.valider.IsEnabled = false;
+
+            toolBarEns.vld.Text = "Confirmer"; 
+            toolBarEns.annuler.Visibility = Visibility.Visible;
+            niv.IsEnabled = false;
+
 
 
         }
+        private void valider_Click(Object sender,RoutedEventArgs e)
+        {
+            if (isEditing)
+            {
+                canvas.Children.Remove(tb);
+                if (shapePairs.Count > 1)
+                {
+                    MessageBox.Show("Vous ne pouvez pas creer plusieurs  formes a la fois!");
+                }
+                else if (axeSym == null && centresym == null)
+                {
+                    MessageBox.Show("Veuillez choisir un repère de symetrie!");
+
+                }
+                else
+                {
+                    Shape shp = shapePairs[0].origin;
+                    int ind = niv.Selected() + 1;
+
+                    if (shp is Polygon)
+                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, toolBarEns.selectedAxe()), ind);
+                    else
+                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, toolBarEns.selectedAxe()), ind);
+                    dessinsModeExo = chargerDessins(@".\shapesExo.txt");
+                    MessageBox.Show("Dessin modifié avec succès!");
+                    canvas.Children.Remove(tb);
+                    toolBarEns.annuler.Visibility = Visibility.Collapsed;
+                    niv.IsEnabled = true;
+                    toolBarEns.vld.Text = "Valider";
+                    isEditing = false;
+
+
+
+                }
+                
+            }
+
+
+
+        }
+        private void annuler_Click(Object sender, RoutedEventArgs e)
+        {
+            canvas.Children.Remove(tb);
+            toolBarEns.annuler.Visibility = Visibility.Collapsed;
+            niv.IsEnabled = true;
+            toolBarEns.vld.Text = "Valider";
+            isEditing = false;
+            dessinerDessinNum(niv.Selected());
+
+
+        }
+
+        private void Niv_Click(object sender, RoutedEventArgs e)
+        {
+            dessinerDessinNum(niv.Selected());
+
+
+        }
+        private void dessinerDessinNum(int i )
+        {
+
+            clear();
+            dessinExo poly = dessinsModeExo[i];
+            selectAxe(poly.repere);
+            checkAxes();
+            if (poly.type)
+            {
+                polygone = (Polygon)poly.shape;
+                polygone.MouseEnter += shapeMouseEnter;
+                polygone.MouseEnter += shapeMouseEnter;
+                polygone.MouseLeave += shapeMouseLeave;
+                shapePairs.Add(new ShapePair(polygone, canvas, axeSym, shapeMouseEnter, shapeMouseLeave));
+            }
+            else
+            {
+                polyline = (Polyline)poly.shape;
+                polyline.MouseEnter += shapeMouseEnter;
+                polyline.MouseLeave += shapeMouseLeave;
+                canvas.Children.Add(polyline);
+                shapePairs.Add(new ShapePair(polyline, canvas, axeSym, shapeMouseEnter, shapeMouseLeave));
+                cleaningTheMess();
+
+            }
+            
+        }
+        private void selectAxe(String axe )
+        {
+            switch (axe)
+            {
+                case "horiz":
+                    {
+                        toolBarEns.horiz.IsChecked = true;
+                        break;
+                    }
+                case "verti":
+                    {
+                        toolBarEns.verti.IsChecked = true;
+
+                        break;
+                    }
+                case "diag1":
+                    {
+                        toolBarEns.diag1.IsChecked = true;
+
+                        break;
+                    }
+                case "diag2":
+                    {
+                        toolBarEns.diag2.IsChecked = true;
+
+                        break;
+                    }
+                case "centre":
+                    {
+                        toolBarEns.centre.IsChecked = true;
+
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
+        
+        
+
+
+
     }
 }

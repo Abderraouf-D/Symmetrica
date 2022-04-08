@@ -110,42 +110,49 @@
 
     </UserControl.Resources>
 
+    <StackPanel >
+       
+            <Grid x:Name="grid" Height="45"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-    <Grid x:Name="grid" Height="70">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="25"/>
-        </Grid.RowDefinitions>
 
-        <RadioButton x:Name="b1" Grid.Column="0" Style="{StaticResource s1}" Content="Dessin 1" IsChecked="true"/>
-        <RadioButton x:Name="b2" Grid.Column="1" Style="{StaticResource s1}" Content="Dessin 2"/>
-        <RadioButton x:Name="b3" Grid.Column="2" Style="{StaticResource s1}" Content="Dessin 3"/>
-        <RadioButton x:Name="b4" Grid.Column="3" Style="{StaticResource s2}" Content="Dessin 1"/>
-        <RadioButton x:Name="b5" Grid.Column="4" Style="{StaticResource s2}" Content="Dessin 2"/>
-        <RadioButton x:Name="b6" Grid.Column="5" Style="{StaticResource s2}" Content="Dessin 3"/>
-        <RadioButton x:Name="b7" Grid.Column="6" Style="{StaticResource s3}" Content="Dessin 1"/>
-        <RadioButton x:Name="b8" Grid.Column="7" Style="{StaticResource s3}" Content="Dessin 2"/>
-        <RadioButton x:Name="b9" Grid.Column="8" Style="{StaticResource s3}" Content="Dessin 3"/>
+                <RadioButton x:Name="b1" Grid.Column="0" Style="{StaticResource s1}" Content="Dessin 1" IsChecked="true"/>
+                <RadioButton x:Name="b2" Grid.Column="1" Style="{StaticResource s1}" Content="Dessin 2"/>
+                <RadioButton x:Name="b3" Grid.Column="2" Style="{StaticResource s1}" Content="Dessin 3"/>
+                <RadioButton x:Name="b4" Grid.Column="3" Style="{StaticResource s2}" Content="Dessin 1"/>
+                <RadioButton x:Name="b5" Grid.Column="4" Style="{StaticResource s2}" Content="Dessin 2"/>
+                <RadioButton x:Name="b6" Grid.Column="5" Style="{StaticResource s2}" Content="Dessin 3"/>
+                <RadioButton x:Name="b7" Grid.Column="6" Style="{StaticResource s3}" Content="Dessin 1"/>
+                <RadioButton x:Name="b8" Grid.Column="7" Style="{StaticResource s3}" Content="Dessin 2"/>
+                <RadioButton x:Name="b9" Grid.Column="8" Style="{StaticResource s3}" Content="Dessin 3"/>
+            </Grid>
+        
+        <Grid  Height="25"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#A2DBA1" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Text="NIVEAU 1" FontSize="9"  Height="13" HorizontalAlignment="Center" />
-        </Border>
-        <Border Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Background="#FFCC00" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
-            <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" FontSize="9" Text="NIVEAU 2"  Height="13" HorizontalAlignment="Center"/>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Background="#EC3D3D" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
-            <TextBlock FontSize="9" Text="NIVEAU 3"  Height="13" HorizontalAlignment="Center"/>
-        </Border>
-    </Grid>
+                    <Border Grid.Column="0"  Background="#A2DBA1" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Text="NIVEAU 1" FontSize="9"  Height="13" HorizontalAlignment="Center" />
+            </Border>
+            <Border Grid.Column="1"  Background="#FFCC00" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" FontSize="9" Text="NIVEAU 2"  Height="13" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Column="6"  Background="#EC3D3D" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
+                <TextBlock FontSize="9" Text="NIVEAU 3"  Height="13" HorizontalAlignment="Center"/>
+            </Border>
+        </Grid>
+    </StackPanel>
 </UserControl>

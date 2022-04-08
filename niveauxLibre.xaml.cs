@@ -16,18 +16,34 @@ using System.Windows.Shapes;
 
 namespace Projet2Cp
 {
-    /// <summary>
-    /// Interaction logic for UserControl1.xaml
-    /// </summary>
     public partial class niveauxLibre : UserControl
     {
 
 
-       
+
+
         public niveauxLibre()
         { 
             InitializeComponent();
+           
+        }
+
+
+        public int Selected()
+        {
+            foreach(RadioButton elem in grid.Children)
+            {
+                if( elem.IsChecked != null)
+                {
+                    if ((bool)(elem).IsChecked) return Grid.GetColumn(elem) ; 
+                    
+                }
+                
+            }
+            return -1;
+
             
         }
+        
     }
 }

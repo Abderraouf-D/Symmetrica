@@ -6,69 +6,113 @@
              xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-
-    <Border BorderThickness="2" BorderBrush="Black">
-
-        <Grid  Background="LightGray" Width="110">
-
-        
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                
 
 
-            </Grid.RowDefinitions>
 
-            <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
-               Outils
-            </TextBlock>
-            <RadioButton ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
-                <StackPanel Orientation="Horizontal">
-                    <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
-                    <Image Margin="5,0,0,0" Source="./icons/move.png"/>
-                    <Image Margin="5,0,0,0" Source="./icons/polygone.png"/>
-                </StackPanel>
-            </RadioButton>
+
+    <Grid  Background="LightGray" Width="110">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="20" FontWeight="Bold"  
+                           VerticalAlignment="Center" HorizontalAlignment="Center" 
+                           Grid.Row="0" Grid.ColumnSpan="2" >
+                           Outils
+        </TextBlock>
+
+        <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
+                <Image Margin="5,0,0,0" Source="./icons/move.png"/>
+                <Image Margin="5,0,0,0" Source="./icons/polygone.png"/>
+            </StackPanel>
+        </RadioButton>
+
+        <RadioButton ToolTip="maelblich wch ndir hhh" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShapeSeg" >
+        </RadioButton>
+        <RadioButton ToolTip="Rotation" Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
+            <Image Source="./icons/rotate.png" />
+        </RadioButton>
+
+        <RadioButton ToolTip="Dupliquer" Grid.Column="0" Grid.Row="3" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="duplicate" >
+            <Image Source="./icons/duplicate.png" />
+
+        </RadioButton>
+        <RadioButton ToolTip="Effacer" Grid.Row="3"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
+            <Image Source="./icons/eraser.png" />
+        </RadioButton>
+
+
+        <StackPanel Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" Margin="0,40,0,40" Grid.RowSpan="3">
+            <Button ToolTip="Ajouter Polygon" Margin="5,0,0,0"    Grid.Column="0" Width="20" Height="20" x:Name="addPolygon" >
+                <Image Margin="2" Source="./icons/new.png" />
+            </Button>
+            <ComboBox x:Name="rayon" SelectionChanged="rayon_SelectionChanged" ToolTip="Rayon"  Margin="3,0,0,0" Height="20" Width="40" >
+                <ComboBoxItem  IsSelected="True">1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>7</ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="nbCote" SelectionChanged="nbCote_SelectionChanged" ToolTip="Nombre de cotés" Text="Rayon" Margin="1,0,0,0" Height="20" Width="40">
+                <ComboBoxItem IsSelected="True" >3</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>7</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
        
-            <RadioButton ToolTip="Rotation" Grid.Row="2"   Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
-                <Image Source="./icons/rotate.png" />
-            </RadioButton>
-
-           
-            <RadioButton ToolTip="Effacer" Grid.Row="3"   Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
-                <Image Source="./icons/eraser.png" />
-
-
-            </RadioButton>
-
-            
-
-
+        <Button Style="{StaticResource  effSty}"
+                  Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Top"  
+                    HorizontalAlignment="Left"  
+                    Width="70" Height="40" x:Name="effacerTout" Margin="20,16,0,0" Grid.RowSpan="2"  >
+            <TextBlock FontSize="12" Text="Effacer tout"/>
+        </Button>
+        <Button 
+                Style="{StaticResource validSty}" Grid.ColumnSpan="2" Grid.Row="8"  Grid.RowSpan="2" 
+                VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Width="70" Height="40" x:Name="valider" Margin="5"  >
+            <TextBlock x:Name="vld" Text="Valider"/>
+        </Button>
+        
 
 
 
 
-            
 
-
-
-            <Button 
-             Grid.Row="4" Grid.RowSpan="2"  VerticalAlignment="Bottom"  HorizontalAlignment="Center" Foreground="Black" Width="70" Height="40" x:Name="genSym" Margin="5"  >
-                <TextBlock Text="Vérifier"/>
-            </Button>
-
-
-
-
-        </Grid>
-    </Border>
+    </Grid>
 </UserControl>
