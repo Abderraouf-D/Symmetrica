@@ -34,8 +34,8 @@ namespace Projet2Cp
         public ColorPicker()
         {
             InitializeComponent();
-           MainWindow.trace=Brushes.Black;
-            MainWindow.rempli= Brushes.White;
+           ModeLibre.trace=Brushes.Black;
+            ModeLibre.rempli= Brushes.White;
 
             Border BORD;
             int k = 0; 
@@ -93,7 +93,7 @@ namespace Projet2Cp
                 {
                     if (hitTrace != null) hitTrace.BorderBrush = Brushes.Black;
                     hitTrace = ((Border)e.Source);
-                    MainWindow.trace = hitTrace.Background;
+                    ModeLibre.trace = hitTrace.Background;
                    
                     hitTrace.BorderBrush = Brushes.White;
                    
@@ -102,7 +102,7 @@ namespace Projet2Cp
                 {
                     if (hitRempli != null) hitRempli.BorderBrush = Brushes.Black;
                     hitRempli = ((Border)e.Source);
-                    MainWindow.rempli = hitRempli.Background;
+                    ModeLibre.rempli = hitRempli.Background;
                     hitRempli.BorderBrush = Brushes.White;
 
                 }

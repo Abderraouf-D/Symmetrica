@@ -55,6 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LibreExoEleve.xaml.cs">
+      <DependentUpon>LibreExoEleve.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibreExoEns.xaml.cs">
+      <DependentUpon>LibreExoEns.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeLibre.xaml.cs">
+      <DependentUpon>ModeLibre.xaml</DependentUpon>
+    </Compile>
     <Compile Include="niveauxLibre.xaml.cs">
       <DependentUpon>niveauxLibre.xaml</DependentUpon>
     </Compile>
@@ -73,6 +82,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="LibreExoEleve.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibreExoEns.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ModeLibre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="niveauxLibre.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
