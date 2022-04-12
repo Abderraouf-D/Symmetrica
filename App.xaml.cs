@@ -13,5 +13,7 @@ namespace Projet2Cp
     /// </summary>
     public partial class App : Application
     {
+
+    
     }
 }

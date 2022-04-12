@@ -63,7 +63,7 @@ namespace Projet2Cp
         private bool isAxial = true; // IMPORTANT : will be set to true or false depending on the symmetry type selected ....
         private bool firstTimeRotating = true; //je pense qu'on peut s'en debarasser ....
         private bool isGomme = false; //quelque retouche a faire sur les cas speciaux de la gomme (when two /three are left ...)
-
+        private bool isColoring= false ;
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
 
 
@@ -106,7 +106,7 @@ namespace Projet2Cp
             toolBar.delShape.Click += delete_Click;
             toolBar.deplacer.Click += deplacer_Click;
             toolBar.rotate.Click += rotate_Click;
-
+            toolBar.colorier.Click += colorier_Click;
 
 
             canvas.MouseLeave += ellipseCleaner;
@@ -142,6 +142,16 @@ namespace Projet2Cp
 
 
 
+        private void colorier_Click(object sender, RoutedEventArgs e)
+        {
+            isDrawing = false;
+            isTransforming = false;
+            isRotating = false;
+            isGomme = false;
+            isGen = false;
+            isColoring = true;
+        }
+
         private void GenSym_Click(object sender, RoutedEventArgs e)
         {
             isDrawing = false;
@@ -149,6 +159,7 @@ namespace Projet2Cp
             isRotating = false;
             isGomme = false;
             isGen = true;
+            isColoring = false;
 
         }
 
@@ -159,6 +170,7 @@ namespace Projet2Cp
             isRotating = false;
             isGomme = true;
             isGen = false;
+            isColoring = false;
 
         }
 
@@ -169,6 +181,7 @@ namespace Projet2Cp
             isRotating = false;
             isGomme = false;
             isGen = false;
+            isColoring = false;
 
         }
         private void rotate_Click(object sender, RoutedEventArgs e)
@@ -178,6 +191,7 @@ namespace Projet2Cp
             isRotating = true;
             isGomme = false;
             isGen = false;
+            isColoring = false;
 
         }
 
@@ -203,6 +217,12 @@ namespace Projet2Cp
 
         private void initCanvas()
         {
+      
+
+
+     
+            
+           
             shapePairs = new List<ShapePair>();
             currentShapePair = null;
             shapepc = new PointCollection();
@@ -355,6 +375,36 @@ namespace Projet2Cp
 
 
                 }
+                if (isGen)
+                {
+                    if (axeSym != null || centresym != null)
+                        if (isAxial)
+                        {
+                            currentShapePair.aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
+
+                        }
+
+                        else
+                        {
+                            currentShapePair.cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
+                        }
+                    else MessageBox.Show("Veuillez sélectionner un repère de symetrie !");
+                    
+                }
+                if (isColoring)
+                {
+                    if (e.Source  is Polygon)
+                    {
+                        ((Polygon)e.Source).Fill = rempli;
+                        ((Polygon)e.Source).Stroke = trace; 
+
+                    }
+
+                    else if (e.Source is Polyline)
+                            {
+                                 ((Polyline)e.Source).Stroke = trace;
+                    }
+                }
 
 
             }
@@ -504,12 +554,12 @@ namespace Projet2Cp
         }
 
         //====================================================================================================================//
-        //                  SHAPE_MOUSE_LEAVE: DEBLOCK PREVIEW ELLIPSE (AVEC IS_OVER_SHAPE = FALSE)                              //
+        //                  SHAPE_MOUSE_LEAVE: DEBLOCK PREVIEW ELLIPSE (AVEC IS_OVER_SHAPE = FALSE)                           //
         //====================================================================================================================//
         public void shapeMouseLeave(object sender, MouseEventArgs e)
         {
             isOverShape = false;
-            if (oldShapeFill != null)
+            if (oldShapeFill != null && isGomme)
                 ((Shape)(e.Source)).Fill = oldShapeFill;
 
         }
@@ -596,13 +646,17 @@ namespace Projet2Cp
             if (isDrawing)
             {
                 if (isOverShape)
-                    this.Cursor = Cursors.Hand;
+                    this.Cursor = Cursors.SizeAll;
                 else
                     this.Cursor = Cursors.Pen;
             }
             if (isGomme)
             {
                 this.Cursor = Cursors.Arrow;
+            }
+            if (isGen)
+            {
+                this.Cursor = Cursors.Hand;
             }
         }
 
@@ -632,7 +686,7 @@ namespace Projet2Cp
                 mousePosition = e.GetPosition(canvas);
 
                 currentShapePair.rotating(clickPosition, angle, isOrigin, isAxial, axeSym,centresym);
-
+               
 
             }
         }
@@ -643,7 +697,7 @@ namespace Projet2Cp
         private void effacerTout(object sender, RoutedEventArgs e)
         {
             clear();
-            
+           
         }
         private void clear()
         {
@@ -673,10 +727,15 @@ namespace Projet2Cp
             centresym = null;
 
 
-            for (int i = 0; i < shapePairs.Count; i++)
+            for ( int i =0; i< shapePairs.Count; i++)
             {
-                if (shapePairs[i].sym != null) canvas.Children.Remove((Shape)shapePairs[i].sym);
+                canvas.Children.Remove(shapePairs[i].sym);
                 shapePairs[i].sym = null;
+                foreach(Ellipse el in shapePairs[i].sEllipse)
+                {
+                    canvas.Children.Remove(el);
+                }
+                shapePairs[i].sEllipse = new List<Ellipse>();
             }
             if (axeSym == null)
             {

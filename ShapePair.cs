@@ -385,60 +385,50 @@ namespace Projet2Cp
 
             Shape old;
             Shape newer;
-
-            if (sym == null) //donc orgin != null c'est lui le old
-                old = origin;
-            else
-                old = sym;
-
-            //On recupere la PointCollection de old et on instantie newer selon la nature de old
-            if (old is Polygon)
-            {
-                shapepc = ((Polygon)old).Points;
-                newer = new Polygon()
-                {
-                    Stroke = old.Stroke, //((Polygon)old).Stroke, //j'ai de gros doute sur cette manoeuvr ....
-                    StrokeThickness = old.StrokeThickness,//((Polygon)old).StrokeThickness,
-                    Fill = old.Fill,//((Polygon)old).Fill,
-                };
-
-                ((Polygon)newer).Points = symmetricpc;
-            }
-            else
-            {
-                shapepc = ((Polyline)old).Points;
-                newer = new Polyline()
-                {
-                    Stroke = old.Stroke,//((Polyline)old).Stroke, //j'ai de gros doute sur cette manoeuvr ....
-                    StrokeThickness = old.StrokeThickness,//((Polyline)old).StrokeThickness,
-                                                          //((Polyline)old).Fill,
-                };
-
-                ((Polyline)newer).Points = symmetricpc;
-
-            }
-
-            for (int i = 0; i < shapepc.Count; i++)
-                symmetricpc.Add(symPoint(p1, p2, shapepc[i]));
-
-            newer.MouseEnter += shapeMouseEnter;
-            newer.MouseLeave += shapeMouseLeave;
-
-
-            canvas.Children.Add(newer);
-
+            old = origin;
             if (sym == null)
-            {
+            {  //donc orgin != null c'est lui le old
+
+
+
+                //On recupere la PointCollection de old et on instantie newer selon la nature de old
+                if (old is Polygon)
+                {
+                    shapepc = ((Polygon)old).Points;
+                    newer = new Polygon()
+                    {
+                        Stroke = old.Stroke, //((Polygon)old).Stroke, //j'ai de gros doute sur cette manoeuvr ....
+                        StrokeThickness = old.StrokeThickness,//((Polygon)old).StrokeThickness,
+                        Fill = old.Fill,//((Polygon)old).Fill,
+                    };
+
+                    ((Polygon)newer).Points = symmetricpc;
+                }
+                else
+                {
+                    shapepc = ((Polyline)old).Points;
+                    newer = new Polyline()
+                    {
+                        Stroke = old.Stroke,//((Polyline)old).Stroke, //j'ai de gros doute sur cette manoeuvr ....
+                        StrokeThickness = old.StrokeThickness,//((Polyline)old).StrokeThickness,
+                                                              //((Polyline)old).Fill,
+                    };
+
+                    ((Polyline)newer).Points = symmetricpc;
+
+                }
+
+                for (int i = 0; i < shapepc.Count; i++)
+                    symmetricpc.Add(symPoint(p1, p2, shapepc[i]));
+
+                newer.MouseEnter += shapeMouseEnter;
+                newer.MouseLeave += shapeMouseLeave;
+
+
+                canvas.Children.Add(newer);
                 sym = newer;
                 drawEllipses(false);
             }
-            else
-            {
-                origin = newer;
-                drawEllipses(true);
-
-            }
-
 
         }
 
@@ -448,7 +438,7 @@ namespace Projet2Cp
         //                                                          C_SYM_GEN de centrale                                               //
         //============================================================================================================================//
 
-        public void cSymGen(MouseEventHandler shapeMouseEnter, MouseEventHandler shapeMouseLeave, Point spoint)
+        public void cSymGen(MouseEventHandler shapeMouseEnter, MouseEventHandler shapeMouseLeave, Nullable<Point> spoint)
         {
             //Maybe i should add here a condition spoint != null
             PointCollection shapepc;
@@ -457,57 +447,47 @@ namespace Projet2Cp
             Shape old;
             Shape newer;
 
-            if (sym == null) //donc orgin != null c'est lui le old
-                old = origin;
-            else
-                old = sym;
-
-            //On recupere la PointCollection de old et on instantie newer selon la nature de old
-            if (old is Polygon)
-            {
-                shapepc = ((Polygon)old).Points;
-                newer = new Polygon()
-                {
-                    Stroke = old.Stroke,
-                    StrokeThickness = old.StrokeThickness,
-                    Fill = old.Fill,
-                };
-
-                ((Polygon)newer).Points = symmetricpc;
-            }
-            else
-            {
-                shapepc = ((Polyline)old).Points;
-                newer = new Polyline()
-                {
-                    Stroke = old.Stroke,
-                    StrokeThickness = old.StrokeThickness,
-
-                };
-
-                ((Polyline)newer).Points = symmetricpc;
-
-            }
-
-            for (int i = 0; i < shapepc.Count; i++)
-                symmetricpc.Add(cSymPoint(spoint, shapepc[i]));
-
-            newer.MouseEnter += shapeMouseEnter;
-            newer.MouseLeave += shapeMouseLeave;
-
-
-            canvas.Children.Add(newer);
-
+  
+            old = origin;
             if (sym == null)
             {
+                //On recupere la PointCollection de old et on instantie newer selon la nature de old
+                if (old is Polygon)
+                {
+                    shapepc = ((Polygon)old).Points;
+                    newer = new Polygon()
+                    {
+                        Stroke = old.Stroke,
+                        StrokeThickness = old.StrokeThickness,
+                        Fill = old.Fill,
+                    };
+
+                    ((Polygon)newer).Points = symmetricpc;
+                }
+                else
+                {
+                    shapepc = ((Polyline)old).Points;
+                    newer = new Polyline()
+                    {
+                        Stroke = old.Stroke,
+                        StrokeThickness = old.StrokeThickness,
+
+                    };
+
+                    ((Polyline)newer).Points = symmetricpc;
+
+                }
+
+                for (int i = 0; i < shapepc.Count; i++)
+                    symmetricpc.Add(cSymPoint(spoint, shapepc[i]));
+
+                newer.MouseEnter += shapeMouseEnter;
+                newer.MouseLeave += shapeMouseLeave;
+
+
+                canvas.Children.Add(newer);
                 sym = newer;
                 drawEllipses(false);
-            }
-            else
-            {
-                origin = newer;
-                drawEllipses(true);
-
             }
 
 
