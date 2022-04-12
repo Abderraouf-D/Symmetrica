@@ -273,7 +273,11 @@ namespace Projet2Cp
 
             //soit il click sur le vide, et a ce moment la il se mettra a dessiner dans le seul cas ou isDrawing est a vrai
             if (!isOverShape && isDrawing)
+            {
+                line.Stroke = trace;
+                polyline.Stroke = trace;
                 polyline.Points.Add(actualPoint);
+            }
 
             //sinon c'est qu'il a clické sur un shape, et dans ce cas il faudra juste determiner de quel ShapePair il s'agit
             else if (e.Source is Shape)//nrmlm si il est pas dans la premiere c'est qu'il est dans la deuxieme mais bon ....
@@ -284,7 +288,7 @@ namespace Projet2Cp
                     source = shapeToDelete;
                     deleteSegment = true;
                 }
-                
+
                 //on met a true isTranslating, meme si c'est pas forcement le cas ...
                 isTransforming = true;
 
@@ -339,7 +343,7 @@ namespace Projet2Cp
                             canvas.Children.Remove(el);
                         }
                         shapePairs.Remove(currentShapePair);
-                        
+
 
                     }
                     else
@@ -348,7 +352,7 @@ namespace Projet2Cp
                         currentShapePair.RemoveSegment(segmentToDelete);
                         deleteSegment = false;
                     }
-                    
+
 
                 }
 
@@ -372,7 +376,7 @@ namespace Projet2Cp
 
             line = new Line()
             {
-                Stroke = Brushes.Red,
+                Stroke = trace,
                 StrokeThickness = 1,
             };
 
@@ -522,8 +526,8 @@ namespace Projet2Cp
                     polygone = new Polygon()
                     {
                         Points = shapepc,
-                        Fill = Brushes.Red,
-                        Stroke = Brushes.Black,
+                        Fill = rempli,
+                        Stroke = trace,
                         StrokeThickness = 3,
                     };
 
