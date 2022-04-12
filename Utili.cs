@@ -102,5 +102,27 @@ namespace Projet2Cp
             return dessins;
 
         }
+
+        //// le3fayes tae younes 
+  
+        public static double distancePointPoint(Point firstPoint, Point secondPoint)
+        {
+            return Math.Sqrt(Math.Pow(secondPoint.X - firstPoint.X, 2) + Math.Pow(secondPoint.Y - firstPoint.Y, 2));
+        }
+
+
+        public static double distancePointLine(Point firstPoint, Point secondPoint, Point point)
+        {
+            double num = (secondPoint.X - firstPoint.X) * (firstPoint.Y - point.Y) - (firstPoint.X - point.X) * (secondPoint.Y - firstPoint.Y);
+            num = Math.Abs(num);
+            num = num / Math.Sqrt(Math.Pow(secondPoint.X - firstPoint.X, 2) + Math.Pow(secondPoint.Y - firstPoint.Y, 2));
+            return num;
+        }
+
+
+
+
+
+
     }
 }

@@ -37,7 +37,7 @@
             <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
                Outils
             </TextBlock>
-            <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
+            <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="deplacer" >
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
                     <Image Margin="5,0,0,0" Source="./icons/move.png"/>

@@ -21,7 +21,7 @@ namespace Projet2Cp
 
 
     public partial class LibreExoEleve : Page
-    {
+    {/*
 
 
         Point centrePoly = new Point();
@@ -174,17 +174,19 @@ namespace Projet2Cp
 
 
 
-        private void translating(Object sender, MouseEventArgs e) //v1 : sans correction du symetrique
+        private void translating(Object sender, MouseEventArgs e)
         {
-            if (isTransforming && (e.LeftButton == MouseButtonState.Pressed) && isDrawing)
+            if (isTransforming && isDrawing && (e.LeftButton == MouseButtonState.Pressed))
             {
                 Vector vec = e.GetPosition(canvas) - mousePosition;
-                currentShapePair.translating(vec, isOrigin, mousePosition);
+                if (currentShapePair != null)
+                    currentShapePair.translating(vec, isOrigin, mousePosition, isAxial, sline, spoint);
                 mousePosition = e.GetPosition(canvas); //on reactulise clickPosition pour le prochain move
             }
 
 
         }
+
 
         //====================================================================================================================//
         //                          ELLIPSE_CLEANER : ENLEVE LA PREVIEW ELLIPSE UNE FOIS QU'ON QUITTE LE CANVAS               //  
@@ -561,7 +563,7 @@ namespace Projet2Cp
 
 
 
-
+        */
     }
 }
  

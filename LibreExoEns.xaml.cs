@@ -23,7 +23,7 @@ namespace Projet2Cp
     public partial class LibreExoEns : Page
     {
 
-
+        /*
         Point centrePoly = new Point();
 
         public static Line axeSym { get; set; } // l'axe de symetrie selectionné
@@ -64,8 +64,8 @@ namespace Projet2Cp
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
 
 
-        public static Brush trace;
-        public static Brush rempli;
+        public static Brush trace =Brushes.Blue;
+        public static Brush rempli= Brushes.LightYellow;
 
         public LibreExoEns()
         {
@@ -146,8 +146,10 @@ namespace Projet2Cp
 
             if (e.LeftButton != MouseButtonState.Pressed)
                 mousePosition = e.GetPosition(canvas);
-        }
 
+
+        }
+        
         //=======================================================================================================//
         //                                          INIT_CANVAS
         //=======================================================================================================//
@@ -760,6 +762,6 @@ namespace Projet2Cp
 
 
 
-
+        */
     }
 }

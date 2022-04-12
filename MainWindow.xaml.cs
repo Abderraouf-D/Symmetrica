@@ -26,8 +26,8 @@ namespace Projet2Cp
         public MainWindow()
         {
             InitializeComponent();
-            modeLibre = false;
-            modeEns = false;
+            modeLibre = true;
+            modeEns = true;
             if (modeLibre)  MainFrame.NavigationService.Navigate(new ModeLibre());
             else if(modeEns) MainFrame.NavigationService.Navigate(new LibreExoEns());
                  else MainFrame.NavigationService.Navigate(new LibreExoEleve());
