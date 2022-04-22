@@ -81,6 +81,8 @@ namespace Projet2Cp
         public static Brush trace;
         public static Brush rempli;
 
+
+      
         public ModeLibre()
         {
             InitializeComponent();
@@ -114,6 +116,7 @@ namespace Projet2Cp
             canvas.MouseMove += translating;
             canvas.MouseMove += mouseCursor;
             canvas.MouseMove += rotating;
+            canvas.MouseWheel += zoom;
             deleteLine.MouseLeave += dlCleaner;
             Canvas.SetZIndex(deleteLine, 2);
 
@@ -129,14 +132,6 @@ namespace Projet2Cp
                 Fill = Brushes.Red,
                 Stroke = trace,
             };
-
-
-
-           
-
-
-
-
         }
 
 
@@ -197,6 +192,106 @@ namespace Projet2Cp
 
 
         //=======================================================================================================//
+        //                                      ZOOM                                                             //
+        //=======================================================================================================//
+        void zoom (object sender, MouseWheelEventArgs e)
+        {
+            double alpha;
+            if (e.Delta > 0)
+                alpha = 0.9;
+            else
+                alpha = 1.1;
+
+            if (step * alpha > 50 || step * alpha < 2.5)
+                return;
+            step *= alpha;
+            gridDrawing(step);
+
+            for (int i = 0; i<shapePairs.Count; i++)
+            {
+                PointCollection pc; //originPointCollection
+                if (shapePairs[i].origin is Polygon)
+                    pc = ((Polygon)shapePairs[i].origin).Points;
+                else
+                    pc = ((Polyline)shapePairs[i].origin).Points;
+
+                Point paz;
+                Point center = new Point(canvas.ActualWidth/2, canvas.ActualHeight/2);
+                for(int j = 0; j<pc.Count; j++)
+                {
+                    paz = new Point();
+                    paz.X = (pc[j].X - center.X ) * alpha + center.X;
+                    paz.Y = (pc[j].Y - center.Y) * alpha + center.Y;
+                    pc[j] = paz;
+                }
+                for(int j = 0; j<shapePairs[i].oEllipse.Count; j ++)
+                {
+                    Canvas.SetLeft(shapePairs[i].oEllipse[j], pc[j].X - 5);
+                    Canvas.SetTop(shapePairs[i].oEllipse[j], pc[j].Y - 5);
+                }
+
+                if(shapePairs[i].sym != null)
+                {
+                    if (shapePairs[i].sym is Polygon)
+                        pc = ((Polygon)shapePairs[i].sym).Points;
+                    else
+                        pc = ((Polyline)shapePairs[i].sym).Points;
+
+                    for (int j = 0; j < pc.Count; j++)
+                    {
+                        paz = new Point();
+                        paz.X = (pc[j].X - center.X ) * alpha + center.X;
+                        paz.Y = (pc[j].Y - center.Y) * alpha + center.Y;
+                        pc[j] = paz;
+                    }
+                    for (int j = 0; j < shapePairs[i].sEllipse.Count; j++)
+                    {
+                        Canvas.SetLeft(shapePairs[i].sEllipse[j], pc[j].X - 5);
+                        Canvas.SetTop(shapePairs[i].sEllipse[j], pc[j].Y - 5);
+                    }
+
+                }
+            }
+        }
+       
+        //=======================================================================================================//
+        //                                      GRID_DRAWING                                                     //
+        //=======================================================================================================//
+
+        private void gridDrawing(double step)
+        {
+            DrawingBrush res = new DrawingBrush();
+            GeometryDrawing GD = new GeometryDrawing();
+            GeometryGroup GG = new GeometryGroup();
+
+            GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(0, step)));
+            GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(step, 0)));
+
+            res.Viewbox = new Rect(0, 0, step, step);
+            res.Viewport = new Rect(0, 0, step, step);
+
+            res.TileMode = TileMode.Tile;
+            res.ViewportUnits = BrushMappingMode.Absolute;
+            res.ViewboxUnits = BrushMappingMode.Absolute;
+
+            GD.Pen = new Pen()
+            {
+                DashStyle = new DashStyle()
+                {
+                    Dashes = { 5, 3 }
+                },
+
+                Brush = Brushes.Black,
+                Thickness = 1,
+                DashCap = PenLineCap.Flat,
+            };
+
+            GD.Geometry = GG;
+            res.Drawing = GD;
+            canvas.Background = res;
+        }
+
+        //=======================================================================================================//
         // CurrentMousePosition : continuously updates "mousePosition" in canvas while not clicking on anything  //
         //=======================================================================================================//
 
@@ -215,14 +310,11 @@ namespace Projet2Cp
         //                                          INIT_CANVAS
         //=======================================================================================================//
 
+        
         private void initCanvas()
         {
-      
-
-
-     
+            gridDrawing(step);
             
-           
             shapePairs = new List<ShapePair>();
             currentShapePair = null;
             shapepc = new PointCollection();
@@ -460,6 +552,7 @@ namespace Projet2Cp
 
                     ellipse.MouseLeftButtonDown += canvas_MouseLeftButtonDown;
                     ellipse.MouseRightButtonDown += canvas_MouseRightButtonDown;// C'EST PROVISOIR !!
+                    ellipse.MouseWheel += zoom;
                     canvas.Children.Add(ellipse);
                     Canvas.SetLeft(ellipse, actualPoint.X - 5);
                     Canvas.SetTop(ellipse, actualPoint.Y - 5);

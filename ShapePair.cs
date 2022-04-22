@@ -44,9 +44,6 @@ namespace Projet2Cp
 
             drawEllipses(true);
 
-            
-
-
         }
 
 
@@ -98,12 +95,6 @@ namespace Projet2Cp
             }
 
         }
-
-
-
-
-
-
 
         //============================================================================================================================//
         //                                              drawingEllipses (private method)                                              //
