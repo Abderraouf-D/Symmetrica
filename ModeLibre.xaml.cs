@@ -64,6 +64,7 @@ namespace Projet2Cp
         private bool firstTimeRotating = true; //je pense qu'on peut s'en debarasser ....
         private bool isGomme = false; //quelque retouche a faire sur les cas speciaux de la gomme (when two /three are left ...)
         private bool isColoring= false ;
+        private bool isDuplicating = false;
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
 
 
@@ -109,7 +110,7 @@ namespace Projet2Cp
             toolBar.deplacer.Click += deplacer_Click;
             toolBar.rotate.Click += rotate_Click;
             toolBar.colorier.Click += colorier_Click;
-
+            toolBar.duplicate.Click += dupliquer;
 
             canvas.MouseLeave += ellipseCleaner;
             canvas.MouseMove += currentMousePosition;
@@ -135,6 +136,17 @@ namespace Projet2Cp
         }
 
 
+        private void dupliquer(object sender, RoutedEventArgs e)
+        {
+            isDrawing = false;
+            isTransforming = false;
+            isRotating = false;
+            isGomme = false;
+            isGen = false;
+            isColoring = false;
+            isDuplicating = true;
+        }
+
 
 
         private void colorier_Click(object sender, RoutedEventArgs e)
@@ -143,6 +155,7 @@ namespace Projet2Cp
             isTransforming = false;
             isRotating = false;
             isGomme = false;
+            isDuplicating = false;
             isGen = false;
             isColoring = true;
         }
@@ -154,6 +167,7 @@ namespace Projet2Cp
             isRotating = false;
             isGomme = false;
             isGen = true;
+            isDuplicating = false;
             isColoring = false;
 
         }
@@ -164,6 +178,7 @@ namespace Projet2Cp
             isTransforming = false;
             isRotating = false;
             isGomme = true;
+            isDuplicating = false;
             isGen = false;
             isColoring = false;
 
@@ -175,6 +190,7 @@ namespace Projet2Cp
             isTransforming = false;
             isRotating = false;
             isGomme = false;
+            isDuplicating = false;
             isGen = false;
             isColoring = false;
 
@@ -182,6 +198,7 @@ namespace Projet2Cp
         private void rotate_Click(object sender, RoutedEventArgs e)
         {
             isDrawing = false;
+            isDuplicating = false;
             isTransforming = false;
             isRotating = true;
             isGomme = false;
@@ -406,7 +423,7 @@ namespace Projet2Cp
 
                 //on prepare le terrain pour rotating Si il y a rotating ...
 
-                if (isRotating)
+                if (isRotating) //JE PENSE QU'ON PEUT DEGAGER QUELQUE TRUC ICI ....
                 {
                     firstTimeRotating = true;
                     rotateLine.X1 = clickPosition.X;
@@ -467,6 +484,7 @@ namespace Projet2Cp
 
 
                 }
+                
                 if (isGen)
                 {
                     if (axeSym != null || centresym != null)
@@ -483,6 +501,7 @@ namespace Projet2Cp
                     else MessageBox.Show("Veuillez sélectionner un repère de symetrie !");
                     
                 }
+                
                 if (isColoring)
                 {
                     if (e.Source  is Polygon)
@@ -497,13 +516,58 @@ namespace Projet2Cp
                                  ((Polyline)e.Source).Stroke = trace;
                     }
                 }
+               
+                if(isDuplicating)
+                {
+                    PointCollection pc = new PointCollection();
+                    Polygon polygon; 
+                    Polyline polyline;
+                    Shape shape;
+                    if (isOrigin)
+                        shape = currentShapePair.origin;
+                    else
+                        shape = currentShapePair.sym;
+                   
+                        if (shape is Polygon)
+                        {
+                            foreach (Point p in ((Polygon)shape).Points)
+                                pc.Add(new Point(p.X+10, p.Y+10));
+                            polygon = new Polygon()
+                            {
+                                Stroke = ((Polygon)shape).Stroke,
+                                StrokeThickness = 3,
+                                Fill = ((Polygon)shape).Fill,
+                                Points = pc,
+                            };
+                            polygon.MouseEnter += shapeMouseEnter;
+                            polygon.MouseLeave += shapeMouseLeave;
+                            shapePairs.Add(new ShapePair(polygon, canvas, shapeMouseEnter, shapeMouseLeave));
+                        }
+                        
+                        else
+                        {
+                            foreach (Point p in ((Polyline)shape).Points)
+                                pc.Add(new Point(p.X + 10, p.Y + 10));
+                            polyline = new Polyline()
+                           {
+                                Stroke = ((Polyline)shape).Stroke,
+                                StrokeThickness = 8,
+                                Points = pc,
+                           };
+                           canvas.Children.Add(polyline);
+                           polyline.MouseEnter += shapeMouseEnter;
+                           polyline.MouseLeave += shapeMouseLeave;
+                           shapePairs.Add(new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave));
 
+                        }
 
+                }
+               
             }
 
-        }
+        }//END OF FUNCTION
         
-
+    
         //====================================================================================================================//
         //                          CANVAS_MLBU : COORDINE LE TOUS !! (DETERMINE CE QU'IL FAUT FAIRE AU DE_CLICK)             //  
         //====================================================================================================================//
@@ -657,6 +721,10 @@ namespace Projet2Cp
 
         }
 
+        //=====================================================================================================================//
+        //                                                      MRBD                                                           //
+        //=====================================================================================================================//
+
         private void canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -756,7 +824,7 @@ namespace Projet2Cp
 
 
         //==================================================================================================================//
-        //       ROTATING: rotation de l'object dont lequel on veut rotate                                     //
+        //       ROTATING: rotation de l'object dont lequel on veut rotate                                                  //
         //==================================================================================================================//
         private void rotating(Object sender, MouseEventArgs e)
         {
