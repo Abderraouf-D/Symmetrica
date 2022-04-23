@@ -268,6 +268,8 @@ namespace Projet2Cp
                     }
 
                 }
+
+                shapePairs[i].jointLinesGen();
             }
         }
        
@@ -387,10 +389,6 @@ namespace Projet2Cp
             canvas.Children.Remove(ellipse);
         }
 
-
-
-
-
         //====================================================================================================================//
         //                          CANVAS_MLBD : COORDINE LE TOUS !! (DETERMINE CE QU'IL FAUT FAIRE AU CLICK)                //  
         //====================================================================================================================//
@@ -459,8 +457,12 @@ namespace Projet2Cp
 
                 if (isGomme)
                 {
-                    if (!deleteSegment)
+                    if (!deleteSegment || currentShapePair.removable)
                     {
+                        canvas.Children.Remove(deleteLine);
+                        foreach (Line l in currentShapePair.jointLines)
+                            canvas.Children.Remove(l);
+
                         canvas.Children.Remove(currentShapePair.origin);
                         foreach (Ellipse el in currentShapePair.oEllipse)
                         {
@@ -472,6 +474,8 @@ namespace Projet2Cp
                             canvas.Children.Remove(el);
                         }
                         shapePairs.Remove(currentShapePair);
+
+
 
 
                     }
