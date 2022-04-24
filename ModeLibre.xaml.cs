@@ -234,6 +234,8 @@ namespace Projet2Cp
 
                 Point paz;
                 Point center = new Point(canvas.ActualWidth/2, canvas.ActualHeight/2);
+
+                checkAxes();
                 for(int j = 0; j<pc.Count; j++)
                 {
                     paz = new Point();
@@ -901,6 +903,11 @@ namespace Projet2Cp
                     canvas.Children.Remove(el);
                 }
                 shapePairs[i].sEllipse = new List<Ellipse>();
+                foreach (Line el in shapePairs[i].jointLines)
+                {
+                    canvas.Children.Remove(el);
+                }
+                shapePairs[i].jointLines = new List<Line>();
             }
             if (axeSym == null)
             {
@@ -1005,6 +1012,7 @@ namespace Projet2Cp
             {
                 Fill = rempli,
                 Stroke = trace,
+                StrokeThickness = 3,
 
             };
             Point fstPt = new Point(centrePoly.X + rayon * step, centrePoly.Y);

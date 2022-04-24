@@ -28,7 +28,7 @@
         <Frame  x:Name="MainFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
 
         <TextBlock 
-                Background="green"
+                Background="Purple"
                 Grid.Column="0"
                 Grid.Row="1"
             />

@@ -180,5 +180,8 @@
   <ItemGroup>
     <Resource Include="icons\editer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\color.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
