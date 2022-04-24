@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LibreExoEns">
-    <!--<DockPanel x:Name="myDock" ClipToBounds="True"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+    <DockPanel x:Name="myDock" ClipToBounds="True"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         
         <Border x:Name="myBorder" DockPanel.Dock="Right" BorderThickness="2" BorderBrush="Black">
             <local:toolBarEnseignant  x:Name="toolBarEns" />
@@ -15,14 +15,6 @@
         <Border x:Name="myBorderNiv" BorderThickness="0" BorderBrush="Transparent" DockPanel.Dock="Top">
             <local:niveauxLibre x:Name="niv" />
         </Border>
-        <Canvas x:Name="canvas" 
-                Background="{StaticResource MyGrayGridBrush}"
-                MouseLeftButtonDown="canvas_MouseLeftButtonDown"
-                ClipToBounds="true"
-                MouseMove="canvas_MouseMove"
-                MouseRightButtonDown="canvas_MouseRightButtonDown"
-                MouseLeftButtonUp="canvas_MouseLeftButtonUp"  DockPanel.Dock="Bottom" >
-            <TextBlock x:Name="txt" FontSize="15"  Canvas.Left="0" Canvas.Top="0"/>
-        </Canvas>
-    </DockPanel>-->
+         
+    </DockPanel>
 </Page>

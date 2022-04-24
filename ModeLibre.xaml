@@ -17,14 +17,6 @@
        
      
 
-        <Canvas x:Name="canvas" 
-                Background="{StaticResource MyGrayGridBrush}"
-                MouseLeftButtonDown="canvas_MouseLeftButtonDown"
-                ClipToBounds="true"
-                MouseMove="canvas_MouseMove"
-                MouseRightButtonDown="canvas_MouseRightButtonDown"
-                MouseLeftButtonUp="canvas_MouseLeftButtonUp"  DockPanel.Dock="Bottom" >
-            <TextBlock x:Name="txt" FontSize="15"  Canvas.Left="0" Canvas.Top="0"/>
-        </Canvas>
+     
     </DockPanel>
 </Page>

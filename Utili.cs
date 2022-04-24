@@ -119,6 +119,34 @@ namespace Projet2Cp
             return num;
         }
 
+        public static bool isSubTable( PointCollection p1 , PointCollection p2, bool polygone)
+        {
+            int i, k;
+            if (p1.Count > p2.Count) return false;
+            else
+            {
+                i = p2.IndexOf(p1[0]);
+                if (i!=-1)
+                {
+                    k = 0;
+                    
+                    while (k < p1.Count)
+                    {
+                        if (p1[k] != p2[i]) return false; 
+                        else
+                        {
+                            i = (i + 1) % p2.Count; 
+                        }
+                    }
+                    return true; 
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            
+        }
 
 
 

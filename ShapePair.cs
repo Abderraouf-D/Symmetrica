@@ -18,7 +18,6 @@ namespace Projet2Cp
 
         public List<Line> jointLines { get; set; }
        
-        private Nullable<Point> spoint; //Will represent the current point of symmetry between the two shapes
         public Shape sym { get; set; }
         public List<Ellipse> sEllipse = new List<Ellipse>();
 
@@ -78,6 +77,7 @@ namespace Projet2Cp
                     {
                         Stroke = Brushes.BlueViolet,
                         StrokeThickness = 1,
+                        StrokeDashArray = {4,4},
                         X1 = opc[i].X,
                         Y1 = opc[i].Y,
                         X2 = spc[i].X,

@@ -39,16 +39,18 @@
                            Outils
             </TextBlock>
 
-            <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="default" >
-                <StackPanel Orientation="Horizontal">
-                    <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
-                    <Image Margin="5,0,0,0" Source="./icons/move.png"/>
-                    <Image Margin="5,0,0,0" Source="./icons/polygone.png"/>
-                </StackPanel>
-            </RadioButton>
+        <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="deplacer" >
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
+                <Image Margin="5,0,0,0" Source="./icons/move.png"/>
+                <Image Margin="5,0,0,0" Source="./icons/polygone.png"/>
+            </StackPanel>
+        </RadioButton>
 
-            <RadioButton ToolTip="maelblich wch ndir hhh" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShapeSeg" >
-            </RadioButton>
+        <RadioButton ToolTip="maelblich wch ndir hhh" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShapeSeg" >
+            <Image Source="./icons/color.png" />
+
+        </RadioButton>
             <RadioButton ToolTip="Rotation" Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
                 <Image Source="./icons/rotate.png" />
             </RadioButton>
@@ -143,6 +145,13 @@
 
 
 
+        
+            <Button Style="{StaticResource  effSty}"
+                  Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Top"  
+                    HorizontalAlignment="Left"  
+                    Width="70" Height="40" x:Name="effacerTout" Margin="20,16,0,0" Grid.RowSpan="2"  >
+                <TextBlock FontSize="12" Text="Effacer tout"/>
+            </Button>
         <Button BorderThickness="0"  
                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                     Grid.Row="8" Grid.ColumnSpan="2" VerticalAlignment="Center"  
@@ -150,16 +159,10 @@
                     x:Name="EditEns"   
                     ToolTip="Modifier le dessin courant"
                     >
-                <Image Height="30" Width="30" Source="./icons/editer.png"/>
+            <Image Height="30" Width="30" Source="./icons/editer.png"/>
 
-            </Button>
-            <Button Style="{StaticResource  effSty}"
-                  Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Top"  
-                    HorizontalAlignment="Left"  
-                    Width="70" Height="40" x:Name="effacerTout" Margin="20,16,0,0" Grid.RowSpan="2"  >
-                <TextBlock FontSize="12" Text="Effacer tout"/>
-            </Button>
-            <Button 
+        </Button>
+        <Button 
                 Style="{StaticResource validSty}" Grid.ColumnSpan="2" Grid.Row="8"  Grid.RowSpan="2" 
                 VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Width="70" Height="40" x:Name="valider" Margin="5"  >
                 <TextBlock x:Name="vld" Text="Valider"/>

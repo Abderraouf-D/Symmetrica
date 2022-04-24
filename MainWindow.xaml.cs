@@ -22,11 +22,11 @@ namespace Projet2Cp
 
     public partial class MainWindow : Window
     {
-        private Boolean modeLibre , modeEns; 
+        static public Boolean modeLibre , modeEns; 
         public MainWindow()
         {
             InitializeComponent();
-            modeLibre = true;
+            modeLibre = false;
             modeEns = true;
             if (modeLibre)  MainFrame.NavigationService.Navigate(new ModeLibre());
             else if(modeEns) MainFrame.NavigationService.Navigate(new LibreExoEns());

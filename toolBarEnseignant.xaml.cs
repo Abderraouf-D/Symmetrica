@@ -22,11 +22,7 @@ namespace Projet2Cp
     public partial class toolBarEnseignant : UserControl
     {
 
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Bindable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public int Rayon;
-        public int NbCote;
-        public int ray;
+        
         public toolBarEnseignant()
         {
             InitializeComponent();
@@ -34,22 +30,24 @@ namespace Projet2Cp
 
 
 
-            Rayon = rayon.SelectedIndex + 3;
-            NbCote = nbCote.SelectedIndex + 3;
+            canvasUC.rayon = rayon.SelectedIndex + 3;
+            canvasUC.cote = nbCote.SelectedIndex + 3;
         }
 
         private void nbCote_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
 
-            NbCote = nbCote.SelectedIndex + 3;
+            canvasUC.cote = nbCote.SelectedIndex + 3;
+
 
         }
 
         private void rayon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            Rayon = rayon.SelectedIndex + 3;
+            canvasUC.rayon = rayon.SelectedIndex + 3;
+          
 
 
         }

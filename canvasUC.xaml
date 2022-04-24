@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Projet2Cp.canvasUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projet2Cp"
+             xmlns:Syncfusion="clr-namespace:Syncfusion.UI.Xaml.Diagram;assembly=Syncfusion.SfDiagram.WPF"
+             xmlns:SyncControls="clr-namespace:Syncfusion.UI.Xaml.Diagram.Controls;assembly=Syncfusion.SfDiagram.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Syncfusion:SfDiagram x:Name="diagram" >
+            <Syncfusion:SfDiagram.ScrollSettings>
+                <Syncfusion:ScrollSettings  ScrollLimit="Diagram"/>
+            </Syncfusion:SfDiagram.ScrollSettings>
+            <Syncfusion:SfDiagram.HorizontalRuler>
+                <SyncControls:Ruler/>
+            </Syncfusion:SfDiagram.HorizontalRuler>
+            <Syncfusion:SfDiagram.VerticalRuler>
+                <SyncControls:Ruler  Orientation="Vertical"/>
+            </Syncfusion:SfDiagram.VerticalRuler>
+        </Syncfusion:SfDiagram>
+        <Canvas x:Name="canvas" 
+                Background="{StaticResource MyGrayGridBrush}"
+                MouseLeftButtonDown="canvas_MouseLeftButtonDown"
+                ClipToBounds="true"
+                MouseMove="canvas_MouseMove"
+                MouseRightButtonDown="canvas_MouseRightButtonDown"
+                MouseLeftButtonUp="canvas_MouseLeftButtonUp"   SizeChanged="canvas_SizeChanged">
+            <TextBlock x:Name="txt" FontSize="15"  Canvas.Left="0" Canvas.Top="0"/>
+        </Canvas>
+            
+    </Grid>
+</UserControl>
