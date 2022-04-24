@@ -64,6 +64,7 @@ namespace Projet2Cp
         private bool firstTimeRotating = true; //je pense qu'on peut s'en debarasser ....
         private bool isGomme = false; //quelque retouche a faire sur les cas speciaux de la gomme (when two /three are left ...)
         private bool isColoring= false ;
+        private bool isDuplicating = false;
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
 
 
@@ -81,6 +82,8 @@ namespace Projet2Cp
         public static Brush trace;
         public static Brush rempli;
 
+
+      
         public ModeLibre()
         {
             InitializeComponent();
@@ -107,13 +110,14 @@ namespace Projet2Cp
             toolBar.deplacer.Click += deplacer_Click;
             toolBar.rotate.Click += rotate_Click;
             toolBar.colorier.Click += colorier_Click;
-
+            toolBar.duplicate.Click += dupliquer;
 
             canvas.MouseLeave += ellipseCleaner;
             canvas.MouseMove += currentMousePosition;
             canvas.MouseMove += translating;
             canvas.MouseMove += mouseCursor;
             canvas.MouseMove += rotating;
+            canvas.MouseWheel += zoom;
             deleteLine.MouseLeave += dlCleaner;
             Canvas.SetZIndex(deleteLine, 2);
 
@@ -129,16 +133,19 @@ namespace Projet2Cp
                 Fill = Brushes.Red,
                 Stroke = trace,
             };
-
-
-
-           
-
-
-
-
         }
 
+
+        private void dupliquer(object sender, RoutedEventArgs e)
+        {
+            isDrawing = false;
+            isTransforming = false;
+            isRotating = false;
+            isGomme = false;
+            isGen = false;
+            isColoring = false;
+            isDuplicating = true;
+        }
 
 
 
@@ -148,6 +155,7 @@ namespace Projet2Cp
             isTransforming = false;
             isRotating = false;
             isGomme = false;
+            isDuplicating = false;
             isGen = false;
             isColoring = true;
         }
@@ -159,6 +167,7 @@ namespace Projet2Cp
             isRotating = false;
             isGomme = false;
             isGen = true;
+            isDuplicating = false;
             isColoring = false;
 
         }
@@ -169,6 +178,7 @@ namespace Projet2Cp
             isTransforming = false;
             isRotating = false;
             isGomme = true;
+            isDuplicating = false;
             isGen = false;
             isColoring = false;
 
@@ -180,6 +190,7 @@ namespace Projet2Cp
             isTransforming = false;
             isRotating = false;
             isGomme = false;
+            isDuplicating = false;
             isGen = false;
             isColoring = false;
 
@@ -187,6 +198,7 @@ namespace Projet2Cp
         private void rotate_Click(object sender, RoutedEventArgs e)
         {
             isDrawing = false;
+            isDuplicating = false;
             isTransforming = false;
             isRotating = true;
             isGomme = false;
@@ -195,6 +207,108 @@ namespace Projet2Cp
 
         }
 
+
+        //=======================================================================================================//
+        //                                      ZOOM                                                             //
+        //=======================================================================================================//
+        void zoom (object sender, MouseWheelEventArgs e)
+        {
+            double alpha;
+            if (e.Delta > 0)
+                alpha = 0.9;
+            else
+                alpha = 1.1;
+
+            if (step * alpha > 50 || step * alpha < 2.5)
+                return;
+            step *= alpha;
+            gridDrawing(step);
+
+            for (int i = 0; i<shapePairs.Count; i++)
+            {
+                PointCollection pc; //originPointCollection
+                if (shapePairs[i].origin is Polygon)
+                    pc = ((Polygon)shapePairs[i].origin).Points;
+                else
+                    pc = ((Polyline)shapePairs[i].origin).Points;
+
+                Point paz;
+                Point center = new Point(canvas.ActualWidth/2, canvas.ActualHeight/2);
+                for(int j = 0; j<pc.Count; j++)
+                {
+                    paz = new Point();
+                    paz.X = (pc[j].X - center.X ) * alpha + center.X;
+                    paz.Y = (pc[j].Y - center.Y) * alpha + center.Y;
+                    pc[j] = paz;
+                }
+                for(int j = 0; j<shapePairs[i].oEllipse.Count; j ++)
+                {
+                    Canvas.SetLeft(shapePairs[i].oEllipse[j], pc[j].X - 5);
+                    Canvas.SetTop(shapePairs[i].oEllipse[j], pc[j].Y - 5);
+                }
+
+                if(shapePairs[i].sym != null)
+                {
+                    if (shapePairs[i].sym is Polygon)
+                        pc = ((Polygon)shapePairs[i].sym).Points;
+                    else
+                        pc = ((Polyline)shapePairs[i].sym).Points;
+
+                    for (int j = 0; j < pc.Count; j++)
+                    {
+                        paz = new Point();
+                        paz.X = (pc[j].X - center.X ) * alpha + center.X;
+                        paz.Y = (pc[j].Y - center.Y) * alpha + center.Y;
+                        pc[j] = paz;
+                    }
+                    for (int j = 0; j < shapePairs[i].sEllipse.Count; j++)
+                    {
+                        Canvas.SetLeft(shapePairs[i].sEllipse[j], pc[j].X - 5);
+                        Canvas.SetTop(shapePairs[i].sEllipse[j], pc[j].Y - 5);
+                    }
+
+                }
+
+                shapePairs[i].jointLinesGen();
+            }
+        }
+       
+        //=======================================================================================================//
+        //                                      GRID_DRAWING                                                     //
+        //=======================================================================================================//
+
+        private void gridDrawing(double step)
+        {
+            DrawingBrush res = new DrawingBrush();
+            GeometryDrawing GD = new GeometryDrawing();
+            GeometryGroup GG = new GeometryGroup();
+
+            GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(0, step)));
+            GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(step, 0)));
+
+            res.Viewbox = new Rect(0, 0, step, step);
+            res.Viewport = new Rect(0, 0, step, step);
+
+            res.TileMode = TileMode.Tile;
+            res.ViewportUnits = BrushMappingMode.Absolute;
+            res.ViewboxUnits = BrushMappingMode.Absolute;
+
+            GD.Pen = new Pen()
+            {
+                DashStyle = new DashStyle()
+                {
+                    Dashes = { 5, 3 }
+                },
+
+                Brush = Brushes.Black,
+                Thickness = 1,
+                DashCap = PenLineCap.Flat,
+            };
+
+            GD.Geometry = GG;
+            res.Drawing = GD;
+            canvas.Background = res;
+        }
 
         //=======================================================================================================//
         // CurrentMousePosition : continuously updates "mousePosition" in canvas while not clicking on anything  //
@@ -215,14 +329,11 @@ namespace Projet2Cp
         //                                          INIT_CANVAS
         //=======================================================================================================//
 
+        
         private void initCanvas()
         {
-      
-
-
-     
+            gridDrawing(step);
             
-           
             shapePairs = new List<ShapePair>();
             currentShapePair = null;
             shapepc = new PointCollection();
@@ -278,10 +389,6 @@ namespace Projet2Cp
             canvas.Children.Remove(ellipse);
         }
 
-
-
-
-
         //====================================================================================================================//
         //                          CANVAS_MLBD : COORDINE LE TOUS !! (DETERMINE CE QU'IL FAUT FAIRE AU CLICK)                //  
         //====================================================================================================================//
@@ -314,7 +421,7 @@ namespace Projet2Cp
 
                 //on prepare le terrain pour rotating Si il y a rotating ...
 
-                if (isRotating)
+                if (isRotating) //JE PENSE QU'ON PEUT DEGAGER QUELQUE TRUC ICI ....
                 {
                     firstTimeRotating = true;
                     rotateLine.X1 = clickPosition.X;
@@ -350,8 +457,12 @@ namespace Projet2Cp
 
                 if (isGomme)
                 {
-                    if (!deleteSegment)
+                    if (!deleteSegment || currentShapePair.removable)
                     {
+                        canvas.Children.Remove(deleteLine);
+                        foreach (Line l in currentShapePair.jointLines)
+                            canvas.Children.Remove(l);
+
                         canvas.Children.Remove(currentShapePair.origin);
                         foreach (Ellipse el in currentShapePair.oEllipse)
                         {
@@ -365,6 +476,8 @@ namespace Projet2Cp
                         shapePairs.Remove(currentShapePair);
 
 
+
+
                     }
                     else
                     {
@@ -375,6 +488,7 @@ namespace Projet2Cp
 
 
                 }
+                
                 if (isGen)
                 {
                     if (axeSym != null || centresym != null)
@@ -391,6 +505,7 @@ namespace Projet2Cp
                     else MessageBox.Show("Veuillez sélectionner un repère de symetrie !");
                     
                 }
+                
                 if (isColoring)
                 {
                     if (e.Source  is Polygon)
@@ -405,13 +520,58 @@ namespace Projet2Cp
                                  ((Polyline)e.Source).Stroke = trace;
                     }
                 }
+               
+                if(isDuplicating)
+                {
+                    PointCollection pc = new PointCollection();
+                    Polygon polygon; 
+                    Polyline polyline;
+                    Shape shape;
+                    if (isOrigin)
+                        shape = currentShapePair.origin;
+                    else
+                        shape = currentShapePair.sym;
+                   
+                        if (shape is Polygon)
+                        {
+                            foreach (Point p in ((Polygon)shape).Points)
+                                pc.Add(new Point(p.X+10, p.Y+10));
+                            polygon = new Polygon()
+                            {
+                                Stroke = ((Polygon)shape).Stroke,
+                                StrokeThickness = 3,
+                                Fill = ((Polygon)shape).Fill,
+                                Points = pc,
+                            };
+                            polygon.MouseEnter += shapeMouseEnter;
+                            polygon.MouseLeave += shapeMouseLeave;
+                            shapePairs.Add(new ShapePair(polygon, canvas, shapeMouseEnter, shapeMouseLeave));
+                        }
+                        
+                        else
+                        {
+                            foreach (Point p in ((Polyline)shape).Points)
+                                pc.Add(new Point(p.X + 10, p.Y + 10));
+                            polyline = new Polyline()
+                           {
+                                Stroke = ((Polyline)shape).Stroke,
+                                StrokeThickness = 8,
+                                Points = pc,
+                           };
+                           canvas.Children.Add(polyline);
+                           polyline.MouseEnter += shapeMouseEnter;
+                           polyline.MouseLeave += shapeMouseLeave;
+                           shapePairs.Add(new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave));
 
+                        }
 
+                }
+               
             }
 
-        }
+        }//END OF FUNCTION
         
-
+    
         //====================================================================================================================//
         //                          CANVAS_MLBU : COORDINE LE TOUS !! (DETERMINE CE QU'IL FAUT FAIRE AU DE_CLICK)             //  
         //====================================================================================================================//
@@ -460,6 +620,7 @@ namespace Projet2Cp
 
                     ellipse.MouseLeftButtonDown += canvas_MouseLeftButtonDown;
                     ellipse.MouseRightButtonDown += canvas_MouseRightButtonDown;// C'EST PROVISOIR !!
+                    ellipse.MouseWheel += zoom;
                     canvas.Children.Add(ellipse);
                     Canvas.SetLeft(ellipse, actualPoint.X - 5);
                     Canvas.SetTop(ellipse, actualPoint.Y - 5);
@@ -564,6 +725,10 @@ namespace Projet2Cp
 
         }
 
+        //=====================================================================================================================//
+        //                                                      MRBD                                                           //
+        //=====================================================================================================================//
+
         private void canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -663,7 +828,7 @@ namespace Projet2Cp
 
 
         //==================================================================================================================//
-        //       ROTATING: rotation de l'object dont lequel on veut rotate                                     //
+        //       ROTATING: rotation de l'object dont lequel on veut rotate                                                  //
         //==================================================================================================================//
         private void rotating(Object sender, MouseEventArgs e)
         {

@@ -16,6 +16,7 @@ namespace Projet2Cp
         public Shape origin { get; set; }
         public List<Ellipse> oEllipse = new List<Ellipse>();
 
+        public List<Line> jointLines { get; set; }
        
         private Nullable<Point> spoint; //Will represent the current point of symmetry between the two shapes
         public Shape sym { get; set; }
@@ -25,7 +26,7 @@ namespace Projet2Cp
         MouseEventHandler shapeMouseLeave;
 
         public bool IsTransformable { get; set; }
-
+        public bool removable { get; set; }
         //============================================================================================================================//
         //                                              TESTING CONSTRUCOR                                                            //
         //============================================================================================================================//
@@ -33,6 +34,8 @@ namespace Projet2Cp
         public ShapePair(Shape origin, Canvas canvas, MouseEventHandler shapeMouseEnter, MouseEventHandler shapeMouseLeave)
         {
             IsTransformable = true;
+            removable = false;
+            jointLines = new List<Line>();
 
             this.canvas = canvas;
             this.origin = origin;
@@ -44,46 +47,89 @@ namespace Projet2Cp
 
             drawEllipses(true);
 
-            
-
-
         }
 
+        //============================================================================================================================//
+        //                                                  JOINT_LINES_GEN                                                              //
+        //============================================================================================================================//
+        public void jointLinesGen()
+        {
+            Line line;
+            PointCollection opc;
+            PointCollection spc;
+           
+            if(sym != null)
+            {
+                foreach (Line l in jointLines)
+                 canvas.Children.Remove(l);
+                if (origin is Polygon)
+                {
+                    opc = ((Polygon)origin).Points;
+                    spc = ((Polygon)sym).Points;
+                }
+                else
+                {
+                    opc = ((Polyline)origin).Points;
+                    spc = ((Polyline)sym).Points;
+                }
+                for(int i = 0; i<opc.Count; i++)
+                {
+                    line = new Line()
+                    {
+                        Stroke = Brushes.BlueViolet,
+                        StrokeThickness = 1,
+                        X1 = opc[i].X,
+                        Y1 = opc[i].Y,
+                        X2 = spc[i].X,
+                        Y2 = spc[i].Y,
+                    };
+                    jointLines.Add(line);
+                    canvas.Children.Add(line);
+                }
+            }
+        }
 
+        
         //============================================================================================================================//
         //                                                      RemoveSegment                                                         //
         //============================================================================================================================//
         public void RemoveSegment(int indexSegment)
         {
             PointCollection shapepc;
+            Polyline poly;
             if (origin != null)
             {
                 if (origin is Polygon)
                     shapepc = ((Polygon)origin).Points;
                 else
                     shapepc = ((Polyline)origin).Points;
-
-                shapepc.RemoveAt(indexSegment);
-                /*
-
-                Polyline poly = new Polyline();
-                if (shapepc.Count <= 3 && (origin is Polygon))
+                
+                if(shapepc.Count>3 && (origin is Polygon) || (origin is Polyline) )
                 {
-                    poly = new Polyline();
-                    poly.Points = ((Polygon)origin).Points;
-                    poly.Stroke = ((Polygon)origin).Stroke;
-                    poly.StrokeThickness = 8;
-                    poly.Fill = Brushes.Yellow;
-                    canvas.Children.Remove(origin);
-                    origin = poly;
-                    canvas.Children.Add(origin);
-                    
+                    shapepc.RemoveAt(indexSegment);
+                    canvas.Children.Remove(oEllipse[indexSegment]);
+                    oEllipse.RemoveAt(indexSegment);
+                    if (shapepc.Count == 2)
+                        removable = true;
                 }
-                else 
-                */
 
-                canvas.Children.Remove(oEllipse[indexSegment]);
-                oEllipse.RemoveAt(indexSegment);// a voir le cas ou il ne rest plus que deux ...
+                else if(origin is Polygon)
+                {
+                    canvas.Children.Remove(origin);
+                    poly = new Polyline();
+                    poly.MouseEnter += shapeMouseEnter;
+                    poly.MouseLeave += shapeMouseLeave;
+                    for (int i = 1; i <= 3; i++)
+                        poly.Points.Add(shapepc[(indexSegment + i)%3]);
+                    poly.Stroke = Brushes.Black;
+                    poly.StrokeThickness = 8;
+                    Canvas.SetZIndex(poly, -1);
+                    origin = poly;
+                    drawEllipses(true);
+                    canvas.Children.Add(origin);
+                }
+                
+
             }
 
             if (sym != null)
@@ -92,18 +138,39 @@ namespace Projet2Cp
                     shapepc = ((Polygon)sym).Points;
                 else
                     shapepc = ((Polyline)sym).Points;
-                shapepc.RemoveAt(indexSegment);
-                canvas.Children.Remove(sEllipse[indexSegment]);
-                sEllipse.RemoveAt(indexSegment);// a voir le cas ou il ne rest plus que deux ...
+
+                if (shapepc.Count > 3 && (sym is Polygon) || (sym is Polyline))
+                {
+                    shapepc.RemoveAt(indexSegment);
+                    canvas.Children.Remove(sEllipse[indexSegment]);
+                    sEllipse.RemoveAt(indexSegment);
+
+                }
+
+                else if (sym is Polygon)
+                {
+                    canvas.Children.Remove(sym);
+                    poly = new Polyline();
+                    poly.MouseEnter += shapeMouseEnter;
+                    poly.MouseLeave += shapeMouseLeave;
+                    for (int i = 1; i <= 3; i++)
+                        poly.Points.Add(shapepc[(indexSegment + i) % 3]);
+                    poly.Stroke = Brushes.Black;
+                    poly.StrokeThickness = 8;
+                    Canvas.SetZIndex(poly, -1);
+                    sym = poly;
+                    drawEllipses(false);
+                    canvas.Children.Add(sym);
+                }
+
+
+
             }
 
+            jointLinesGen();
+
+
         }
-
-
-
-
-
-
 
         //============================================================================================================================//
         //                                              drawingEllipses (private method)                                              //
@@ -284,6 +351,8 @@ namespace Projet2Cp
                 drawEllipses((revTrans == origin));
 
             }
+
+            jointLinesGen();
         }
 
         //=================================================================================================================//
@@ -365,6 +434,8 @@ namespace Projet2Cp
                 drawEllipses((revTrans == origin));
 
             }
+
+            jointLinesGen();
         }
 
 
@@ -430,6 +501,7 @@ namespace Projet2Cp
                 drawEllipses(false);
             }
 
+            jointLinesGen();
         }
 
 
@@ -490,6 +562,7 @@ namespace Projet2Cp
                 drawEllipses(false);
             }
 
+            jointLinesGen();
 
         }
 
