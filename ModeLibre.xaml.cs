@@ -125,9 +125,7 @@ namespace Projet2Cp
             canvas.SizeChanged += adaptGrid;
             Canvas.SetZIndex(deleteLine, 2);
 
-
             initCanvas();
-
 
             //initialiser le centre de symetrie 
             centreSym = new Ellipse()
@@ -406,10 +404,18 @@ namespace Projet2Cp
         {
             if (isTransforming && isDrawing && (e.LeftButton == MouseButtonState.Pressed))
             {
-                Vector vec = e.GetPosition(canvas) - mousePosition;
+                
+                Point newPosition = e.GetPosition(canvas);
+                newPosition.X = Math.Round((newPosition.X - canvas.ActualWidth * 0.5) / step) * step + (canvas.ActualWidth * 0.5);
+                newPosition.Y = Math.Round((newPosition.Y - canvas.ActualHeight * 0.5) / step) * step + (canvas.ActualHeight * 0.5);
+                
+                mousePosition.X = Math.Round((mousePosition.X - canvas.ActualWidth * 0.5) / step) * step + (canvas.ActualWidth * 0.5);
+                mousePosition.Y = Math.Round((mousePosition.Y - canvas.ActualHeight * 0.5) / step) * step + (canvas.ActualHeight * 0.5);
+
+                Vector vec = newPosition  - mousePosition;
                 if (currentShapePair != null)
                     currentShapePair.translating(vec, isOrigin, mousePosition, isAxial, axeSym,centresym);
-                mousePosition = e.GetPosition(canvas); //on reactulise clickPosition pour le prochain move
+                mousePosition = newPosition; //on reactulise clickPosition pour le prochain move
             }
 
 
@@ -494,6 +500,7 @@ namespace Projet2Cp
                     currentShapePair = shapePairs[i];
                 }
 
+               
                 if (isGomme)
                 {
                     if (!deleteSegment || currentShapePair.removable)
@@ -621,7 +628,7 @@ namespace Projet2Cp
             
             //we clean rotating mess ...
             canvas.Children.Remove(rotateLine); //we remove the last line from the canvas 
-            
+
             // I REALLY DON'T KNOW WHAT IS THIS CODE DOING HERE o_O .... <------ CODE IBN LA A7AD
             /*
             canvas.Children.Remove(line);
@@ -682,7 +689,6 @@ namespace Projet2Cp
 
                 }
             }
-
 
 
             else if (isGomme && ((e.Source is Polygon) || (e.Source is Polyline)))

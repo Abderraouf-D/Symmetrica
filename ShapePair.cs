@@ -27,6 +27,9 @@ namespace Projet2Cp
 
         public bool IsTransformable { get; set; }
         public bool removable { get; set; }
+       
+        
+       
         //============================================================================================================================//
         //                                              TESTING CONSTRUCOR                                                            //
         //============================================================================================================================//
@@ -41,7 +44,10 @@ namespace Projet2Cp
             this.origin = origin;
             if (origin is Polygon)
                 canvas.Children.Add(origin);
-
+            else if (((Polyline)origin).Points.Count == 2)
+                removable = true;
+           
+    
             this.shapeMouseEnter = shapeMouseEnter;
             this.shapeMouseLeave = shapeMouseLeave;
 
@@ -134,6 +140,9 @@ namespace Projet2Cp
                 
                 if(shapepc.Count>3 && (origin is Polygon) || (origin is Polyline) )
                 {
+                    if (origin is Polyline)
+                        if (((Polyline)origin).Points.Count - 2 == indexSegment)
+                            indexSegment++;
                     shapepc.RemoveAt(indexSegment);
                     canvas.Children.Remove(oEllipse[indexSegment]);
                     oEllipse.RemoveAt(indexSegment);
