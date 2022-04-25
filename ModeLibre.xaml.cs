@@ -362,7 +362,7 @@ namespace Projet2Cp
         }
 
         //=======================================================================================================//
-        //                                          INIT_CANVAS
+        //                                          INIT_CANVAS                                                 //
         //=======================================================================================================//
 
         
@@ -423,6 +423,8 @@ namespace Projet2Cp
         private void ellipseCleaner(Object sender, MouseEventArgs e)
         {
             canvas.Children.Remove(ellipse);
+            isTransforming = false;
+            canvas.Children.Remove(rotateLine);
         }
 
         //====================================================================================================================//
@@ -619,6 +621,9 @@ namespace Projet2Cp
             
             //we clean rotating mess ...
             canvas.Children.Remove(rotateLine); //we remove the last line from the canvas 
+            
+            // I REALLY DON'T KNOW WHAT IS THIS CODE DOING HERE o_O .... <------ CODE IBN LA A7AD
+            /*
             canvas.Children.Remove(line);
 
             line = new Line()
@@ -628,13 +633,12 @@ namespace Projet2Cp
             };
 
             canvas.Children.Add(line); //we add the new empty line...GarbageCollector use 100 !
+            */
         }
 
         //====================================================================================================================//
         //                CANVAS_MOUSE_MOVE : DESSINE LA PREVIEW ELLIPSE SI : DRAWING + NOT_OVER_SHAPE + NOT_TRANSOFRMING     //  
         //====================================================================================================================//
-
-
 
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
@@ -728,7 +732,6 @@ namespace Projet2Cp
                 {
                     if (!(e.Source is Polyline))
                     {
-
                         canvas.Children.Remove(deleteLine);
                         ((Shape)(e.Source)).Fill = Brushes.BlueViolet;
                     }
