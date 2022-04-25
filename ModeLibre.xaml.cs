@@ -464,6 +464,7 @@ namespace Projet2Cp
                     rotateLine.Y1 = clickPosition.Y;
                     rotateLine.X2 = clickPosition.X;
                     rotateLine.Y2 = clickPosition.Y;
+                    canvas.Children.Remove(rotateLine);
                     canvas.Children.Add(rotateLine);
                 }
 
