@@ -17,7 +17,8 @@ namespace Projet2Cp
         public List<Ellipse> oEllipse = new List<Ellipse>();
 
         public List<Line> jointLines { get; set; }
-       
+
+        private Nullable<Point> spoint; //Will represent the current point of symmetry between the two shapes
         public Shape sym { get; set; }
         public List<Ellipse> sEllipse = new List<Ellipse>();
 
@@ -49,18 +50,46 @@ namespace Projet2Cp
         }
 
         //============================================================================================================================//
-        //                                                  JOINT_LINES_GEN                                                              //
+        //                                                        AdaptToGrid                                                         //
+        //============================================================================================================================//
+        public void adaptToGrid(Point oldeCenter, Point newCenter)
+        {
+            PointCollection shapepc;
+            if (origin == null)
+                return;
+            if (origin is Polygon)
+                shapepc = ((Polygon)origin).Points;
+            else
+                shapepc = ((Polyline)origin).Points;
+            Vector opo = newCenter - oldeCenter;
+
+            for (int i = 0; i < shapepc.Count; i++)
+                shapepc[i] += opo;
+            drawEllipses(true);
+            if (sym == null)
+                return;
+            if (sym is Polygon)
+                shapepc = ((Polygon)sym).Points;
+            else
+                shapepc = ((Polyline)sym).Points;
+            for (int i = 0; i < shapepc.Count; i++)
+                shapepc[i] += opo;
+            drawEllipses(false);
+            jointLinesGen();
+        }
+        //============================================================================================================================//
+        //                                                  JOINT_LINES_GEN                                                           //
         //============================================================================================================================//
         public void jointLinesGen()
         {
             Line line;
             PointCollection opc;
             PointCollection spc;
-           
-            if(sym != null)
+
+            if (sym != null)
             {
                 foreach (Line l in jointLines)
-                 canvas.Children.Remove(l);
+                    canvas.Children.Remove(l);
                 if (origin is Polygon)
                 {
                     opc = ((Polygon)origin).Points;
@@ -71,13 +100,12 @@ namespace Projet2Cp
                     opc = ((Polyline)origin).Points;
                     spc = ((Polyline)sym).Points;
                 }
-                for(int i = 0; i<opc.Count; i++)
+                for (int i = 0; i < opc.Count; i++)
                 {
                     line = new Line()
                     {
                         Stroke = Brushes.BlueViolet,
                         StrokeThickness = 1,
-                        StrokeDashArray = {4,4},
                         X1 = opc[i].X,
                         Y1 = opc[i].Y,
                         X2 = spc[i].X,
@@ -89,7 +117,7 @@ namespace Projet2Cp
             }
         }
 
-        
+
         //============================================================================================================================//
         //                                                      RemoveSegment                                                         //
         //============================================================================================================================//
@@ -103,8 +131,8 @@ namespace Projet2Cp
                     shapepc = ((Polygon)origin).Points;
                 else
                     shapepc = ((Polyline)origin).Points;
-                
-                if(shapepc.Count>3 && (origin is Polygon) || (origin is Polyline) )
+
+                if (shapepc.Count > 3 && (origin is Polygon) || (origin is Polyline))
                 {
                     shapepc.RemoveAt(indexSegment);
                     canvas.Children.Remove(oEllipse[indexSegment]);
@@ -113,14 +141,14 @@ namespace Projet2Cp
                         removable = true;
                 }
 
-                else if(origin is Polygon)
+                else if (origin is Polygon)
                 {
                     canvas.Children.Remove(origin);
                     poly = new Polyline();
                     poly.MouseEnter += shapeMouseEnter;
                     poly.MouseLeave += shapeMouseLeave;
                     for (int i = 1; i <= 3; i++)
-                        poly.Points.Add(shapepc[(indexSegment + i)%3]);
+                        poly.Points.Add(shapepc[(indexSegment + i) % 3]);
                     poly.Stroke = Brushes.Black;
                     poly.StrokeThickness = 8;
                     Canvas.SetZIndex(poly, -1);
@@ -128,7 +156,7 @@ namespace Projet2Cp
                     drawEllipses(true);
                     canvas.Children.Add(origin);
                 }
-                
+
 
             }
 
@@ -249,7 +277,7 @@ namespace Projet2Cp
 
             PointCollection shapepc;
 
-            
+
             Point endPoint = new Point()
             {
                 X = vec.X,
@@ -519,7 +547,7 @@ namespace Projet2Cp
             Shape old;
             Shape newer;
 
-  
+
             old = origin;
             if (sym == null)
             {
@@ -576,7 +604,7 @@ namespace Projet2Cp
         {
             if (sp != null)
                 return new Point(2 * sp.Value.X - p.X, 2 * sp.Value.Y - p.Y);
-            else return p; 
+            else return p;
         }
 
 
@@ -611,4 +639,3 @@ namespace Projet2Cp
     }//END OF CLASS
 
 }//END OF NAMESPACE
-

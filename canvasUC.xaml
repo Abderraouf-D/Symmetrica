@@ -9,18 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Syncfusion:SfDiagram x:Name="diagram" >
-            <Syncfusion:SfDiagram.ScrollSettings>
-                <Syncfusion:ScrollSettings  ScrollLimit="Diagram"/>
-            </Syncfusion:SfDiagram.ScrollSettings>
-            <Syncfusion:SfDiagram.HorizontalRuler>
-                <SyncControls:Ruler/>
-            </Syncfusion:SfDiagram.HorizontalRuler>
-            <Syncfusion:SfDiagram.VerticalRuler>
-                <SyncControls:Ruler  Orientation="Vertical"/>
-            </Syncfusion:SfDiagram.VerticalRuler>
-        </Syncfusion:SfDiagram>
-        <Canvas x:Name="canvas" 
+        
+        <Canvas x:Name="canvas"
+                
                 Background="{StaticResource MyGrayGridBrush}"
                 MouseLeftButtonDown="canvas_MouseLeftButtonDown"
                 ClipToBounds="true"

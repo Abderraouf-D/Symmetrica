@@ -22,7 +22,7 @@ namespace Projet2Cp
 
     public partial class LibreExoEns : Page
     {
-
+        
         
         TextBlock tb;
         List<dessinExo> dessinsModeExo;

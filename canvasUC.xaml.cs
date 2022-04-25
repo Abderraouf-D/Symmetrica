@@ -72,7 +72,7 @@ namespace Projet2Cp
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
 
 
-
+        RadioButton lastRepere = null; 
 
 
 
@@ -142,6 +142,10 @@ namespace Projet2Cp
             canvas.MouseMove += rotating;
             canvas.MouseWheel += zoom;
             deleteLine.MouseLeave += dlCleaner;
+
+            canvas.Loaded += load;
+            canvas.SizeChanged += adaptGrid;
+
             Canvas.SetZIndex(deleteLine, 2);
 
 
@@ -157,6 +161,46 @@ namespace Projet2Cp
                 Stroke = trace,
             };
         }
+
+
+
+        //==========================================================================================================//
+        //                                            adaptGrid                                                     //
+        //==========================================================================================================//
+
+        void adaptGrid(object sender, SizeChangedEventArgs e)
+        {
+            Point oldCenter = new Point(e.PreviousSize.Width * 0.5, e.PreviousSize.Height * 0.5);
+            Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
+            gridDrawing(step);
+            bool sym = false; 
+            for (int i = 0; i < shapePairs.Count; i++)
+            {
+                sym = (shapePairs[i].sym == null);
+                shapePairs[i].adaptToGrid(oldCenter, newCenter);
+                if (sym)
+                {
+                    if (isAxial) shapePairs[i].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
+                    else shapePairs[i].cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
+                }
+                
+            }
+
+        }
+        //==========================================================================================================//
+        //                                            load                                                          //
+        //==========================================================================================================//
+
+
+        void load(object sender, RoutedEventArgs e)
+        {
+            gridDrawing(step);
+        }
+
+        //==========================================================================================================//
+        //                                           OLD KINDS OF CLICKS                                            //
+        //==========================================================================================================//
+
 
         public void dupliquer(object sender, RoutedEventArgs e)
         {
@@ -233,19 +277,21 @@ namespace Projet2Cp
         //=======================================================================================================//
         //                                      ZOOM                                                             //
         //=======================================================================================================//
-        public void zoom(object sender, MouseWheelEventArgs e)
+        void zoom(object sender, MouseWheelEventArgs e)
         {
-            double alpha;
-            if (e.Delta > 0)
-                alpha = 0.9;
-            else
-                alpha = 1.1;
+            canvas.Children.Remove(ellipse);
 
-            if (step * alpha > 50 || step * alpha < 2.5)
+            double alpha;
+            if (e.Delta < 0)
+                alpha = 0.8;
+            else
+                alpha = 1.25;
+
+            if (step * alpha > 50 || step * alpha < 10)
                 return;
             step *= alpha;
             gridDrawing(step);
-            checkAxes();
+
             for (int i = 0; i < shapePairs.Count; i++)
             {
                 PointCollection pc; //originPointCollection
@@ -257,7 +303,6 @@ namespace Projet2Cp
                 Point paz;
                 Point center = new Point(canvas.ActualWidth / 2, canvas.ActualHeight / 2);
 
-                checkAxes();
                 for (int j = 0; j < pc.Count; j++)
                 {
                     paz = new Point();
@@ -301,7 +346,7 @@ namespace Projet2Cp
         //                                      GRID_DRAWING                                                     //
         //=======================================================================================================//
 
-        public void gridDrawing(double step)
+        private void gridDrawing(double step)
         {
             DrawingBrush res = new DrawingBrush();
             GeometryDrawing GD = new GeometryDrawing();
@@ -311,7 +356,8 @@ namespace Projet2Cp
             GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(step, 0)));
 
             res.Viewbox = new Rect(0, 0, step, step);
-            res.Viewport = new Rect(0, 0, step, step);
+            res.Viewport = new Rect(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5, step, step);
+
 
             res.TileMode = TileMode.Tile;
             res.ViewportUnits = BrushMappingMode.Absolute;
@@ -331,9 +377,7 @@ namespace Projet2Cp
 
             GD.Geometry = GG;
             res.Drawing = GD;
-             canvas.Background = res;
-            
-            
+            canvas.Background = res;
         }
 
         //=======================================================================================================//
@@ -359,7 +403,7 @@ namespace Projet2Cp
         public void initCanvas()
         {
             gridDrawing(step);
-            (diagram.PageSettings.Unit as LengthUnit).Unit = LengthUnits.Centimeters;
+            
             
             shapePairs = new List<ShapePair>();
             currentShapePair = null;
@@ -431,9 +475,9 @@ namespace Projet2Cp
                     line.Stroke = trace;
                     polyline.Stroke = trace;
                     polyline.Points.Add(actualPoint);
-                if (!isEditing)
+                if (!MainWindow.modeLibre &&!isEditing)
                 {
-                
+            
                     if (isSubTable(polyline.Points, ((Polyline)shapePairs[0].sym).Points, false))
                     {
                         polyline.Stroke = Brushes.Green;
@@ -642,17 +686,25 @@ namespace Projet2Cp
 
 
 
-        public void canvas_MouseMove(object sender, MouseEventArgs e)
+        //====================================================================================================================//
+        //                CANVAS_MOUSE_MOVE : DESSINE LA PREVIEW ELLIPSE SI : DRAWING + NOT_OVER_SHAPE + NOT_TRANSOFRMING     //  
+        //====================================================================================================================//
+
+
+
+        private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDrawing && !isOverShape && !isTransforming)
             {
                 canvas.Children.Remove(ellipse);
                 mousePosition = e.GetPosition(canvas);
 
-                actualPoint.X = Math.Round(mousePosition.X / step) * step;
-                actualPoint.Y = Math.Round(mousePosition.Y / step) * step;
+                actualPoint.X = Math.Round((mousePosition.X - canvas.ActualWidth * 0.5) / step) * step + (canvas.ActualWidth * 0.5);
+                actualPoint.Y = Math.Round((mousePosition.Y - canvas.ActualHeight * 0.5) / step) * step + (canvas.ActualHeight * 0.5);
 
-                if (Math.Abs(actualPoint.X - mousePosition.X) < 12.5 && Math.Abs(actualPoint.Y - mousePosition.Y) < 12.5 && canvas.IsMouseOver)
+
+
+                if (Math.Abs(actualPoint.X - mousePosition.X) < step * 0.5 && Math.Abs(actualPoint.Y - mousePosition.Y) < step * 0.5 && canvas.IsMouseOver)
                 {// if the cursor is close enough to an intersection then we draw a point 
                     ellipse = new Ellipse
                     {
@@ -741,6 +793,7 @@ namespace Projet2Cp
             }
 
         }
+
 
         //====================================================================================================================//
         // SHAPE_MOUSE_ENTER : NETTOIE LA PREVIEW ELLIPSE ET LA BLOCK (AVEC IS_OVER_SHAPE = TRUE) DES QUE SHAPE_ENTER         //  
@@ -929,7 +982,18 @@ namespace Projet2Cp
 
         public void updateAxe(Object sender, RoutedEventArgs e)
         {
+            if (lastRepere == sender) {
+                lastRepere.IsChecked = false;
+                canvas.Children.Remove(axeSym);
+                isAxial = false;
+                lastRepere = null;
+            }
+            else
+            {
+                lastRepere = (RadioButton)sender;
+            }
             checkAxes();
+
         }
         public void checkAxes()
         {
@@ -937,6 +1001,7 @@ namespace Projet2Cp
             canvas.Children.Remove(centreSym);
             centresym = null;
 
+            
 
             for (int i = 0; i < shapePairs.Count; i++)
             {
@@ -953,6 +1018,7 @@ namespace Projet2Cp
                 }
                 shapePairs[i].jointLines = new List<Line>();
             }
+
             if (axeSym == null)
             {
                 axeSym = new Line();
