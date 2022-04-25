@@ -47,11 +47,8 @@
             </StackPanel>
         </RadioButton>
 
-        <RadioButton ToolTip="maelblich wch ndir hhh" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShapeSeg" >
-            <Image Source="./icons/color.png" />
-
-        </RadioButton>
-            <RadioButton ToolTip="Rotation" Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
+        
+            <RadioButton ToolTip="Rotation" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="center"  Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
                 <Image Source="./icons/rotate.png" />
             </RadioButton>
 

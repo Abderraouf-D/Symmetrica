@@ -17,9 +17,13 @@ namespace Projet2Cp
             public Shape shape;
             public Boolean type; // true for polygon 
             public string repere;
+            public Point oldCenter;
         }
-        public static String CanvasToString(PointCollection pts, Brush rempli, Brush trace,string repere) {
-            return String.Format("{0}-{1}-{2}-{3}-{4}", rempli == null, pts.ToString(), (rempli != null)? rempli.ToString():null, trace.ToString(),repere);  
+        public static String CanvasToString(PointCollection pts, Brush rempli, Brush trace,string repere,Point oldCenter) {
+
+
+
+            return String.Format("{0}-{1}-{2}-{3}-{4}-{5}", rempli == null, pts.ToString(), (rempli != null)? rempli.ToString():null, trace.ToString(),repere,oldCenter.ToString());  
         } 
         public static void strTofile(string filename, string str, int ind)
         {
@@ -49,12 +53,18 @@ namespace Projet2Cp
             }
         }
 
-        public static Shape StringToShape(string shape,out Boolean polyg,out string repere) // polyg== true if shape is polygnoe 
+        public static Shape StringToShape(string shape,out Boolean polyg,out string repere,out Point oldCenter) // polyg== true if shape is polygnoe 
         {
             polyg = true;
             char[] delimiterChars = { '-' };
             string[] data = shape.Split(delimiterChars);
             repere = data[4];
+
+            string [] oldCent = data[5].Split(';');
+            oldCenter = new Point(double.Parse(oldCent[0]), double.Parse(oldCent[1]));
+
+
+            
             PointCollection pts = new PointCollection();
             string[] strpointarray = data[1].Split(' ');
             foreach (string item in strpointarray)
@@ -95,7 +105,7 @@ namespace Projet2Cp
             dessinExo dessin = new dessinExo();
             for (int i=1; i<=9; i++)
             {
-                Shape poly = Utili.StringToShape(Utili.fileTostr(@".\shapesExo.txt", i), out dessin.type, out dessin.repere);
+                Shape poly = Utili.StringToShape(Utili.fileTostr(@".\shapesExo.txt", i), out dessin.type, out dessin.repere, out dessin.oldCenter);
                 dessin.shape = poly;
                 dessins.Add(dessin);
             }
@@ -103,7 +113,7 @@ namespace Projet2Cp
 
         }
 
-        //// le3fayes tae younes 
+      
   
         public static double distancePointPoint(Point firstPoint, Point secondPoint)
         {
@@ -119,33 +129,47 @@ namespace Projet2Cp
             return num;
         }
 
-        public static bool isSubTable( PointCollection p1 , PointCollection p2, bool polygone)
+        public static bool isSubTable( PointCollection p1 , PointCollection p2/*, Point <> next*/)
         {
-            int i, k;
-            if (p1.Count > p2.Count) return false;
-            else
+            //p2.Add(next);
+            bool equal = true ;
+            if (p1.Count > p2.Count) return false; 
+            if (p1.Count > 0)
             {
-                i = p2.IndexOf(p1[0]);
-                if (i!=-1)
+                PointCollection tmp = new PointCollection();
+                int k = 0;
+                while( k < p2.Count && p2[k].Equals(p1[0]))
                 {
-                    k = 0;
-                    
-                    while (k < p1.Count)
-                    {
-                        if (p1[k] != p2[i]) return false; 
-                        else
-                        {
-                            i = (i + 1) % p2.Count; 
-                        }
+                    k++;
+                }
+
+                while ( tmp.Count != p2.Count)
+                {
+                    tmp.Add(p2[k]);
+                    k = (k + 1) % p2.Count;
+                }
+              
+                k = 0;
+
+                 while (k<p1.Count && k < tmp.Count)
+                {
+                    double x1= Math.Round(tmp[k].X, 6);
+                    double y1= Math.Round(tmp[k].Y, 6);
+                    double x2 = Math.Round(p1[k].X, 6);
+                    double y2 = Math.Round(p1[k].Y, 6);
+
+                    if ( !x1.Equals(x1) || !y1.Equals(y1)) {
+                        equal = false;
                     }
-                    return true; 
-                }
-                else
-                {
-                    return false;
-                }
+                  
+                    k++;
+                } 
             }
             
+            return equal; 
+            
+
+
         }
 
 

@@ -100,7 +100,14 @@ namespace Projet2Cp
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt/QHFqVVhkW1pFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF9jTXxXdkxhWHxWeXZQQw==;NjIzNzA1QDMyMzAyZTMxMmUzMGljYUdhRmY2OXNTZ0ZIdSsvN3NGTDMzMk1hRmtyejRMcndKTG5XOG42TUk9");
 
             InitializeComponent();
+
+            /*PointCollection p1 = new PointCollection() {new Point(0,2), new Point(0, 4), new Point(2, 1), new Point(55, 1) };
+            PointCollection p2 = new PointCollection() {  new Point(0, 4), new Point(2, 1) };
+            MessageBox.Show(isSubTable(p2, p1, new Point(21, 12)).ToString());*/
+
             
+
+
 
 
             dessinsModeExo = chargerDessins(@".\shapesExo.txt");
@@ -178,11 +185,12 @@ namespace Projet2Cp
             {
                 sym = (shapePairs[i].sym == null);
                 shapePairs[i].adaptToGrid(oldCenter, newCenter);
-                if (sym)
+               /* if (sym)
                 {
                     if (isAxial) shapePairs[i].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
                     else shapePairs[i].cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
-                }
+                    if (!MainWindow.modeLibre) hideSym(shapePairs[i]);
+                }*/
                 
             }
 
@@ -195,6 +203,7 @@ namespace Projet2Cp
         void load(object sender, RoutedEventArgs e)
         {
             gridDrawing(step);
+            if (!MainWindow.modeLibre) dessinerDessinNum(niv.Selected());
         }
 
         //==========================================================================================================//
@@ -468,24 +477,26 @@ namespace Projet2Cp
         {
             //On recupere la position du click a toute fin utiles ...
             clickPosition = e.GetPosition(canvas);
+
             
-                //soit il click sur le vide, et a ce moment la il se mettra a dessiner dans le seul cas ou isDrawing est a vrai
-                if (!isOverShape && isDrawing)
+            //soit il click sur le vide, et a ce moment la il se mettra a dessiner dans le seul cas ou isDrawing est a vrai
+
+            if (!isOverShape && isDrawing)
                 {
                     line.Stroke = trace;
                     polyline.Stroke = trace;
-                    polyline.Points.Add(actualPoint);
-                if (!MainWindow.modeLibre &&!isEditing)
-                {
-            
-                    if (isSubTable(polyline.Points, ((Polyline)shapePairs[0].sym).Points, false))
+                    /*if (isSubTable(polyline.Points, ((Polyline)shapePairs[0].sym).Points, actualPoint))
                     {
-                        polyline.Stroke = Brushes.Green;
+                        trace = Brushes.Green;
+
                     }
                     else
-                        polyline.Stroke = Brushes.Red;
-                    
-                }
+                    {
+                        trace = Brushes.Red;
+
+                    }*/
+                    polyline.Points.Add(actualPoint);
+                
 
                 }
 
@@ -977,7 +988,7 @@ namespace Projet2Cp
             horiz.IsChecked = verti.IsChecked = diag1.IsChecked = diag2.IsChecked = centre.IsChecked = false;
             canvas.Children.Remove(axeSym);
             axeSym = null;
-
+            lastRepere = null; 
         }
 
         public void updateAxe(Object sender, RoutedEventArgs e)
@@ -1170,7 +1181,8 @@ namespace Projet2Cp
             tb.Height = canvas.ActualHeight;
             canvas.Children.Add(tb);
             Canvas.SetTop(tb, 0);
-            // toolBarEns.valider.IsEnabled = false;
+            
+
 
             ((toolBarEnseignant)TB).vld.Text = "Confirmer";
             ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Visible;
@@ -1205,9 +1217,9 @@ namespace Projet2Cp
                     int ind = niv.Selected() + 1;
 
                     if (shp is Polygon)
-                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe()), ind);
+                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(),new Point(canvas.ActualWidth*0.5 , canvas.ActualHeight*0.5)), ind);
                     else
-                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe()), ind);
+                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5)), ind);
                     dessinsModeExo = chargerDessins(@".\shapesExo.txt");
                     MessageBox.Show("Dessin modifié avec succès!");
                     canvas.Children.Remove(tb);
@@ -1219,6 +1231,29 @@ namespace Projet2Cp
 
 
                 }
+
+            }
+            else
+            {
+                PointCollection p1=null , p2=null; 
+                if (shapePairs[0].origin is Polyline) p2 = ((Polyline)shapePairs[0].sym).Points;
+                else p2 = ((Polygon)shapePairs[0].sym).Points;
+
+
+
+                if (shapePairs[1].origin is Polygon) p1 = ((Polygon)shapePairs[1].origin).Points;
+                else p1 = ((Polyline)shapePairs[1].origin).Points;
+                if (isSubTable(p1, p2))
+                {
+                    MessageBox.Show("Bravo!");
+                    showSym(shapePairs[0]);
+                }
+                else { 
+                    MessageBox.Show("Ooops"); 
+                    showSym(shapePairs[0]);
+                }
+
+
 
             }
 
@@ -1246,6 +1281,7 @@ namespace Projet2Cp
 
             clear();
             dessinExo poly = dessinsModeExo[i];
+            Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
             selectAxe(poly.repere);
             checkAxes();
             if (poly.type)
@@ -1254,8 +1290,11 @@ namespace Projet2Cp
                 polygone.MouseEnter += shapeMouseEnter;
                 polygone.MouseEnter += shapeMouseEnter;
                 polygone.MouseLeave += shapeMouseLeave;
-                shapePairs.Add(new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable=false});
-            
+                ShapePair shp = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                shp.adaptToGrid(poly.oldCenter, newCenter);
+                shapePairs.Add(shp);
+                cleaningTheMess();
+
             }
             else
             {
@@ -1263,7 +1302,10 @@ namespace Projet2Cp
                 polyline.MouseEnter += shapeMouseEnter;
                 polyline.MouseLeave += shapeMouseLeave;
                 canvas.Children.Add(polyline);
-                shapePairs.Add(new ShapePair(polyline, canvas,  shapeMouseEnter, shapeMouseLeave) { IsTransformable = false });
+                ShapePair shp = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                shp.adaptToGrid(poly.oldCenter, newCenter);
+                shapePairs.Add(shp);
+
                 cleaningTheMess();
                 
 
@@ -1279,10 +1321,39 @@ namespace Projet2Cp
                 {
                     shapePairs[0].cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
                 }
-                shapePairs[0].sym.Visibility = Visibility.Hidden;
+                hideSym(shapePairs[0]);
             }
 
         }
+
+        private void hideSym(ShapePair shp)
+        {
+            shp.sym.Visibility = Visibility.Hidden;
+            foreach (Ellipse el in shp.sEllipse)
+            {
+                el.Visibility = Visibility.Hidden;
+            }
+            foreach (Line el in shp.jointLines)
+            {
+                el.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void showSym(ShapePair shp)
+        {
+            shp.sym.Visibility = Visibility.Visible;
+            foreach (Ellipse el in shp.sEllipse)
+            {
+                el.Visibility = Visibility.Visible;
+            }
+            shp.sEllipse = new List<Ellipse>();
+            foreach (Line el in shp.jointLines)
+            {
+                el.Visibility = Visibility.Visible;
+            }
+        }
+
+
         public void selectAxe(String axe)
         {
             switch (axe)
