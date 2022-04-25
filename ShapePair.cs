@@ -50,7 +50,35 @@ namespace Projet2Cp
         }
 
         //============================================================================================================================//
-        //                                                  JOINT_LINES_GEN                                                              //
+        //                                                        AdaptToGrid                                                         //
+        //============================================================================================================================//
+        public void adaptToGrid(Point oldeCenter, Point newCenter)
+        {
+            PointCollection shapepc;
+            if (origin == null)
+                return;
+            if (origin is Polygon)
+                shapepc = ((Polygon)origin).Points;
+            else
+                shapepc = ((Polyline)origin).Points;
+            Vector opo = newCenter - oldeCenter;
+           
+            for(int i = 0; i<shapepc.Count; i++)
+                shapepc[i] += opo;
+            drawEllipses(true);
+            if (sym == null)
+                return;
+            if (sym is Polygon)
+                shapepc = ((Polygon)sym).Points;
+            else
+                shapepc = ((Polyline)sym).Points;
+            for (int i = 0; i < shapepc.Count; i++)
+                shapepc[i] += opo;
+            drawEllipses(false);
+            jointLinesGen();
+        }
+        //============================================================================================================================//
+        //                                                  JOINT_LINES_GEN                                                           //
         //============================================================================================================================//
         public void jointLinesGen()
         {

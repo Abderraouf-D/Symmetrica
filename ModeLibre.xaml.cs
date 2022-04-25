@@ -82,13 +82,14 @@ namespace Projet2Cp
         public static Brush trace;
         public static Brush rempli;
 
+        double oldActualHeight;
+        double oldActualWidth;
+
 
       
         public ModeLibre()
         {
             InitializeComponent();
-
-            
 
             //------------------Rotate_Utils----------------------//
             DoubleCollection dc = new DoubleCollection(2);
@@ -119,11 +120,14 @@ namespace Projet2Cp
             canvas.MouseMove += rotating;
             canvas.MouseWheel += zoom;
             deleteLine.MouseLeave += dlCleaner;
+
+            canvas.Loaded += load;
+            canvas.SizeChanged += adaptGrid;
             Canvas.SetZIndex(deleteLine, 2);
 
 
-
             initCanvas();
+
 
             //initialiser le centre de symetrie 
             centreSym = new Ellipse()
@@ -133,7 +137,36 @@ namespace Projet2Cp
                 Fill = Brushes.Red,
                 Stroke = trace,
             };
+            
         }
+        //==========================================================================================================//
+        //                                            adaptGrid                                                     //
+        //==========================================================================================================//
+
+        void adaptGrid (object sender, SizeChangedEventArgs e)
+        {
+            Point oldCenter = new Point(e.PreviousSize.Width*0.5, e.PreviousSize.Height*0.5);
+            Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
+            gridDrawing(step);
+            for(int i = 0; i<shapePairs.Count; i++)
+            {
+                shapePairs[i].adaptToGrid(oldCenter, newCenter);
+            }
+            
+        }
+        //==========================================================================================================//
+        //                                            load                                                          //
+        //==========================================================================================================//
+
+
+        void load(object sender, RoutedEventArgs e)
+        {
+            gridDrawing(step);
+        }
+        
+        //==========================================================================================================//
+        //                                           OLD KINDS OF CLICKS                                            //
+        //==========================================================================================================//
 
 
         private void dupliquer(object sender, RoutedEventArgs e)
@@ -207,19 +240,20 @@ namespace Projet2Cp
 
         }
 
-
         //=======================================================================================================//
         //                                      ZOOM                                                             //
         //=======================================================================================================//
         void zoom (object sender, MouseWheelEventArgs e)
         {
-            double alpha;
-            if (e.Delta > 0)
-                alpha = 0.9;
-            else
-                alpha = 1.1;
+            canvas.Children.Remove(ellipse);
 
-            if (step * alpha > 50 || step * alpha < 2.5)
+            double alpha;
+            if (e.Delta < 0)
+                alpha = 0.8;
+            else
+                alpha = 1.25;
+
+            if (step * alpha > 50 || step * alpha < 10)
                 return;
             step *= alpha;
             gridDrawing(step);
@@ -234,6 +268,7 @@ namespace Projet2Cp
 
                 Point paz;
                 Point center = new Point(canvas.ActualWidth/2, canvas.ActualHeight/2);
+               
                 for(int j = 0; j<pc.Count; j++)
                 {
                     paz = new Point();
@@ -283,11 +318,12 @@ namespace Projet2Cp
             GeometryDrawing GD = new GeometryDrawing();
             GeometryGroup GG = new GeometryGroup();
 
-            GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(0, step)));
-            GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(step, 0)));
+            GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(0, step )));
+            GG.Children.Add(new LineGeometry(new Point(0,0), new Point(step ,0)));
 
-            res.Viewbox = new Rect(0, 0, step, step);
-            res.Viewport = new Rect(0, 0, step, step);
+            res.Viewbox = new Rect(0,0,step, step );
+            res.Viewport = new Rect(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5, step, step);
+
 
             res.TileMode = TileMode.Tile;
             res.ViewportUnits = BrushMappingMode.Absolute;
@@ -397,7 +433,7 @@ namespace Projet2Cp
         {
             //On recupere la position du click a toute fin utiles ...
             clickPosition = e.GetPosition(canvas);
-
+          
             //soit il click sur le vide, et a ce moment la il se mettra a dessiner dans le seul cas ou isDrawing est a vrai
             if (!isOverShape && isDrawing)
             {
@@ -605,11 +641,13 @@ namespace Projet2Cp
             {
                 canvas.Children.Remove(ellipse);
                 mousePosition = e.GetPosition(canvas);
+                
+                actualPoint.X = Math.Round( (mousePosition.X - canvas.ActualWidth*0.5) / step) * step + (canvas.ActualWidth * 0.5);
+                actualPoint.Y = Math.Round( (mousePosition.Y - canvas.ActualHeight*0.5) / step) * step + (canvas.ActualHeight * 0.5);
 
-                actualPoint.X = Math.Round(mousePosition.X / step) * step;
-                actualPoint.Y = Math.Round(mousePosition.Y / step) * step;
+          
 
-                if (Math.Abs(actualPoint.X - mousePosition.X) < 12.5 && Math.Abs(actualPoint.Y - mousePosition.Y) < 12.5 && canvas.IsMouseOver)
+                if (Math.Abs(actualPoint.X - mousePosition.X) < step*0.5 && Math.Abs(actualPoint.Y - mousePosition.Y) < step * 0.5 && canvas.IsMouseOver)
                 {// if the cursor is close enough to an intersection then we draw a point 
                     ellipse = new Ellipse
                     {
@@ -622,7 +660,7 @@ namespace Projet2Cp
                     ellipse.MouseRightButtonDown += canvas_MouseRightButtonDown;// C'EST PROVISOIR !!
                     ellipse.MouseWheel += zoom;
                     canvas.Children.Add(ellipse);
-                    Canvas.SetLeft(ellipse, actualPoint.X - 5);
+                    Canvas.SetLeft(ellipse, actualPoint.X  - 5);
                     Canvas.SetTop(ellipse, actualPoint.Y - 5);
                 }
 
