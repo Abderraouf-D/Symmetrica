@@ -1252,6 +1252,7 @@ namespace Projet2Cp
 
 
                 }
+                dessinerDessinNum(niv.Selected());
 
             }
             else

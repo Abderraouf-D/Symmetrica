@@ -155,10 +155,20 @@ namespace Projet2Cp
                 {
                     PointCollection tmp = new PointCollection();
                     int k = 0;
+                bool contin = true; 
                     if (polygon)
                     {
-                        while (k < p2.Count && !p2[k].Equals(p1[0]))
+                        while (k < p2.Count && contin)
                         {
+                            double x1 = Math.Round(p2[k].X, 6);
+                            double y1 = Math.Round(p2[k].Y, 6);
+                            double x2 = Math.Round(p1[0].X, 6);
+                            double y2 = Math.Round(p1[0].Y, 6);
+
+                            if (x1.Equals(x1) && y1.Equals(y1))
+                            {
+                                contin = false;
+                            }else
                             k++;
                         }
                         if (k == p2.Count) return false;
@@ -174,7 +184,7 @@ namespace Projet2Cp
                     else if (p1[0].Equals(p2[p2.Count - 1])) tmp = reverse(p2);
                     else return false;
 
-                }
+                    }
                     k = 0;
 
                     while (k < p1.Count && k < tmp.Count)
