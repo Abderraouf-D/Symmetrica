@@ -38,12 +38,10 @@ namespace Projet2Cp
 
 
             //----------------------------------------------------//
-            toolBarEns.addPolygon.Click += canvas.addPolygon;
+       
             toolBarEns.effacerTout.Click += canvas.effacerTout;
             toolBarEns.delShape.Click += canvas.delete_Click;
             toolBarEns.deplacer.Click += canvas.deplacer_Click;
-            toolBarEns.rotate.Click += canvas.rotate_Click;
-            toolBarEns.duplicate.Click += canvas.dupliquer;
             toolBarEns.horiz.Click += canvas.updateAxe;
             toolBarEns.verti.Click += canvas.updateAxe;
             toolBarEns.diag1.Click += canvas.updateAxe;

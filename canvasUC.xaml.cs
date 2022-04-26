@@ -32,15 +32,11 @@ namespace Projet2Cp
         private Line line;
 
         //----------------------------------------------Rotate_Utils-------------------------------------//
-
         private Line rotateLine = new Line()
         {
             Stroke = Brushes.Black,
             StrokeThickness = 2,
         };
-
-
-
         //---------------------DELETE(GOMME)_UTILS----------------------------------------------//
         bool deleteSegment;
         int segmentToDelete;
@@ -63,19 +59,13 @@ namespace Projet2Cp
         private bool isOverShape = false;
         private bool isOrigin = true;
         private bool isAxial = true; // IMPORTANT : will be set to true or false depending on the symmetry type selected ....
-        private bool firstTimeRotating = true; //je pense qu'on peut s'en debarasser ....
         private bool isGomme = false; //quelque retouche a faire sur les cas speciaux de la gomme (when two /three are left ...)
         private bool isColoring = false;
         private bool isDuplicating = false;
         private bool isEditing = false;
 
         Point clickPosition = new Point(); //always indicates where the mouse "left-clicked" on the canvas
-
-
         RadioButton lastRepere = null; 
-
-
-
 
         public static Line axeSym { get; set; } // l'axe de symetrie selectionné
         public Nullable<Point> centresym = null;
@@ -85,8 +75,6 @@ namespace Projet2Cp
         public static Brush trace = Brushes.Black;
         public static Brush rempli = Brushes.White;
 
-
-
         RadioButton horiz, verti, diag1, diag2, centre;
         UserControl TB; 
 
@@ -94,21 +82,12 @@ namespace Projet2Cp
         TextBlock tb; 
         static public int cote, rayon;
         //Cursor colorate = new Cursor(Application.GetResourceStream(new Uri("C://Users//raouf//Desktop//Projet2Cp//cursors//color.cur")).Stream);
-
+        bool answer = false;
         public canvasUC(UserControl TB, niveauxLibre niv)
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt/QHFqVVhkW1pFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF9jTXxXdkxhWHxWeXZQQw==;NjIzNzA1QDMyMzAyZTMxMmUzMGljYUdhRmY2OXNTZ0ZIdSsvN3NGTDMzMk1hRmtyejRMcndKTG5XOG42TUk9");
 
             InitializeComponent();
-
-            /*PointCollection p1 = new PointCollection() {new Point(0,2), new Point(0, 4), new Point(2, 1), new Point(55, 1) };
-            PointCollection p2 = new PointCollection() {  new Point(0, 4), new Point(2, 1) };
-            MessageBox.Show(isSubTable(p2, p1, new Point(21, 12)).ToString());*/
-
-            
-
-
-
 
             dessinsModeExo = chargerDessins(@".\shapesExo.txt");
             this.TB = TB;
@@ -148,16 +127,14 @@ namespace Projet2Cp
             canvas.MouseMove += mouseCursor;
             canvas.MouseMove += rotating;
             canvas.MouseWheel += zoom;
-            deleteLine.MouseLeave += dlCleaner;
-
             canvas.Loaded += load;
             canvas.SizeChanged += adaptGrid;
+            deleteLine.MouseLeave += dlCleaner;
 
             Canvas.SetZIndex(deleteLine, 2);
-
-
-
             initCanvas();
+
+            
 
             //initialiser le centre de symetrie 
             centreSym = new Ellipse()
@@ -168,8 +145,6 @@ namespace Projet2Cp
                 Stroke = trace,
             };
         }
-
-
 
         //==========================================================================================================//
         //                                            adaptGrid                                                     //
@@ -183,33 +158,29 @@ namespace Projet2Cp
             bool sym = false; 
             for (int i = 0; i < shapePairs.Count; i++)
             {
-                sym = (shapePairs[i].sym == null);
+                sym = !(shapePairs[i].sym == null);
                 shapePairs[i].adaptToGrid(oldCenter, newCenter);
-               /* if (sym)
+                if (sym)
                 {
                     if (isAxial) shapePairs[i].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
                     else shapePairs[i].cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
-                    if (!MainWindow.modeLibre) hideSym(shapePairs[i]);
-                }*/
-                
-            }
+                   if (!MainWindow.modeLibre && !answer ) hideSym(shapePairs[i]);
 
+                    
+                }  
+            }
         }
         //==========================================================================================================//
         //                                            load                                                          //
         //==========================================================================================================//
-
-
         void load(object sender, RoutedEventArgs e)
         {
             gridDrawing(step);
             if (!MainWindow.modeLibre) dessinerDessinNum(niv.Selected());
         }
-
         //==========================================================================================================//
         //                                           OLD KINDS OF CLICKS                                            //
         //==========================================================================================================//
-
 
         public void dupliquer(object sender, RoutedEventArgs e)
         {
@@ -221,9 +192,6 @@ namespace Projet2Cp
             isColoring = false;
             isDuplicating = true;
         }
-
-
-
         public void colorier_Click(object sender, RoutedEventArgs e)
         {
             isDrawing = false;
@@ -234,7 +202,6 @@ namespace Projet2Cp
             isGen = false;
             isColoring = true;
         }
-
         public void GenSym_Click(object sender, RoutedEventArgs e)
         {
             isDrawing = false;
@@ -246,7 +213,6 @@ namespace Projet2Cp
             isColoring = false;
 
         }
-
         public void delete_Click(object sender, RoutedEventArgs e)
         {
             isDrawing = false;
@@ -258,7 +224,6 @@ namespace Projet2Cp
             isColoring = false;
 
         }
-
         public void deplacer_Click(object sender, RoutedEventArgs e)
         {
             isDrawing = true;
@@ -281,8 +246,6 @@ namespace Projet2Cp
             isColoring = false;
 
         }
-
-
         //=======================================================================================================//
         //                                      ZOOM                                                             //
         //=======================================================================================================//
@@ -344,17 +307,17 @@ namespace Projet2Cp
                         Canvas.SetLeft(shapePairs[i].sEllipse[j], pc[j].X - 5);
                         Canvas.SetTop(shapePairs[i].sEllipse[j], pc[j].Y - 5);
                     }
-
                 }
-
-                shapePairs[i].jointLinesGen();
+                if (MainWindow.modeLibre) shapePairs[i].jointLinesGen();
+                else
+                {
+                    if ( shapePairs[0].sym.Visibility == Visibility.Visible) shapePairs[0].jointLinesGen();
+                }
             }
         }
-
         //=======================================================================================================//
         //                                      GRID_DRAWING                                                     //
         //=======================================================================================================//
-
         private void gridDrawing(double step)
         {
             DrawingBrush res = new DrawingBrush();
@@ -445,20 +408,27 @@ namespace Projet2Cp
         //====================================================================================================================//
 
 
-
-        public void translating(Object sender, MouseEventArgs e)
+        private void translating(Object sender, MouseEventArgs e)
         {
             if (isTransforming && isDrawing && currentShapePair.IsTransformable && (e.LeftButton == MouseButtonState.Pressed))
             {
-                Vector vec = e.GetPosition(canvas) - mousePosition;
+
+                Point newPosition = e.GetPosition(canvas);
+                newPosition.X = Math.Round((newPosition.X - canvas.ActualWidth * 0.5) / step) * step + (canvas.ActualWidth * 0.5);
+                newPosition.Y = Math.Round((newPosition.Y - canvas.ActualHeight * 0.5) / step) * step + (canvas.ActualHeight * 0.5);
+
+                mousePosition.X = Math.Round((mousePosition.X - canvas.ActualWidth * 0.5) / step) * step + (canvas.ActualWidth * 0.5);
+                mousePosition.Y = Math.Round((mousePosition.Y - canvas.ActualHeight * 0.5) / step) * step + (canvas.ActualHeight * 0.5);
+
+                Vector vec = newPosition - mousePosition;
                 if (currentShapePair != null)
                     currentShapePair.translating(vec, isOrigin, mousePosition, isAxial, axeSym, centresym);
-                mousePosition = e.GetPosition(canvas); //on reactulise clickPosition pour le prochain move
+                mousePosition = newPosition; //on reactulise clickPosition pour le prochain move
             }
 
 
         }
-
+     
         //====================================================================================================================//
         //                          ELLIPSE_CLEANER : ENLEVE LA PREVIEW ELLIPSE UNE FOIS QU'ON QUITTE LE CANVAS               //  
         //====================================================================================================================//
@@ -481,25 +451,12 @@ namespace Projet2Cp
             
             //soit il click sur le vide, et a ce moment la il se mettra a dessiner dans le seul cas ou isDrawing est a vrai
 
-            if (!isOverShape && isDrawing)
+                if (!isOverShape && isDrawing)
                 {
-                    line.Stroke = trace;
-                    polyline.Stroke = trace;
-                    /*if (isSubTable(polyline.Points, ((Polyline)shapePairs[0].sym).Points, actualPoint))
-                    {
-                        trace = Brushes.Green;
-
-                    }
-                    else
-                    {
-                        trace = Brushes.Red;
-
-                    }*/
-                    polyline.Points.Add(actualPoint);
-                
-
+                        line.Stroke = trace;
+                        polyline.Stroke = trace;
+                        polyline.Points.Add(actualPoint);
                 }
-
                 //sinon c'est qu'il a clické sur un shape, et dans ce cas il faudra juste determiner de quel ShapePair il s'agit
                 else if (e.Source is Shape)//nrmlm si il est pas dans la premiere c'est qu'il est dans la deuxieme mais bon ....
                 {
@@ -518,7 +475,7 @@ namespace Projet2Cp
 
                     if (isRotating) //JE PENSE QU'ON PEUT DEGAGER QUELQUE TRUC ICI ....
                     {
-                        firstTimeRotating = true;
+                        
                         rotateLine.X1 = clickPosition.X;
                         rotateLine.Y1 = clickPosition.Y;
                         rotateLine.X2 = clickPosition.X;
@@ -690,19 +647,9 @@ namespace Projet2Cp
 
             canvas.Children.Add(line); //we add the new empty line...GarbageCollector use 100 !
         }
-
         //====================================================================================================================//
         //                CANVAS_MOUSE_MOVE : DESSINE LA PREVIEW ELLIPSE SI : DRAWING + NOT_OVER_SHAPE + NOT_TRANSOFRMING     //  
         //====================================================================================================================//
-
-
-
-        //====================================================================================================================//
-        //                CANVAS_MOUSE_MOVE : DESSINE LA PREVIEW ELLIPSE SI : DRAWING + NOT_OVER_SHAPE + NOT_TRANSOFRMING     //  
-        //====================================================================================================================//
-
-
-
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDrawing && !isOverShape && !isTransforming)
@@ -970,7 +917,6 @@ namespace Projet2Cp
         public void effacerTout(object sender, RoutedEventArgs e)
         {
             clear();
-
         }
         public void clear()
         {
@@ -1016,8 +962,9 @@ namespace Projet2Cp
 
             for (int i = 0; i < shapePairs.Count; i++)
             {
-                canvas.Children.Remove(shapePairs[i].sym);
-                shapePairs[i].sym = null;
+               canvas.Children.Remove(shapePairs[i].sym);
+               shapePairs[i].sym = null;
+                
                 foreach (Ellipse el in shapePairs[i].sEllipse)
                 {
                     canvas.Children.Remove(el);
@@ -1194,8 +1141,82 @@ namespace Projet2Cp
 
         private void canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            checkAxes();
-         }
+            switch (true)
+            {
+                case true when (bool)horiz.IsChecked:
+                    {
+                        axeSym.X1 = canvas.ActualWidth / 2;
+                        axeSym.Y1 = 0.5;
+                        axeSym.X2 = canvas.ActualWidth / 2;
+                        axeSym.Y2 = canvas.ActualHeight;
+                        if (!canvas.Children.Contains(axeSym)) canvas.Children.Add(axeSym);
+                        isAxial = true;
+
+
+                        break;
+
+                    }
+                case true when (bool)verti.IsChecked:
+                    {
+                        axeSym.X1 = 0.5;
+                        axeSym.Y1 = canvas.ActualHeight / 2;
+                        axeSym.X2 = canvas.ActualWidth;
+                        axeSym.Y2 = canvas.ActualHeight / 2;
+                        if (!canvas.Children.Contains(axeSym)) canvas.Children.Add(axeSym);
+                        isAxial = true;
+
+
+                        break;
+                    }
+                case true when (bool)diag1.IsChecked:
+                    {
+                        axeSym.X1 = 0.5;
+                        axeSym.Y1 = 0.5;
+                        axeSym.X2 = canvas.ActualWidth;
+                        axeSym.Y2 = canvas.ActualHeight;
+                        if (!canvas.Children.Contains(axeSym)) canvas.Children.Add(axeSym);
+                        isAxial = true;
+
+
+                        break;
+                    }
+                case true when (bool)diag2.IsChecked:
+                    {
+                        axeSym.X1 = canvas.ActualWidth;
+                        axeSym.Y1 = 0.5;
+                        axeSym.X2 = 0.5;
+                        axeSym.Y2 = canvas.ActualHeight; ;
+                        if (!canvas.Children.Contains(axeSym)) canvas.Children.Add(axeSym);
+                        isAxial = true;
+
+                        break;
+                    }
+                case true when (bool)centre.IsChecked:
+                    {
+                        centresym = new Point(canvas.ActualWidth / 2, canvas.ActualHeight / 2);
+                        canvas.Children.Remove(axeSym);
+                        if (!(canvas.Children.Contains(centreSym)))
+                        {
+                            canvas.Children.Add(centreSym);
+                            Canvas.SetLeft(centreSym, canvas.ActualWidth / 2 - 5);
+                            Canvas.SetTop(centreSym, canvas.ActualHeight / 2 - 5);
+                        }
+                        isAxial = false;
+
+
+                        break;
+                    }
+
+                default:
+                    {
+
+                        break;
+                    }
+
+
+
+            }
+        }
 
         public void valider_Click(Object sender, RoutedEventArgs e)
         {
@@ -1235,22 +1256,55 @@ namespace Projet2Cp
             }
             else
             {
-                PointCollection p1=null , p2=null; 
-                if (shapePairs[0].origin is Polyline) p2 = ((Polyline)shapePairs[0].sym).Points;
-                else p2 = ((Polygon)shapePairs[0].sym).Points;
-
-
-
-                if (shapePairs[1].origin is Polygon) p1 = ((Polygon)shapePairs[1].origin).Points;
-                else p1 = ((Polyline)shapePairs[1].origin).Points;
-                if (isSubTable(p1, p2))
+                answer = true; 
+                if (shapePairs.Count==1)
                 {
-                    MessageBox.Show("Bravo!");
-                    showSym(shapePairs[0]);
+                    MessageBox.Show("Veuillez dessiner le symetrique");
                 }
-                else { 
-                    MessageBox.Show("Ooops"); 
-                    showSym(shapePairs[0]);
+                else {
+
+                    if (!shapePairs[0].origin.GetType().Equals(shapePairs[1].origin.GetType()))
+                    {
+                        shapePairs[0].sym.Stroke = Brushes.Red;
+                        MessageBox.Show("Ooops");
+                        showSym(shapePairs[0]);
+                        shapePairs[0].jointLinesGen();
+                    }
+                    else
+                    {
+                        bool polygon = true;
+                        PointCollection p1 = null, p2 = null;
+                        if (shapePairs[0].origin is Polyline) { 
+                            p2 = ((Polyline)shapePairs[0].sym).Points;
+                            polygon = false; 
+                        }
+                        else p2 = ((Polygon)shapePairs[0].sym).Points;
+
+
+                        
+                        if (shapePairs[1].origin is Polygon) p1 = ((Polygon)shapePairs[1].origin).Points;
+                        else p1 = ((Polyline)shapePairs[1].origin).Points;
+                        if (isSubTable(p1, p2 ,polygon))
+                        {
+                            shapePairs[0].sym.Stroke = Brushes.Green;
+                            MessageBox.Show("Bravo!");
+                            showSym(shapePairs[0]);
+                            shapePairs[0].jointLinesGen();
+
+
+                            foreach (Ellipse el in shapePairs[1].oEllipse) canvas.Children.Remove(el);
+                            canvas.Children.Remove(shapePairs[1].origin);
+                            shapePairs.Remove(shapePairs[1]);
+
+                        }
+                        else
+                        {
+                            shapePairs[0].sym.Stroke = Brushes.Red;
+                            MessageBox.Show("Ooops");
+                            showSym(shapePairs[0]);
+                            shapePairs[0].jointLinesGen();
+                        }
+                    }
                 }
 
 
@@ -1274,25 +1328,28 @@ namespace Projet2Cp
 
         public void Niv_Click(object sender, RoutedEventArgs e)
         {
+            answer = false;
             dessinerDessinNum(niv.Selected());
         }
         public void dessinerDessinNum(int i)
         {
-
+            step = 25;
+            gridDrawing(step);
             clear();
             dessinExo poly = dessinsModeExo[i];
             Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
             selectAxe(poly.repere);
             checkAxes();
+            ShapePair shep;
             if (poly.type)
             {
                 polygone = (Polygon)poly.shape;
                 polygone.MouseEnter += shapeMouseEnter;
                 polygone.MouseEnter += shapeMouseEnter;
                 polygone.MouseLeave += shapeMouseLeave;
-                ShapePair shp = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
-                shp.adaptToGrid(poly.oldCenter, newCenter);
-                shapePairs.Add(shp);
+                shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                shep.adaptToGrid(poly.oldCenter, newCenter);
+                shapePairs.Add(shep);
                 cleaningTheMess();
 
             }
@@ -1302,15 +1359,23 @@ namespace Projet2Cp
                 polyline.MouseEnter += shapeMouseEnter;
                 polyline.MouseLeave += shapeMouseLeave;
                 canvas.Children.Add(polyline);
-                ShapePair shp = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
-                shp.adaptToGrid(poly.oldCenter, newCenter);
-                shapePairs.Add(shp);
-
+                shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                shep.adaptToGrid(poly.oldCenter, newCenter);
+                shapePairs.Add(shep);
                 cleaningTheMess();
-                
-
             }
-            if  (axeSym != null || centresym != null) { 
+
+            // resave the shape in the file
+            Shape shp = shapePairs[0].origin;
+            int ind = niv.Selected() + 1;
+            if (shp is Polygon)
+                Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5)), ind);
+            else
+                Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5)), ind);
+            dessinsModeExo = chargerDessins(@".\shapesExo.txt");
+
+            if (axeSym != null || centresym != null)
+            {
                 if (isAxial)
                 {
                     shapePairs[0].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
@@ -1321,8 +1386,17 @@ namespace Projet2Cp
                 {
                     shapePairs[0].cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
                 }
-                hideSym(shapePairs[0]);
+             hideSym(shapePairs[0]);
+
             }
+
+
+
+
+
+
+
+
 
         }
 
@@ -1346,11 +1420,9 @@ namespace Projet2Cp
             {
                 el.Visibility = Visibility.Visible;
             }
-            shp.sEllipse = new List<Ellipse>();
-            foreach (Line el in shp.jointLines)
-            {
-                el.Visibility = Visibility.Visible;
-            }
+
+            //shp.jointLinesGen();
+            
         }
 
 

@@ -61,6 +61,8 @@ namespace Projet2Cp
             repere = data[4];
 
             string [] oldCent = data[5].Split(';');
+            
+           
             oldCenter = new Point(double.Parse(oldCent[0]), double.Parse(oldCent[1]));
 
 
@@ -129,42 +131,68 @@ namespace Projet2Cp
             return num;
         }
 
-        public static bool isSubTable( PointCollection p1 , PointCollection p2/*, Point <> next*/)
+        public static PointCollection reverse(PointCollection pc)
+        {
+            PointCollection reversed = new PointCollection();
+            int k = pc.Count - 1;
+            while (k >= 0)
+            {
+                reversed.Add(pc[k]);
+                k--;
+            }
+            return reversed; 
+        }
+
+        public static bool isSubTable( PointCollection p1 , PointCollection p2 , bool polygon /*, Point <> next*/)
         {
             //p2.Add(next);
             bool equal = true ;
-            if (p1.Count > p2.Count) return false; 
-            if (p1.Count > 0)
-            {
-                PointCollection tmp = new PointCollection();
-                int k = 0;
-                while( k < p2.Count && p2[k].Equals(p1[0]))
-                {
-                    k++;
-                }
+            
+            
+                if (p1.Count > p2.Count) return false;
 
-                while ( tmp.Count != p2.Count)
+                if (p1.Count > 0)
                 {
-                    tmp.Add(p2[k]);
-                    k = (k + 1) % p2.Count;
-                }
-              
-                k = 0;
-
-                 while (k<p1.Count && k < tmp.Count)
-                {
-                    double x1= Math.Round(tmp[k].X, 6);
-                    double y1= Math.Round(tmp[k].Y, 6);
-                    double x2 = Math.Round(p1[k].X, 6);
-                    double y2 = Math.Round(p1[k].Y, 6);
-
-                    if ( !x1.Equals(x1) || !y1.Equals(y1)) {
-                        equal = false;
+                    PointCollection tmp = new PointCollection();
+                    int k = 0;
+                    if (polygon)
+                    {
+                        while (k < p2.Count && !p2[k].Equals(p1[0]))
+                        {
+                            k++;
+                        }
+                        if (k == p2.Count) return false;
+                        while (tmp.Count != p2.Count)
+                        {
+                            tmp.Add(p2[k]);
+                            k = (k + 1) % p2.Count;
+                        }
                     }
-                  
-                    k++;
-                } 
-            }
+                    else
+                    {
+                    if (p1[0].Equals(p2[0])) tmp = p1;
+                    else if (p1[0].Equals(p2[p2.Count - 1])) tmp = reverse(p2);
+                    else return false;
+
+                }
+                    k = 0;
+
+                    while (k < p1.Count && k < tmp.Count)
+                    {
+                        double x1 = Math.Round(tmp[k].X, 6);
+                        double y1 = Math.Round(tmp[k].Y, 6);
+                        double x2 = Math.Round(p1[k].X, 6);
+                        double y2 = Math.Round(p1[k].Y, 6);
+
+                        if (!x1.Equals(x1) || !y1.Equals(y1))
+                        {
+                            equal = false;
+                        }
+
+                        k++;
+                    }
+                }
+           
             
             return equal; 
             
