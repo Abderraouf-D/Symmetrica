@@ -4,29 +4,6 @@
     
     
     
-    <DrawingBrush x:Name="younes" x:Key="MyGrayGridBrush" TileMode="Tile"
-        Viewport="0,0,50,50" ViewportUnits="Absolute"
-        Viewbox="0,0,50,50" ViewboxUnits="Absolute">
-        <DrawingBrush.Drawing>
-            <GeometryDrawing>
-                <GeometryDrawing.Geometry>
-                    <GeometryGroup>
-                        <LineGeometry EndPoint="0,50"/>
-                        <LineGeometry EndPoint="50,0"/>
-                    </GeometryGroup>
-                </GeometryDrawing.Geometry>
-                <GeometryDrawing.Pen>
-                    <Pen Brush="Black" Thickness="1" DashCap="Flat">
-                        <Pen.DashStyle>
-                            <DashStyle Dashes="5,3"/>
-                        </Pen.DashStyle>
-                    </Pen>
-                </GeometryDrawing.Pen>
-            </GeometryDrawing>
-        </DrawingBrush.Drawing>
-
-
-    </DrawingBrush>
     
     <Style  TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
         <Setter Property="Background" Value="Transparent" />

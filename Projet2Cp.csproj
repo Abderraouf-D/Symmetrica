@@ -200,6 +200,7 @@
   <ItemGroup>
     <Resource Include="icons\color.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="cursors\color.cur" />
   </ItemGroup>

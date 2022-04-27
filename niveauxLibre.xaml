@@ -110,7 +110,7 @@
 
     </UserControl.Resources>
 
-    <StackPanel >
+    <StackPanel x:Name="nivStack">
        
             <Grid x:Name="grid" Height="45"  >
                 <Grid.ColumnDefinitions>

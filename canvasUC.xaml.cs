@@ -22,7 +22,6 @@ namespace Projet2Cp
         private List<ShapePair> shapePairs { get; set; } //represents the pairs of shapes
         private Point mousePosition; //mouse position in canvas
         private Point actualPoint;//actual point to draw in 
-        private PointCollection drawingPoints;
         private double step = 25; // the step of the grid 
         public PointCollection shapepc; // the current shape being drawn  , and a holder for his symetrix 
         private ShapePair currentShapePair;
@@ -83,6 +82,9 @@ namespace Projet2Cp
         static public int cote, rayon;
         //Cursor colorate = new Cursor(Application.GetResourceStream(new Uri("C://Users//raouf//Desktop//Projet2Cp//cursors//color.cur")).Stream);
         bool answer = false;
+
+
+        private List<TextBlock> nums = new List<TextBlock>();
         public canvasUC(UserControl TB, niveauxLibre niv)
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt/QHFqVVhkW1pFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF9jTXxXdkxhWHxWeXZQQw==;NjIzNzA1QDMyMzAyZTMxMmUzMGljYUdhRmY2OXNTZ0ZIdSsvN3NGTDMzMk1hRmtyejRMcndKTG5XOG42TUk9");
@@ -103,6 +105,17 @@ namespace Projet2Cp
             }
             else
             {
+                ((toolBarEnseignant)TB).ensStack.Visibility=Visibility.Collapsed;
+                tb = new TextBlock();
+                tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur" + ((toolBarEnseignant)TB).vld.Text;
+                tb.Foreground = Brushes.Black;
+                tb.FontSize = 18;
+                tb.TextAlignment = TextAlignment.Center;
+                niv.nivStack.Children.Add(tb);
+                tb.Background=Brushes.White;
+                Panel.SetZIndex(tb,122);
+
+
                 this.niv = niv;
                 if (MainWindow.modeEns)
                 {
@@ -323,7 +336,6 @@ namespace Projet2Cp
             DrawingBrush res = new DrawingBrush();
             GeometryDrawing GD = new GeometryDrawing();
             GeometryGroup GG = new GeometryGroup();
-
             GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(0, step)));
             GG.Children.Add(new LineGeometry(new Point(0, 0), new Point(step, 0)));
 
@@ -350,6 +362,103 @@ namespace Projet2Cp
             GD.Geometry = GG;
             res.Drawing = GD;
             canvas.Background = res;
+
+
+
+            //RULER
+            foreach (TextBlock el in nums) canvas.Children.Remove(el);
+            nums.Clear();
+            double nbNumHoriz = Math.Truncate((canvas.ActualWidth / 2) / step);
+            TextBlock num;
+
+            ////Horizontal 0 + 
+            double marche = canvas.ActualWidth / 2;
+            int i = 0;
+             while(marche < canvas.ActualWidth)
+            {
+                num = new TextBlock()
+                {
+                    Foreground = Brushes.Green,
+                    IsEnabled = false,
+                   
+                };
+                
+                num.Text = i.ToString();
+                canvas.Children.Add(num);
+                Canvas.SetLeft(num, marche-10);
+                Canvas.SetTop(num, canvas.ActualHeight / 2 );
+
+                marche += step;
+                i++;
+                nums.Add(num);
+            }
+            ////Horizontal 0 - 
+            marche = canvas.ActualWidth/ 2;
+            i = -1;
+            while (marche > 0)
+            {
+                num = new TextBlock()
+                {
+                    Foreground = Brushes.Green,
+                    IsEnabled = false,
+
+
+                };
+                marche -= step;
+                num.Text = i.ToString();
+                canvas.Children.Add(num);
+                Canvas.SetLeft(num, marche - 14);
+                Canvas.SetTop(num, canvas.ActualHeight / 2);
+                i--;
+                nums.Add(num);
+
+            }
+            ////vertical 0 - 
+            marche = canvas.ActualHeight / 2;
+            i = -1;
+            while (marche < canvas.ActualHeight)
+            {
+                num = new TextBlock()
+                {
+                    IsEnabled = false,
+
+                    Foreground = Brushes.Green,
+
+                };
+                marche += step;
+                num.Text = i.ToString();
+                canvas.Children.Add(num);
+                Canvas.SetRight(num, canvas.ActualWidth / 2 + 3);
+                Canvas.SetTop(num, marche );
+
+                i--;
+                nums.Add(num);
+
+            }
+
+            ////Vertical 0 + 
+            marche = canvas.ActualHeight / 2;
+             i = 1;
+            while (marche > 0)
+            {
+                num = new TextBlock()
+                {
+                    IsEnabled = false,
+
+                    Foreground = Brushes.Green,
+                    
+                };
+                marche -= step;
+                num.Text = i.ToString();
+                canvas.Children.Add(num);
+                Canvas.SetRight(num, canvas.ActualWidth / 2 +3);
+                Canvas.SetTop(num, marche);
+                
+                i++;
+                nums.Add(num);
+
+            }
+            
         }
 
         //=======================================================================================================//
@@ -877,7 +986,7 @@ namespace Projet2Cp
             {
                 this.Cursor = Cursors.Hand;
             }
-            //if (isColoring) this.Cursor = colorate;
+            //if (isColoring) this.Cursor = ((TextBlock)Resources["CursorColor"]).Cursor; 
         }
 
 
@@ -920,13 +1029,16 @@ namespace Projet2Cp
         }
         public void clear()
         {
-            if (isEditing)
-            {
-                canvas.Children.Add(tb);
-                Canvas.SetTop(tb, 0);
-            }
+            
             canvas.Children.Clear();
             initCanvas();
+            if (!MainWindow.modeLibre & !isEditing)
+            {
+                dessinerDessinNum(niv.Selected());
+                
+            
+            }
+            
         }
 
         public void uncheckAxes()
@@ -1119,21 +1231,12 @@ namespace Projet2Cp
         {
             clear();
             isEditing = true;
-            tb = new TextBlock();
             tb.Text = "Veuillez créer UNE forme, selectionner le repère de symetrie, Puis cliquer sur Confirmer.";
             tb.Foreground = Brushes.Red;
-            tb.FontSize = 18;
-            tb.TextAlignment = TextAlignment.Center;
-            tb.Width = canvas.ActualWidth;
-            tb.Height = canvas.ActualHeight;
-            canvas.Children.Add(tb);
-            Canvas.SetTop(tb, 0);
-            
-
-
             ((toolBarEnseignant)TB).vld.Text = "Confirmer";
             ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Visible;
             niv.IsEnabled = false;
+            ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Visible;
 
 
 
@@ -1248,6 +1351,11 @@ namespace Projet2Cp
                     niv.IsEnabled = true;
                     ((toolBarEnseignant)TB).vld.Text = "Valider";
                     isEditing = false;
+                    tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur"+ ((toolBarEnseignant)TB).vld.Text;
+                    tb.Foreground = Brushes.Black;
+                    ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
+
+
 
 
 
@@ -1323,6 +1431,9 @@ namespace Projet2Cp
             ((toolBarEnseignant)TB).vld.Text = "Valider";
             isEditing = false;
             dessinerDessinNum(niv.Selected());
+            tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur" + ((toolBarEnseignant)TB).vld.Text;
+            tb.Foreground = Brushes.Black;
+            ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
 
 
         }
@@ -1330,13 +1441,15 @@ namespace Projet2Cp
         public void Niv_Click(object sender, RoutedEventArgs e)
         {
             answer = false;
+            clear();
             dessinerDessinNum(niv.Selected());
         }
         public void dessinerDessinNum(int i)
         {
             step = 25;
             gridDrawing(step);
-            clear();
+            
+            
             dessinExo poly = dessinsModeExo[i];
             Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
             selectAxe(poly.repere);
@@ -1379,8 +1492,10 @@ namespace Projet2Cp
             {
                 if (isAxial)
                 {
-                    shapePairs[0].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
+                    axeSym.Stroke = Brushes.Red;
+                    axeSym.StrokeThickness = 3;
 
+                    shapePairs[0].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
                 }
 
                 else
@@ -1422,7 +1537,7 @@ namespace Projet2Cp
                 el.Visibility = Visibility.Visible;
             }
 
-            //shp.jointLinesGen();
+            
             
         }
 
