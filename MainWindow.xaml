@@ -142,7 +142,7 @@
             </Grid.RowDefinitions>
 
 
-            <Rectangle Fill="#A2DBA1" Width="Auto" Height="Auto"/>
+            <Rectangle Fill="#52DEA1" Width="Auto" Height="Auto"/>
 
 
 
@@ -161,7 +161,7 @@
                 </Viewbox>
             </Button>
 
-            <Rectangle Fill="#A2DBA1" Width="Auto" Height="Auto" Grid.Row="1"/>
+            <Rectangle Fill="#52DEA1" Width="Auto" Height="Auto" Grid.Row="1"/>
 
             <Button x:Name="ButtonExo" Click="ButtonClickExo" ClickMode="Press" Background="Transparent" Height="Auto" Grid.Row="1">
                 <Viewbox Margin="30" Stretch="Uniform">
@@ -176,7 +176,7 @@
                 </Viewbox>
             </Button>
 
-            <Rectangle Fill="#A2DBA1" Width="Auto" Height="Auto" Grid.Row="2"/>
+            <Rectangle Fill="#52DEA1" Width="Auto" Height="Auto" Grid.Row="2"/>
 
             <Button Background="Transparent" Grid.Row="2" Click="ButtonClickLibre" ClickMode="Press" >
                 <Viewbox Stretch="Uniform" Margin="40">
