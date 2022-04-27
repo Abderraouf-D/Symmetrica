@@ -18,12 +18,13 @@ namespace Projet2Cp
             public Boolean type; // true for polygon 
             public string repere;
             public Point oldCenter;
+            public double step; 
         }
-        public static String CanvasToString(PointCollection pts, Brush rempli, Brush trace,string repere,Point oldCenter) {
+        public static String CanvasToString(PointCollection pts, Brush rempli, Brush trace,string repere,Point oldCenter,double step) {
 
 
 
-            return String.Format("{0}-{1}-{2}-{3}-{4}-{5}", rempli == null, pts.ToString(), (rempli != null)? rempli.ToString():null, trace.ToString(),repere,oldCenter.ToString());  
+            return String.Format("{0}-{1}-{2}-{3}-{4}-{5}-{6}", rempli == null, pts.ToString(), (rempli != null)? rempli.ToString():null, trace.ToString(),repere,oldCenter.ToString(),step.ToString());  
         } 
         public static void strTofile(string filename, string str, int ind)
         {
@@ -53,13 +54,13 @@ namespace Projet2Cp
             }
         }
 
-        public static Shape StringToShape(string shape,out Boolean polyg,out string repere,out Point oldCenter) // polyg== true if shape is polygnoe 
+        public static Shape StringToShape(string shape,out Boolean polyg,out string repere,out Point oldCenter,out double step)  // polyg== true if shape is polygnoe 
         {
             polyg = true;
             char[] delimiterChars = { '-' };
             string[] data = shape.Split(delimiterChars);
             repere = data[4];
-
+            step = double.Parse(data[6]);
             string [] oldCent = data[5].Split(';');
             
            
@@ -104,13 +105,18 @@ namespace Projet2Cp
         public static  List<dessinExo> chargerDessins(string filename)
         {
             List<dessinExo> dessins = new List<dessinExo>();
-            dessinExo dessin = new dessinExo();
-            for (int i=1; i<=9; i++)
+            try
             {
-                Shape poly = Utili.StringToShape(Utili.fileTostr(@".\shapesExo.txt", i), out dessin.type, out dessin.repere, out dessin.oldCenter);
-                dessin.shape = poly;
-                dessins.Add(dessin);
-            }
+
+                dessinExo dessin = new dessinExo();
+                for (int i = 1; i <= 9; i++)
+                {
+                    Shape poly = Utili.StringToShape(Utili.fileTostr(filename, i), out dessin.type, out dessin.repere, out dessin.oldCenter, out dessin.step);
+                    dessin.shape = poly;
+                    dessins.Add(dessin);
+                }
+            } catch (Exception ex) { }
+            finally {};
             return dessins;
 
         }
@@ -142,8 +148,28 @@ namespace Projet2Cp
             }
             return reversed; 
         }
+        public static bool isSubTab(PointCollection p1, PointCollection tmp)
+        {
+            int k = 0;
 
-        public static bool isSubTable( PointCollection p1 , PointCollection p2 , bool polygon /*, Point <> next*/)
+            while (k < p1.Count && k < tmp.Count)
+            {
+                double x1 = Math.Round(tmp[k].X, 6);
+                double y1 = Math.Round(tmp[k].Y, 6);
+                double x2 = Math.Round(p1[k].X, 6);
+                double y2 = Math.Round(p1[k].Y, 6);
+
+                if (!(x1 == x2) || !(y1 == y2))
+                {
+                    return  false;
+                }
+
+                k++;
+            }
+            return true;
+
+        }
+        public static bool isSym( PointCollection p1 , PointCollection p2 , bool polygon /*, Point <> next*/)
         {
             //p2.Add(next);
             bool equal = true ;
@@ -151,57 +177,59 @@ namespace Projet2Cp
             
                 if (p1.Count > p2.Count) return false;
 
-                if (p1.Count > 0)
+            if (p1.Count > 0)
+            {
+                PointCollection tmp = new PointCollection();
+                int k = 0;
+                int indEq = 0 ;
+                bool contin = true;
+                if (polygon)
                 {
-                    PointCollection tmp = new PointCollection();
-                    int k = 0;
-                bool contin = true; 
-                    if (polygon)
+                    while (k < p2.Count && contin)
                     {
-                        while (k < p2.Count && contin)
+                        double x1 = Math.Round(p2[k].X, 6);
+                        double y1 = Math.Round(p2[k].Y, 6);
+                        double x2 = Math.Round(p1[0].X, 6);
+                        double y2 = Math.Round(p1[0].Y, 6);
+                        
+                        if ((x1 == x2) && (y1 == y2))
                         {
-                            double x1 = Math.Round(p2[k].X, 6);
-                            double y1 = Math.Round(p2[k].Y, 6);
-                            double x2 = Math.Round(p1[0].X, 6);
-                            double y2 = Math.Round(p1[0].Y, 6);
-
-                            if (x1.Equals(x1) && y1.Equals(y1))
-                            {
-                                contin = false;
-                            }else
+                            contin = false;
+                        }
+                        else
                             k++;
-                        }
-                        if (k == p2.Count) return false;
-                        while (tmp.Count != p2.Count)
-                        {
-                            tmp.Add(p2[k]);
-                            k = (k + 1) % p2.Count;
-                        }
                     }
-                    else
+                    if (k == p2.Count) return false;
+                    indEq = k; 
+                    while (tmp.Count != p2.Count)
                     {
+                        tmp.Add(p2[k]);
+                        k = (k + 1) % p2.Count;
+                    }
+                }
+                else
+                {
                     if (p1[0].Equals(p2[0])) tmp = p1;
                     else if (p1[0].Equals(p2[p2.Count - 1])) tmp = reverse(p2);
                     else return false;
 
-                    }
-                    k = 0;
-
-                    while (k < p1.Count && k < tmp.Count)
-                    {
-                        double x1 = Math.Round(tmp[k].X, 6);
-                        double y1 = Math.Round(tmp[k].Y, 6);
-                        double x2 = Math.Round(p1[k].X, 6);
-                        double y2 = Math.Round(p1[k].Y, 6);
-
-                        if (!x1.Equals(x1) || !y1.Equals(y1))
-                        {
-                            equal = false;
-                        }
-
-                        k++;
-                    }
                 }
+                equal = isSubTab(p1, tmp);
+                if (polygon && !equal){
+                    k = indEq;
+                    tmp.Clear();
+                    while (tmp.Count != p2.Count)
+                    {
+                        tmp.Add(p2[k]);
+                        k --;
+                        if (k < 0) k = p2.Count - 1;
+                    }
+                    equal = isSubTab(p1, tmp);
+
+                }
+                
+            }
+            else equal = false;
            
             
             return equal; 

@@ -19,6 +19,9 @@ namespace Projet2Cp
 
     public partial class canvasUC : UserControl
     {
+
+        private string exoPath = @".\shapesExo.txt";
+
         private List<ShapePair> shapePairs { get; set; } //represents the pairs of shapes
         private Point mousePosition; //mouse position in canvas
         private Point actualPoint;//actual point to draw in 
@@ -91,7 +94,7 @@ namespace Projet2Cp
 
             InitializeComponent();
 
-            dessinsModeExo = chargerDessins(@".\shapesExo.txt");
+            dessinsModeExo = chargerDessins(exoPath);
             this.TB = TB;
             if (MainWindow.modeLibre)
             {
@@ -105,13 +108,16 @@ namespace Projet2Cp
             }
             else
             {
+                
+
                 ((toolBarEnseignant)TB).ensStack.Visibility=Visibility.Collapsed;
                 tb = new TextBlock();
-                tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur" + ((toolBarEnseignant)TB).vld.Text;
+                tb.Text = "Dessine le symétrique du déssin par rapport au repère donné puis clique sur" + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
                 tb.Foreground = Brushes.Black;
                 tb.FontSize = 18;
                 tb.TextAlignment = TextAlignment.Center;
                 niv.nivStack.Children.Add(tb);
+                DockPanel.SetDock(tb, Dock.Bottom);
                 tb.Background=Brushes.White;
                 Panel.SetZIndex(tb,122);
 
@@ -324,7 +330,10 @@ namespace Projet2Cp
                 if (MainWindow.modeLibre) shapePairs[i].jointLinesGen();
                 else
                 {
-                    if ( shapePairs[0].sym.Visibility == Visibility.Visible) shapePairs[0].jointLinesGen();
+                    if (shapePairs[0].sym != null)
+                    {
+                        if ((shapePairs[0].sym.Visibility == Visibility.Visible)) shapePairs[0].jointLinesGen();
+                    }
                 }
             }
         }
@@ -1231,7 +1240,7 @@ namespace Projet2Cp
         {
             clear();
             isEditing = true;
-            tb.Text = "Veuillez créer UNE forme, selectionner le repère de symetrie, Puis cliquer sur Confirmer.";
+            tb.Text = "Veuillez créer UNE forme, selectionner le repère de symetrie, Puis cliquer sur \"Confirmer\".";
             tb.Foreground = Brushes.Red;
             ((toolBarEnseignant)TB).vld.Text = "Confirmer";
             ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Visible;
@@ -1244,6 +1253,8 @@ namespace Projet2Cp
 
         private void canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            canvas.Children.Remove(centreSym);
+            centresym = null;
             switch (true)
             {
                 case true when (bool)horiz.IsChecked:
@@ -1341,17 +1352,17 @@ namespace Projet2Cp
                     int ind = niv.Selected() + 1;
 
                     if (shp is Polygon)
-                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(),new Point(canvas.ActualWidth*0.5 , canvas.ActualHeight*0.5)), ind);
+                        Utili.strTofile(exoPath, Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5),step), ind);
                     else
-                        Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5)), ind);
-                    dessinsModeExo = chargerDessins(@".\shapesExo.txt");
+                        Utili.strTofile(exoPath, Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5),step), ind); ;
+                    dessinsModeExo = chargerDessins(exoPath);
                     MessageBox.Show("Dessin modifié avec succès!");
                     canvas.Children.Remove(tb);
                     ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Collapsed;
                     niv.IsEnabled = true;
                     ((toolBarEnseignant)TB).vld.Text = "Valider";
                     isEditing = false;
-                    tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur"+ ((toolBarEnseignant)TB).vld.Text;
+                    tb.Text = "Dessine le symétrique du déssin par rapport au repère donné puis clique sur"+"\""+ ((toolBarEnseignant)TB).vld.Text + "\"";
                     tb.Foreground = Brushes.Black;
                     ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
 
@@ -1393,7 +1404,7 @@ namespace Projet2Cp
                         
                         if (shapePairs[1].origin is Polygon) p1 = ((Polygon)shapePairs[1].origin).Points;
                         else p1 = ((Polyline)shapePairs[1].origin).Points;
-                        if (isSubTable(p1, p2 ,polygon))
+                        if (isSym(p1, p2 ,polygon))
                         {
                             shapePairs[0].sym.Stroke = Brushes.Green;
                             MessageBox.Show("Bravo!");
@@ -1431,7 +1442,7 @@ namespace Projet2Cp
             ((toolBarEnseignant)TB).vld.Text = "Valider";
             isEditing = false;
             dessinerDessinNum(niv.Selected());
-            tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur" + ((toolBarEnseignant)TB).vld.Text;
+            tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur " + "\""+((toolBarEnseignant)TB).vld.Text + "\"";
             tb.Foreground = Brushes.Black;
             ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
 
@@ -1446,64 +1457,73 @@ namespace Projet2Cp
         }
         public void dessinerDessinNum(int i)
         {
-            step = 25;
-            gridDrawing(step);
-            
-            
-            dessinExo poly = dessinsModeExo[i];
-            Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
-            selectAxe(poly.repere);
-            checkAxes();
-            ShapePair shep;
-            if (poly.type)
+            try
             {
-                polygone = (Polygon)poly.shape;
-                polygone.MouseEnter += shapeMouseEnter;
-                polygone.MouseEnter += shapeMouseEnter;
-                polygone.MouseLeave += shapeMouseLeave;
-                shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
-                shep.adaptToGrid(poly.oldCenter, newCenter);
-                shapePairs.Add(shep);
-                cleaningTheMess();
 
-            }
-            else
-            {
-                polyline = (Polyline)poly.shape;
-                polyline.MouseEnter += shapeMouseEnter;
-                polyline.MouseLeave += shapeMouseLeave;
-                canvas.Children.Add(polyline);
-                shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
-                shep.adaptToGrid(poly.oldCenter, newCenter);
-                shapePairs.Add(shep);
-                cleaningTheMess();
-            }
 
-            // resave the shape in the file
-            Shape shp = shapePairs[0].origin;
-            int ind = niv.Selected() + 1;
-            if (shp is Polygon)
-                Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5)), ind);
-            else
-                Utili.strTofile(@".\shapesExo.txt", Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5)), ind);
-            dessinsModeExo = chargerDessins(@".\shapesExo.txt");
-
-            if (axeSym != null || centresym != null)
-            {
-                if (isAxial)
+                dessinExo poly = dessinsModeExo[i];
+                step = poly.step;
+                gridDrawing(step);
+                Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
+                selectAxe(poly.repere);
+                checkAxes();
+                ShapePair shep;
+                if (poly.type)
                 {
-                    axeSym.Stroke = Brushes.Red;
-                    axeSym.StrokeThickness = 3;
+                    polygone = (Polygon)poly.shape;
+                    polygone.MouseEnter += shapeMouseEnter;
+                    polygone.MouseEnter += shapeMouseEnter;
+                    polygone.MouseLeave += shapeMouseLeave;
+                    shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                    shep.adaptToGrid(poly.oldCenter, newCenter);
+                    shapePairs.Add(shep);
+                    cleaningTheMess();
 
-                    shapePairs[0].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
                 }
-
                 else
                 {
-                    shapePairs[0].cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
+                    polyline = (Polyline)poly.shape;
+                    polyline.MouseEnter += shapeMouseEnter;
+                    polyline.MouseLeave += shapeMouseLeave;
+                    canvas.Children.Add(polyline);
+                    shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                    shep.adaptToGrid(poly.oldCenter, newCenter);
+                    shapePairs.Add(shep);
+                    cleaningTheMess();
                 }
-             hideSym(shapePairs[0]);
 
+                // resave the shape in the file
+                Shape shp = shapePairs[0].origin;
+                int ind = niv.Selected() + 1;
+                if (shp is Polygon)
+                    Utili.strTofile(exoPath, Utili.CanvasToString(((Polygon)shp).Points, ((Polygon)shp).Fill, ((Polygon)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step), ind);
+                else
+                    Utili.strTofile(exoPath, Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step), ind);
+                dessinsModeExo = chargerDessins(exoPath);
+
+                if (axeSym != null || centresym != null)
+                {
+                    if (isAxial)
+                    {
+                        axeSym.Stroke = Brushes.Red;
+                        axeSym.StrokeThickness = 3;
+
+                        shapePairs[0].aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
+                    }
+
+                    else
+                    {
+                        shapePairs[0].cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
+                    }
+                    hideSym(shapePairs[0]);
+
+                }
+            }catch (Exception ex) {
+               
+            }
+            finally
+            {
+                
             }
 
 

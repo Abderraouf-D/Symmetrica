@@ -28,7 +28,20 @@ namespace Projet2Cp
            
         }
 
-
+        public void hideNiv(int k)
+        {
+            switch (k)
+            {
+                case 1: b1.Visibility = b2.Visibility = b3.Visibility = Visibility.Collapsed;
+                    break;
+                case 2: b4.Visibility = b5.Visibility = b6.Visibility = Visibility.Collapsed;
+                    break;
+                case 3:
+                    b7.Visibility = b8.Visibility = b9.Visibility = Visibility.Collapsed;
+                    break;
+                default:   break; 
+            }
+        }
         public int Selected()
         {
             foreach(RadioButton elem in grid.Children)
@@ -44,6 +57,10 @@ namespace Projet2Cp
 
             
         }
-        
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            //grid.Width = nivStack.ActualWidth;
+        }
     }
 }

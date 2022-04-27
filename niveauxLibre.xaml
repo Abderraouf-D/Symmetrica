@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projet2Cp"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
 
     <UserControl.Resources>
 
@@ -110,9 +111,9 @@
 
     </UserControl.Resources>
 
-    <StackPanel x:Name="nivStack">
-       
-            <Grid x:Name="grid" Height="45"  >
+    <DockPanel x:Name="nivStack">
+        
+        <Grid DockPanel.Dock="Top" x:Name="grid" Height="45"  HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -137,7 +138,7 @@
                 <RadioButton x:Name="b9" Grid.Column="8" Style="{StaticResource s3}" Content="Dessin 3"/>
             </Grid>
         
-        <Grid  Height="25"  >
+        <Grid DockPanel.Dock="Top" Height="25"  >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -154,5 +155,9 @@
                 <TextBlock FontSize="9" Text="NIVEAU 3"  Height="13" HorizontalAlignment="Center"/>
             </Border>
         </Grid>
-    </StackPanel>
+       
+
+
+
+    </DockPanel>
 </UserControl>
