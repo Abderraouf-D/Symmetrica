@@ -1,10 +1,37 @@
 ﻿<ResourceDictionary x:Class="Projet2Cp.Res" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    
-    
-    
-    
+    <FontFamily x:Key="BwStretchBlack">./Fonts/BwStretch-Black.otf#BwStretch</FontFamily>
+    <FontFamily x:Key="BwStretchBold">./Fonts/BwStretch-Bold.otf#BwStretch</FontFamily>
+    <FontFamily x:Key="BwStretchRegular">./Fonts/BwStretch-Regular.otf#BwStretch</FontFamily>
+    <FontFamily x:Key="BwStretchThin">./Fonts/BwStretch-Thin.otf#BwStretch</FontFamily>
+    <FontFamily x:Key="BwStretchMedium">./Fonts/BwStretch-Medium.otf#BwStretch</FontFamily>
+    <FontFamily x:Key="PoppinsBlack">/Fonts/Poppins-Black.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsBold">/Fonts/Poppins-Bold.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsExtraBold">/Fonts/Poppins-ExtraBold.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsExtraLight">/Fonts/Poppins-ExtraLight.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsLight">/Fonts/Poppins-Light.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsMedium">/Fonts/Poppins-Medium.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsRegular">/Fonts/Poppins-Regular.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsSemiBold">/Fonts/Poppins-SemiBold.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="PoppinsThin">/Fonts/Poppins-Thin.ttf#Poppins</FontFamily>
+    <FontFamily x:Key="VigaRegular">/Fonts/Viga-Regular.ttf#Viga</FontFamily>
+    <Style TargetType="Border" x:Key="RoundMe">
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <Style  TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="White" />

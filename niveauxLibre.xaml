@@ -20,9 +20,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
-                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}" >
-                            <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                        <Border Padding="0" CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}" >
+                            <Grid   >
+                                <ContentPresenter  x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -111,9 +111,9 @@
 
     </UserControl.Resources>
 
-    <DockPanel x:Name="nivStack">
+    <StackPanel x:Name="nivStack">
         
-        <Grid DockPanel.Dock="Top" x:Name="grid" Height="45"  HorizontalAlignment="Stretch">
+        <Grid  x:Name="grid" Height="45"  HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -127,18 +127,99 @@
                 </Grid.ColumnDefinitions>
 
 
-                <RadioButton x:Name="b1" Grid.Column="0" Style="{StaticResource s1}" Content="Dessin 1" IsChecked="true"/>
-                <RadioButton x:Name="b2" Grid.Column="1" Style="{StaticResource s1}" Content="Dessin 2"/>
-                <RadioButton x:Name="b3" Grid.Column="2" Style="{StaticResource s1}" Content="Dessin 3"/>
-                <RadioButton x:Name="b4" Grid.Column="3" Style="{StaticResource s2}" Content="Dessin 1"/>
-                <RadioButton x:Name="b5" Grid.Column="4" Style="{StaticResource s2}" Content="Dessin 2"/>
-                <RadioButton x:Name="b6" Grid.Column="5" Style="{StaticResource s2}" Content="Dessin 3"/>
-                <RadioButton x:Name="b7" Grid.Column="6" Style="{StaticResource s3}" Content="Dessin 1"/>
-                <RadioButton x:Name="b8" Grid.Column="7" Style="{StaticResource s3}" Content="Dessin 2"/>
-                <RadioButton x:Name="b9" Grid.Column="8" Style="{StaticResource s3}" Content="Dessin 3"/>
-            </Grid>
+            <RadioButton x:Name="b1" Grid.Column="0" Style="{StaticResource s1}"  IsChecked="true">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                     </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 1"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b2" Grid.Column="1" Style="{StaticResource s1}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 2"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b3" Grid.Column="2" Style="{StaticResource s1}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 3"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b4" Grid.Column="3" Style="{StaticResource s2}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 1"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b5" Grid.Column="4" Style="{StaticResource s2}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 2"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b6" Grid.Column="5" Style="{StaticResource s2}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 3"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b7" Grid.Column="6" Style="{StaticResource s3}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 1"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b8" Grid.Column="7" Style="{StaticResource s3}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 2"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="b9" Grid.Column="8" Style="{StaticResource s3}" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Text="Dessin 3"/>
+
+                </Grid>
+            </RadioButton>
+        </Grid>
         
-        <Grid DockPanel.Dock="Top" Height="25"  >
+        <Grid  Height="25"  >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -159,5 +240,5 @@
 
 
 
-    </DockPanel>
+    </StackPanel>
 </UserControl>

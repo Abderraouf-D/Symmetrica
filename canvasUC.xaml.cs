@@ -117,7 +117,6 @@ namespace Projet2Cp
                 tb.FontSize = 18;
                 tb.TextAlignment = TextAlignment.Center;
                 niv.nivStack.Children.Add(tb);
-                DockPanel.SetDock(tb, Dock.Bottom);
                 tb.Background=Brushes.White;
                 Panel.SetZIndex(tb,122);
 
@@ -278,7 +277,7 @@ namespace Projet2Cp
             else
                 alpha = 1.25;
 
-            if (step * alpha > 50 || step * alpha < 10)
+            if (step * alpha > 50 || step * alpha < 15)
                 return;
             step *= alpha;
             gridDrawing(step);

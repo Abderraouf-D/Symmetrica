@@ -164,6 +164,85 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\BwStretch-Black.otf" />
+    <Resource Include="Fonts\BwStretch-Bold.otf" />
+    <Resource Include="Fonts\BwStretch-Book.otf" />
+    <Resource Include="Fonts\BwStretch-Heavy.otf" />
+    <Resource Include="Fonts\BwStretch-Light.otf" />
+    <Resource Include="Fonts\BwStretch-Medium.otf" />
+    <Resource Include="Fonts\BwStretch-Regular.otf" />
+    <Resource Include="Fonts\BwStretch-Thin.otf" />
+    <None Include="Fonts\BwStretch\Bw Stretch\Bw_Stretch_Font_Specimen.pdf" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Black.eot" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Bold.eot" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Book.eot" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Heavy.eot" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Light.eot" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Medium.eot" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Regular.eot" />
+    <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Thin.eot" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Black.otf" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Bold.otf" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Book.otf" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Heavy.otf" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Light.otf" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Medium.otf" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Regular.otf" />
+    <Resource Include="Fonts\BwStretch\Bw Stretch\otf\BwStretch-Thin.otf" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Black.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Bold.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Book.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Heavy.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Light.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Medium.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Regular.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Thin.woff2" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Black.woff" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Bold.woff" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Book.woff" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Heavy.woff" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Light.woff" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Medium.woff" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Regular.woff" />
+    <None Include="Fonts\BwStretch\Bw Stretch\woff\BwStretch-Thin.woff" />
+    <Resource Include="Fonts\Poppins-Black.ttf" />
+    <Resource Include="Fonts\Poppins-BlackItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Bold.ttf" />
+    <Resource Include="Fonts\Poppins-BoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraBold.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraLight.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Italic.ttf" />
+    <Resource Include="Fonts\Poppins-Light.ttf" />
+    <Resource Include="Fonts\Poppins-LightItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Medium.ttf" />
+    <Resource Include="Fonts\Poppins-MediumItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Regular.ttf" />
+    <Resource Include="Fonts\Poppins-SemiBold.ttf" />
+    <Resource Include="Fonts\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Thin.ttf" />
+    <Resource Include="Fonts\Poppins-ThinItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-Black.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-BlackItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-Bold.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-BoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-ExtraBold.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-ExtraLight.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-Italic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-Light.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-LightItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-Medium.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-MediumItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-Regular.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-SemiBold.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-Thin.ttf" />
+    <Resource Include="Fonts\Poppins\Poppins-ThinItalic.ttf" />
+    <Resource Include="Fonts\Viga-Regular.ttf" />
+    <Resource Include="Fonts\Viga\Viga-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,9 +279,33 @@
   <ItemGroup>
     <Resource Include="icons\color.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="cursors\color.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Acceuil\clipboard.png" />
+    <Resource Include="icons\Acceuil\Cours Jaune.png" />
+    <Resource Include="icons\Acceuil\Cours.png" />
+    <Resource Include="icons\Acceuil\Ellipse.png" />
+    <Resource Include="icons\Acceuil\Exercices Jaune.png" />
+    <Resource Include="icons\Acceuil\Exercices.png" />
+    <Resource Include="icons\Acceuil\files.png" />
+    <Resource Include="icons\Acceuil\floppy-disk.png" />
+    <Resource Include="icons\Acceuil\folder.png" />
+    <Resource Include="icons\Acceuil\left arrow.png" />
+    <Resource Include="icons\Acceuil\Libre Jaune.png" />
+    <Resource Include="icons\Acceuil\Libre.png" />
+    <Resource Include="icons\Acceuil\log-out 1.png" />
+    <Resource Include="icons\Acceuil\log-out.png" />
+    <Resource Include="icons\Acceuil\question %281%29.png" />
+    <Resource Include="icons\Acceuil\right arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\Poppins\OFL.txt" />
+    <Resource Include="Fonts\Viga\OFL.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
