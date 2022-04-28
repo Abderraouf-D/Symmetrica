@@ -44,7 +44,20 @@ namespace Projet2Cp
             
 
         }
+        public string selectedAxe()
+        {
+            foreach (RadioButton elem in libreStack.Children)
+            {
+                if (elem.IsChecked != null)
+                {
+                    if ((bool)(elem).IsChecked) return elem.Name;
 
-      
+                }
+
+            }
+            return "none";
+        }
+
+
     }
 }

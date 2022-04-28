@@ -15,10 +15,7 @@ namespace Projet2Cp
         Canvas canvas;
         public Shape origin { get; set; }
         public List<Ellipse> oEllipse = new List<Ellipse>();
-
         public List<Line> jointLines { get; set; }
-
-        private Nullable<Point> spoint; //Will represent the current point of symmetry between the two shapes
         public Shape sym { get; set; }
         public List<Ellipse> sEllipse = new List<Ellipse>();
 

@@ -23,8 +23,16 @@
                 MouseMove="canvas_MouseMove"
                 MouseRightButtonDown="canvas_MouseRightButtonDown"
                 MouseLeftButtonUp="canvas_MouseLeftButtonUp"   SizeChanged="canvas_SizeChanged">
-            <TextBlock x:Name="txt" FontSize="15"  Canvas.Left="0" Canvas.Top="0"/>
-        </Canvas>
             
+           
+        </Canvas>
+        <StackPanel Margin="5" VerticalAlignment="Top" HorizontalAlignment="Right"  Height="50" Width="90" Panel.ZIndex="100"  Orientation="Horizontal" >
+            <Button Cursor="Arrow" Click="save_Click" ToolTip="Sauvegarder le dessin" Margin="5,0,0,0"     Width="40" Height="40" x:Name="save" >
+                <Image Margin="2" Source="./icons/floppy-disk.png" />
+            </Button>
+            <Button Cursor="Arrow" Click="upload_Click"  ToolTip="Charger un dessin" Margin="5,0,0,0"     Width="40" Height="40" x:Name="upload" >
+                <Image Margin="2" Source="./icons/upload.png" />
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

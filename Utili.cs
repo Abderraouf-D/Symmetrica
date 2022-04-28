@@ -22,7 +22,7 @@ namespace Projet2Cp
         }
         public static String CanvasToString(PointCollection pts, Brush rempli, Brush trace,string repere,Point oldCenter,double step) {
 
-
+            if (pts == null) return null;
 
             return String.Format("{0}-{1}-{2}-{3}-{4}-{5}-{6}", rempli == null, pts.ToString(), (rempli != null)? rempli.ToString():null, trace.ToString(),repere,oldCenter.ToString(),step.ToString());  
         } 

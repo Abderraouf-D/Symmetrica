@@ -307,5 +307,14 @@
     <Resource Include="Fonts\Poppins\OFL.txt" />
     <Resource Include="Fonts\Viga\OFL.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\floppy-disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

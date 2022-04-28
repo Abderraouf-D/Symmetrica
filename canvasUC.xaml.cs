@@ -1,6 +1,8 @@
-﻿using Syncfusion.UI.Xaml.Diagram;
+﻿using Microsoft.Win32;
+using Syncfusion.UI.Xaml.Diagram;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +88,7 @@ namespace Projet2Cp
         //Cursor colorate = new Cursor(Application.GetResourceStream(new Uri("C://Users//raouf//Desktop//Projet2Cp//cursors//color.cur")).Stream);
         bool answer = false;
 
+        String fileDrawing;
 
         private List<TextBlock> nums = new List<TextBlock>();
         public canvasUC(UserControl TB, niveauxLibre niv)
@@ -1448,6 +1451,8 @@ namespace Projet2Cp
 
         }
 
+   
+
         public void Niv_Click(object sender, RoutedEventArgs e)
         {
             answer = false;
@@ -1601,6 +1606,74 @@ namespace Projet2Cp
             }
         }
 
+        //////////////////////////////////////////////// save & Upload ///////////////////
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDrawing();
 
+        }
+
+        private void upload_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public bool OpenDrawing()
+        {
+            
+            OpenFileDialog dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() == true)
+            {
+                fileDrawing= dlg.FileName;
+                string[] shapes = File.ReadAllLines(fileDrawing);
+                
+                foreach(string strShape in shapes)
+                {
+                   
+                }
+                fileDrawing = null;
+                return true;
+            }
+            fileDrawing = null;
+            return false;
+        }
+        public bool SaveDrawing()
+        {
+            fileDrawing = "dessin.txt";
+            if (string.IsNullOrEmpty(fileDrawing)) return SaveDocumentAs();
+            else
+            {
+                List<string> list = new List<string>();
+                string shapeStr;
+                foreach(ShapePair shp in shapePairs)
+                {
+                    if (shp.origin is Polygon) {    
+                       shapeStr=Utili.CanvasToString(((Polygon)shp.origin).Points, ((Polygon)shp.origin).Fill, ((Polygon)shp.origin).Stroke, ((toolBarLibreLibre)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step) + "-"+(shp.sym==null).ToString() ;
+                     }
+                    else
+                    {
+                        shapeStr = Utili.CanvasToString(((Polyline)shp.origin).Points, ((Polyline)shp.origin).Fill, ((Polyline)shp.origin).Stroke, ((toolBarLibreLibre)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step) + "-"+(shp.sym == null).ToString();
+
+                    }
+                    list.Add(shapeStr);
+                    string[] data = list.ToArray();
+                    File.WriteAllLines(fileDrawing, data);
+                }
+                
+                return true;
+            }
+        }
+        public bool SaveDocumentAs()
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            if (dlg.ShowDialog() == true)
+            {
+                fileDrawing = dlg.FileName;
+                return SaveDrawing();
+            }
+            return false;
+        }
     }
 }
+
+

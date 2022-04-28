@@ -23,7 +23,7 @@
             <ColumnDefinition   Width="9*"/>
 
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="50"   Fill="Gray"  />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="50"   Fill="LightGray"  />
         <Viewbox HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" Margin="8">
             <Button Background="Transparent" BorderBrush="Transparent" Click="ButtonClickLogout" ClickMode="Press">
                 <Image Source="./icons/Acceuil/log-out.png" Height="20" Width="20" />
@@ -136,17 +136,22 @@
         </Viewbox>
         <Grid Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition  Height="*"/>
+
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
+            <Border CornerRadius="7" BorderThickness="2" BorderBrush="Black" Background="White" Width="Auto" Height="Auto">
+                <Image Source="./icons/logo.png"/>
+            </Border>
 
-            <Rectangle Fill="#52DEA1" Width="Auto" Height="Auto"/>
+            <Rectangle Fill="#1cb81c" Width="Auto" Height="Auto" Grid.Row="1"/>
 
 
 
-            <Button Background="Transparent" Height="Auto" Grid.Row="0" Click="ButtonClickCours" ClickMode="Press" >
+            <Button Background="Transparent" Height="Auto" Grid.Row="1" Click="ButtonClickCours" ClickMode="Press" >
 
                 <Viewbox Margin="40" Stretch="Uniform">
                     <StackPanel>
@@ -161,9 +166,9 @@
                 </Viewbox>
             </Button>
 
-            <Rectangle Fill="#52DEA1" Width="Auto" Height="Auto" Grid.Row="1"/>
+            <Rectangle Fill="#1cb81c" Width="Auto" Height="Auto" Grid.Row="2"/>
 
-            <Button x:Name="ButtonExo" Click="ButtonClickExo" ClickMode="Press" Background="Transparent" Height="Auto" Grid.Row="1">
+            <Button x:Name="ButtonExo" Click="ButtonClickExo" ClickMode="Press" Background="Transparent" Height="Auto" Grid.Row="2">
                 <Viewbox Margin="30" Stretch="Uniform">
                     <StackPanel >
                         <Image x:Name="ExoImg" Source="./icons/Acceuil/Exercices.png" Margin="1" Width="12" Height="12"/>
@@ -176,9 +181,9 @@
                 </Viewbox>
             </Button>
 
-            <Rectangle Fill="#52DEA1" Width="Auto" Height="Auto" Grid.Row="2"/>
+            <Rectangle Fill="#1cb81c" Width="Auto" Height="Auto" Grid.Row="3"/>
 
-            <Button Background="Transparent" Grid.Row="2" Click="ButtonClickLibre" ClickMode="Press" >
+            <Button Background="Transparent" Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
                 <Viewbox Stretch="Uniform" Margin="40">
                     <StackPanel>
                         <Image x:Name="LibreImg" Source="./icons/Acceuil/Libre.png" Margin="1" Width="12" Height="12"/>
@@ -192,8 +197,8 @@
                 </Viewbox>
 
             </Button>
-            <Viewbox HorizontalAlignment="Right" Grid.Row="0">
-                <Polygon x:Name="TriangleCours" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="0,131,-36,110" Grid.Row="0">
+            <Viewbox HorizontalAlignment="Right" Grid.Row="1">
+                <Polygon x:Name="TriangleCours" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="0,131,-36,110" Grid.Row="1">
                     <Polygon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -204,8 +209,8 @@
                     </Polygon.RenderTransform>
                 </Polygon>
             </Viewbox>
-            <Viewbox HorizontalAlignment="Right" Grid.Row="1">
-                <Polygon x:Name="TriangleExo" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.513,0.486" Margin="0,131,-36,110" Grid.Row="1">
+            <Viewbox HorizontalAlignment="Right" Grid.Row="2">
+                <Polygon x:Name="TriangleExo" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.513,0.486" Margin="0,131,-36,110" Grid.Row="2">
                     <Polygon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -216,8 +221,8 @@
                     </Polygon.RenderTransform>
                 </Polygon>
             </Viewbox>
-            <Viewbox HorizontalAlignment="Right" Stretch="Uniform" Grid.Row="2">
-                <Polygon x:Name="TriangleLibre" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="0,131,-36,110" Grid.Row="2">
+            <Viewbox HorizontalAlignment="Right" Stretch="Uniform" Grid.Row="3">
+                <Polygon x:Name="TriangleLibre" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="0,131,-36,110" Grid.Row="3">
                     <Polygon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
