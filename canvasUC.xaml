@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </UserControl.Resources>-->
     <Grid>
-        
+        <Border x:Name="cnvBorder" Background="White">
         <Canvas x:Name="canvas"
                 
                 
@@ -26,7 +26,11 @@
             
            
         </Canvas>
-        <StackPanel Margin="5" VerticalAlignment="Top" HorizontalAlignment="Right"  Height="50" Width="90" Panel.ZIndex="100"  Orientation="Horizontal" >
+        </Border>
+        <StackPanel Margin="5" VerticalAlignment="Top" HorizontalAlignment="Right"  Height="50" Width="150" Panel.ZIndex="100"  Orientation="Horizontal" >
+            <Button Cursor="Arrow" Click="exportPng_Click"  ToolTip="Exporter en png" Margin="5,0,0,0"     Width="40" Height="40" x:Name="exportPng" >
+                <Image Margin="2" Source="./icons/export-file.png" />
+            </Button>
             <Button Cursor="Arrow" Click="save_Click" ToolTip="Sauvegarder le dessin" Margin="5,0,0,0"     Width="40" Height="40" x:Name="save" >
                 <Image Margin="2" Source="./icons/floppy-disk.png" />
             </Button>

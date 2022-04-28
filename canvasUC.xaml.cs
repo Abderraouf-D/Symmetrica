@@ -16,6 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Projet2Cp.Utili;
+using Ookii;
+using Ookii.Dialogs.Wpf;
+
 namespace Projet2Cp
 {
 
@@ -112,7 +115,8 @@ namespace Projet2Cp
             else
             {
                 
-
+                upload.Visibility=Visibility.Collapsed;
+                save.Visibility=Visibility.Collapsed;
                 ((toolBarEnseignant)TB).ensStack.Visibility=Visibility.Collapsed;
                 tb = new TextBlock();
                 tb.Text = "Dessine le symétrique du déssin par rapport au repère donné puis clique sur" + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
@@ -352,7 +356,8 @@ namespace Projet2Cp
 
             res.Viewbox = new Rect(0, 0, step, step);
             res.Viewport = new Rect(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5, step, step);
-
+            GD.Brush = Brushes.White;
+            
 
             res.TileMode = TileMode.Tile;
             res.ViewportUnits = BrushMappingMode.Absolute;
@@ -396,6 +401,8 @@ namespace Projet2Cp
                 
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
+                Panel.SetZIndex(num, -10);
+
                 Canvas.SetLeft(num, marche-10);
                 Canvas.SetTop(num, canvas.ActualHeight / 2 );
 
@@ -418,6 +425,8 @@ namespace Projet2Cp
                 marche -= step;
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
+                Panel.SetZIndex(num, -10);
+
                 Canvas.SetLeft(num, marche - 14);
                 Canvas.SetTop(num, canvas.ActualHeight / 2);
                 i--;
@@ -434,11 +443,13 @@ namespace Projet2Cp
                     IsEnabled = false,
 
                     Foreground = Brushes.Green,
+                    
 
                 };
                 marche += step;
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
+                Panel.SetZIndex(num, -10);
                 Canvas.SetRight(num, canvas.ActualWidth / 2 + 3);
                 Canvas.SetTop(num, marche );
 
@@ -462,6 +473,8 @@ namespace Projet2Cp
                 marche -= step;
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
+                Panel.SetZIndex(num, -10);
+
                 Canvas.SetRight(num, canvas.ActualWidth / 2 +3);
                 Canvas.SetTop(num, marche);
                 
@@ -1606,16 +1619,87 @@ namespace Projet2Cp
             }
         }
 
+
+
         //////////////////////////////////////////////// save & Upload ///////////////////
+
+        public void ExportToPng(Uri path, Canvas surface)
+        {
+            if (path == null) return;
+           
+            Size size = new Size(surface.ActualWidth, surface.ActualHeight);
+           
+            surface.Measure(size);
+            surface.Arrange(new Rect(size));
+            surface.UpdateLayout();
+
+            
+            RenderTargetBitmap renderBitmap =
+              new RenderTargetBitmap(
+                (int)size.Width,
+                (int)size.Height,
+                96d,
+                96d,
+                PixelFormats.Pbgra32);
+            renderBitmap.Render(cnvBorder);
+
+            
+            using (FileStream outStream = new FileStream(path.LocalPath, FileMode.Create))
+            {
+                // Use png encoder for our data
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                // push the rendered bitmap to it
+                encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                // save the data to the stream
+                encoder.Save(outStream);
+            }
+            
+         
+        }
+
+
+
+        private void exportPng_Click(object sender, RoutedEventArgs e)
+        {
+            string path;
+            string fileDrawing=""; 
+            
+                int i = 0;
+                path = ShowFolderBrowserDialog();
+            fileDrawing = path + "/MonDessinImage" + i.ToString() + ".png";
+
+            while (File.Exists(fileDrawing))
+                {
+                    fileDrawing = path + "/MonDessinImage" + i.ToString() + ".png";
+                    i++;
+                }
+            ExportToPng(new System.Uri(fileDrawing), canvas);
+
+        }
+
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            SaveDrawing();
+            try
+            {
+                SaveDrawing();
+            }catch (Exception ex)
+            {
+
+            }
+            finally { }
 
         }
 
         private void upload_Click(object sender, RoutedEventArgs e)
         {
+            try { 
+            OpenDrawing();
+             }
+            catch (Exception ex)
+            {
 
+            }
+            finally { }
         }
 
         public bool OpenDrawing()
@@ -1626,10 +1710,65 @@ namespace Projet2Cp
             {
                 fileDrawing= dlg.FileName;
                 string[] shapes = File.ReadAllLines(fileDrawing);
-                
-                foreach(string strShape in shapes)
+                string symIndex = shapes[shapes.Length - 1];
+                dessinExo poly = new dessinExo();
+                string[] newitem = symIndex.Split(';');
+                HashSet<int> indexes = new HashSet<int>();
+                foreach (string item in newitem)
                 {
-                   
+                   if (!string.IsNullOrEmpty(item)) indexes.Add(int.Parse(item));
+                }
+
+                for (int i = 0; i< shapes.Length-1; i++)
+                {
+                    poly.shape = StringToShape(shapes[i], out poly.type,out poly.repere,out poly.oldCenter,out poly.step) ;
+                    step = poly.step;
+                    gridDrawing(step);
+                    Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
+                    selectAxe(poly.repere);
+                    checkAxes();
+                    ShapePair shep;
+                    if (poly.type)
+                    {
+                        polygone = (Polygon)poly.shape;
+                        polygone.MouseEnter += shapeMouseEnter;
+                        polygone.MouseEnter += shapeMouseEnter;
+                        polygone.MouseLeave += shapeMouseLeave;
+                        shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) ;
+                        shep.adaptToGrid(poly.oldCenter, newCenter);
+                        shapePairs.Add(shep);
+                        cleaningTheMess();
+
+                    }
+                    else
+                    {
+                        
+                            polyline = (Polyline)poly.shape;
+                            polyline.MouseEnter += shapeMouseEnter;
+                            polyline.MouseLeave += shapeMouseLeave;
+                            canvas.Children.Add(polyline);
+                            shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) ;
+                            shep.adaptToGrid(poly.oldCenter, newCenter);
+                            shapePairs.Add(shep);
+                            cleaningTheMess();
+                     
+                    }
+
+                    if (indexes.Contains(i))
+                    {
+                        if (isAxial)
+                        {
+                            shep.aSymGen(shapeMouseEnter, shapeMouseLeave, axeSym);
+                        }
+
+                        else
+                        {
+                            shep.cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
+                        }
+                      
+                    }
+
+
                 }
                 fileDrawing = null;
                 return true;
@@ -1637,41 +1776,61 @@ namespace Projet2Cp
             fileDrawing = null;
             return false;
         }
-        public bool SaveDrawing()
+        public void SaveDrawing()
         {
-            fileDrawing = "dessin.txt";
-            if (string.IsNullOrEmpty(fileDrawing)) return SaveDocumentAs();
-            else
-            {
+            string path; 
+            if (string.IsNullOrEmpty(fileDrawing)) {
+                int i = 0;
+                path = ShowFolderBrowserDialog();
+                fileDrawing = path + "/MonDessin" + i.ToString() + ".sym";
+                while (File.Exists(fileDrawing)) {
+                    fileDrawing = path + "/MonDessin" + i.ToString() + ".sym";
+                    i++;
+                }
+            }
                 List<string> list = new List<string>();
+                string listSym="";
                 string shapeStr;
                 foreach(ShapePair shp in shapePairs)
                 {
                     if (shp.origin is Polygon) {    
-                       shapeStr=Utili.CanvasToString(((Polygon)shp.origin).Points, ((Polygon)shp.origin).Fill, ((Polygon)shp.origin).Stroke, ((toolBarLibreLibre)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step) + "-"+(shp.sym==null).ToString() ;
+                       shapeStr=Utili.CanvasToString(((Polygon)shp.origin).Points, ((Polygon)shp.origin).Fill, ((Polygon)shp.origin).Stroke, ((toolBarLibreLibre)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step)  ;
                      }
                     else
                     {
-                        shapeStr = Utili.CanvasToString(((Polyline)shp.origin).Points, ((Polyline)shp.origin).Fill, ((Polyline)shp.origin).Stroke, ((toolBarLibreLibre)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step) + "-"+(shp.sym == null).ToString();
+                        shapeStr = Utili.CanvasToString(((Polyline)shp.origin).Points, ((Polyline)shp.origin).Fill, ((Polyline)shp.origin).Stroke, ((toolBarLibreLibre)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5), step) ;
 
                     }
                     list.Add(shapeStr);
-                    string[] data = list.ToArray();
-                    File.WriteAllLines(fileDrawing, data);
+                    
+
+                    if (shp.sym != null)
+                    {
+                        listSym+= shapePairs.IndexOf(shp).ToString()+ ";";
+                    }
+                    
                 }
-                
-                return true;
-            }
+                list.Add(listSym);
+                string[] data = list.ToArray();
+                File.WriteAllLines(fileDrawing, data);
+               
+            
         }
-        public bool SaveDocumentAs()
+       
+
+        private string ShowFolderBrowserDialog()
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            if (dlg.ShowDialog() == true)
+            var dialog = new VistaFolderBrowserDialog();
+            dialog.Description = "Veuillez choisir un dossier:";
+            dialog.UseDescriptionForTitle = true; // This applies to the Vista style dialog only, not the old dialog.
+
+            
+
+            if ((bool)dialog.ShowDialog())
             {
-                fileDrawing = dlg.FileName;
-                return SaveDrawing();
+                return dialog.SelectedPath;
             }
-            return false;
+            return null;
         }
     }
 }
