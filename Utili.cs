@@ -169,14 +169,17 @@ namespace Projet2Cp
             return true;
 
         }
-        public static bool isSym( PointCollection p1 , PointCollection p2 , bool polygon /*, Point <> next*/)
+        public static bool isSym(PointCollection p4, PointCollection p3, bool polygon,bool move  , Point  next)
         {
-            //p2.Add(next);
+            PointCollection p2 = new PointCollection(p3);
+            PointCollection p1 = new PointCollection(p4);
+            if ((p1[p1.Count-1].Equals(  p1[0])) && polygon) p1.RemoveAt(p1.Count-1);
+            if (move )  p2.Add(next);
             bool equal = true ;
             
             
-                if (p1.Count > p2.Count) return false;
-
+            if (p1.Count > p2.Count) return false;
+            if ((p1.Count == 1)&& p2.Contains(p1[0])) return true;
             if (p1.Count > 0)
             {
                 PointCollection tmp = new PointCollection();

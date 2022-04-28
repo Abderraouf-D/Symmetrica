@@ -15,20 +15,24 @@ namespace Projet2Cp
         Canvas canvas;
         public Shape origin { get; set; }
         public List<Ellipse> oEllipse = new List<Ellipse>();
+        public List<TextBlock> otb = new List<TextBlock>();
         public List<Line> jointLines { get; set; }
         public Shape sym { get; set; }
         public List<Ellipse> sEllipse = new List<Ellipse>();
+        public List<TextBlock> stb = new List<TextBlock>();
 
         MouseEventHandler shapeMouseEnter;
         MouseEventHandler shapeMouseLeave;
+        MouseButtonEventHandler edit;
 
         public bool IsTransformable { get; set; }
         public bool removable { get; set; }
+        
         //============================================================================================================================//
         //                                              TESTING CONSTRUCOR                                                            //
         //============================================================================================================================//
 
-        public ShapePair(Shape origin, Canvas canvas, MouseEventHandler shapeMouseEnter, MouseEventHandler shapeMouseLeave)
+        public ShapePair(Shape origin, Canvas canvas, MouseEventHandler shapeMouseEnter, MouseEventHandler shapeMouseLeave, MouseButtonEventHandler edit)
         {
             IsTransformable = true;
             removable = false;
@@ -42,6 +46,7 @@ namespace Projet2Cp
                 removable = true;
             this.shapeMouseEnter = shapeMouseEnter;
             this.shapeMouseLeave = shapeMouseLeave;
+            this.edit = edit;
 
             drawEllipses(true);
 
@@ -115,7 +120,8 @@ namespace Projet2Cp
             }
         }
 
-
+        
+                                                            //(HAS BEEN MODIFIED)//
         //============================================================================================================================//
         //                                                      RemoveSegment                                                         //
         //============================================================================================================================//
@@ -135,9 +141,15 @@ namespace Projet2Cp
                     if (origin is Polyline)
                         if (((Polyline)origin).Points.Count - 2 == indexSegment)
                             indexSegment++;
+                    
                     shapepc.RemoveAt(indexSegment);
+                    
                     canvas.Children.Remove(oEllipse[indexSegment]);
                     oEllipse.RemoveAt(indexSegment);
+                    
+                    canvas.Children.Remove(otb[indexSegment]);
+                    otb.RemoveAt(indexSegment);
+                    
                     if (shapepc.Count == 2)
                         removable = true;
                 }
@@ -173,7 +185,8 @@ namespace Projet2Cp
                     shapepc.RemoveAt(indexSegment);
                     canvas.Children.Remove(sEllipse[indexSegment]);
                     sEllipse.RemoveAt(indexSegment);
-
+                    canvas.Children.Remove(stb[indexSegment]);
+                    stb.RemoveAt(indexSegment);
                 }
 
                 else if (sym is Polygon)
@@ -190,6 +203,7 @@ namespace Projet2Cp
                     sym = poly;
                     drawEllipses(false);
                     canvas.Children.Add(sym);
+
                 }
 
 
@@ -212,9 +226,13 @@ namespace Projet2Cp
             if (isOrigin)
             {
                 for (int i = 0; i < oEllipse.Count; i++)
+                {
                     canvas.Children.Remove(oEllipse[i]);
+                    canvas.Children.Remove(otb[i]);
+                }
 
                 oEllipse = new List<Ellipse>();
+                otb = new List<TextBlock>();
 
                 if (origin is Polygon)
                     shapepc = ((Polygon)origin).Points;
@@ -226,9 +244,13 @@ namespace Projet2Cp
             else
             {
                 for (int i = 0; i < sEllipse.Count; i++)
+                {
                     canvas.Children.Remove(sEllipse[i]);
+                    canvas.Children.Remove(stb[i]);
+                }
 
                 sEllipse = new List<Ellipse>();
+                stb = new List<TextBlock>();
 
                 if (sym is Polygon)
                     shapepc = ((Polygon)sym).Points;
@@ -238,30 +260,55 @@ namespace Projet2Cp
             }
 
 
-            Ellipse ellipse;
 
+            Ellipse ellipse;
+            TextBlock tb;
             for (int i = 0; i < shapepc.Count; i++)
             {
                 ellipse = new Ellipse()
                 {
-                    Height = 10,
-                    Width = 10,
+                    Height = 20,
+                    Width = 20,
                     Fill = Brushes.White,
                     Stroke = Brushes.Black,
 
                 };
-
+                
                 ellipse.MouseEnter += shapeMouseEnter;
                 ellipse.MouseLeave += shapeMouseLeave;
+                ellipse.MouseLeftButtonUp += edit;
+
+                tb = new TextBlock()
+                {
+                    Height = 15,
+                    Width = 15,
+                    FontWeight = FontWeights.Bold,
+                    Text = char.ToString(Convert.ToChar('A' + i)),
+                    TextAlignment = TextAlignment.Center,
+                    IsHitTestVisible = false,
+                };
+                
 
                 if (isOrigin)
+                {
                     oEllipse.Add(ellipse);
+                    otb.Add(tb);
+                }
                 else
+                {
+                    tb.Text += "'";
                     sEllipse.Add(ellipse);
+                    stb.Add(tb);
+                }
 
                 canvas.Children.Add(ellipse);
-                Canvas.SetLeft(ellipse, shapepc[i].X - 5);
-                Canvas.SetTop(ellipse, shapepc[i].Y - 5);
+                canvas.Children.Add(tb);
+
+                Canvas.SetLeft(ellipse, shapepc[i].X - 10);
+                Canvas.SetTop(ellipse, shapepc[i].Y - 10);
+
+                Canvas.SetLeft(tb, shapepc[i].X - 7.5);
+                Canvas.SetTop(tb, shapepc[i].Y - 7.5);
             }
 
         }

@@ -23,10 +23,13 @@ namespace Projet2Cp
     public partial class MainWindow : Window
     {
         static public Boolean modeLibre , modeEns; 
+
+
+
         public MainWindow()
         {
             InitializeComponent();
-            modeLibre = true ;
+            modeLibre = false ;
             modeEns = true;
             if (modeLibre)  MainFrame.NavigationService.Navigate(new ModeLibre());
             else if(modeEns) MainFrame.NavigationService.Navigate(new LibreExoEns());
@@ -44,7 +47,7 @@ namespace Projet2Cp
             CoursImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBLibre.Foreground = Brushes.Snow;
-            //MainFrame.Navigate(p1);
+            
         }
 
         private void ButtonClickLibre(object sender, RoutedEventArgs e)
@@ -59,6 +62,9 @@ namespace Projet2Cp
             CoursImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBExo.Foreground = Brushes.Snow;
+
+
+
         }
 
         private void ButtonClickCours(object sender, RoutedEventArgs e)
@@ -73,6 +79,8 @@ namespace Projet2Cp
             ExoImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Exercices.png", UriKind.Relative));
             TBLibre.Foreground = Brushes.Snow;
             TBExo.Foreground = Brushes.Snow;
+
+
         }
 
         private void ButtonClickLogout(object sender, RoutedEventArgs e)

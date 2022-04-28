@@ -134,7 +134,6 @@
                         <ColumnDefinition Width="*"/>
                      </Grid.ColumnDefinitions>
                     <TextBlock HorizontalAlignment="left" Grid.Column="0" Text="Dessin 1"/>
-                    <Image HorizontalAlignment="Right" Source="./icons/check.png" Grid.Column="1"/>
 
                 </Grid>
             </RadioButton>

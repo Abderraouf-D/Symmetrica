@@ -30,7 +30,8 @@ namespace Projet2Cp
         private List<ShapePair> shapePairs { get; set; } //represents the pairs of shapes
         private Point mousePosition; //mouse position in canvas
         private Point actualPoint;//actual point to draw in 
-        private double step = 25; // the step of the grid 
+        
+        public static double step = 25; // the step of the grid 
         public PointCollection shapepc; // the current shape being drawn  , and a holder for his symetrix 
         private ShapePair currentShapePair;
         public Polygon polygone;
@@ -96,10 +97,9 @@ namespace Projet2Cp
         private List<TextBlock> nums = new List<TextBlock>();
         public canvasUC(UserControl TB, niveauxLibre niv)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt/QHFqVVhkW1pFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF9jTXxXdkxhWHxWeXZQQw==;NjIzNzA1QDMyMzAyZTMxMmUzMGljYUdhRmY2OXNTZ0ZIdSsvN3NGTDMzMk1hRmtyejRMcndKTG5XOG42TUk9");
 
             InitializeComponent();
-
+            canvas.Children.Remove(message);
             dessinsModeExo = chargerDessins(exoPath);
             this.TB = TB;
             if (MainWindow.modeLibre)
@@ -169,6 +169,43 @@ namespace Projet2Cp
                 Fill = Brushes.Red,
                 Stroke = trace,
             };
+        }
+        //=============================================================================================================================//
+        //                                                    EDIT MODE                                                                //
+        //=============================================================================================================================//
+        void edit(object sender, MouseButtonEventArgs e)
+        {
+            if (isDrawing && (clickPosition.Equals(e.GetPosition(canvas))))
+            {
+
+
+                if (currentShapePair.origin is Polygon)
+                    foreach (Point p in ((Polygon)currentShapePair.origin).Points)
+                        polyline.Points.Add(p);
+                else
+                    foreach (Point p in ((Polyline)currentShapePair.origin).Points)
+                        polyline.Points.Add(p);
+
+                foreach (Line l in currentShapePair.jointLines)
+                    canvas.Children.Remove(l);
+                foreach (TextBlock tb in currentShapePair.otb)
+                    canvas.Children.Remove(tb);
+
+                canvas.Children.Remove(currentShapePair.origin);
+                foreach (Ellipse el in currentShapePair.oEllipse)
+                {
+                    canvas.Children.Remove(el);
+                }
+                canvas.Children.Remove(currentShapePair.sym);
+                foreach (Ellipse el in currentShapePair.sEllipse)
+                {
+                    canvas.Children.Remove(el);
+                }
+                foreach (TextBlock tb in currentShapePair.stb)
+                    canvas.Children.Remove(tb);
+                shapePairs.Remove(currentShapePair);
+
+            }
         }
 
         //==========================================================================================================//
@@ -288,18 +325,23 @@ namespace Projet2Cp
                 return;
             step *= alpha;
             gridDrawing(step);
+            PointCollection pc = polyline.Points; //originPointCollection
+            Point paz;
+            Point center = new Point(canvas.ActualWidth / 2, canvas.ActualHeight / 2);
+            for (int j = 0; j < pc.Count; j++)
+            {
+                paz = new Point();
+                paz.X = (pc[j].X - center.X) * alpha + center.X;
+                paz.Y = (pc[j].Y - center.Y) * alpha + center.Y;
+                pc[j] = paz;
+            }
 
             for (int i = 0; i < shapePairs.Count; i++)
             {
-                PointCollection pc; //originPointCollection
                 if (shapePairs[i].origin is Polygon)
                     pc = ((Polygon)shapePairs[i].origin).Points;
                 else
                     pc = ((Polyline)shapePairs[i].origin).Points;
-
-                Point paz;
-                Point center = new Point(canvas.ActualWidth / 2, canvas.ActualHeight / 2);
-
                 for (int j = 0; j < pc.Count; j++)
                 {
                     paz = new Point();
@@ -309,8 +351,11 @@ namespace Projet2Cp
                 }
                 for (int j = 0; j < shapePairs[i].oEllipse.Count; j++)
                 {
-                    Canvas.SetLeft(shapePairs[i].oEllipse[j], pc[j].X - 5);
-                    Canvas.SetTop(shapePairs[i].oEllipse[j], pc[j].Y - 5);
+                    Canvas.SetLeft(shapePairs[i].oEllipse[j], pc[j].X - 10);
+                    Canvas.SetTop(shapePairs[i].oEllipse[j], pc[j].Y - 10);
+
+                    Canvas.SetLeft(shapePairs[i].otb[j], pc[j].X - 7.5);
+                    Canvas.SetTop(shapePairs[i].otb[j], pc[j].Y - 7.5);
                 }
 
                 if (shapePairs[i].sym != null)
@@ -329,10 +374,15 @@ namespace Projet2Cp
                     }
                     for (int j = 0; j < shapePairs[i].sEllipse.Count; j++)
                     {
-                        Canvas.SetLeft(shapePairs[i].sEllipse[j], pc[j].X - 5);
-                        Canvas.SetTop(shapePairs[i].sEllipse[j], pc[j].Y - 5);
+                        Canvas.SetLeft(shapePairs[i].sEllipse[j], pc[j].X - 10);
+                        Canvas.SetTop(shapePairs[i].sEllipse[j], pc[j].Y - 10);
+
+                        Canvas.SetLeft(shapePairs[i].stb[j], pc[j].X - 7.5);
+                        Canvas.SetTop(shapePairs[i].stb[j], pc[j].Y - 7.5);
                     }
                 }
+
+
                 if (MainWindow.modeLibre) shapePairs[i].jointLinesGen();
                 else
                 {
@@ -561,7 +611,7 @@ namespace Projet2Cp
 
 
         }
-     
+
         //====================================================================================================================//
         //                          ELLIPSE_CLEANER : ENLEVE LA PREVIEW ELLIPSE UNE FOIS QU'ON QUITTE LE CANVAS               //  
         //====================================================================================================================//
@@ -570,6 +620,8 @@ namespace Projet2Cp
         public void ellipseCleaner(Object sender, MouseEventArgs e)
         {
             canvas.Children.Remove(ellipse);
+            canvas.Children.Remove(rotateLine);
+            isTransforming = false;
         }
 
         //====================================================================================================================//
@@ -586,10 +638,45 @@ namespace Projet2Cp
 
                 if (!isOverShape && isDrawing)
                 {
-                        line.Stroke = trace;
-                        polyline.Stroke = trace;
-                        polyline.Points.Add(actualPoint);
+
+
+
+                if (polyline.Points.Count > 0)
+                {
+                    if (!actualPoint.Equals(polyline.Points[polyline.Points.Count - 1])) polyline.Points.Add(actualPoint);
                 }
+                else polyline.Points.Add(actualPoint);
+
+
+
+                /*if (!MainWindow.modeLibre && !isEditing)
+                {
+                    bool polygon = true;
+                    PointCollection p1 = null, p2 = null;
+                    if (shapePairs[0].origin is Polyline)
+                    {
+                        p2 = ((Polyline)shapePairs[0].sym).Points;
+                        polygon = false;
+                    }
+                    else p2 = ((Polygon)shapePairs[0].sym).Points;
+
+
+
+                    p1 = polyline.Points;
+                    if (isSym(p1, p2, polygon, false, actualPoint))
+                    {
+                        trace = Brushes.Green;
+
+                    }
+                    else
+                    {
+                        trace = Brushes.Red;
+
+                    }
+                }*/
+                line.Stroke = trace;
+                polyline.Stroke = trace;
+            }
                 //sinon c'est qu'il a clické sur un shape, et dans ce cas il faudra juste determiner de quel ShapePair il s'agit
                 else if (e.Source is Shape)//nrmlm si il est pas dans la premiere c'est qu'il est dans la deuxieme mais bon ....
                 {
@@ -645,9 +732,12 @@ namespace Projet2Cp
                     {
                         if (!deleteSegment || currentShapePair.removable)
                         {
+
                             canvas.Children.Remove(deleteLine);
                             foreach (Line l in currentShapePair.jointLines)
                                 canvas.Children.Remove(l);
+                            foreach (TextBlock tb in currentShapePair.otb)
+                                canvas.Children.Remove(tb);
 
                             canvas.Children.Remove(currentShapePair.origin);
                             foreach (Ellipse el in currentShapePair.oEllipse)
@@ -659,9 +749,11 @@ namespace Projet2Cp
                             {
                                 canvas.Children.Remove(el);
                             }
+                            foreach (TextBlock tb in currentShapePair.stb)
+                                canvas.Children.Remove(tb);
                             shapePairs.Remove(currentShapePair);
 
-
+                            deleteSegment = false;
 
 
                         }
@@ -721,7 +813,7 @@ namespace Projet2Cp
                         if (shape is Polygon)
                         {
                             foreach (Point p in ((Polygon)shape).Points)
-                                pc.Add(new Point(p.X + 10, p.Y + 10));
+                                pc.Add(new Point(p.X + step, p.Y + step));
                             polygon = new Polygon()
                             {
                                 Stroke = ((Polygon)shape).Stroke,
@@ -731,13 +823,13 @@ namespace Projet2Cp
                             };
                             polygon.MouseEnter += shapeMouseEnter;
                             polygon.MouseLeave += shapeMouseLeave;
-                            shapePairs.Add(new ShapePair(polygon, canvas, shapeMouseEnter, shapeMouseLeave));
+                            shapePairs.Add(new ShapePair(polygon, canvas, shapeMouseEnter, shapeMouseLeave,edit));
                         }
 
                         else
                         {
                             foreach (Point p in ((Polyline)shape).Points)
-                                pc.Add(new Point(p.X + 10, p.Y + 10));
+                                pc.Add(new Point(p.X + step, p.Y + step));
                             polyline = new Polyline()
                             {
                                 Stroke = ((Polyline)shape).Stroke,
@@ -747,7 +839,7 @@ namespace Projet2Cp
                             canvas.Children.Add(polyline);
                             polyline.MouseEnter += shapeMouseEnter;
                             polyline.MouseLeave += shapeMouseLeave;
-                            shapePairs.Add(new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave));
+                            shapePairs.Add(new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave,edit));
 
                         }
 
@@ -816,6 +908,7 @@ namespace Projet2Cp
 
                 if (polyline.Points.Count > 0 && canvas.IsMouseOver) // ie il a engagé un dessin
                 {
+                   
 
                     line.X1 = polyline.Points[polyline.Points.Count - 1].X;
                     line.Y1 = polyline.Points[polyline.Points.Count - 1].Y;
@@ -918,7 +1011,7 @@ namespace Projet2Cp
 
         public void canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            
             // creating the shape 
             if (shapepc.Count > 1) //if the PointCollection of the polyline contains at least two points
             {
@@ -936,7 +1029,7 @@ namespace Projet2Cp
                     polygone.MouseEnter += shapeMouseEnter;
                     polygone.MouseLeave += shapeMouseLeave;
                     canvas.Children.Remove(polyline); //we remove the preview polyline
-                    shapePairs.Add(new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave)); //we create a new shapePair with origin = polygon "linked to canvas"
+                    shapePairs.Add(new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave,edit)); //we create a new shapePair with origin = polygon "linked to canvas"
                 }
 
                 else
@@ -945,8 +1038,10 @@ namespace Projet2Cp
                     polyline.StrokeThickness = 8;
                     polyline.MouseMove += shapeMouseEnter;
                     polyline.MouseLeave += shapeMouseLeave;
-                    shapePairs.Add(new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave));
+                    shapePairs.Add(new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave,edit));
                 }
+               // if (!MainWindow.modeLibre && !isEditing) verifSym(3);
+
             }
 
 
@@ -1239,7 +1334,7 @@ namespace Projet2Cp
 
             poly.MouseEnter += shapeMouseEnter;
             poly.MouseLeave += shapeMouseLeave;
-            shapePairs.Add(new ShapePair(poly, canvas, shapeMouseEnter, shapeMouseLeave));
+            shapePairs.Add(new ShapePair(poly, canvas, shapeMouseEnter, shapeMouseLeave,edit));
 
 
         }
@@ -1391,56 +1486,8 @@ namespace Projet2Cp
             }
             else
             {
-                answer = true; 
-                if (shapePairs.Count==1)
-                {
-                    MessageBox.Show("Veuillez dessiner le symetrique");
-                }
-                else {
 
-                    if (!shapePairs[0].origin.GetType().Equals(shapePairs[1].origin.GetType()))
-                    {
-                        shapePairs[0].sym.Stroke = Brushes.Red;
-                        MessageBox.Show("Ooops");
-                        showSym(shapePairs[0]);
-                        shapePairs[0].jointLinesGen();
-                    }
-                    else
-                    {
-                        bool polygon = true;
-                        PointCollection p1 = null, p2 = null;
-                        if (shapePairs[0].origin is Polyline) { 
-                            p2 = ((Polyline)shapePairs[0].sym).Points;
-                            polygon = false; 
-                        }
-                        else p2 = ((Polygon)shapePairs[0].sym).Points;
-
-
-                        
-                        if (shapePairs[1].origin is Polygon) p1 = ((Polygon)shapePairs[1].origin).Points;
-                        else p1 = ((Polyline)shapePairs[1].origin).Points;
-                        if (isSym(p1, p2 ,polygon))
-                        {
-                            shapePairs[0].sym.Stroke = Brushes.Green;
-                            MessageBox.Show("Bravo!");
-                            showSym(shapePairs[0]);
-                            shapePairs[0].jointLinesGen();
-
-
-                            foreach (Ellipse el in shapePairs[1].oEllipse) canvas.Children.Remove(el);
-                            canvas.Children.Remove(shapePairs[1].origin);
-                            shapePairs.Remove(shapePairs[1]);
-
-                        }
-                        else
-                        {
-                            shapePairs[0].sym.Stroke = Brushes.Red;
-                            MessageBox.Show("Ooops");
-                            showSym(shapePairs[0]);
-                            shapePairs[0].jointLinesGen();
-                        }
-                    }
-                }
+                verifSym(3);
 
 
 
@@ -1449,6 +1496,63 @@ namespace Projet2Cp
 
 
         }
+
+        public void verifSym(int attempt)
+        {
+            answer = true;
+            if (!shapePairs[0].origin.GetType().Equals(shapePairs[1].origin.GetType()))
+                {
+                    shapePairs[0].sym.Stroke = Brushes.Red;
+                    MessageBox.Show("Ooops");
+                    showSym(shapePairs[0]);
+                    shapePairs[0].jointLinesGen();
+                }
+                else
+                {
+                    bool polygon = true;
+                    PointCollection p1 = null, p2 = null;
+                    if (shapePairs[0].origin is Polyline)
+                    {
+                        p2 = ((Polyline)shapePairs[0].sym).Points;
+                        polygon = false;
+                    }
+                    else p2 = ((Polygon)shapePairs[0].sym).Points;
+
+                    if (shapePairs[1].origin is Polygon) p1 = ((Polygon)shapePairs[1].origin).Points;
+                    else p1 = ((Polyline)shapePairs[1].origin).Points;
+
+
+
+                    if (isSym(p1, p2, polygon, false, new Point()))
+                    {
+                        shapePairs[0].sym.Stroke = Brushes.Green;
+                    if (!canvas.Children.Contains(message)) canvas.Children.Add(message);
+
+                    message.Text = "Super!";
+                        message.Foreground = Brushes.Green;
+                        showSym(shapePairs[0]);
+                        shapePairs[0].jointLinesGen();
+                        foreach (Ellipse el in shapePairs[1].oEllipse) canvas.Children.Remove(el);
+                        foreach (TextBlock el in shapePairs[1].otb) canvas.Children.Remove(el);
+
+                    canvas.Children.Remove(shapePairs[1].origin);
+                            shapePairs.Remove(shapePairs[1]);
+
+                    }
+                    else
+                    {
+                        
+                            shapePairs[0].sym.Stroke = Brushes.Red;
+                            if ( !canvas.Children.Contains(message)) canvas.Children.Add(message);
+                            message.Text = "Oooops!";
+                            message.Foreground = Brushes.Green;
+                            showSym(shapePairs[0]);
+                            shapePairs[0].jointLinesGen();
+                        
+                    }
+                }
+        }
+
         public void annuler_Click(Object sender, RoutedEventArgs e)
         {
             canvas.Children.Remove(tb);
@@ -1491,7 +1595,7 @@ namespace Projet2Cp
                     polygone.MouseEnter += shapeMouseEnter;
                     polygone.MouseEnter += shapeMouseEnter;
                     polygone.MouseLeave += shapeMouseLeave;
-                    shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                    shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave,edit) { IsTransformable = false };
                     shep.adaptToGrid(poly.oldCenter, newCenter);
                     shapePairs.Add(shep);
                     cleaningTheMess();
@@ -1503,7 +1607,7 @@ namespace Projet2Cp
                     polyline.MouseEnter += shapeMouseEnter;
                     polyline.MouseLeave += shapeMouseLeave;
                     canvas.Children.Add(polyline);
-                    shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) { IsTransformable = false };
+                    shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave,edit) { IsTransformable = false };
                     shep.adaptToGrid(poly.oldCenter, newCenter);
                     shapePairs.Add(shep);
                     cleaningTheMess();
@@ -1564,6 +1668,10 @@ namespace Projet2Cp
             {
                 el.Visibility = Visibility.Hidden;
             }
+            foreach(TextBlock el in shp.stb)
+            {
+                el.Visibility  = Visibility.Hidden;
+            }
         }
 
         private void showSym(ShapePair shp)
@@ -1573,9 +1681,13 @@ namespace Projet2Cp
             {
                 el.Visibility = Visibility.Visible;
             }
+            foreach (TextBlock el in shp.stb)
+            {
+                el.Visibility = Visibility.Visible;
+            }
 
-            
-            
+
+
         }
 
 
@@ -1734,7 +1846,7 @@ namespace Projet2Cp
                         polygone.MouseEnter += shapeMouseEnter;
                         polygone.MouseEnter += shapeMouseEnter;
                         polygone.MouseLeave += shapeMouseLeave;
-                        shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave) ;
+                        shep = new ShapePair(polygone, canvas, shapeMouseEnter, shapeMouseLeave,edit) ;
                         shep.adaptToGrid(poly.oldCenter, newCenter);
                         shapePairs.Add(shep);
                         cleaningTheMess();
@@ -1747,7 +1859,7 @@ namespace Projet2Cp
                             polyline.MouseEnter += shapeMouseEnter;
                             polyline.MouseLeave += shapeMouseLeave;
                             canvas.Children.Add(polyline);
-                            shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave) ;
+                            shep = new ShapePair(polyline, canvas, shapeMouseEnter, shapeMouseLeave,edit) ;
                             shep.adaptToGrid(poly.oldCenter, newCenter);
                             shapePairs.Add(shep);
                             cleaningTheMess();
