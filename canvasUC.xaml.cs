@@ -89,7 +89,6 @@ namespace Projet2Cp
         niveauxLibre niv;
         TextBlock tb; 
         static public int cote, rayon;
-        //Cursor colorate = new Cursor(Application.GetResourceStream(new Uri("C://Users//raouf//Desktop//Projet2Cp//cursors//color.cur")).Stream);
         bool answer = false;
 
         String fileDrawing;
@@ -109,14 +108,12 @@ namespace Projet2Cp
                 diag1 = ((toolBarLibreLibre)TB).diag1;
                 diag2 = ((toolBarLibreLibre)TB).diag2;
                 centre = ((toolBarLibreLibre)TB).centre;
-                
-
             }
             else
             {
-                
                 upload.Visibility=Visibility.Collapsed;
                 save.Visibility=Visibility.Collapsed;
+                
                 ((toolBarEnseignant)TB).ensStack.Visibility=Visibility.Collapsed;
                 tb = new TextBlock();
                 tb.Text = "Dessine le symétrique du déssin par rapport au repère donné puis clique sur" + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
@@ -127,7 +124,6 @@ namespace Projet2Cp
                 tb.Background=Brushes.White;
                 Panel.SetZIndex(tb,122);
 
-
                 this.niv = niv;
                 if (MainWindow.modeEns)
                 {
@@ -137,7 +133,6 @@ namespace Projet2Cp
                     diag2 = ((toolBarEnseignant)TB).diag2;
                     centre = ((toolBarEnseignant)TB).centre;
                 }
-
             }
 
             //------------------Rotate_Utils----------------------//
@@ -1154,8 +1149,6 @@ namespace Projet2Cp
             if (!MainWindow.modeLibre & !isEditing)
             {
                 dessinerDessinNum(niv.Selected());
-                
-            
             }
             
         }
@@ -1481,7 +1474,7 @@ namespace Projet2Cp
 
 
                 }
-                dessinerDessinNum(niv.Selected());
+                clear();
 
             }
             else
@@ -1528,15 +1521,14 @@ namespace Projet2Cp
                         shapePairs[0].sym.Stroke = Brushes.Green;
                     if (!canvas.Children.Contains(message)) canvas.Children.Add(message);
 
-                    message.Text = "Super!";
+                        message.Text = "Super!";
                         message.Foreground = Brushes.Green;
                         showSym(shapePairs[0]);
                         shapePairs[0].jointLinesGen();
                         foreach (Ellipse el in shapePairs[1].oEllipse) canvas.Children.Remove(el);
                         foreach (TextBlock el in shapePairs[1].otb) canvas.Children.Remove(el);
-
-                    canvas.Children.Remove(shapePairs[1].origin);
-                            shapePairs.Remove(shapePairs[1]);
+                        canvas.Children.Remove(shapePairs[1].origin);
+                        shapePairs.Remove(shapePairs[1]);
 
                     }
                     else
@@ -1545,7 +1537,7 @@ namespace Projet2Cp
                             shapePairs[0].sym.Stroke = Brushes.Red;
                             if ( !canvas.Children.Contains(message)) canvas.Children.Add(message);
                             message.Text = "Oooops!";
-                            message.Foreground = Brushes.Green;
+                            message.Foreground = Brushes.Red;
                             showSym(shapePairs[0]);
                             shapePairs[0].jointLinesGen();
                         
@@ -1574,20 +1566,18 @@ namespace Projet2Cp
         {
             answer = false;
             clear();
-            dessinerDessinNum(niv.Selected());
         }
         public void dessinerDessinNum(int i)
         {
             try
             {
-
-
                 dessinExo poly = dessinsModeExo[i];
                 step = poly.step;
                 gridDrawing(step);
                 Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
                 selectAxe(poly.repere);
                 checkAxes();
+
                 ShapePair shep;
                 if (poly.type)
                 {

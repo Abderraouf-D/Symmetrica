@@ -173,6 +173,7 @@ namespace Projet2Cp
         {
             PointCollection p2 = new PointCollection(p3);
             PointCollection p1 = new PointCollection(p4);
+
             if ((p1[p1.Count-1].Equals(  p1[0])) && polygon) p1.RemoveAt(p1.Count-1);
             if (move )  p2.Add(next);
             bool equal = true ;
