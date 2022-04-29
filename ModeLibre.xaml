@@ -10,7 +10,7 @@
 
     <DockPanel x:Name="myDock" ClipToBounds="True"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         
-        <Border x:Name="myBorder" DockPanel.Dock="Right" BorderThickness="2" BorderBrush="Black">
+        <Border x:Name="myBorder" DockPanel.Dock="Right" BorderThickness="2,0,2,2" BorderBrush="Black">
             <local:toolBarLibreLibre  x:Name="toolBar"   />
         </Border>
 

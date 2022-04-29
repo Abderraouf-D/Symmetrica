@@ -38,9 +38,9 @@ namespace Projet2Cp
         void ButtonClickExo(object sender, RoutedEventArgs e)
         {
             SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
-            TriangleCours.Visibility = Visibility.Hidden;
+            /*TriangleCours.Visibility = Visibility.Hidden;
             TriangleLibre.Visibility = Visibility.Hidden;
-            TriangleExo.Visibility = Visibility.Visible;
+            TriangleExo.Visibility = Visibility.Visible;*/
             ExoImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Exercices Jaune.png", UriKind.Relative));
             TBExo.Foreground = color;
             LibreImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Libre.png", UriKind.Relative));
@@ -53,9 +53,9 @@ namespace Projet2Cp
         private void ButtonClickLibre(object sender, RoutedEventArgs e)
         {
             SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
-            TriangleCours.Visibility = Visibility.Hidden;
+            /*TriangleCours.Visibility = Visibility.Hidden;
             TriangleLibre.Visibility = Visibility.Visible;
-            TriangleExo.Visibility = Visibility.Hidden;
+            TriangleExo.Visibility = Visibility.Hidden;*/
             LibreImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Libre Jaune.png", UriKind.Relative));
             TBLibre.Foreground = color;
             ExoImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Exercices.png", UriKind.Relative));
@@ -70,9 +70,9 @@ namespace Projet2Cp
         private void ButtonClickCours(object sender, RoutedEventArgs e)
         {
             SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
-            TriangleCours.Visibility = Visibility.Visible;
+            /*TriangleCours.Visibility = Visibility.Visible;
             TriangleLibre.Visibility = Visibility.Hidden;
-            TriangleExo.Visibility = Visibility.Hidden;
+            TriangleExo.Visibility = Visibility.Hidden;*/
             CoursImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Cours Jaune.png", UriKind.Relative));
             TBCours.Foreground = color;
             LibreImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Libre.png", UriKind.Relative));
@@ -85,9 +85,9 @@ namespace Projet2Cp
 
         private void ButtonClickLogout(object sender, RoutedEventArgs e)
         {
-            TriangleCours.Visibility = Visibility.Hidden;
+            /*TriangleCours.Visibility = Visibility.Hidden;
             TriangleLibre.Visibility = Visibility.Hidden;
-            TriangleExo.Visibility = Visibility.Hidden;
+            TriangleExo.Visibility = Visibility.Hidden;*/
             CoursImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Cours.png", UriKind.Relative));
             LibreImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Libre.png", UriKind.Relative));
             ExoImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Exercices.png", UriKind.Relative));

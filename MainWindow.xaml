@@ -13,29 +13,29 @@
 
 
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="15*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition   Width="*"/>
-            <ColumnDefinition   Width="9*"/>
+    <DockPanel>
+        <Border BorderBrush="Black" BorderThickness="2,0,2,2" DockPanel.Dock="Top">
+            <Grid  Height="35"  Background="LightGray">
 
-        </Grid.ColumnDefinitions>
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="50"   Fill="LightGray"  />
-        <Viewbox HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" Margin="8">
-            <Button Background="Transparent" BorderBrush="Transparent" Click="ButtonClickLogout" ClickMode="Press">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button  Grid.Column="1" Cursor="Arrow" ToolTip="Sortir" Margin="5,0,0,0"  Click="ButtonClickLogout" HorizontalAlignment="Right"   Width="40" Height="30" x:Name="exportPng" >
                 <Image Source="./icons/Acceuil/log-out.png" Height="20" Width="20" />
             </Button>
-        </Viewbox>
-        <Viewbox Stretch="Uniform">
+
+
+            <Viewbox  HorizontalAlignment="Left" Grid.Column="0" Stretch="Uniform">
             <StackPanel
             Grid.Column="0"
             Grid.Row="0"
             Grid.ColumnSpan="2"
             Opacity="0.9"
             Orientation="Horizontal"
+               
             >
                 <Menu
                 VerticalAlignment="Center"
@@ -77,7 +77,8 @@
                         </MenuItem>
                     </MenuItem>
                 </Menu>
-                <Menu
+                        <Separator/>
+                        <Menu
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
@@ -108,7 +109,8 @@
                         </MenuItem>
                     </MenuItem>
                 </Menu>
-                <Menu
+                        <Separator/>
+                        <Menu
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
@@ -134,8 +136,10 @@
                 </Menu>
             </StackPanel>
         </Viewbox>
-        
-            <Grid Width="150" Grid.Column="0" Grid.Row="1">
+        </Grid>
+            </Border>
+
+                <Grid DockPanel.Dock="Left" Width="140" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition  Height="*"/>
 
@@ -144,8 +148,8 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="7" BorderThickness="2" BorderBrush="Black" Background="White" Width="Auto" Height="Auto">
-                <Image Source="./icons/logo.png"/>
+            <Border CornerRadius="7" BorderThickness="2,0,2,2" BorderBrush="Black" Background="White" Width="Auto" Height="Auto">
+                <Image  VerticalAlignment="Center" HorizontalAlignment="Center" Height="150" Width="150" Source="./icons/logo.png"/>
             </Border>
 
             
@@ -210,7 +214,7 @@
                 </Polygon>
             </Viewbox>
             <Viewbox HorizontalAlignment="Right" Grid.Row="2">
-                <Polygon x:Name="TriangleExo" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.513,0.486" Margin="0,131,-36,110" Grid.Row="2">
+                <Polygon  x:Name="TriangleExo" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.513,0.486" Margin="0,131,-36,110" Grid.Row="2">
                     <Polygon.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -245,5 +249,5 @@
                 <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1"  NavigationUIVisibility="Hidden">
         </Frame>
 
-    </Grid>
+    </DockPanel>
 </Window>
