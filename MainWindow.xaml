@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="SYMMETRICA" Height="1080" Width="1920" 
-         >
+         Icon="./icons/logo.png">
 
 
 
