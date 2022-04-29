@@ -287,8 +287,6 @@
     <Resource Include="icons\Acceuil\left arrow.png" />
     <Resource Include="icons\Acceuil\Libre Jaune.png" />
     <Resource Include="icons\Acceuil\Libre.png" />
-    <Resource Include="icons\Acceuil\log-out 1.png" />
-    <Resource Include="icons\Acceuil\log-out.png" />
     <Resource Include="icons\Acceuil\question %281%29.png" />
     <Resource Include="icons\Acceuil\right arrow.png" />
   </ItemGroup>
@@ -325,6 +323,12 @@
     <Resource Include="cursors\color.cur" />
     <Resource Include="cursors\pencil.cur" />
     <Resource Include="cursors\vertically.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Acceuil\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\Acceuil\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

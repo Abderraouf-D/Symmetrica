@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" 
+        Title="SYMMETRICA" Height="1080" Width="1920" 
          >
 
 
@@ -19,12 +19,20 @@
 
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15*"/>
-                <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                
             </Grid.ColumnDefinitions>
-
-            <Button  Grid.Column="1" Cursor="Arrow" ToolTip="Sortir" Margin="5,0,0,0"  Click="ButtonClickLogout" HorizontalAlignment="Right"   Width="40" Height="30" x:Name="exportPng" >
-                <Image Source="./icons/Acceuil/log-out.png" Height="20" Width="20" />
+                <Border Height="30" Grid.Column="1" BorderThickness="1.5" CornerRadius="5" BorderBrush="Black">
+                    <StackPanel  Orientation="Horizontal"  >
+                    <Image Height="25" Width="25" HorizontalAlignment="left"  Source="./icons/Acceuil/user.png" />
+                        <TextBlock x:Name="UserName" Margin="5" FontFamily="{StaticResource VigaRegular}" Foreground="White"
+                           VerticalAlignment="Center" HorizontalAlignment="Center">Immadeddine Mahouni</TextBlock>
+                </StackPanel>
+               </Border>
+                        <Button  Grid.Column="2" Cursor="Arrow" ToolTip="Sortir"   Click="ButtonClickLogout" HorizontalAlignment="Center"   Width="40" Height="30" x:Name="exportPng" >
+                <Image Source="./icons/Acceuil/logout.png" Height="30" Width="30" />
             </Button>
 
 
