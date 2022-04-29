@@ -134,7 +134,8 @@
                 </Menu>
             </StackPanel>
         </Viewbox>
-        <Grid Grid.Column="0" Grid.Row="1">
+        
+            <Grid Width="150" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition  Height="*"/>
 
@@ -147,54 +148,53 @@
                 <Image Source="./icons/logo.png"/>
             </Border>
 
-            <Rectangle Fill="#1cb81c" Width="Auto" Height="Auto" Grid.Row="1"/>
+            
 
 
 
-            <Button Background="Transparent" Height="Auto" Grid.Row="1" Click="ButtonClickCours" ClickMode="Press" >
+            <Button Background="#1CB81C" Height="Auto" Grid.Row="1" Click="ButtonClickCours" ClickMode="Press" >
 
-                <Viewbox Margin="40" Stretch="Uniform">
+                
                     <StackPanel>
-                        <Image x:Name="CoursImg" Source="./icons/Acceuil/Cours.png" Margin="1" Width="12" Height="12"/>
+                        <Image x:Name="CoursImg" Source="./icons/Acceuil/Cours.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock x:Name="TBCours"  HorizontalAlignment="Center"
-                        Text="Cours" FontSize="5"
+                        Text="Cours" FontSize="40"
                         Foreground="White"
                         FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy"   
                         Margin="0"
                         />
                     </StackPanel>
-                </Viewbox>
+               
             </Button>
 
-            <Rectangle Fill="#1cb81c" Width="Auto" Height="Auto" Grid.Row="2"/>
 
-            <Button x:Name="ButtonExo" Click="ButtonClickExo" ClickMode="Press" Background="Transparent" Height="Auto" Grid.Row="2">
-                <Viewbox Margin="30" Stretch="Uniform">
+
+            <Button x:Name="ButtonExo"  Background="#1CB81C" Click="ButtonClickExo" ClickMode="Press"  Height="Auto" Grid.Row="2">
+               
                     <StackPanel >
-                        <Image x:Name="ExoImg" Source="./icons/Acceuil/Exercices.png" Margin="1" Width="12" Height="12"/>
+                    <Image Stretch="Uniform" x:Name="ExoImg" Source="./icons/Acceuil/Exercices.png" Margin="1"  Width="100" Height="100"/>
                         <TextBlock  x:Name="TBExo"
-                    Text="Exercices" FontSize="5"  
+                    Text="Exercices" FontSize="30"  
                      Foreground="Snow"
                     FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy"
                     Margin="0"/>
                     </StackPanel>
-                </Viewbox>
+               
             </Button>
 
-            <Rectangle Fill="#1cb81c" Width="Auto" Height="Auto" Grid.Row="3"/>
 
-            <Button Background="Transparent" Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
-                <Viewbox Stretch="Uniform" Margin="40">
-                    <StackPanel>
-                        <Image x:Name="LibreImg" Source="./icons/Acceuil/Libre.png" Margin="1" Width="12" Height="12"/>
+            <Button Background="#1CB81C" Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
+                
+                    <StackPanel >
+                        <Image x:Name="LibreImg" Source="./icons/Acceuil/Libre.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock  x:Name="TBLibre"
-                    Text="Libre" HorizontalAlignment="Center" FontSize="5"  
+                    Text="Libre" HorizontalAlignment="Center" FontSize="40"  
                      Foreground="Snow" 
                     FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy" 
                     Margin="0"
                        />
                     </StackPanel>
-                </Viewbox>
+               
 
             </Button>
             <Viewbox HorizontalAlignment="Right" Grid.Row="1">
@@ -240,8 +240,9 @@
 
 
         </Grid>
+       
 
-        <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1"  NavigationUIVisibility="Hidden">
+                <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1"  NavigationUIVisibility="Hidden">
         </Frame>
 
     </Grid>

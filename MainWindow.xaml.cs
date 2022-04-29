@@ -29,11 +29,11 @@ namespace Projet2Cp
         public MainWindow()
         {
             InitializeComponent();
-            modeLibre = false ;
+            modeLibre = true ;
             modeEns = true;
             if (modeLibre)  MainFrame.NavigationService.Navigate(new ModeLibre());
-            else if(modeEns) MainFrame.NavigationService.Navigate(new LibreExoEns());
-                 else MainFrame.NavigationService.Navigate(new LibreExoEleve());
+            else MainFrame.NavigationService.Navigate(new LibreExoEns());
+                 
         }
         void ButtonClickExo(object sender, RoutedEventArgs e)
         {

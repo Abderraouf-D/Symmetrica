@@ -73,9 +73,6 @@
     <Compile Include="canvasUC.xaml.cs">
       <DependentUpon>canvasUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LibreExoEleve.xaml.cs">
-      <DependentUpon>LibreExoEleve.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LibreExoEns.xaml.cs">
       <DependentUpon>LibreExoEns.xaml</DependentUpon>
     </Compile>
@@ -89,9 +86,6 @@
     <Compile Include="toolBarEnseignant.xaml.cs">
       <DependentUpon>toolBarEnseignant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="toolBarLibreExercice.xaml.cs">
-      <DependentUpon>toolBarLibreExercice.xaml</DependentUpon>
-    </Compile>
     <Compile Include="toolBarLibreLibre.xaml.cs">
       <DependentUpon>toolBarLibreLibre.xaml</DependentUpon>
     </Compile>
@@ -101,10 +95,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ColorPicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LibreExoEleve.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,10 +130,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="toolBarEnseignant.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="toolBarLibreExercice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -286,9 +272,6 @@
     <Resource Include="icons\color.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cursors\color.cur" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="icons\check.png" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +307,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\export-file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cursors\move.cur" />
+    <Resource Include="cursors\rotate.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cursors\eraser.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cursors\duplicate.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\vertically.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cursors\color.cur" />
+    <Resource Include="cursors\pencil.cur" />
+    <Resource Include="cursors\vertically.cur" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

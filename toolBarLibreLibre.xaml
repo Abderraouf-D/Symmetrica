@@ -97,9 +97,11 @@
             
             <RadioButton Style="{StaticResource genSty}"
              Grid.Row="10" Grid.ColumnSpan="2" VerticalAlignment="Center"  
-             HorizontalAlignment="Center"  Width="70" Height="40" x:Name="genSym"  >
-                <TextBlock Text="Symétrie!"/>
-            </RadioButton>
+             HorizontalAlignment="Center"  Width="70" Height="40" x:Name="genSym" ToolTip="Génerer le symetrique"  >
+   
+                <Image Height="32" Width="32" Source="./icons/vertically.png" />
+          
+        </RadioButton>
 
 
 
@@ -111,6 +113,7 @@
 
             <StackPanel x:Name="libreStack" Margin="5,0,0,10" Orientation="Horizontal"
                         Grid.ColumnSpan="2"
+                         ToolTip="Les repères de symetrie."
                         Grid.Row="9"
                         Height="30"
                         HorizontalAlignment="Left"

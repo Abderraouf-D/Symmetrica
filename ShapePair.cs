@@ -113,6 +113,7 @@ namespace Projet2Cp
                         Y1 = opc[i].Y,
                         X2 = spc[i].X,
                         Y2 = spc[i].Y,
+                        IsHitTestVisible = false,
                     };
                     jointLines.Add(line);
                     canvas.Children.Add(line);
@@ -653,9 +654,12 @@ namespace Projet2Cp
             if (sp != null)
             {
                 Point newPosition = new Point(2 * sp.Value.X - p.X, 2 * sp.Value.Y - p.Y);
-                newPosition.X = Math.Round((newPosition.X - canvas.ActualWidth * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualWidth * 0.5);
-                newPosition.Y = Math.Round((newPosition.Y - canvas.ActualHeight * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualHeight * 0.5);
-                return newPosition;
+                if (!MainWindow.modeLibre)
+                {
+                    newPosition.X = Math.Round((newPosition.X - canvas.ActualWidth * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualWidth * 0.5);
+                    newPosition.Y = Math.Round((newPosition.Y - canvas.ActualHeight * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualHeight * 0.5);
+                }
+                    return newPosition;
             }
             else return p;
         }
@@ -671,9 +675,11 @@ namespace Projet2Cp
         {
             double k = ((p2.Y - p1.Y) * (p3.X - p1.X) - (p2.X - p1.X) * (p3.Y - p1.Y)) / (Math.Pow(p2.X - p1.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
             Point newPosition = new Point(2 * (p3.X - k * (p2.Y - p1.Y)) - p3.X, 2 * (p3.Y + k * (p2.X - p1.X)) - p3.Y);
-            newPosition.X = Math.Round((newPosition.X - canvas.ActualWidth * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualWidth * 0.5);
-            newPosition.Y = Math.Round((newPosition.Y - canvas.ActualHeight * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualHeight * 0.5);
-
+            if (!MainWindow.modeLibre)
+            {
+                newPosition.X = Math.Round((newPosition.X - canvas.ActualWidth * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualWidth * 0.5);
+                newPosition.Y = Math.Round((newPosition.Y - canvas.ActualHeight * 0.5) / canvasUC.step) * canvasUC.step + (canvas.ActualHeight * 0.5);
+            }
             return newPosition;
         }
         //=================================================================================================================//
