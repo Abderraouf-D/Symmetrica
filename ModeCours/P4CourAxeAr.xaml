@@ -1,0 +1,79 @@
+﻿<Page x:Class="ModeCours.P4CourAxeAr"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ModeCours"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="P4CourAxeAr">
+
+    <Viewbox x:Name="ViexBox_P4CourAxeAr" Grid.Row="1" Grid.Column="1" Stretch="Uniform" Margin="0 0 0 0">
+        <Grid Height="932" Width="1547" Grid.Column="1" Grid.Row="1">
+
+            <Border  Width="auto" Height="auto" Background="#A2DBA1" CornerRadius="15"  Margin="555,71,554,786">
+
+                <TextBlock FlowDirection="RightToLeft" x:Name="Tchoix" Text="التناظر المحوري" FontSize="41" Foreground = "Black" FontFamily="{StaticResource VigaRegular}" FontWeight="Heavy" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            </Border>
+            <StackPanel Orientation="Vertical" Margin="50,166,50,120">
+                <TextBlock FlowDirection="RightToLeft" Text="أمثلة :" FontSize="50" Foreground="Green" FontWeight="Bold"/>
+
+                <Border Width="430" Height="295" Margin="0 20 0 0" Background="Transparent" CornerRadius="30" BorderThickness="3" BorderBrush="Green">
+                    <Image Source="Img/exmp3.PNG" Margin="0,7,2,7"/>
+                </Border>
+
+
+                <TextBlock FlowDirection="RightToLeft" Text="    النقطة M′ هي نظيرة النقطة M بالنسبة إلى المستقيم (d). النقطة B هي نظيرة النقطة A بالنسبة إلى المستقيم (d). " 
+                      TextWrapping="Wrap"     FontSize="25"  Foreground="Black" FontWeight="Bold" Margin="40 30 0 0" Width="1361"/>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" FlowDirection="RightToLeft">
+                    <Image Source="Img/remarques.png" Width="40"/>
+                    <TextBlock FlowDirection="RightToLeft" Text="ملاحظة :" FontSize="40" Foreground="Black" FontWeight="Bold" Margin="15 0 0 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10 10 0 0 " FlowDirection="RightToLeft">
+                    <Rectangle Fill="Red" Height="80" Width="5" Margin="10 5 0 0" />
+                    <Border Margin="10 0 0 0" Background="#ffffe0" Height="auto" Width="1329" CornerRadius="30">
+                        <TextBlock FlowDirection="RightToLeft" Text="    لأن جميع الأشكال عبارة عن مجموعة من النقاط، فإن طريقة الإنشاء هذه أساسية جدا، حيث هي التي تسمح بإنشاء نظير أي شكل!!"
+                                TextWrapping="Wrap"     FontSize="25"  Foreground="Black" FontWeight="Bold" Margin="10,0,22,0"/>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Background="#A2DBA1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        Width="220" Height="70" Margin="0 0 0 30" BorderThickness="0"  
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    Click="Button_Click_Svt_CA_P4"
+                        >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <WrapPanel>
+                        <TextBlock Text="Suivant " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                        <Image Source="Icons/right arrow.png" Width="45" Height="45" />
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Background="#A2DBA1" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                        Width="241" Height="70" Margin="0 0 0 30" BorderThickness="0"  
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    Click="Button_Click_Prcdt_CA_P4"
+                    >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <WrapPanel>
+                        <Image Source="Icons/left arrow.png" Width="45" Height="45" />
+                        <TextBlock Text=" Précédent" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+    </Viewbox>
+</Page>

@@ -70,38 +70,160 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="canvasUC.xaml.cs">
+    <Compile Include="ModeCours\Demonstration1.xaml.cs">
+      <DependentUpon>Demonstration1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration1Ar.xaml.cs">
+      <DependentUpon>Demonstration1Ar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration2.xaml.cs">
+      <DependentUpon>Demonstration2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration2Ar.xaml.cs">
+      <DependentUpon>Demonstration2Ar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration3.xaml.cs">
+      <DependentUpon>Demonstration3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration3Ar.xaml.cs">
+      <DependentUpon>Demonstration3Ar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration4.xaml.cs">
+      <DependentUpon>Demonstration4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration4Ar.xaml.cs">
+      <DependentUpon>Demonstration4Ar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration5.xaml.cs">
+      <DependentUpon>Demonstration5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration5Ar.xaml.cs">
+      <DependentUpon>Demonstration5Ar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration6.xaml.cs">
+      <DependentUpon>Demonstration6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\Demonstration6Ar.xaml.cs">
+      <DependentUpon>Demonstration6Ar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P1CourAxe.xaml.cs">
+      <DependentUpon>P1CourAxe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P1CourAxeAr.xaml.cs">
+      <DependentUpon>P1CourAxeAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P1CoursCen.xaml.cs">
+      <DependentUpon>P1CoursCen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P1CoursCenAr.xaml.cs">
+      <DependentUpon>P1CoursCenAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P2CourAxe.xaml.cs">
+      <DependentUpon>P2CourAxe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P2CourAxeAr.xaml.cs">
+      <DependentUpon>P2CourAxeAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P2CoursCen.xaml.cs">
+      <DependentUpon>P2CoursCen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P2CoursCenAr.xaml.cs">
+      <DependentUpon>P2CoursCenAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P3CourAxe.xaml.cs">
+      <DependentUpon>P3CourAxe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P3CourAxeAr.xaml.cs">
+      <DependentUpon>P3CourAxeAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P3CoursCen.xaml.cs">
+      <DependentUpon>P3CoursCen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P3CoursCenAr.xaml.cs">
+      <DependentUpon>P3CoursCenAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P4CourAxe.xaml.cs">
+      <DependentUpon>P4CourAxe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P4CourAxeAr.xaml.cs">
+      <DependentUpon>P4CourAxeAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P4CoursCen.xaml.cs">
+      <DependentUpon>P4CoursCen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P4CoursCenAr.xaml.cs">
+      <DependentUpon>P4CoursCenAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P5CourAxe.xaml.cs">
+      <DependentUpon>P5CourAxe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P5CourAxeAr.xaml.cs">
+      <DependentUpon>P5CourAxeAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P5CoursCen.xaml.cs">
+      <DependentUpon>P5CoursCen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P5CoursCenAr.xaml.cs">
+      <DependentUpon>P5CoursCenAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P6CourAxe.xaml.cs">
+      <DependentUpon>P6CourAxe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P6CourAxeAr.xaml.cs">
+      <DependentUpon>P6CourAxeAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P6CoursCen.xaml.cs">
+      <DependentUpon>P6CoursCen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\P6CoursCenAr.xaml.cs">
+      <DependentUpon>P6CoursCenAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\PagePrincCours.xaml.cs">
+      <DependentUpon>PagePrincCours.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeCours\PagePrincCoursAr.xaml.cs">
+      <DependentUpon>PagePrincCoursAr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\BILAL\MainQuizWindow.xaml.cs">
+      <DependentUpon>MainQuizWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\BILAL\MainQuizWindowTeacher.xaml.cs">
+      <DependentUpon>MainQuizWindowTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\BILAL\PagesNiveaux.xaml.cs">
+      <DependentUpon>PagesNiveaux.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\OUI_Non\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\OUI_Non\Page_mode_eleve.xaml.cs">
+      <DependentUpon>Page_mode_eleve.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Strings.Designer.cs" />
+    <Compile Include="StringsAr.Designer.cs" />
+    <Compile Include="modeLibre\canvasUC.xaml.cs">
       <DependentUpon>canvasUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LibreExoEns.xaml.cs">
+    <Compile Include="modeLibre\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeLibre\LibreExoEns.xaml.cs">
       <DependentUpon>LibreExoEns.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModeLibre.xaml.cs">
+    <Compile Include="modeLibre\ModeLibre.xaml.cs">
       <DependentUpon>ModeLibre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="niveauxLibre.xaml.cs">
+    <Compile Include="modeLibre\niveauxLibre.xaml.cs">
       <DependentUpon>niveauxLibre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShapePair.cs" />
-    <Compile Include="toolBarEnseignant.xaml.cs">
+    <Compile Include="modeLibre\ShapePair.cs" />
+    <Compile Include="modeLibre\toolBarEnseignant.xaml.cs">
       <DependentUpon>toolBarEnseignant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="toolBarLibreLibre.xaml.cs">
+    <Compile Include="modeLibre\toolBarLibreLibre.xaml.cs">
       <DependentUpon>toolBarLibreLibre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utili.cs" />
-    <Page Include="canvasUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ColorPicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LibreExoEns.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="modeLibre\Utili.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,32 +232,213 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ColorPicker.xaml.cs">
-      <DependentUpon>ColorPicker.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ModeLibre.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="niveauxLibre.xaml">
+    <Page Include="ModeCours\Demonstration1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="ModeCours\Demonstration1Ar.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="toolBarEnseignant.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="ModeCours\Demonstration2.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="toolBarLibreLibre.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="ModeCours\Demonstration2Ar.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration3Ar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration4Ar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration5Ar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\Demonstration6Ar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P1CourAxe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P1CourAxeAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P1CoursCen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P1CoursCenAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P2CourAxe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P2CourAxeAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P2CoursCen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P2CoursCenAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P3CourAxe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P3CourAxeAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P3CoursCen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P3CoursCenAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P4CourAxe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P4CourAxeAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P4CoursCen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P4CoursCenAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P5CourAxe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P5CourAxeAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P5CoursCen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P5CoursCenAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P6CourAxe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P6CourAxeAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P6CoursCen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\P6CoursCenAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\PagePrincCours.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModeCours\PagePrincCoursAr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\BILAL\MainQuizWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\BILAL\MainQuizWindowTeacher.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\BILAL\PagesNiveaux.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\OUI_Non\Page1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\OUI_Non\Page_mode_eleve.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\canvasUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\LibreExoEns.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\ModeLibre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\niveauxLibre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\toolBarEnseignant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\toolBarLibreLibre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +455,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Strings.resx" />
+    <EmbeddedResource Include="StringsAr.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -235,6 +540,85 @@
     <Resource Include="Fonts\Poppins\Poppins-ThinItalic.ttf" />
     <Resource Include="Fonts\Viga-Regular.ttf" />
     <Resource Include="Fonts\Viga\Viga-Regular.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Black.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Bold.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Book.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Heavy.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Light.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Medium.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Regular.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch-Thin.otf" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\Bw_Stretch_Font_Specimen.pdf" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Black.eot" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Bold.eot" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Book.eot" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Heavy.eot" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Light.eot" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Medium.eot" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Regular.eot" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\eot\BwStretch-Thin.eot" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Black.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Bold.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Book.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Heavy.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Light.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Medium.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Regular.otf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\otf\BwStretch-Thin.otf" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Black.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Bold.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Book.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Heavy.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Light.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Medium.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Regular.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff2\BwStretch-Thin.woff2" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Black.woff" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Bold.woff" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Book.woff" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Heavy.woff" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Light.woff" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Medium.woff" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Regular.woff" />
+    <None Include="modeExercice\OUI_Non\Fonts\BwStretch\Bw Stretch\woff\BwStretch-Thin.woff" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-Black.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-BlackItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-Bold.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-BoldItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-ExtraBold.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-ExtraLight.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-Italic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-Light.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-LightItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-Medium.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-MediumItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-Regular.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-SemiBold.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-Thin.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins-ThinItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-Black.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-BlackItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-Bold.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-BoldItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-ExtraBold.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-ExtraLight.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-Italic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-Light.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-LightItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-Medium.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-MediumItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-Regular.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-SemiBold.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-Thin.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\Poppins-ThinItalic.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Viga-Regular.ttf" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Viga\Viga-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -245,90 +629,196 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\duplicate.png" />
+    <Resource Include="modeLibre\icons\duplicate.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\pencil.png" />
+    <Resource Include="modeLibre\icons\pencil.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\eraser.png" />
+    <Resource Include="modeLibre\icons\eraser.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\rotate.png" />
+    <Resource Include="modeLibre\icons\rotate.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\move.png" />
+    <Resource Include="modeLibre\icons\move.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\new.png" />
+    <Resource Include="modeLibre\icons\new.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\polygone.png" />
+    <Resource Include="modeLibre\icons\polygone.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\editer.png" />
+    <Resource Include="modeLibre\icons\editer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\color.png" />
+    <Resource Include="modeLibre\icons\color.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\check.png" />
+    <Resource Include="modeLibre\icons\check.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\Acceuil\clipboard.png" />
-    <Resource Include="icons\Acceuil\Cours Jaune.png" />
-    <Resource Include="icons\Acceuil\Cours.png" />
-    <Resource Include="icons\Acceuil\Ellipse.png" />
-    <Resource Include="icons\Acceuil\Exercices Jaune.png" />
-    <Resource Include="icons\Acceuil\Exercices.png" />
-    <Resource Include="icons\Acceuil\files.png" />
-    <Resource Include="icons\Acceuil\floppy-disk.png" />
-    <Resource Include="icons\Acceuil\folder.png" />
-    <Resource Include="icons\Acceuil\left arrow.png" />
-    <Resource Include="icons\Acceuil\Libre Jaune.png" />
-    <Resource Include="icons\Acceuil\Libre.png" />
-    <Resource Include="icons\Acceuil\question %281%29.png" />
-    <Resource Include="icons\Acceuil\right arrow.png" />
+    <Resource Include="Acceuil\clipboard.png" />
+    <Resource Include="Acceuil\Cours Jaune.png" />
+    <Resource Include="Acceuil\Cours.png" />
+    <Resource Include="Acceuil\Ellipse.png" />
+    <Resource Include="Acceuil\Exercices Jaune.png" />
+    <Resource Include="Acceuil\Exercices.png" />
+    <Resource Include="Acceuil\files.png" />
+    <Resource Include="Acceuil\floppy-disk.png" />
+    <Resource Include="Acceuil\folder.png" />
+    <Resource Include="Acceuil\left arrow.png" />
+    <Resource Include="Acceuil\Libre Jaune.png" />
+    <Resource Include="Acceuil\Libre.png" />
+    <Resource Include="Acceuil\question %281%29.png" />
+    <Resource Include="Acceuil\right arrow.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Fonts\Poppins\OFL.txt" />
     <Resource Include="Fonts\Viga\OFL.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\floppy-disk.png" />
+    <Resource Include="modeLibre\icons\floppy-disk.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\upload.png" />
+    <Resource Include="modeLibre\icons\upload.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\logo.png" />
+    <Resource Include="Acceuil\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\export-file.png" />
+    <Resource Include="modeLibre\icons\export-file.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cursors\move.cur" />
-    <Resource Include="cursors\rotate.cur" />
+    <Resource Include="modeLibre\cursors\move.cur" />
+    <Resource Include="modeLibre\cursors\rotate.cur" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cursors\eraser.cur" />
+    <Resource Include="modeLibre\cursors\eraser.cur" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cursors\duplicate.cur" />
+    <Resource Include="modeLibre\cursors\duplicate.cur" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\vertically.png" />
+    <Resource Include="modeLibre\icons\vertically.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="cursors\color.cur" />
-    <Resource Include="cursors\pencil.cur" />
-    <Resource Include="cursors\vertically.cur" />
+    <Resource Include="modeLibre\cursors\color.cur" />
+    <Resource Include="modeLibre\cursors\pencil.cur" />
+    <Resource Include="modeLibre\cursors\vertically.cur" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\Acceuil\user.png" />
+    <Resource Include="Acceuil\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\Acceuil\logout.png" />
+    <Resource Include="Acceuil\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="modeLibre\shapesExo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\Niveau2_assets\" />
+    <Folder Include="bin\Debug\Niveau3_assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Debug\Quiz1_niveau1_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz1_niveau1_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz1_niveau2_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz1_niveau2_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz1_niveau3_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz1_niveau3_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz2_niveau1_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz2_niveau1_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz2_niveau2_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz2_niveau2_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz2_niveau3_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz2_niveau3_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz3_niveau1_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz3_niveau1_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz3_niveau2_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz3_niveau2_centrale.txt" />
+    <Resource Include="bin\Debug\Quiz3_niveau3_axiale.txt" />
+    <Resource Include="bin\Debug\Quiz3_niveau3_centrale.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="modeExercice\BILAL\Icons\Ellipse.png" />
+    <Resource Include="modeExercice\BILAL\Icons\Group 21.png" />
+    <Resource Include="modeExercice\BILAL\Icons\left arrow.png" />
+    <Resource Include="modeExercice\BILAL\Icons\right arrow.png" />
+    <Resource Include="modeExercice\BILAL\Images\double-tick 1.png" />
+    <Resource Include="modeExercice\BILAL\Images\gear.png" />
+    <Resource Include="modeExercice\BILAL\Images\geometry %281%29.png" />
+    <Resource Include="modeExercice\BILAL\Images\geometry %282%29.png" />
+    <Resource Include="modeExercice\BILAL\Images\geometry.png" />
+    <Resource Include="modeExercice\BILAL\Images\lamp.png" />
+    <Resource Include="modeExercice\BILAL\Images\strenght 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="modeExercice\OUI_Non\Edit_icon_%28the_Noun_Project_30184%29.svg.png" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\OFL.txt" />
+    <Resource Include="modeExercice\OUI_Non\Fonts\Viga\OFL.txt" />
+    <Resource Include="modeExercice\OUI_Non\Icons\Ellipse.png" />
+    <Resource Include="modeExercice\OUI_Non\Icons\left arrow.png" />
+    <Resource Include="modeExercice\OUI_Non\Icons\right arrow.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\clipboard.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\Edit_icon_%28the_Noun_Project_30184%29.svg.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\files.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\floppy-disk.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\folder.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\geometry %281%29.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\geometry %282%29.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\geometry.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\lamp.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\log-out.png" />
+    <Resource Include="modeExercice\OUI_Non\Images\question %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ModeCours\Icons\clipboard.png" />
+    <Resource Include="ModeCours\Icons\Cours Jaune.png" />
+    <Resource Include="ModeCours\Icons\Cours.png" />
+    <Resource Include="ModeCours\Icons\CoursAxeImg.png" />
+    <Resource Include="ModeCours\Icons\CoursCenImg.png" />
+    <Resource Include="ModeCours\Icons\Exercices Jaune.png" />
+    <Resource Include="ModeCours\Icons\Exercices.png" />
+    <Resource Include="ModeCours\Icons\files.png" />
+    <Resource Include="ModeCours\Icons\floppy-disk.png" />
+    <Resource Include="ModeCours\Icons\folder.png" />
+    <Resource Include="ModeCours\Icons\left arrow.png" />
+    <Resource Include="ModeCours\Icons\Libre Jaune.png" />
+    <Resource Include="ModeCours\Icons\Libre.png" />
+    <Resource Include="ModeCours\Icons\log-out 1.png" />
+    <Resource Include="ModeCours\Icons\log-out.png" />
+    <Resource Include="ModeCours\Icons\question %281%29.png" />
+    <Resource Include="ModeCours\Icons\right arrow.png" />
+    <Resource Include="ModeCours\Img\150ppi\PointCen.png" />
+    <Resource Include="ModeCours\Img\book.png" />
+    <Resource Include="ModeCours\Img\exmp1.PNG" />
+    <Resource Include="ModeCours\Img\exmp10.PNG" />
+    <Resource Include="ModeCours\Img\exmp11.PNG" />
+    <Resource Include="ModeCours\Img\exmp12.PNG" />
+    <Resource Include="ModeCours\Img\exmp2.PNG" />
+    <Resource Include="ModeCours\Img\exmp3.PNG" />
+    <Resource Include="ModeCours\Img\exmp4.PNG" />
+    <Resource Include="ModeCours\Img\exmp5.PNG" />
+    <Resource Include="ModeCours\Img\exmp6.PNG" />
+    <Resource Include="ModeCours\Img\exmp7.PNG" />
+    <Resource Include="ModeCours\Img\exmp8.PNG" />
+    <Resource Include="ModeCours\Img\exmp9.PNG" />
+    <Resource Include="ModeCours\Img\PointAxe.PNG" />
+    <Resource Include="ModeCours\Img\PointCen.png" />
+    <Resource Include="ModeCours\Img\PointCen1.PNG" />
+    <Resource Include="ModeCours\Img\propriete-intellectuelle.png" />
+    <Resource Include="ModeCours\Img\remarques.png" />
+    <Resource Include="ModeCours\Img\ruler.png" />
+    <Content Include="ModeCours\videos\etape1.mp4" />
+    <Content Include="ModeCours\videos\etape1Cen.mp4" />
+    <Content Include="ModeCours\videos\etape2.mp4" />
+    <Content Include="ModeCours\videos\etape2Cen.mp4" />
+    <Content Include="ModeCours\videos\etape3.mp4" />
+    <Content Include="ModeCours\videos\etape3Cen.mp4" />
+    <Content Include="ModeCours\videos\rotation.mp4" />
+    <Content Include="ModeCours\videos\videoplier.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

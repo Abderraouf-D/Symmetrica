@@ -1,0 +1,166 @@
+﻿<Page x:Class="OUI_Non.Page_mode_eleve"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projet2Cp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page_mode_eleve">
+
+
+
+
+
+
+
+
+
+
+
+    <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
+
+
+
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3.5*"/>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <Image Source="C:\O-N.png" Height="133" Width="145"  Grid.Row="0" Margin="-2,0,1056,10" VerticalAlignment="Bottom"  ></Image>
+
+
+                <StackPanel   Height="108" Orientation="Vertical" Grid.Row="1" Margin="50,0,0,5"  >
+
+                    <TextBlock FontSize="36"   FontFamily="Poppins" FontWeight="Bold"  > 
+                        
+                        <BulletDecorator x:Name="bulletdec1" > 
+                         <BulletDecorator.Bullet>
+                              <Ellipse Height="10" Width="10" Fill="Black"   />
+                          </BulletDecorator.Bullet>
+                             <TextBlock x:Name="describtion_txt1" Text=" Oui :  la symetrie est correcte ." Width="1015" />
+                        </BulletDecorator>
+ 
+                    </TextBlock>
+
+                    <TextBlock FontSize="36"  FontFamily="Poppins" HorizontalAlignment="Left" FontWeight="Bold"  >
+                         <BulletDecorator x:Name="bulletdec2">
+                         <BulletDecorator.Bullet>
+                        <Ellipse Height="10" Width="10" Fill="Black"/>
+                     </BulletDecorator.Bullet>
+                     <TextBlock x:Name="describtion_txt2" Text=" Non : la symetrie n'est pas correcte ." Width="1015"  />
+                        </BulletDecorator>
+                        </TextBlock>
+
+                </StackPanel>
+            </Grid>
+
+
+            <Border         Width="1127" Height="555" Background="#A2DBA1" x:Name="Border" Margin="36,14,36,13" CornerRadius="25" Grid.Row="1" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="1.5*" />
+                    </Grid.RowDefinitions>
+
+                    <Border     Height="400" Width="800"  BorderThickness="2" Background="Transparent"
+                            BorderBrush="#1c1d32" CornerRadius="15" Padding="8"  >
+
+                        <Image  x:Name="ONimg" Stretch="Fill"  MaxHeight="400" MaxWidth="800"  />
+
+                    </Border>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                        <Button Foreground="Black"  x:Name="ouibtn" Height="57" Width="135"  Background="#FFFFFF" BorderBrush="#801CB81C" 
+                                BorderThickness="5" Opacity="0.9" Click="Btn_oui" HorizontalAlignment="Left" >
+
+                            <TextBlock x:Name="oui_txt" Text="Oui" FontSize="36" FontFamily="Viga" />
+
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="20"/>
+                                </Style>
+                            </Button.Resources>
+
+                        </Button>
+
+
+
+
+
+                        <Button x:Name="nonbtn" Height="57" Width="135" Foreground="Black"  Background="#FFFFFF" BorderBrush="#801CB81C" BorderThickness="5"   Margin="400,0,0,0" Click="Btn_non">
+                            <TextBlock x:Name="non_txt" Text="Non" FontSize="36" FontFamily="Viga"/>
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="20"/>
+                                </Style>
+                            </Button.Resources>
+
+                        </Button>
+
+
+                    </StackPanel>
+
+                </Grid>
+
+
+
+            </Border>
+
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0,0,0,10" >
+                <Button Height="70" Width="241" Background="#A2DBA1" Click="Button_prece_Click" x:Name="prebtn">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./Icons/left arrow.png " Height="45" Width="45" Margin="0,0,7,0"/>
+                        <TextBlock x:Name="preced_txt" Text="Précédent" FontSize="36" FontFamily="Poppins"/>
+                    </StackPanel>
+
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Height="55  " Width="206" HorizontalAlignment="Center"  Opacity="0.82" Margin="200,0,200,100" x:Name="btnretry" Visibility="Hidden" Click="Btnretry_Click">
+                    <TextBlock Text="Ressayer" FontSize="36" FontFamily="Viga" x:Name="retry_txt" />
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Height="70" Width="241" Background="#A2DBA1" Click="Button_suiv_Click" x:Name="suivbtn">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="suiv_txt" Text="Suivant" FontSize="36" FontFamily="Poppins"  />
+                        <Image Source="./Icons/right arrow.png " Height="45" Width="45" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+            </StackPanel>
+
+
+
+
+
+
+
+        </Grid>
+    </Viewbox>
+</Page>

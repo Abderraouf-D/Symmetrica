@@ -10,11 +10,185 @@
 
 
         <ResourceDictionary>
+            <FontFamily x:Key="BwStretchBlack">./Fonts/BwStretch-Black.otf#BwStretch</FontFamily>
+            <FontFamily x:Key="BwStretchBold">./Fonts/BwStretch-Bold.otf#BwStretch</FontFamily>
+            <FontFamily x:Key="BwStretchRegular">./Fonts/BwStretch-Regular.otf#BwStretch</FontFamily>
+            <FontFamily x:Key="BwStretchThin">./Fonts/BwStretch-Thin.otf#BwStretch</FontFamily>
+            <FontFamily x:Key="BwStretchMedium">./Fonts/BwStretch-Medium.otf#BwStretch</FontFamily>
+            <FontFamily x:Key="PoppinsBlack">/Fonts/Poppins-Black.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsBold">/Fonts/Poppins-Bold.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsExtraBold">/Fonts/Poppins-ExtraBold.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsExtraLight">/Fonts/Poppins-ExtraLight.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsLight">/Fonts/Poppins-Light.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsMedium">/Fonts/Poppins-Medium.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsRegular">/Fonts/Poppins-Regular.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsSemiBold">/Fonts/Poppins-SemiBold.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="PoppinsThin">/Fonts/Poppins-Thin.ttf#Poppins</FontFamily>
+            <FontFamily x:Key="VigaRegular">/Fonts/Viga-Regular.ttf#Viga</FontFamily>
             <BooleanToVisibilityConverter x:Key="cnv" /> 
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml"/>
-                
-            </ResourceDictionary.MergedDictionaries>
+           
+            
+            
+            
+         
+            
+            <!--syles ta3 BILAL-->
+            <Style TargetType="Button" x:Key="ButtonQuizStyle">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Borderrrrrrrr"
+                            CornerRadius="15" 
+                            Background="White" 
+                            BorderBrush="Black" 
+                            BorderThickness="2" >
+                                <ContentPresenter 
+                                      x:Name="contentPresenter" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                      Content="{TemplateBinding Content}" 
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}" 
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Button" x:Key="ButtonQuizStyleTrue">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Borderrrrrrrr"
+                            CornerRadius="15" 
+                            Background="#A2DBA1" 
+                            BorderBrush="Black" 
+                            BorderThickness="2" >
+                                <ContentPresenter 
+                                      x:Name="contentPresenter" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                      Content="{TemplateBinding Content}" 
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}" 
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+            <Style TargetType="Button" x:Key="ButtonQuizStyleFalse">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Borderrrrrrrr"
+                            CornerRadius="15" 
+                            Background="#EC3D3D" 
+                            BorderBrush="Black" 
+                            BorderThickness="2" >
+                                <ContentPresenter 
+                                      x:Name="contentPresenter" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                      Content="{TemplateBinding Content}" 
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}" 
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+            <Style TargetType="Button" x:Key="ButtonQuizStyleMouseEnter">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Borderrrrrrrr"
+                            CornerRadius="15" 
+                            Background="#ffdb4d" 
+                            BorderBrush="Black" 
+                            BorderThickness="2" >
+                                <ContentPresenter 
+                                      x:Name="contentPresenter" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                      Content="{TemplateBinding Content}" 
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}" 
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Button" x:Key="TabButton">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="BorderOne"
+                            CornerRadius="{TemplateBinding Border.CornerRadius}" 
+                            Background="White" 
+                            BorderBrush="Black" 
+                            BorderThickness="2,2,2,2" >
+                                <ContentPresenter 
+                                      x:Name="contentPresenter" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                      Content="{TemplateBinding Content}" 
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}" 
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Button" x:Key="TabButton2">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="BorderOne"
+                            CornerRadius="{TemplateBinding Border.CornerRadius}" 
+                            Background="#009400" 
+                            BorderBrush="Black" 
+                            BorderThickness="2,2,2,2" >
+                                <ContentPresenter 
+                                      x:Name="contentPresenter" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                      Content="{TemplateBinding Content}" 
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}" 
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Button" x:Key="ButtonCentral" BasedOn="{StaticResource TabButton}">
+                <Setter Property="Border.CornerRadius" Value="10,10,10,10" />
+            </Style>
+
+            <Style TargetType="Button" x:Key="ButtonAxial" BasedOn="{StaticResource TabButton2}">
+                <Setter Property="Border.CornerRadius" Value="10,10,10,10" />
+            </Style>
+
+
+            <!---->            
             
 
             

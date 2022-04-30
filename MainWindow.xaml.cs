@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Projet2Cp.Utili; 
+using static Projet2Cp.Utili;
+using ModeCours;
+using Project;
 
 namespace Projet2Cp
 {
@@ -22,46 +24,67 @@ namespace Projet2Cp
 
     public partial class MainWindow : Window
     {
-        static public Boolean modeLibre , modeEns; 
-
+        static public Boolean modeLibre , modeEns , francais=true;
+        public static Frame MainFrame;
+        
 
 
         public MainWindow()
         {
             InitializeComponent();
-            modeLibre = true ;
+            
+         
             modeEns = true;
-            if (modeLibre)  MainFrame.NavigationService.Navigate(new ModeLibre());
-            else MainFrame.NavigationService.Navigate(new LibreExoEns());
+
+
+            MainFrame = new Frame();
+            myDock.Children.Add(MainFrame);
+            MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+
+
+
+
+
+
+            SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
+            ExoImg.Source = new BitmapImage(new Uri("./Acceuil/Exercices Jaune.png", UriKind.Relative));
+            TBExo.Foreground = color;
+            LibreImg.Source = new BitmapImage(new Uri("./Acceuil/Libre.png", UriKind.Relative));
+            CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours.png", UriKind.Relative));
+            TBCours.Foreground = Brushes.Snow;
+            TBLibre.Foreground = Brushes.Snow;
+            MainFrame.NavigationService.Navigate(new PagesNiveaux());
+
+
+            
                  
         }
         void ButtonClickExo(object sender, RoutedEventArgs e)
         {
             SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
-            /*TriangleCours.Visibility = Visibility.Hidden;
-            TriangleLibre.Visibility = Visibility.Hidden;
-            TriangleExo.Visibility = Visibility.Visible;*/
-            ExoImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Exercices Jaune.png", UriKind.Relative));
+           
+            ExoImg.Source = new BitmapImage(new Uri("./Acceuil/Exercices Jaune.png", UriKind.Relative));
             TBExo.Foreground = color;
-            LibreImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Libre.png", UriKind.Relative));
-            CoursImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Cours.png", UriKind.Relative));
+            LibreImg.Source = new BitmapImage(new Uri("./Acceuil/Libre.png", UriKind.Relative));
+            CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBLibre.Foreground = Brushes.Snow;
-            
+            MainFrame.NavigationService.Navigate(new PagesNiveaux());
         }
 
         private void ButtonClickLibre(object sender, RoutedEventArgs e)
         {
             SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
-            /*TriangleCours.Visibility = Visibility.Hidden;
-            TriangleLibre.Visibility = Visibility.Visible;
-            TriangleExo.Visibility = Visibility.Hidden;*/
-            LibreImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Libre Jaune.png", UriKind.Relative));
+            
+            LibreImg.Source = new BitmapImage(new Uri("./Acceuil/Libre Jaune.png", UriKind.Relative));
             TBLibre.Foreground = color;
-            ExoImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Exercices.png", UriKind.Relative));
-            CoursImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Cours.png", UriKind.Relative));
+            ExoImg.Source = new BitmapImage(new Uri("./Acceuil/Exercices.png", UriKind.Relative));
+            CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBExo.Foreground = Brushes.Snow;
+            modeLibre = true;
+            MainFrame.NavigationService.Navigate(new ModeLibre());
+         
 
 
 
@@ -70,15 +93,16 @@ namespace Projet2Cp
         private void ButtonClickCours(object sender, RoutedEventArgs e)
         {
             SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
-            /*TriangleCours.Visibility = Visibility.Visible;
-            TriangleLibre.Visibility = Visibility.Hidden;
-            TriangleExo.Visibility = Visibility.Hidden;*/
-            CoursImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Cours Jaune.png", UriKind.Relative));
+            
+            CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours Jaune.png", UriKind.Relative));
             TBCours.Foreground = color;
-            LibreImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Libre.png", UriKind.Relative));
-            ExoImg.Source = new BitmapImage(new Uri("./icons/Acceuil/Exercices.png", UriKind.Relative));
+            LibreImg.Source = new BitmapImage(new Uri("./Acceuil/Libre.png", UriKind.Relative));
+            ExoImg.Source = new BitmapImage(new Uri("./Acceuil/Exercices.png", UriKind.Relative));
             TBLibre.Foreground = Brushes.Snow;
             TBExo.Foreground = Brushes.Snow;
+
+            if (francais) MainFrame.NavigationService.Navigate(new PagePrincCours());
+            else MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
 
 
         }

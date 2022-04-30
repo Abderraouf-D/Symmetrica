@@ -8,12 +8,12 @@
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="SYMMETRICA" Height="1080" Width="1920" 
-         Icon="./icons/logo.png">
+         Icon="./Acceuil/logo.png">
 
 
 
 
-    <DockPanel>
+    <DockPanel x:Name="myDock">
         <Border BorderBrush="Black" BorderThickness="2,0,2,2" DockPanel.Dock="Top">
             <Grid  Height="35"  Background="LightGray">
 
@@ -26,13 +26,13 @@
             </Grid.ColumnDefinitions>
                 <Border Height="30" Grid.Column="1" BorderThickness="1.5" CornerRadius="5" BorderBrush="Black">
                     <StackPanel  Orientation="Horizontal"  >
-                    <Image Height="25" Width="25" HorizontalAlignment="left"  Source="./icons/Acceuil/user.png" />
+                    <Image Height="25" Width="25" HorizontalAlignment="left"  Source="./Acceuil/user.png" />
                         <TextBlock x:Name="UserName" Margin="5" FontFamily="{StaticResource VigaRegular}" Foreground="White"
                            VerticalAlignment="Center" HorizontalAlignment="Center">Immadeddine Mahouni</TextBlock>
                 </StackPanel>
                </Border>
                         <Button  Grid.Column="2" Cursor="Arrow" ToolTip="Sortir"   Click="ButtonClickLogout" HorizontalAlignment="Center"   Width="40" Height="30" x:Name="exportPng" >
-                <Image Source="./icons/Acceuil/logout.png" Height="30" Width="30" />
+                <Image Source="./Acceuil/logout.png" Height="30" Width="30" />
             </Button>
 
 
@@ -61,7 +61,7 @@
                               >
                             <MenuItem.Icon>
                                 <Image 
-                                Source="./icons/Acceuil/folder.png" Height="25" Width="25" Stretch="Uniform"
+                                Source="./Acceuil/folder.png" Height="25" Width="25" Stretch="Uniform"
                                 />
                             </MenuItem.Icon>
                         </MenuItem>
@@ -70,7 +70,7 @@
                               >
                             <MenuItem.Icon>
                                 <Image 
-                                Source="./icons/Acceuil/floppy-disk.png" Height="25" Width="25" Stretch="Uniform"
+                                Source="./Acceuil/floppy-disk.png" Height="25" Width="25" Stretch="Uniform"
                                 />
                             </MenuItem.Icon>
                         </MenuItem>
@@ -79,7 +79,7 @@
                               >
                             <MenuItem.Icon>
                                 <Image
-                                Source="./icons/Acceuil/log-out.png" Height="25" Width="25" Stretch="Uniform"
+                                Source="./Acceuil/logout.png" Height="25" Width="25" Stretch="Uniform"
                                 />
                             </MenuItem.Icon>
                         </MenuItem>
@@ -102,7 +102,7 @@
                               >
                             <MenuItem.Icon>
                                 <Image 
-                                Source="./icons/Acceuil/files.png" Height="25" Width="25" Stretch="Uniform"
+                                Source="./Acceuil/files.png" Height="25" Width="25" Stretch="Uniform"
                                 />
                             </MenuItem.Icon>
                         </MenuItem>
@@ -111,7 +111,7 @@
                               >
                             <MenuItem.Icon>
                                 <Image 
-                                Source="./icons/Acceuil/clipboard.png" Height="25" Width="25" Stretch="Uniform"
+                                Source="./Acceuil/clipboard.png" Height="25" Width="25" Stretch="Uniform"
                                 />
                             </MenuItem.Icon>
                         </MenuItem>
@@ -135,7 +135,7 @@
                             <MenuItem.Icon>
 
                                 <Image 
-                                Source="./icons/Acceuil/question (1).png" Height="25" Width="25" Stretch="Uniform"
+                                Source="./Acceuil/question (1).png" Height="25" Width="25" Stretch="Uniform"
                                 />
 
                             </MenuItem.Icon>
@@ -157,7 +157,7 @@
             </Grid.RowDefinitions>
 
             <Border CornerRadius="7" BorderThickness="2,0,2,2" BorderBrush="Black" Background="White" Width="Auto" Height="Auto">
-                <Image  VerticalAlignment="Center" HorizontalAlignment="Center" Height="150" Width="150" Source="./icons/logo.png"/>
+                <Image  VerticalAlignment="Center" HorizontalAlignment="Center" Height="150" Width="150" Source="./Acceuil/logo.png"/>
             </Border>
 
             
@@ -168,7 +168,7 @@
 
                 
                     <StackPanel>
-                        <Image x:Name="CoursImg" Source="./icons/Acceuil/Cours.png" Margin="1" Width="100" Height="100"/>
+                        <Image x:Name="CoursImg" Source="./Acceuil/Cours.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock x:Name="TBCours"  HorizontalAlignment="Center"
                         Text="Cours" FontSize="40"
                         Foreground="White"
@@ -184,7 +184,7 @@
             <Button x:Name="ButtonExo"  Background="#1CB81C" Click="ButtonClickExo" ClickMode="Press"  Height="Auto" Grid.Row="2">
                
                     <StackPanel >
-                    <Image Stretch="Uniform" x:Name="ExoImg" Source="./icons/Acceuil/Exercices.png" Margin="1"  Width="100" Height="100"/>
+                    <Image Stretch="Uniform" x:Name="ExoImg" Source="./Acceuil/Exercices.png" Margin="1"  Width="100" Height="100"/>
                         <TextBlock  x:Name="TBExo"
                     Text="Exercices" FontSize="30"  
                      Foreground="Snow"
@@ -198,7 +198,7 @@
             <Button Background="#1CB81C" Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
                 
                     <StackPanel >
-                        <Image x:Name="LibreImg" Source="./icons/Acceuil/Libre.png" Margin="1" Width="100" Height="100"/>
+                        <Image x:Name="LibreImg" Source="./Acceuil/Libre.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock  x:Name="TBLibre"
                     Text="Libre" HorizontalAlignment="Center" FontSize="40"  
                      Foreground="Snow" 
@@ -209,42 +209,7 @@
                
 
             </Button>
-            <Viewbox HorizontalAlignment="Right" Grid.Row="1">
-                <Polygon x:Name="TriangleCours" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="0,131,-36,110" Grid.Row="1">
-                    <Polygon.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="90"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Polygon.RenderTransform>
-                </Polygon>
-            </Viewbox>
-            <Viewbox HorizontalAlignment="Right" Grid.Row="2">
-                <Polygon  x:Name="TriangleExo" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.513,0.486" Margin="0,131,-36,110" Grid.Row="2">
-                    <Polygon.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="90"/>
-                            <TranslateTransform X="0.09" Y="2.43"/>
-                        </TransformGroup>
-                    </Polygon.RenderTransform>
-                </Polygon>
-            </Viewbox>
-            <Viewbox HorizontalAlignment="Right" Stretch="Uniform" Grid.Row="3">
-                <Polygon x:Name="TriangleLibre" Points="5,0 10,10, 0,10" Visibility="Hidden" Fill="#FFCC00" HorizontalAlignment="Right" Height="90" Width="90" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="0,131,-36,110" Grid.Row="3">
-                    <Polygon.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="90"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Polygon.RenderTransform>
-                </Polygon>
-            </Viewbox>
+            
 
 
 
@@ -254,8 +219,8 @@
         </Grid>
        
 
-                <Frame x:Name="MainFrame" Grid.Row="1" Grid.Column="1"  NavigationUIVisibility="Hidden">
-        </Frame>
+                
+     
 
     </DockPanel>
 </Window>

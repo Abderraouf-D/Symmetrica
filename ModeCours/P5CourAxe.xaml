@@ -1,0 +1,140 @@
+﻿<Page x:Class="ModeCours.P5CourAxe"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ModeCours"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="P5CourAxe">
+
+    <Viewbox x:Name="ViexBox_P5CourAxe" Grid.Row="1" Grid.Column="1" Stretch="Uniform" Margin="0 0 0 0">
+        <Grid Height="932" Width="1547" Grid.Column="1" Grid.Row="1">
+
+            <Border  Width="auto" Height="auto" Background="#A2DBA1" CornerRadius="15"  Margin="555,71,554,786">
+
+                <TextBlock x:Name="Tchoix" Text="La symetrie axiale" FontSize="41" Foreground = "Black" FontFamily="{StaticResource VigaRegular}" FontWeight="Heavy" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            </Border>
+            <StackPanel Orientation="Vertical" Margin="50,166,50,120">
+                <TextBlock Text="III − Symétrique d'une figure" FontSize="50" Foreground="Red" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 0" Width="1214">
+                    <Border Height="243" Width="1175" Margin="30 20 30 0" Background="#d3e8d3" CornerRadius="30" BorderThickness="2" BorderBrush="#60ab60" >
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel>
+
+
+                                <Path Fill="Red"  
+                                Data="M 241,200 
+                                      A 20,20 0 0 0 200,240
+                                      C 210,250 240,270 240,270
+                                      C 240,270 260,260 280,240
+                                      A 20,20 0 0 0 239,200
+                                      "  Height="31" Stretch="Fill" Width="28" Margin="10 20 0 0" />
+                                <Rectangle Fill="#238b22" Height="150" Width="4" Margin="10 5 0 0" />
+
+                            </StackPanel>
+                            <StackPanel Height="239" Width="1124" >
+                                <StackPanel Orientation="Horizontal" Width="980">
+                                    <Image Source="Img/ruler.png" Width="40"/>
+                                    <TextBlock Text="Méthode (CONSTRUIRE LE SYMÉTRIQUE D'UNE FIGURE)" FontSize="35" Foreground="#238b22" FontWeight="Bold" Margin="20 0 0 0" Width="923" />
+                                </StackPanel>
+                                
+                                <TextBlock HorizontalAlignment="Left" Text="⋄ Pour construire le symétrique axiale :" TextWrapping="Wrap" FontSize="25" Foreground="#238b22" FontWeight="Bold" Margin="0 0 0 0" Width="1066" />
+                                <TextBlock HorizontalAlignment="Left" Text="— d'un segment → on construit le symétrique des deux extrémités et on les relie ;" TextWrapping="Wrap" FontSize="25" Foreground="#238b22" FontWeight="Bold" Margin="0 0 0 0" Width="1065" />
+                                <TextBlock HorizontalAlignment="Left" Text="— d'une droite → on choisit deux points sur cette droite (s'il n'y en a pas, évidemment !), on construit
+leurs symétriques et on les relie sans s'arrêter;" TextWrapping="Wrap" FontSize="25" Foreground="#238b22" FontWeight="Bold" Margin="0 0 0 0" Width="1111" />
+                                <TextBlock HorizontalAlignment="Left" Text="— d'un cercle → on construit le symétrique du centre et on reporte le rayon." TextWrapping="Wrap" FontSize="25" Foreground="#238b22" FontWeight="Bold" Margin="0 0 0 0" Width="1065" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Border>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 0" Width="1214">
+                    <Border Height="110" Width="997" Margin="30 20 30 0" Background="#ffcccc" CornerRadius="30" BorderThickness="2" BorderBrush="#ff0308" >
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel>
+
+
+                                <Path Fill="Red"  
+                                Data="M 241,200 
+                                      A 20,20 0 0 0 200,240
+                                      C 210,250 240,270 240,270
+                                      C 240,270 260,260 280,240
+                                      A 20,20 0 0 0 239,200
+                                      "  Height="31" Stretch="Fill" Width="28" Margin="10 20 0 0" />
+                                <Rectangle Fill="#ff0308" Height="30" Width="4" Margin="10 5 0 0" />
+
+                            </StackPanel>
+                            <StackPanel Height="106" Width="977" >
+                                <StackPanel Orientation="Horizontal" Width="215">
+                                    <Image Source="Img/propriete-intellectuelle.png" Width="40"/>
+                                    <TextBlock Text="Propriété" FontSize="35" Foreground="#ff0308" FontWeight="Bold" Margin="20 0 0 0" Width="168" />
+                                </StackPanel>
+                                
+                                <TextBlock HorizontalAlignment="Left" Text="⋄ La symétrie axiale conserve les distances, les angles, l'alignement et les aires." TextWrapping="Wrap" FontSize="25" Foreground="#ff0308" FontWeight="Bold" Margin="0 0 0 0" Width="1066" />
+                                
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Border>
+                    
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <Image Source="Img/remarques.png" Width="40"/>
+                    <TextBlock Text="Remarque :" FontSize="40" Foreground="Black" FontWeight="Bold" Margin="15 0 0 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10 10 0 0 ">
+                    <Rectangle Fill="Red" Height="80" Width="5" Margin="10 5 0 0" />
+                    <Border Margin="10 0 0 0" Background="#ffffe0" Height="auto" Width="1329" CornerRadius="30">
+                        <TextBlock Text="    Cela signifie par exemple qu'un segment et son symétrique ont forcément la même longueur (mesurer sur les figures précédentes
+pour s'en convaincre), ou encore que si trois points sont alignés alors leurs symétriques le seront aussi..."
+                                TextWrapping="Wrap"     FontSize="25"  Foreground="Black" FontWeight="Bold" Margin="22,0,10,0"/>
+                    </Border>
+                </StackPanel>
+               
+               
+
+
+            </StackPanel>
+
+            <Button Background="#A2DBA1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        Width="220" Height="70" Margin="0 0 0 30" BorderThickness="0"  
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    Click="Button_Click_Svt_CA_P5"
+                        >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <WrapPanel>
+                        <TextBlock Text="Suivant " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                        <Image Source="Icons/right arrow.png" Width="45" Height="45" />
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Background="#A2DBA1" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                        Width="241" Height="70" Margin="0 0 0 30" BorderThickness="0"  
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" 
+                    Click="Button_Click_Prcdt_CA_P5"
+                    >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <WrapPanel>
+                        <Image Source="Icons/left arrow.png" Width="45" Height="45" />
+                        <TextBlock Text=" Précédent" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+    </Viewbox>
+</Page>
