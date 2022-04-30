@@ -25,7 +25,7 @@ namespace Projet2Cp
     public partial class canvasUC : UserControl
     {
 
-        private string exoPath = @".\shapesExo.txt";
+        private string exoPath = @".\Exercices\DessinerSym\shapesExo.txt";
 
         private List<ShapePair> shapePairs { get; set; } //represents the pairs of shapes
         private Point mousePosition; //mouse position in canvas
@@ -124,16 +124,13 @@ namespace Projet2Cp
                 niv.nivStack.Children.Add(tb);
                 tb.Background=Brushes.White;
                 Panel.SetZIndex(tb,122);
-
                 this.niv = niv;
-                if (MainWindow.modeEns)
-                {
                     horiz = ((toolBarEnseignant)TB).horiz;
                     verti = ((toolBarEnseignant)TB).verti;
                     diag1 = ((toolBarEnseignant)TB).diag1;
                     diag2 = ((toolBarEnseignant)TB).diag2;
                     centre = ((toolBarEnseignant)TB).centre;
-                }
+                
             }
 
             //------------------Rotate_Utils----------------------//

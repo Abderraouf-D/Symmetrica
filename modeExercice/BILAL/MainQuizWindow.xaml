@@ -7,37 +7,43 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="1000"
       Title="MainQuizWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
 
-    <Viewbox x:Name="ViewBoxContainer" Stretch="Uniform">
-        <Grid x:Name="GridPrimaire">
-            <Grid x:Name="GridSecondaire" Background="White" Height="367">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*" />
-                    <RowDefinition Height="3*" />
-                    <RowDefinition Height="0.7*" />
-                </Grid.RowDefinitions>
-                <Border Height="50" Width="440" BorderThickness="2" BorderBrush="Black" Background="White" CornerRadius="15">
-                    <TextBlock Text=""  Name="Question" FontSize="11" FontFamily="{StaticResource PoppinsSemiBold}" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Border>
-                <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,40,0">
-                    <Border>
-                        <Button x:Name="teacherButton" Click="teacherButton_Click">
-                            <Image Source="Images\gear.png" Width="20" Height="20"/>
-                        </Button>
+        </Grid.RowDefinitions>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Left" Source="Icons\Group 21.png" Height="90"  Width="90" Margin="95,0,0,0"/>
+
+        <Viewbox Grid.Row="1" x:Name="ViewBoxContainer" Stretch="Uniform" >
+            <Grid x:Name="GridPrimaire">
+                <Grid x:Name="GridSecondaire" Background="White" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="0.7*" />
+                    </Grid.RowDefinitions>
+                    <Border Height="50" Width="440" BorderThickness="2" BorderBrush="Black" Background="White" CornerRadius="15">
+                        <TextBlock Text=""  Name="Question" FontSize="11" FontFamily="{StaticResource PoppinsSemiBold}" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <TextBlock Foreground="Black" Text="Editer" FontFamily="{StaticResource PoppinsMedium}"/>
-                </StackPanel>
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,40,0">
+                        <Border>
+                            <Button x:Name="teacherButton" Click="teacherButton_Click">
+                                <Image Source="Images\gear.png" Width="20" Height="20"/>
+                            </Button>
+                        </Border>
+                        <TextBlock x:Name="edtText" Foreground="Black" Text="Editer" FontFamily="{StaticResource PoppinsMedium}"/>
+                    </StackPanel>
 
-                <Image Source="Icons\Group 21.png" Margin="0,0,587,0" Height="60" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60"/>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0">
-                        <Button 
+                        <StackPanel Grid.Column="0">
+                            <Button 
                         Click="ChoixA_Click"
                         MouseLeave="ChoixA_MouseLeave"
                         MouseEnter="ChoixA_MouseEnter"
@@ -51,7 +57,7 @@
                         Margin="30,70,10,20" 
                         HorizontalAlignment="Right"/>
 
-                        <Button 
+                            <Button 
                         Content=""
                         Click="ChoixC_Click"
                         MouseLeave="ChoixC_MouseLeave"
@@ -64,10 +70,10 @@
                         FontFamily="{StaticResource PoppinsSemiBold}" 
                         FontSize="10"
                         Margin="30,20,10,30" HorizontalAlignment="Right" />
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel Grid.Column="1">
-                        <Button
+                        <StackPanel Grid.Column="1">
+                            <Button
                         Content=""
                         Click="ChoixB_Click"
                         MouseLeave="ChoixB_MouseLeave"
@@ -80,7 +86,7 @@
                         FontFamily="{StaticResource PoppinsSemiBold}" 
                         FontSize="10"
                         Margin="10,70,30,20" HorizontalAlignment="Left" BorderThickness="1,1,1,1"/>
-                        <Button 
+                            <Button 
                         Content=""
                         Click="ChoixD_Click"
                         MouseLeave="ChoixD_MouseLeave"
@@ -93,50 +99,51 @@
                         FontFamily="{StaticResource PoppinsSemiBold}" 
                         FontSize="10"
                         Margin="10,20,0,30" HorizontalAlignment="Left"/>
-                    </StackPanel>
-
-                    <Border Name="bravoImage" Visibility="Hidden" Width="80" Height="80" Grid.ColumnSpan="2" Margin="300,91,300,41" BorderThickness="2" CornerRadius="100" BorderBrush="Black" Background="#A2DBA1">
-                        <Image Source="Images\double-tick 1.png" Width="60" Height="60"/>
-                    </Border>
-                    <Border x:Name="ressayerImage" Visibility="Hidden" Width="80" Height="80" Grid.ColumnSpan="2" Margin="300,91,300,41" BorderThickness="2" CornerRadius="100" BorderBrush="Black" Background="#EC3D3D">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="Images\strenght 1.png" Width="40" Height="40" Margin="18,8,18,0"/>
-                            <TextBlock Foreground="White" FontFamily="{StaticResource PoppinsRegular}" Text="Réssayer" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </StackPanel>
-                    </Border>
 
-                    <StackPanel x:Name="falseText" Visibility="Hidden" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBlock Text="Oops !" Foreground="#EC3D3D" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
-                        <TextBlock FontFamily="{StaticResource VigaRegular}" Foreground="#EC3D3D" HorizontalAlignment="Center" Text="Essayez à nouveau, n'échouez pas !"/>
-                    </StackPanel>
-                    <TextBlock x:Name="trueText" Visibility="Hidden" VerticalAlignment="Top" Grid.ColumnSpan="2" Text="Excellent !" Foreground="#A2DBA1" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
+                        <Border Name="bravoImage" Visibility="Hidden" Width="80" Height="80" Grid.ColumnSpan="2" Margin="300,91,300,41" BorderThickness="2" CornerRadius="100" BorderBrush="Black" Background="#A2DBA1">
+                            <Image Source="Images\double-tick 1.png" Width="60" Height="60"/>
+                        </Border>
+                        <Border x:Name="ressayerImage" Visibility="Hidden" Width="80" Height="80" Grid.ColumnSpan="2" Margin="300,91,300,41" BorderThickness="2" CornerRadius="100" BorderBrush="Black" Background="#EC3D3D">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="Images\strenght 1.png" Width="40" Height="40" Margin="18,8,18,0"/>
+                                <TextBlock Foreground="White" FontFamily="{StaticResource PoppinsRegular}" Text="Réssayer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+
+                        <StackPanel x:Name="falseText" Visibility="Hidden" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <TextBlock Text="Oops !" Foreground="#EC3D3D" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
+                            <TextBlock FontFamily="{StaticResource VigaRegular}" Foreground="#EC3D3D" HorizontalAlignment="Center" Text="Essayez à nouveau, n'échouez pas !"/>
+                        </StackPanel>
+                        <TextBlock x:Name="trueText" Visibility="Hidden" VerticalAlignment="Top" Grid.ColumnSpan="2" Text="Excellent !" Foreground="#A2DBA1" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Button x:Name="btnPrecedent" Grid.Row="2" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="30,0,430,10" Click="ButtonPrecedent_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Icons/left arrow.png" Height="15" Width="15" Margin="0,0,7,0"/>
+                            <TextBlock Text="Précédent" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                        </StackPanel>
+
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button x:Name="btnSuivant" Grid.Row="2" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="430,0,30,10" Click="ButtonSuivant_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Suivant" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"  />
+                            <Image Source="Icons/right arrow.png" Height="15" Width="15" Margin="10,0,0,0"/>
+                        </StackPanel>
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                 </Grid>
-
-                <Button x:Name="btnPrecedent" Grid.Row="2" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="30,0,430,10" Click="ButtonPrecedent_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="Icons/left arrow.png" Height="15" Width="15" Margin="0,0,7,0"/>
-                        <TextBlock Text="Précédent" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"/>
-                    </StackPanel>
-
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="8"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-
-                <Button x:Name="btnSuivant" Grid.Row="2" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="430,0,30,10" Click="ButtonSuivant_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Suivant" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"  />
-                        <Image Source="Icons/right arrow.png" Height="15" Width="15" Margin="10,0,0,0"/>
-                    </StackPanel>
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="8"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
             </Grid>
-        </Grid>
-    </Viewbox>
+        </Viewbox>
+    </Grid>
 </Page>

@@ -650,9 +650,6 @@
     <Resource Include="modeLibre\icons\polygone.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="modeLibre\icons\editer.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="modeLibre\icons\color.png" />
   </ItemGroup>
   <ItemGroup>
@@ -718,28 +715,32 @@
     <Resource Include="modeLibre\shapesExo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Debug\Niveau2_assets\" />
-    <Folder Include="bin\Debug\Niveau3_assets\" />
+    <Folder Include="bin\Debug\Exercices\DessinerSym\" />
+    <Folder Include="bin\Debug\Exercices\OuiNon\axiale\Niveau2_assets\" />
+    <Folder Include="bin\Debug\Exercices\OuiNon\axiale\Niveau3_assets\" />
+    <Folder Include="bin\Debug\Exercices\OuiNon\centrale\Niveau2_assets\" />
+    <Folder Include="bin\Debug\Exercices\OuiNon\centrale\Niveau3_assets\" />
+    <Folder Include="bin\Debug\Exercices\TrvAxe\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bin\Debug\Quiz1_niveau1_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz1_niveau1_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz1_niveau2_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz1_niveau2_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz1_niveau3_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz1_niveau3_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz2_niveau1_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz2_niveau1_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz2_niveau2_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz2_niveau2_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz2_niveau3_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz2_niveau3_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz3_niveau1_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz3_niveau1_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz3_niveau2_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz3_niveau2_centrale.txt" />
-    <Resource Include="bin\Debug\Quiz3_niveau3_axiale.txt" />
-    <Resource Include="bin\Debug\Quiz3_niveau3_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau1_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau1_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau2_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau2_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau3_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau3_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau1_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau1_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau2_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau2_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau3_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau3_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau1_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau1_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau2_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau2_centrale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau3_axiale.txt" />
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau3_centrale.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="modeExercice\BILAL\Icons\Ellipse.png" />
@@ -755,25 +756,16 @@
     <Resource Include="modeExercice\BILAL\Images\strenght 1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="modeExercice\OUI_Non\Edit_icon_%28the_Noun_Project_30184%29.svg.png" />
     <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\OFL.txt" />
     <Resource Include="modeExercice\OUI_Non\Fonts\Viga\OFL.txt" />
     <Resource Include="modeExercice\OUI_Non\Icons\Ellipse.png" />
     <Resource Include="modeExercice\OUI_Non\Icons\left arrow.png" />
     <Resource Include="modeExercice\OUI_Non\Icons\right arrow.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\clipboard.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\Edit_icon_%28the_Noun_Project_30184%29.svg.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\files.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\floppy-disk.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\folder.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\geometry %281%29.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\geometry %282%29.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\geometry.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\lamp.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\log-out.png" />
-    <Resource Include="modeExercice\OUI_Non\Images\question %281%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="modeExercice\OUI_Non\Icons\ouinon.png" />
+    <Resource Include="modeLibre\icons\editer.png" />
+    <Resource Include="modeExercice\OUI_Non\Icons\gear.png" />
     <Resource Include="ModeCours\Icons\clipboard.png" />
     <Resource Include="ModeCours\Icons\Cours Jaune.png" />
     <Resource Include="ModeCours\Icons\Cours.png" />
@@ -811,14 +803,30 @@
     <Resource Include="ModeCours\Img\propriete-intellectuelle.png" />
     <Resource Include="ModeCours\Img\remarques.png" />
     <Resource Include="ModeCours\Img\ruler.png" />
-    <Content Include="ModeCours\videos\etape1.mp4" />
-    <Content Include="ModeCours\videos\etape1Cen.mp4" />
-    <Content Include="ModeCours\videos\etape2.mp4" />
-    <Content Include="ModeCours\videos\etape2Cen.mp4" />
-    <Content Include="ModeCours\videos\etape3.mp4" />
-    <Content Include="ModeCours\videos\etape3Cen.mp4" />
-    <Content Include="ModeCours\videos\rotation.mp4" />
-    <Content Include="ModeCours\videos\videoplier.mp4" />
+    <EmbeddedResource Include="ModeCours\videos\etape1.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="ModeCours\videos\etape1Cen.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ModeCours\videos\etape2.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ModeCours\videos\etape2Cen.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ModeCours\videos\etape3.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ModeCours\videos\etape3Cen.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ModeCours\videos\rotation.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ModeCours\videos\videoplier.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

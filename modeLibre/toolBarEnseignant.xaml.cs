@@ -25,7 +25,7 @@ namespace Projet2Cp
         {
             InitializeComponent();
 
-           
+           if (!MainWindow.modeEns) EditEns.Visibility = Visibility.Collapsed;
         }
 
        

@@ -3,20 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:OUI_Non"
+
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
-
-
-
-
-
-
-
-
-
-
 
     <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
 
@@ -38,10 +28,10 @@
 
                 </Grid.RowDefinitions>
 
-                <Image Source="C:\O-N.png" Height="133" Width="145"  Grid.Row="0" Margin="-2,0,1056,10" VerticalAlignment="Bottom"  ></Image>
+                <Image Source="./Icons/ouinon.png" Width="145"  Grid.Row="0" Margin="0,0,1059,25" RenderTransformOrigin="0.741,0.46"  />
 
-                <Button Grid.Row ="0" Height="70" Width="70" Background="Transparent" BorderBrush="Transparent" x:Name="editer" Margin="1096,72,33,1" Click="editer_Click">
-                    <Image Source="/Edit_icon_(the_Noun_Project_30184).svg.png" Height="70" Width="70" Stretch="Fill"  />
+                <Button Grid.Row ="0" Height="75" Width="75" Background="Transparent" BorderBrush="Transparent" x:Name="editer" Margin="1096,72,33,1" Click="editer_Click">
+                    <Image Source="Icons/gear.png" Height="70" Width="70" Stretch="Fill"  />
 
                 </Button>
                 <StackPanel   Height="108" Orientation="Vertical" Grid.Row="1" Margin="50,0,0,5"  >
@@ -76,10 +66,10 @@
                         <RowDefinition Height="5*"/>
                         <RowDefinition Height="1.5*" />
                     </Grid.RowDefinitions>
-                    <Border     Height="400" Width="800"  BorderThickness="2" Background="Transparent"
+                    <Border  x:Name="imgBorder"   Height="400" Width="800"  BorderThickness="2" Background="Transparent"
                             BorderBrush="#1c1d32" CornerRadius="15" Padding="8"  >
 
-                        <Image  x:Name="ONimg" Stretch="Fill"  MaxHeight="400" MaxWidth="800"  />
+                        <Image   x:Name="ONimg"  Stretch="Fill"  MaxHeight="400" MaxWidth="800"  />
 
                     </Border>
 
@@ -101,8 +91,8 @@
                         <StackPanel Orientation="Vertical" >
                             <TextBlock x:Name="anstxt" TextWrapping="Wrap"  Text="" FontSize="24"
                                 FontFamily="Poppins" FontWeight="Bold" FontStyle="Normal"  Visibility="Collapsed" Height="35"/>
-                            
-                            <Border x:Name="ans_input" CornerRadius="15" BorderBrush="#FF32DA85" BorderThickness="3" Width="80"
+
+                            <Border x:Name="ans_input" CornerRadius="15" BorderBrush="Black" BorderThickness="3" Width="80"
                                     Height="50"  Visibility="Collapsed"  Margin="0,20,0,0">
                                 <TextBox x:Name="reponse"    TextWrapping="Wrap" Text="" 
                                      Width="68" TextAlignment="Center" MaxLength="3" 
@@ -138,7 +128,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0,0,0,10" >
                 <Button Height="70" Width="241" Background="#A2DBA1" Click="Button_prece_Click" x:Name="prebtn">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\left-arrow.png " Height="45" Width="45" Margin="0,0,7,0"/>
+                        <Image Source="./Icons/left arrow.png " Height="45" Width="45" Margin="0,0,7,0"/>
                         <TextBlock x:Name="preced_txt" Text="Précédent" FontSize="36" FontFamily="Poppins"/>
                     </StackPanel>
 
@@ -159,7 +149,7 @@
                 <Button Height="70" Width="241" Background="#A2DBA1" Click="Button_suiv_Click" x:Name="suivbtn">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="suiv_txt" Text="Suivant" FontSize="36" FontFamily="Poppins"  />
-                        <Image Source="C:\right-arrow.png " Height="45" Width="45" Margin="10,0,0,0"/>
+                        <Image Source="./Icons/right arrow.png " Height="45" Width="45" Margin="10,0,0,0"/>
                     </StackPanel>
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">

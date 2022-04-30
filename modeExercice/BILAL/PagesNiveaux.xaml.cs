@@ -25,6 +25,10 @@ namespace Project
         public static Boolean btn_niveau1_is_clicked = true;
         public static Boolean btn_niveau2_is_clicked = false;
         public static Boolean btn_niveau3_is_clicked = false;
+        string path;
+        int niveau = 1; 
+
+
         public PagesNiveaux()
         {
             InitializeComponent();
@@ -36,7 +40,7 @@ namespace Project
             ButtonAxiale.Style = (Style)Application.Current.FindResource("ButtonAxial");
             ButtonAxiale.Foreground = Brushes.White;
             ButtonCentrale.Style = (Style)Application.Current.FindResource("ButtonCentral");
-            ButtonCentrale.Foreground = Brushes.Black;
+            ButtonCentrale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#009400");
             trouverHaja.Text = "Trouver les axes";
         }
 
@@ -46,7 +50,7 @@ namespace Project
             btn_axiale_is_clicked = false;
 
             ButtonAxiale.Style = (Style)Application.Current.FindResource("ButtonCentral");
-            ButtonAxiale.Foreground = Brushes.Black;
+            ButtonAxiale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#009400"); 
             ButtonCentrale.Style = (Style)Application.Current.FindResource("ButtonAxial");
             ButtonCentrale.Foreground = Brushes.White;
             trouverHaja.Text = "Points primes";
@@ -55,6 +59,7 @@ namespace Project
 
         private void BtnNiveau1_Click(object sender, RoutedEventArgs e)
         {
+            niveau = 1;
             btn_niveau1_is_clicked = true;
             btn_niveau2_is_clicked = false;
             btn_niveau3_is_clicked = false;
@@ -70,6 +75,7 @@ namespace Project
 
         private void BtnNiveau2_Click(object sender, RoutedEventArgs e)
         {
+            niveau = 2;
             btn_niveau2_is_clicked = true;
             btn_niveau1_is_clicked = false;
             btn_niveau3_is_clicked = false;
@@ -85,6 +91,7 @@ namespace Project
 
         private void BtnNiveau3_Click(object sender, RoutedEventArgs e)
         {
+            niveau = 3;
             btn_niveau3_is_clicked = true;
             btn_niveau1_is_clicked = false;
             btn_niveau2_is_clicked = false;
@@ -100,53 +107,82 @@ namespace Project
 
         private void BtnQuiz_Click(object sender, RoutedEventArgs e)
         {
-            if (btn_axiale_is_clicked == true)
+            string path1 ,path2, path3 ;
+            path1 = "Exercices\\Quiz\\Quiz1_niveau";
+            path2 = "Exercices\\Quiz\\Quiz2_niveau";
+            path3 = "Exercices\\Quiz\\Quiz3_niveau";
+            switch (niveau)
             {
-                if (btn_niveau1_is_clicked == true)
-                {
-                    MainQuizWindow pageQuiz = new MainQuizWindow("Quiz1_niveau1_axiale.txt", "Quiz2_niveau1_axiale.txt", "Quiz3_niveau1_axiale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (btn_niveau2_is_clicked == true)
-                {
-                    MainQuizWindow pageQuiz = new MainQuizWindow("Quiz1_niveau2_axiale.txt", "Quiz2_niveau2_axiale.txt", "Quiz3_niveau2_axiale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (btn_niveau3_is_clicked == true)
-                {
-                    MainQuizWindow pageQuiz = new MainQuizWindow("Quiz1_niveau3_axiale.txt", "Quiz2_niveau3_axiale.txt", "Quiz3_niveau3_axiale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
+
+                case 1:
+                    {
+                        path1 += "1";
+                        path2 += "1";
+                        path3 += "1";
+                        break;
+                    }
+                case 2:
+                    {
+                        path1 += "2";
+                        path2 += "2";
+                        path3 += "2";
+                        break;
+                    }
+                case 3:
+                    {
+                        path1 += "3";
+                        path2 += "3";
+                        path3 += "3";
+                        break;
+                    }
             }
-            if (btn_centrale_is_clicked == true)
-            {
-                if (btn_niveau1_is_clicked == true)
-                {
-                    MainQuizWindow pageQuiz = new MainQuizWindow("Quiz1_niveau1_centrale.txt", "Quiz2_niveau1_centrale.txt", "Quiz3_niveau1_centrale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (btn_niveau2_is_clicked == true)
-                {
-                    MainQuizWindow pageQuiz = new MainQuizWindow("Quiz1_niveau2_centrale.txt", "Quiz2_niveau2_centrale.txt", "Quiz3_niveau2_centrale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (btn_niveau3_is_clicked == true)
-                {
-                    MainQuizWindow pageQuiz = new MainQuizWindow("Quiz1_niveau3_centrale.txt", "Quiz2_niveau3_centrale.txt", "Quiz3_niveau3_centrale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
+            if (btn_axiale_is_clicked) { 
+                path1 += "_axiale.txt"; 
+                path2 += "_axiale.txt"; 
+                path3 += "_axiale.txt"; 
             }
+            else { 
+                path1 += "_centrale.txt"; 
+                path2 += "_centrale.txt"; 
+                path3 += "_centrale.txt"; 
+            }
+            
+            MainQuizWindow pageQuiz = new MainQuizWindow(path1, path2, path3);
+            MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
         }
 
         private void BtnTrouverLesAxes_Click(object sender, RoutedEventArgs e)
         {
 
+
+
         }
 
         private void BtnOuiNon_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.MainFrame.NavigationService.Navigate(new Page_mode_eleve(0, "./Niveau1_assets/img1.txt", "./Niveau1_assets/ans1.txt"));
-           
+            path = "Exercices\\OuiNon";
+
+            if (btn_axiale_is_clicked) path += "\\axiale";
+            else path += "\\centrale";
+
+            switch (niveau)
+            {
+
+                case 1: path += "\\Niveau1_assets";
+                    break;
+                case 2:
+                    path += "\\Niveau2_assets";
+                    break;
+                case 3:
+                    path += "\\Niveau3_assets";
+                    break;
+            }
+
+
+            
+
+           if (MainWindow.modeEns) MainWindow.MainFrame.NavigationService.Navigate(new Page1(0, path));
+           else MainWindow.MainFrame.NavigationService.Navigate(new Page_mode_eleve(0, path));
         }
 
         private void BtnDessinerLeSymetr_Click(object sender, RoutedEventArgs e)
@@ -155,6 +191,29 @@ namespace Project
            
             MainWindow.MainFrame.NavigationService.Navigate(new LibreExoEns());
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void BtnNiveau1_MouseEnter(object sender, MouseEventArgs e)
         {

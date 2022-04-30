@@ -29,32 +29,49 @@ namespace OUI_Non
         private string[] images = new string[3];
         private string path_images;
         private string path_answers;
+        private string path_folder;
         
 
         public Page_mode_eleve()
         {
             InitializeComponent();
         }
-        public Page_mode_eleve(int j, String path_images, String path_answers)
+        public Page_mode_eleve(int j,String path)
         {
-
+           
             InitializeComponent();
             String_load(j);
-            this.path_images = path_images;
-            this.path_answers = path_answers;            
+            this.path_images = path+"\\"+"img.txt";
+            this.path_answers = path + "\\" + "ans.txt";
+            this.path_folder = path;
             Read_answers();
             Imageselector();
 
+        }
 
 
 
+
+        
+
+        private BitmapImage convertImg(string path)
+        {
+            BitmapImage image = new BitmapImage();
+            if (!string.IsNullOrEmpty(path))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                image.UriSource = new Uri(path);
+                image.EndInit();
+            }
+
+            return image;
         }
 
         public void Imageselector()  //La methode qui charge les images 
         {
-            BitmapImage src = new BitmapImage();
-
-            src.BeginInit();
+           
             // ici on change le source d'image a chaque click de button oui utilisant l'attribut src
 
 
@@ -79,11 +96,8 @@ namespace OUI_Non
 
                 }
                 ONimg.Visibility = Visibility.Visible;
-                
-                src.UriSource = new Uri(images[i], UriKind.RelativeOrAbsolute);
-                src.EndInit();
-                
-                ONimg.Source = src;
+
+                ONimg.Source = convertImg(System.IO.Path.GetFullPath(images[i]));
             }
             else
             {

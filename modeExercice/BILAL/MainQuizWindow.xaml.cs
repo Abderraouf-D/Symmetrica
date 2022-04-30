@@ -47,6 +47,9 @@ namespace Project
             ChoixC.Content = sr.ReadLine();
             ChoixD.Content = sr.ReadLine();
             sr.Close();
+
+
+            if(!MainWindow.modeEns) edtText.Visibility=teacherButton.Visibility=Visibility.Collapsed;
         }
 
         private void ChoixD_MouseEnter(object sender, MouseEventArgs e)
@@ -213,9 +216,16 @@ namespace Project
             ChoixB.Style = (Style)Application.Current.FindResource("ButtonQuizStyle");
             ChoixC.Style = (Style)Application.Current.FindResource("ButtonQuizStyle");
             ChoixD.Style = (Style)Application.Current.FindResource("ButtonQuizStyle");
-            if (suivantCounter <= 3 && suivantCounter == 2)
+
+
+            if (suivantCounter > 1)
             {
                 suivantCounter--;
+            }
+            if (suivantCounter >= 1 && suivantCounter == 1)
+            {
+                
+              
                 StreamReader sr = new StreamReader(fich1);
                 a = sr.ReadLine();
                 Question.Text = sr.ReadLine();
@@ -227,9 +237,9 @@ namespace Project
                 btnPrecedent.Visibility = Visibility.Hidden;
                 btnSuivant.Visibility = Visibility.Visible;
             }
-            if (suivantCounter <= 3 && suivantCounter == 3)
+            if (suivantCounter >= 1 && suivantCounter == 2)
             {
-                suivantCounter--;
+               
                 StreamReader sr = new StreamReader(fich2);
                 a = sr.ReadLine();
                 Question.Text = sr.ReadLine();
@@ -359,42 +369,8 @@ namespace Project
 
         private void teacherButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PagesNiveaux.btn_axiale_is_clicked == true)
-            {
-                if (PagesNiveaux.btn_niveau1_is_clicked == true)
-                {
-                    MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher("Quiz1_niveau1_axiale.txt", "Quiz2_niveau1_axiale.txt", "Quiz3_niveau1_axiale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (PagesNiveaux.btn_niveau2_is_clicked == true)
-                {
-                    MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher("Quiz1_niveau2_axiale.txt", "Quiz2_niveau2_axiale.txt", "Quiz3_niveau2_axiale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (PagesNiveaux.btn_niveau3_is_clicked == true)
-                {
-                    MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher("Quiz1_niveau3_axiale.txt", "Quiz2_niveau3_axiale.txt", "Quiz3_niveau3_axiale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-            }
-            if (PagesNiveaux.btn_centrale_is_clicked == true)
-            {
-                if (PagesNiveaux.btn_niveau1_is_clicked == true)
-                {
-                    MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher("Quiz1_niveau1_centrale.txt", "Quiz2_niveau1_centrale.txt", "Quiz3_niveau1_centrale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (PagesNiveaux.btn_niveau2_is_clicked == true)
-                {
-                    MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher("Quiz1_niveau2_centrale.txt", "Quiz2_niveau2_centrale.txt", "Quiz3_niveau2_centrale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-                if (PagesNiveaux.btn_niveau3_is_clicked == true)
-                {
-                    MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher("Quiz1_niveau3_centrale.txt", "Quiz2_niveau3_centrale.txt", "Quiz3_niveau3_centrale.txt");
-                    MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
-                }
-            }
+            MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher(suivantCounter,fich1,fich2, fich3);
+            MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
         }
     }
 }

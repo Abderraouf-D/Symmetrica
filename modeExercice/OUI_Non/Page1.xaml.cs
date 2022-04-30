@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Threading;
 using Projet2Cp;
+using System.Windows.Data;
+using System.Globalization;
 
 namespace OUI_Non
 {
@@ -22,6 +24,7 @@ namespace OUI_Non
         private string path_images;
         private string path_answers;
         private bool mode_editer_active ;
+      
 
 
 
@@ -30,30 +33,48 @@ namespace OUI_Non
         {
             InitializeComponent();
         }
-        public Page1(int j,String path_images,String path_answers)
+
+
+        private BitmapImage convertImg(string path)
+        {
+            BitmapImage image = new BitmapImage();
+            if (!string.IsNullOrEmpty(path))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                image.UriSource = new Uri(path);
+                image.EndInit();
+            
+            }
+
+            return image ;
+        }
+         
+
+        public Page1(int j,String path)
         {
            
             InitializeComponent();
+
             String_load(j);
-            this.path_images = path_images;
-            this.path_answers = path_answers;
-            //images= Directory.GetFiles(image_folder_paths);
+            this.path_images = path+"\\"+"img.txt";
+            this.path_answers = path + "\\" + "ans.txt";
+         
             Read_answers();
             Imageselector();
 
-
-
-
         }
         public void Imageselector()  //La methode qui charge les images 
-        {         
-            BitmapImage src = new BitmapImage();
+        {
 
-            src.BeginInit();
+
             // ici on change le source d'image a chaque click de button oui utilisant l'attribut src
             
-               
-                    if (File.Exists(images[i])) // si l'image existe
+            
+            
+                    
+                     if (File.Exists(Path.GetFullPath( images[i]))) // si l'image existe
                     {
                         if (i== 0) {
                             prebtn.Visibility = Visibility.Hidden;
@@ -70,10 +91,14 @@ namespace OUI_Non
                             suivbtn.Visibility = Visibility.Hidden;
                     
                              }
-                ONimg.Visibility = Visibility.Visible;
-                src.UriSource = new Uri(images[i], UriKind.RelativeOrAbsolute);
-                        src.EndInit();
-                        ONimg.Source = src;
+
+
+
+                        ONimg.Visibility = Visibility.Visible;
+               
+                       ONimg.Source=  convertImg( Path.GetFullPath(images[i]));
+               
+                   
                     }
                     else
                     {                
@@ -138,8 +163,10 @@ namespace OUI_Non
             answers[2] = sr.ReadLine();
             sr.Close();
             sr1.Close();
-          
-         } 
+           
+            
+
+        }
 
         public void write_answer() //la methode qui ecrit les images et les reponses d'un niveau
         {
@@ -160,8 +187,7 @@ namespace OUI_Non
         {
 
             Read_answers();
-            //suivbtn.IsEnabled = false;
-            //prebtn.IsEnabled = false;
+         
 
 
             if (btnretry.Visibility == Visibility.Hidden)
@@ -209,8 +235,7 @@ namespace OUI_Non
         private void Btn_non(object sender, RoutedEventArgs e)
         {
             Read_answers();
-            //suivbtn.IsEnabled = false;
-            //prebtn.IsEnabled = false;
+            
             if (btnretry.Visibility == Visibility.Hidden)
             {
                
@@ -273,9 +298,11 @@ namespace OUI_Non
             if (i >= 0) i--;
             Imageselector();
         }
-        
 
-        
+
+
+
+
         private void Upload_button(object sender,RoutedEventArgs e)
         {
             
@@ -287,20 +314,18 @@ namespace OUI_Non
 
             bool? response = openFileDialog.ShowDialog();       
                 if (response == true)
-                {                   
-                    String filepath = openFileDialog.FileName;
-                    images[i] = filepath ;
-                // images[i] = image_folder_path + Path.GetFileName(filepath);
-                // File.Copy(filepath, images[i],true );
-                
-                    
-             
-
-                        
-
+                {
+                    try
+                    {
+                        String filepath = openFileDialog.FileName;
+                        String name = Path.GetFileName(filepath);
+                        File.Copy(filepath, Path.GetFullPath(images[i]), true);
+                    }catch(IOException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-
-                   Imageselector();
+                Imageselector();
            
              
 

@@ -25,7 +25,7 @@
                         </Border>
                         <Border Width="800" Height="500" Margin="0 20 0 0" Background="Transparent" CornerRadius="30" BorderThickness="3" BorderBrush="Green">
                             <MediaElement  Name="etape1"
-                                Source="C:\Users\raouf\Desktop\Projet2Cp\ModeCours\videos/etape1.mp4" MediaEnded="MediaElement_MediaEnded"  >
+                                Source="videos/etape1.mp4" MediaEnded="MediaElement_MediaEnded"  >
                                 
                                 </MediaElement>
                         </Border>

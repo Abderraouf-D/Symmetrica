@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="SYMMETRICA" Height="1080" Width="1920" 
+        Title="SYMMETRICA" Height="1080" Width="1920" MinHeight="720" MinWidth="1024" 
          Icon="./Acceuil/logo.png">
 
 
@@ -45,79 +45,10 @@
             Orientation="Horizontal"
                
             >
-                <Menu
-                VerticalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center" 
-                Foreground="Black" FontFamily="{StaticResource VigaRegular}"
-                Background="Transparent"
-                >
-                    <MenuItem Header="Fichier" 
-                          FontSize="20"
-                          Padding="5,0,5,0"
-                          >
-                        <MenuItem Header="Ouvrir" FontSize="20"
-                              ToolTip="Ouvrir une nouvelle fenêtre"
-                              >
-                            <MenuItem.Icon>
-                                <Image 
-                                Source="./Acceuil/folder.png" Height="25" Width="25" Stretch="Uniform"
-                                />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Enregistrer" FontSize="20"
-                              ToolTip="Enregistrer les modifications"
-                              >
-                            <MenuItem.Icon>
-                                <Image 
-                                Source="./Acceuil/floppy-disk.png" Height="25" Width="25" Stretch="Uniform"
-                                />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Quitter" FontSize="20"
-                              ToolTip="Quitter l'application"
-                              >
-                            <MenuItem.Icon>
-                                <Image
-                                Source="./Acceuil/logout.png" Height="25" Width="25" Stretch="Uniform"
-                                />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                    </MenuItem>
-                </Menu>
-                        <Separator/>
-                        <Menu
-                VerticalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                Foreground="Black" FontFamily="{StaticResource VigaRegular}"
-                Background="Transparent"
-                >
-                    <MenuItem Header="Editer" 
-                          FontSize="20"
-                          Padding="5,0,5,0"
-                          >
-                        <MenuItem Header="Copier" FontSize="20"
-                              ToolTip="Copier (Ctrl + C)"
-                              >
-                            <MenuItem.Icon>
-                                <Image 
-                                Source="./Acceuil/files.png" Height="25" Width="25" Stretch="Uniform"
-                                />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Coller" FontSize="20"
-                              ToolTip="Coller (Ctrl + V)"
-                              >
-                            <MenuItem.Icon>
-                                <Image 
-                                Source="./Acceuil/clipboard.png" Height="25" Width="25" Stretch="Uniform"
-                                />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                    </MenuItem>
-                </Menu>
-                        <Separator/>
+               
+                    
+                       
+                        
                         <Menu
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Center"
@@ -146,17 +77,17 @@
         </Viewbox>
         </Grid>
             </Border>
-
-                <Grid DockPanel.Dock="Left" Width="140" Grid.Column="0" Grid.Row="1">
+        
+            <Grid Width="140"  DockPanel.Dock="Left" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition  Height="*"/>
 
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2.2*"/>
+                <RowDefinition Height="2.2*"/>
+                <RowDefinition Height="2.2*"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="7" BorderThickness="2,0,2,2" BorderBrush="Black" Background="White" Width="Auto" Height="Auto">
+            <Border Background="White" Grid.Row="0" CornerRadius="7" BorderThickness="2,0,2,2" BorderBrush="Black"  Width="Auto" >
                 <Image  VerticalAlignment="Center" HorizontalAlignment="Center" Height="150" Width="150" Source="./Acceuil/logo.png"/>
             </Border>
 
@@ -170,7 +101,7 @@
                     <StackPanel>
                         <Image x:Name="CoursImg" Source="./Acceuil/Cours.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock x:Name="TBCours"  HorizontalAlignment="Center"
-                        Text="Cours" FontSize="40"
+                        Text="Cours" FontSize="30"
                         Foreground="White"
                         FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy"   
                         Margin="0"
@@ -184,9 +115,9 @@
             <Button x:Name="ButtonExo"  Background="#1CB81C" Click="ButtonClickExo" ClickMode="Press"  Height="Auto" Grid.Row="2">
                
                     <StackPanel >
-                    <Image Stretch="Uniform" x:Name="ExoImg" Source="./Acceuil/Exercices.png" Margin="1"  Width="100" Height="100"/>
+                        <Image Stretch="Uniform" x:Name="ExoImg" Source="./Acceuil/Exercices.png" Width="100" Height="100"/>
                         <TextBlock  x:Name="TBExo"
-                    Text="Exercices" FontSize="30"  
+                    Text="Exercices" FontSize="25"  HorizontalAlignment="Center"
                      Foreground="Snow"
                     FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy"
                     Margin="0"/>
@@ -200,7 +131,7 @@
                     <StackPanel >
                         <Image x:Name="LibreImg" Source="./Acceuil/Libre.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock  x:Name="TBLibre"
-                    Text="Libre" HorizontalAlignment="Center" FontSize="40"  
+                    Text="Libre" HorizontalAlignment="Center" FontSize="30"  
                      Foreground="Snow" 
                     FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy" 
                     Margin="0"
@@ -217,10 +148,10 @@
 
 
         </Grid>
-       
 
-                
+
      
+
 
     </DockPanel>
 </Window>
