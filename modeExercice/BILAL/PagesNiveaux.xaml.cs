@@ -25,8 +25,8 @@ namespace Project
         public static Boolean btn_niveau1_is_clicked = true;
         public static Boolean btn_niveau2_is_clicked = false;
         public static Boolean btn_niveau3_is_clicked = false;
-        string path;
-        int niveau = 1; 
+        public string path;
+        public int niveau = 1; 
 
 
         public PagesNiveaux()

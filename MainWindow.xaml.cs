@@ -67,7 +67,25 @@ namespace Projet2Cp
             CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBLibre.Foreground = Brushes.Snow;
-            MainFrame.NavigationService.Navigate(new PagesNiveaux());
+            PagesNiveaux page = new PagesNiveaux();
+            MainFrame.NavigationService.Navigate(page);
+
+            page.niveau = 1;
+            PagesNiveaux.btn_niveau1_is_clicked = true;
+            PagesNiveaux.btn_niveau2_is_clicked = false;
+            PagesNiveaux.btn_niveau3_is_clicked = false;
+            page.BtnNiveau1.Margin = new System.Windows.Thickness(0, 0, 80, 0);
+            page.BtnNiveau2.Margin = new System.Windows.Thickness(0, 20, 80, 0);
+            page.BtnNiveau3.Margin = new System.Windows.Thickness(0, 20, 0, 0);
+            page.BorderContainer.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#A2DBA1");
+            page.BtnQuiz.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            page.BtnOuiNon.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            page.BtnTrouverLesAxes.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            page.BtnDessinerLeSymetr.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+
+
+
+
         }
 
         private void ButtonClickLibre(object sender, RoutedEventArgs e)

@@ -715,32 +715,7 @@
     <Resource Include="modeLibre\shapesExo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Debug\Exercices\DessinerSym\" />
-    <Folder Include="bin\Debug\Exercices\OuiNon\axiale\Niveau2_assets\" />
-    <Folder Include="bin\Debug\Exercices\OuiNon\axiale\Niveau3_assets\" />
-    <Folder Include="bin\Debug\Exercices\OuiNon\centrale\Niveau2_assets\" />
-    <Folder Include="bin\Debug\Exercices\OuiNon\centrale\Niveau3_assets\" />
     <Folder Include="bin\Debug\Exercices\TrvAxe\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau1_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau1_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau2_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau2_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau3_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau3_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau1_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau1_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau2_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau2_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau3_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau3_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau1_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau1_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau2_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau2_centrale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau3_axiale.txt" />
-    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau3_centrale.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="modeExercice\BILAL\Icons\Ellipse.png" />
@@ -806,6 +781,150 @@
     <EmbeddedResource Include="ModeCours\videos\etape1.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Resource Include="bin\Debug\Exercices\DessinerSym\shapesExo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau1_assets\ans.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau1_assets\img.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau1_assets\quest1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau1_assets\quest2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau1_assets\quest3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau2_assets\ans.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau2_assets\img.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau2_assets\quest1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau2_assets\quest2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau2_assets\quest3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau3_assets\ans.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau3_assets\img.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau3_assets\quest1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau3_assets\quest2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\axiale\Niveau3_assets\quest3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau1_assets\ans.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau1_assets\img.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau1_assets\quest1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau1_assets\quest2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau1_assets\quest3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau2_assets\ans.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau2_assets\img.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau2_assets\quest1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau2_assets\quest2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau2_assets\quest3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau3_assets\ans.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau3_assets\img.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau3_assets\quest1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau3_assets\quest2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\OuiNon\centrale\Niveau3_assets\quest3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau1_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau2_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau2_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau3_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz1_niveau3_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau1_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau1_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau2_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau2_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau3_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz2_niveau3_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau1_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau1_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau2_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau2_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau3_axiale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau3_centrale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="ModeCours\videos\etape1Cen.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
