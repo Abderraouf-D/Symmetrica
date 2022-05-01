@@ -193,6 +193,18 @@
     <Compile Include="modeExercice\BILAL\PagesNiveaux.xaml.cs">
       <DependentUpon>PagesNiveaux.xaml</DependentUpon>
     </Compile>
+    <Compile Include="modeExercice\modeExoType2\PagePointsPrimesNiveau1.xaml.cs">
+      <DependentUpon>PagePointsPrimesNiveau1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\modeExoType2\PagePointsPrimesNiveau2.xaml.cs">
+      <DependentUpon>PagePointsPrimesNiveau2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\modeExoType2\PagePointsPrimesNiveau3.xaml.cs">
+      <DependentUpon>PagePointsPrimesNiveau3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="modeExercice\modeExoType2\PageTrouverAxes.xaml.cs">
+      <DependentUpon>PageTrouverAxes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="modeExercice\OUI_Non\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
@@ -397,6 +409,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="modeExercice\BILAL\PagesNiveaux.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\modeExoType2\PagePointsPrimesNiveau1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\modeExoType2\PagePointsPrimesNiveau2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\modeExoType2\PagePointsPrimesNiveau3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeExercice\modeExoType2\PageTrouverAxes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -714,9 +742,7 @@
   <ItemGroup>
     <Resource Include="modeLibre\shapesExo.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\Exercices\TrvAxe\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="modeExercice\BILAL\Icons\Ellipse.png" />
     <Resource Include="modeExercice\BILAL\Icons\Group 21.png" />
@@ -738,6 +764,47 @@
     <Resource Include="modeExercice\OUI_Non\Icons\right arrow.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="modeExercice\modeExoType2\AxeImages\CARRE.png" />
+    <Resource Include="modeExercice\modeExoType2\AxeImages\MOAYAN.png" />
+    <Resource Include="modeExercice\modeExoType2\AxeImages\RECTANGLE.png" />
+    <Resource Include="modeExercice\modeExoType2\AxeImages\TRIANGLE.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\clipboard.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\Cours Jaune.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\Cours.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\Ellipse.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\Exercices Jaune.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\Exercices.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\files.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\floppy-disk.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\folder.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\gear.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\horizontal.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\left arrow.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\Libre Jaune.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\Libre.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\log-out 1.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\log-out.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\question %281%29.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\right arrow.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\rotation.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\size.png" />
+    <Resource Include="modeExercice\modeExoType2\Icons\vertical.png" />
+    <Content Include="modeExercice\modeExoType2\Icons\yay.mp3.mp3" />
+    <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\dsqdqs.png" />
+    <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\ETOILE.png" />
+    <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\PENTAGONE.png" />
+    <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\RANDOM.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\clipboard.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\files.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\floppy-disk.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\folder.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\geometry %281%29.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\geometry %282%29.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\geometry.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\lamp.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\log-out.png" />
+    <Resource Include="modeExercice\modeExoType2\Images\question %281%29.png" />
+    <Resource Include="modeExercice\modeExoType2\test.png" />
     <Resource Include="modeExercice\OUI_Non\Icons\ouinon.png" />
     <Resource Include="modeLibre\icons\editer.png" />
     <Resource Include="modeExercice\OUI_Non\Icons\gear.png" />
@@ -925,6 +992,30 @@
     <Resource Include="bin\Debug\Exercices\Quiz\Quiz3_niveau3_centrale.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau1\images.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau1\points.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau1\reponses.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau2\images.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau2\points.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau2\reponses.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau3\images.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau3\points.txt" />
+    <Resource Include="bin\Debug\Exercices\PointsPrimes\niveau3\reponses.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau1\images.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau1\line1.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau1\line2.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau1\line3.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau1\reponses.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau2\images.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau2\line1.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau2\line2.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau2\line3.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau2\reponses.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\images.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\line1.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\line2.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\line3.txt" />
+    <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\reponses.txt" />
     <Content Include="ModeCours\videos\etape1Cen.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

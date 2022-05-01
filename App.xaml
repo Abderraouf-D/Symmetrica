@@ -188,11 +188,179 @@
             </Style>
 
 
+            <!---->
+            <!--sytles ta3 SO-->
+            <Style TargetType="Border" x:Key="RoundMe">
+                <Setter Property="CornerRadius" Value="4"/>
+            </Style>
+            <Style x:Key="RepeatButtonFlat" TargetType="{x:Type RepeatButton}">
+                <Setter Property="OverridesDefaultStyle" Value="true"/>
+                <Setter Property="Focusable" Value="false"/>
+                <Setter Property="IsTabStop" Value="false"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                            <Border Background="Gray" Height="auto" Width="auto">
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="niceSlider"  TargetType="{x:Type Slider}">
+
+                <Setter Property="Template">
+
+                    <Setter.Value>
+
+                        <ControlTemplate>
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="Auto" />
+
+                                    <ColumnDefinition Width="1*" />
+
+                                    <ColumnDefinition Width="Auto" />
+
+                                </Grid.ColumnDefinitions>
+
+
+
+
+
+                                <!-- TickBars are collapsed (invisible) by default) -->
+                                
+
+                                <TickBar Grid.Column="0" Name="LeftTick" 
+
+                             Width="10" Placement="Left" Visibility="Collapsed"  
+
+                             Fill="{TemplateBinding Foreground}" >
+
+                                </TickBar>
+
+
+
+                                <TickBar Grid.Column="2" Name="RightTick" 
+
+                             Width="10" Placement="Right" Visibility="Collapsed"  
+
+                             Fill="{TemplateBinding Foreground}" />
+
+
+
+                                <Track Grid.Column="1" Name="PART_Track">
+
+                                    <Track.DecreaseRepeatButton>
+
+                                        <RepeatButton Style="{StaticResource RepeatButtonFlat}" Command="Slider.DecreaseLarge" Height="5" BorderThickness="10">
+                                            <RepeatButton.Resources>
+                                                <Style TargetType="{x:Type Border}">
+                                                    <Setter Property="CornerRadius" Value="2"/>
+                                                </Style>
+                                            </RepeatButton.Resources>
+                                        </RepeatButton>
+
+                                    </Track.DecreaseRepeatButton>
+
+
+
+                                    <Track.IncreaseRepeatButton>
+
+                                        <RepeatButton Style="{StaticResource RepeatButtonFlat}" Command="Slider.IncreaseLarge" Height="5" BorderThickness="10">
+                                            <RepeatButton.Resources>
+                                                <Style TargetType="{x:Type Border}">
+                                                    <Setter Property="CornerRadius" Value="2"/>
+                                                </Style>
+                                            </RepeatButton.Resources>
+                                        </RepeatButton>
+
+                                    </Track.IncreaseRepeatButton>
+
+
+
+                                    <Track.Thumb>
+
+                                        <Thumb>
+
+                                            <Thumb.Style>
+
+                                                <Style TargetType="Thumb">
+
+                                                    <Setter Property="Template">
+
+                                                        <Setter.Value>
+
+                                                            <ControlTemplate TargetType="Thumb">
+
+                                                                <Ellipse Fill="#A2DBA1" Width="50" Height="50" Stroke="Gray"/>
+
+                                                            </ControlTemplate>
+
+                                                        </Setter.Value>
+
+                                                    </Setter>
+
+                                                </Style>
+
+                                            </Thumb.Style>
+
+                                        </Thumb>
+
+                                    </Track.Thumb>
+
+                                </Track>
+
+                            </Grid>
+
+
+
+                            <!-- Define triggers to make the TickBars visible -->
+
+                            <ControlTemplate.Triggers>
+
+                                <Trigger Property="Slider.TickPlacement" Value="TopLeft">
+
+                                    <Setter TargetName="LeftTick" Property="Visibility"  
+
+                                                  Value="Visible" />
+
+                                </Trigger>
+
+                                <Trigger Property="Slider.TickPlacement" Value="BottomRight">
+
+                                    <Setter TargetName="RightTick" Property="Visibility"  
+
+                                                   Value="Visible" />
+
+                                </Trigger>
+
+                                <Trigger Property="Slider.TickPlacement" Value="Both">
+
+                                    <Setter TargetName="LeftTick" Property="Visibility"  
+
+                                                  Value="Visible" />
+
+                                    <Setter TargetName="RightTick" Property="Visibility"  
+
+                                                   Value="Visible" />
+
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+
+                    </Setter.Value>
+
+                </Setter>
+
+            </Style>
+
             <!---->            
-            
-
-            
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

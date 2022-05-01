@@ -30,9 +30,20 @@
 
                 <Image Source="./Icons/ouinon.png" Width="145"  Grid.Row="0" Margin="0,0,1059,25" RenderTransformOrigin="0.741,0.46"  />
 
-                <Button Grid.Row ="0" Height="75" Width="75" Background="Transparent" BorderBrush="Transparent" x:Name="editer" Margin="1096,72,33,1" Click="editer_Click">
-                    <Image Source="Icons/gear.png" Height="70" Width="70" Stretch="Fill"  />
-
+                
+                <Button   Grid.Row ="0" x:Name="editer" Width="90" Height="90" Background="#A2DBA1" Margin="1096,72,33,1"
+                         Focusable="False" Click="editer_Click"
+                        BorderThickness="0" BorderBrush="Transparent" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="26.5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        <Image HorizontalAlignment="Center" VerticalAlignment="Top" Source="Icons/gear.png" Height="80" Width="80" />
+                    </Button.Content>
                 </Button>
                 <StackPanel   Height="108" Orientation="Vertical" Grid.Row="1" Margin="50,0,0,5"  >
 

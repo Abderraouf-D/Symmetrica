@@ -40,9 +40,11 @@
 
                                 <TextBlock  x:Name="TBCoursAxe" Text="La symétrie axiale : " HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="35" Foreground="Black" FontFamily="{StaticResource VigaRegular}" FontWeight="Heavy" Margin="25"/>
                                 <Rectangle Height="2" Fill="Black"/>
-                                <Image x:Name="CoursAxeImg" Source="Icons/CoursAxeImg.png"  Width="350" Height="380" />
-
-                            </StackPanel>
+                                        <Border BorderBrush="Black" BorderThickness="2" Margin="0,50,0,50" Width="340" Height="250 ">
+                                            <Image x:Name="CoursAxeImg" Source="Icons/CoursAxeImg.png"   />
+                                            </Border>
+                                
+                                    </StackPanel>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
@@ -70,7 +72,9 @@
 
                                 <TextBlock  x:Name="TBCoursCen" Text="La symétrie centrale : " HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="35" Foreground="Black" FontFamily="{StaticResource VigaRegular}" FontWeight="Heavy" Margin="25"/>
                                 <Rectangle Height="2" Fill="Black"/>
-                                <Image x:Name="CoursCenImg" Source="Icons/CoursCenImg.png"  Width="350" Height="380" />
+                                        <Border BorderBrush="Black" BorderThickness="2" Margin="0,50,0,50" Width="330" Height="250 ">
+                                            <Image x:Name="CoursAxeImg" Source="Icons/CoursCenImg.png"   />
+                                        </Border>
 
                             </StackPanel>
                         </Border>

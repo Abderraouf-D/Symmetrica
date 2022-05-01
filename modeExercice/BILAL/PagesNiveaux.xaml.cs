@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OUI_Non;
 using Projet2Cp;
-
+using MAINPAGE;
 namespace Project
 {
     
@@ -153,8 +153,43 @@ namespace Project
 
         private void BtnTrouverLesAxes_Click(object sender, RoutedEventArgs e)
         {
+            path = "Exercices";
+            if (btn_axiale_is_clicked) path += "\\TrouverAxes";
+            else path += "\\PointsPrimes";
+
+            switch (niveau)
+            {
+
+                case 1:
+                    path += "\\niveau1";
+                    break;
+                case 2:
+                    path += "\\niveau2";
+                    break;
+                case 3:
+                    path += "\\niveau3";
+                    break;
+            }
 
 
+            if (btn_axiale_is_clicked) MainWindow.MainFrame.NavigationService.Navigate(new PageTrouverAxes(path));
+            else {
+
+                switch (niveau)
+                {
+
+                    case 1:
+                        MainWindow.MainFrame.NavigationService.Navigate(new PagePointsPrimesNiveau1(path));
+                        break;
+                    case 2:
+                        MainWindow.MainFrame.NavigationService.Navigate(new PagePointsPrimesNiveau2(path));
+                        break;
+                    case 3:
+                        MainWindow.MainFrame.NavigationService.Navigate(new PagePointsPrimesNiveau3(path));
+                        break;
+                }
+                
+                    };
 
         }
 
