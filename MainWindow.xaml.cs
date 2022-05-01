@@ -17,7 +17,10 @@ using System.Windows.Shapes;
 using static Projet2Cp.Utili;
 using ModeCours;
 using Project;
-
+using System.Windows.Threading;
+using System.Threading;
+using System.Windows.Media.Animation;
+using DrWPF.Windows.Controls;
 namespace Projet2Cp
 {
 
@@ -25,8 +28,10 @@ namespace Projet2Cp
     public partial class MainWindow : Window
     {
         static public Boolean modeLibre , modeEns , francais=true;
-        public static Frame MainFrame;
+        public static FaderFrame MainFrame;
         
+
+   
 
 
         public MainWindow()
@@ -35,11 +40,9 @@ namespace Projet2Cp
             
          
             modeEns = false;
-            MainFrame = new Frame();
+            MainFrame = new FaderFrame();
             myDock.Children.Add(MainFrame);
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-
-
 
 
 
@@ -57,6 +60,17 @@ namespace Projet2Cp
             
                  
         }
+
+
+
+
+
+
+
+
+
+
+
         void ButtonClickExo(object sender, RoutedEventArgs e)
         {
             SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));

@@ -127,7 +127,7 @@
                 FontSize="40" MaxLength="1" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
                 <Button Background="#A2DBA1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                         Width="250" Height="auto" Margin="0 0 0 50" BorderThickness="0"  Focusable="False"
-                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Name="Save"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" x:Name="Save"
                         Content="ENREGISTRER" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32"
                         Click="Save_Click">
                     <Button.Resources>

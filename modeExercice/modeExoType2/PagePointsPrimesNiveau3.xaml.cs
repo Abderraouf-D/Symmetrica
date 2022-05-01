@@ -31,7 +31,8 @@ namespace MAINPAGE
         public PagePointsPrimesNiveau3(string path)
         {
             InitializeComponent();
-            if (!MainWindow.modeEns) modify.Visibility = Visibility.Collapsed;
+            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+
 
             this.path = path;
             precedent.Visibility = Visibility.Collapsed;

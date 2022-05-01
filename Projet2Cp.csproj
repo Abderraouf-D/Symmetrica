@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FaderFrame.cs" />
     <Compile Include="ModeCours\Demonstration1.xaml.cs">
       <DependentUpon>Demonstration1.xaml</DependentUpon>
     </Compile>

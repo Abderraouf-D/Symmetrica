@@ -37,7 +37,8 @@ namespace MAINPAGE
             rtt = true;
             this.path = path;
             InitializeComponent();
-            if (!MainWindow.modeEns) modify.Visibility = Visibility.Collapsed;
+            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+
 
             precedent.Visibility = Visibility.Collapsed;
             StreamReader srp = new StreamReader(path + "/images.txt");
