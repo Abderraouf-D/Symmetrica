@@ -51,7 +51,7 @@
                 </StackPanel>
                 <Border Width="430" Height="295" Margin="0 20 0 0" Background="Transparent" CornerRadius="30" BorderThickness="3" BorderBrush="Green">
                     <MediaElement  Name="videoplier"
-                                Source="C:\Users\raouf\Desktop\Projet2Cp\ModeCours\videos/videoplier.mp4" MediaEnded="etape1_MediaEnded"  >
+                                Source="ideos/videoplier.mp4" MediaEnded="etape1_MediaEnded"  >
 
                     </MediaElement>
                 </Border>
