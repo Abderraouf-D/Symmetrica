@@ -1190,6 +1190,7 @@ namespace Projet2Cp
             if (!MainWindow.modeLibre & !isEditing)
             {
                 dessinerDessinNum(niv.Selected());
+                ((toolBarEnseignant)TB).vld.Text = "Valider";
             }
             answer = false;
         }
@@ -1551,7 +1552,6 @@ namespace Projet2Cp
                 {
                     clear();
                     ((toolBarEnseignant)TB).vld.Text = "Valider";
-                    ((toolBarEnseignant)TB).vld.Style = ((Style)Resources["validSty"]);
                 }
 
 
