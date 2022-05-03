@@ -121,7 +121,7 @@
                 <RowDefinition Height="2.2*"/>
                 <RowDefinition Height="2.2*"/>
             </Grid.RowDefinitions>
-            <Border Background="White" Grid.Row="0" CornerRadius="7" BorderThickness="2,1,2,2" BorderBrush="Black"  Width="Auto" >
+            <Border Cursor="Hand" Background="White" Grid.Row="0" CornerRadius="7" BorderThickness="2,1,2,2" BorderBrush="Black"  Width="Auto" >
                 <Viewbox Stretch="Fill" >
                 
                 <Image  VerticalAlignment="Center" HorizontalAlignment="Center" Height="150" Width="150" Source="./Acceuil/logo.png"/>
@@ -134,7 +134,7 @@
 
 
 
-            <Button Style="{StaticResource Dock}" Background="#1CB81C" Height="Auto" Grid.Row="1" Click="ButtonClickCours" ClickMode="Press" >
+            <Button Cursor="Hand" Style="{StaticResource Dock}" Background="#1CB81C" Height="Auto" Grid.Row="1" Click="ButtonClickCours" ClickMode="Press" >
 
                 
                     <StackPanel>
@@ -151,7 +151,7 @@
 
 
 
-            <Button Style="{StaticResource Dock}" x:Name="ButtonExo"  Background="#1CB81C" Click="ButtonClickExo" ClickMode="Press"  Height="Auto" Grid.Row="2">
+            <Button Cursor="Hand" Style="{StaticResource Dock}" x:Name="ButtonExo"  Background="#1CB81C" Click="ButtonClickExo" ClickMode="Press"  Height="Auto" Grid.Row="2">
                
                     <StackPanel >
                         <Image Stretch="Uniform" x:Name="ExoImg" Source="./Acceuil/Exercices.png" Width="100" Height="100"/>
@@ -165,7 +165,7 @@
             </Button>
 
 
-            <Button Style="{StaticResource Dock}" Background="#1CB81C" Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
+            <Button Cursor="Hand" Style="{StaticResource Dock}" Background="#1CB81C" Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
                 
                     <StackPanel >
                         <Image x:Name="LibreImg" Source="./Acceuil/Libre.png" Margin="1" Width="100" Height="100"/>

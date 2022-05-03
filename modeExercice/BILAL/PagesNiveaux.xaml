@@ -98,6 +98,8 @@
                 HorizontalAlignment="Center"
                 >
                     <Button x:Name="BtnNiveau1" 
+                            Cursor="Hand"
+                            
                         Width="180"
                         Height="130"
                         Margin="0,0,80,0"
@@ -149,6 +151,8 @@
                         </Button.Template>
                     </Button>
                     <Button x:Name="BtnNiveau2" 
+                            Cursor="Hand"
+                            
                         Width="180"
                         Height="130"
                         Margin="0,20,80,0"
@@ -200,6 +204,7 @@
                         </Button.Template>
                     </Button>
                     <Button x:Name="BtnNiveau3" 
+                            Cursor="Hand"
                         Width="180"
                         Height="130"
                         Margin="0,20,0,0"
@@ -276,6 +281,8 @@
                             Orientation="Horizontal"
                             >
                                 <Button x:Name="BtnQuiz" 
+                            Cursor="Hand"
+                                        
                                     Width="80"
                                     Height="80"
                                     Margin="50,20,0,0"
@@ -300,6 +307,8 @@
 
                             <WrapPanel>
                                 <Button x:Name="BtnOuiNon" 
+                                    Cursor="Hand"
+                                        
                                     Width="80"
                                     Height="80"
                                     Margin="50,20,0,0"
@@ -331,6 +340,8 @@
                             Orientation="Horizontal"
                             >
                                 <Button x:Name="BtnTrouverLesAxes" 
+                            Cursor="Hand"
+                                        
                                     Width="80"
                                     Height="80"
                                     Margin="80,20,0,0"
@@ -357,6 +368,7 @@
 
                             <WrapPanel>
                                 <Button x:Name="BtnDessinerLeSymetr" 
+                                     Cursor="Hand"   
                                     Width="80"
                                     Height="80"
                                     Margin="80,20,0,0"

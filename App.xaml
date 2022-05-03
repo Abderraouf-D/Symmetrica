@@ -34,6 +34,7 @@
             
             <!--syles ta3 BILAL-->
             <Style TargetType="Button" x:Key="ButtonQuizStyle">
+                <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="TextBlock.TextAlignment" Value="Center" />
                 <Setter Property="Template">
@@ -58,6 +59,7 @@
             </Style>
 
             <Style TargetType="Button" x:Key="ButtonQuizStyleTrue">
+                <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="TextBlock.TextAlignment" Value="Center" />
                 <Setter Property="Template">
@@ -83,6 +85,7 @@
 
 
             <Style TargetType="Button" x:Key="ButtonQuizStyleFalse">
+                <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="TextBlock.TextAlignment" Value="Center" />
                 <Setter Property="Template">
@@ -187,7 +190,6 @@
                 <Setter Property="Border.CornerRadius" Value="10,10,10,10" />
             </Style>
 
-
             <!---->
             <!--sytles ta3 SO-->
             <Style TargetType="Border" x:Key="RoundMe">
@@ -196,6 +198,7 @@
             <Style x:Key="RepeatButtonFlat" TargetType="{x:Type RepeatButton}">
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
                 <Setter Property="Focusable" Value="false"/>
+                <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="IsTabStop" Value="false"/>
                 <Setter Property="Template">
                     <Setter.Value>
