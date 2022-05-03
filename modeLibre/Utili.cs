@@ -213,7 +213,7 @@ namespace Projet2Cp
                 }
                 else
                 {
-                    if (p1[0].Equals(p2[0])) tmp = p1;
+                    if (p1[0].Equals(p2[0])) tmp = p2;
                     else if (p1[0].Equals(p2[p2.Count - 1])) tmp = reverse(p2);
                     else return false;
 
