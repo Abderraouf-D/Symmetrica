@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Projet2Cp;
+
 namespace MAINPAGE
 {
     /// <summary>
@@ -28,17 +29,18 @@ namespace MAINPAGE
         public string[,] reponse;
         public string[,] point;        
         public int cpt = 0;
+        public bool[] done;
         public PagePointsPrimesNiveau2(string path)
         {            
             InitializeComponent();
-            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
-
-
             this.path = path;
             precedent.Visibility = Visibility.Collapsed;
+            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+
             image = new BitmapImage[3];
             reponse = new string[3,5];
             point = new string[3,5];
+            done = new bool[3];
             string fileline;
             StreamReader sr = new StreamReader(path + "/images.txt");
             for (int i = 0; i < 3; i++)
@@ -102,68 +104,130 @@ namespace MAINPAGE
 
         private void Suivant_Click(object sender, RoutedEventArgs e)
         {
-            SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
-            bigCenterRectangle.Stroke = color;
-            smallBelowRectangle.Stroke = color;
-            verify.Background = color;
-            verify.Content = "Vérifier";
-            l1.Stroke = color;
-            l2.Stroke = color;
-            l3.Stroke = color;
-            l4.Stroke = color;
-            l5.Stroke = color;
-            pr1etud.Text = "";
-            pr2etud.Text = "";
-            pr3etud.Text = "";
-            pr4etud.Text = "";
-            pr5etud.Text = "";
             cpt++;
             precedent.Visibility = Visibility.Visible;
             if (cpt >= 2)
             {
                 cpt = 2;
                 suivant.Visibility = Visibility.Collapsed;
-            }    
+            }
             imageEns.Source = image[cpt];
             imageEtud.Source = image[cpt];
-            p1etud.Text = point[cpt,0];
-            p2etud.Text = point[cpt,1];
-            p3etud.Text = point[cpt,2];
-            p4etud.Text = point[cpt,3];
-            p5etud.Text = point[cpt,4];
+            if (done[cpt])
+            {
+                SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#1CB81C");
+                bigCenterRectangle.Stroke = color;
+                smallBelowRectangle.Stroke = color;
+                verify.Background = color;
+                verify.Content = "Bravo !";
+                l1.Stroke = color;
+                l2.Stroke = color;
+                l3.Stroke = color;
+                l4.Stroke = color;
+                l5.Stroke = color;
+                pr1etud.Text = reponse[cpt, 0];
+                pr2etud.Text = reponse[cpt, 1];
+                pr3etud.Text = reponse[cpt, 2];
+                pr4etud.Text = reponse[cpt, 3];
+                pr5etud.Text = reponse[cpt, 4];
+                pr1etud.IsReadOnly = true;
+                pr2etud.IsReadOnly = true;
+                pr3etud.IsReadOnly = true;
+                pr4etud.IsReadOnly = true;
+                pr5etud.IsReadOnly = true;
+            }
+            else
+            {
+                SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
+                bigCenterRectangle.Stroke = color;
+                smallBelowRectangle.Stroke = color;
+                verify.Background = color;
+                verify.Content = "Vérifier";
+                l1.Stroke = color;
+                l2.Stroke = color;
+                l3.Stroke = color;
+                l4.Stroke = color;
+                l5.Stroke = color;
+                pr1etud.Text = "";
+                pr2etud.Text = "";
+                pr3etud.Text = "";
+                pr4etud.Text = "";
+                pr5etud.Text = "";
+                pr1etud.IsReadOnly = false;
+                pr2etud.IsReadOnly = false;
+                pr3etud.IsReadOnly = false;
+                pr4etud.IsReadOnly = false;
+                pr5etud.IsReadOnly = false;
+            }
+            p1etud.Text = point[cpt, 0];
+            p2etud.Text = point[cpt, 1];
+            p3etud.Text = point[cpt, 2];
+            p4etud.Text = point[cpt, 3];
+            p5etud.Text = point[cpt, 4];
         }
 
         private void Precedent_Click(object sender, RoutedEventArgs e)
         {
-            SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
-            bigCenterRectangle.Stroke = color;
-            smallBelowRectangle.Stroke = color;
-            verify.Background = color;
-            verify.Content = "Vérifier";
-            l1.Stroke = color;
-            l2.Stroke = color;
-            l3.Stroke = color;
-            l4.Stroke = color;
-            l5.Stroke = color;
-            pr1etud.Text = "";
-            pr2etud.Text = "";
-            pr3etud.Text = "";
-            pr4etud.Text = "";
-            pr5etud.Text = "";
             cpt--;
             suivant.Visibility = Visibility.Visible;
             if (cpt <= 0)
             {
                 cpt = 0;
-                precedent.Visibility = Visibility.Collapsed;                           
+                precedent.Visibility = Visibility.Collapsed;
             }
             imageEns.Source = image[cpt];
             imageEtud.Source = image[cpt];
-            p1etud.Text = point[cpt,0];
-            p2etud.Text = point[cpt,1];
-            p3etud.Text = point[cpt,2];
-            p4etud.Text = point[cpt,3];
-            p5etud.Text = point[cpt,4];
+            if (done[cpt])
+            {
+                SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#1CB81C");
+                bigCenterRectangle.Stroke = color;
+                smallBelowRectangle.Stroke = color;
+                verify.Background = color;
+                verify.Content = "Bravo !";
+                l1.Stroke = color;
+                l2.Stroke = color;
+                l3.Stroke = color;
+                l4.Stroke = color;
+                l5.Stroke = color;
+                pr1etud.Text = reponse[cpt, 0];
+                pr2etud.Text = reponse[cpt, 1];
+                pr3etud.Text = reponse[cpt, 2];
+                pr4etud.Text = reponse[cpt, 3];
+                pr5etud.Text = reponse[cpt, 4];
+                pr1etud.IsReadOnly = true;
+                pr2etud.IsReadOnly = true;
+                pr3etud.IsReadOnly = true;
+                pr4etud.IsReadOnly = true;
+                pr5etud.IsReadOnly = true;
+            }
+            else
+            {
+                SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
+                bigCenterRectangle.Stroke = color;
+                smallBelowRectangle.Stroke = color;
+                verify.Background = color;
+                verify.Content = "Vérifier";
+                l1.Stroke = color;
+                l2.Stroke = color;
+                l3.Stroke = color;
+                l4.Stroke = color;
+                l5.Stroke = color;
+                pr1etud.Text = "";
+                pr2etud.Text = "";
+                pr3etud.Text = "";
+                pr4etud.Text = "";
+                pr5etud.Text = "";
+                pr1etud.IsReadOnly = false;
+                pr2etud.IsReadOnly = false;
+                pr3etud.IsReadOnly = false;
+                pr4etud.IsReadOnly = false;
+                pr5etud.IsReadOnly = false;
+            }
+            p1etud.Text = point[cpt, 0];
+            p2etud.Text = point[cpt, 1];
+            p3etud.Text = point[cpt, 2];
+            p4etud.Text = point[cpt, 3];
+            p5etud.Text = point[cpt, 4];
         }
 
         private void Verify_Click(object sender, RoutedEventArgs e)
@@ -194,6 +258,12 @@ namespace MAINPAGE
                     l4.Stroke = color;
                     l5.Stroke = color;
                     verify.Content = "Bravo !";
+                    pr1etud.IsReadOnly = true;
+                    pr2etud.IsReadOnly = true;
+                    pr3etud.IsReadOnly = true;
+                    pr4etud.IsReadOnly = true;
+                    pr5etud.IsReadOnly = true;
+                    done[cpt] = true;
                 }
                 else
                 {
@@ -258,21 +328,52 @@ namespace MAINPAGE
                 p4etud.Text = point[cpt,3];
                 p5etud.Text = point[cpt,4];
                 image[cpt] = (BitmapImage)imageEns.Source;
-                SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
-                bigCenterRectangle.Stroke = color;
-                smallBelowRectangle.Stroke = color;
-                verify.Background = color;
-                verify.Content = "Vérifier";
-                l1.Stroke = color;
-                l2.Stroke = color;
-                l3.Stroke = color;
-                l4.Stroke = color;
-                l5.Stroke = color;
-                pr1etud.Text = "";
-                pr2etud.Text = "";
-                pr3etud.Text = "";
-                pr4etud.Text = "";
-                pr5etud.Text = "";
+                if (done[cpt])
+                {
+                    SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#1CB81C");
+                    bigCenterRectangle.Stroke = color;
+                    smallBelowRectangle.Stroke = color;
+                    verify.Background = color;
+                    verify.Content = "Bravo !";
+                    l1.Stroke = color;
+                    l2.Stroke = color;
+                    l3.Stroke = color;
+                    l4.Stroke = color;
+                    l5.Stroke = color;
+                    pr1etud.Text = reponse[cpt, 0];
+                    pr2etud.Text = reponse[cpt, 1];
+                    pr3etud.Text = reponse[cpt, 2];
+                    pr4etud.Text = reponse[cpt, 3];
+                    pr5etud.Text = reponse[cpt, 4];
+                    pr1etud.IsReadOnly = true;
+                    pr2etud.IsReadOnly = true;
+                    pr3etud.IsReadOnly = true;
+                    pr4etud.IsReadOnly = true;
+                    pr5etud.IsReadOnly = true;
+                }
+                else
+                {
+                    SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
+                    bigCenterRectangle.Stroke = color;
+                    smallBelowRectangle.Stroke = color;
+                    verify.Background = color;
+                    verify.Content = "Vérifier";
+                    l1.Stroke = color;
+                    l2.Stroke = color;
+                    l3.Stroke = color;
+                    l4.Stroke = color;
+                    l5.Stroke = color;
+                    pr1etud.Text = "";
+                    pr2etud.Text = "";
+                    pr3etud.Text = "";
+                    pr4etud.Text = "";
+                    pr5etud.Text = "";
+                    pr1etud.IsReadOnly = false;
+                    pr2etud.IsReadOnly = false;
+                    pr3etud.IsReadOnly = false;
+                    pr4etud.IsReadOnly = false;
+                    pr5etud.IsReadOnly = false;
+                }
                 GRID_ENS.Visibility = Visibility.Collapsed;
                 GRID_ETUD.Visibility = Visibility.Visible;
             }

@@ -39,7 +39,7 @@ namespace Projet2Cp
             InitializeComponent();
             
          
-            modeEns = false;
+            modeEns = true;
             MainFrame = new FaderFrame();
             myDock.Children.Add(MainFrame);
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
