@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Eleve.cs" />
     <Compile Include="FaderFrame.cs" />
     <Compile Include="ModeCours\Demonstration1.xaml.cs">
       <DependentUpon>Demonstration1.xaml</DependentUpon>
@@ -203,6 +204,9 @@
     <Compile Include="modeExercice\OUI_Non\Page_mode_eleve.xaml.cs">
       <DependentUpon>Page_mode_eleve.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageChoixMode\PageChoixMode.xaml.cs">
+      <DependentUpon>PageChoixMode.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Strings.Designer.cs" />
     <Compile Include="StringsAr.Designer.cs" />
     <Compile Include="modeLibre\canvasUC.xaml.cs">
@@ -228,6 +232,9 @@
       <DependentUpon>toolBarLibreLibre.xaml</DependentUpon>
     </Compile>
     <Compile Include="modeLibre\Utili.cs" />
+    <Compile Include="symmetrica.xaml.cs">
+      <DependentUpon>symmetrica.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -459,6 +466,14 @@
     <Page Include="modeLibre\toolBarLibreLibre.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageChoixMode\PageChoixMode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="symmetrica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -756,6 +771,39 @@
     <Resource Include="modeExercice\OUI_Non\Icons\right arrow.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="PageChoixMode\Icons\clipboard.png" />
+    <Resource Include="PageChoixMode\Icons\Cours Jaune.png" />
+    <Resource Include="PageChoixMode\Icons\Cours.png" />
+    <Resource Include="PageChoixMode\Icons\Ellipse.png" />
+    <Resource Include="PageChoixMode\Icons\Exercices Jaune.png" />
+    <Resource Include="PageChoixMode\Icons\Exercices.png" />
+    <Resource Include="PageChoixMode\Icons\files.png" />
+    <Resource Include="PageChoixMode\Icons\floppy-disk.png" />
+    <Resource Include="PageChoixMode\Icons\folder.png" />
+    <Resource Include="PageChoixMode\Icons\Group 21.png" />
+    <Resource Include="PageChoixMode\Icons\left arrow.png" />
+    <Resource Include="PageChoixMode\Icons\Libre Jaune.png" />
+    <Resource Include="PageChoixMode\Icons\Libre.png" />
+    <Resource Include="PageChoixMode\Icons\log-out 1.png" />
+    <Resource Include="PageChoixMode\Icons\log-out.png" />
+    <Resource Include="PageChoixMode\Icons\question %281%29.png" />
+    <Resource Include="PageChoixMode\Icons\right arrow.png" />
+    <Resource Include="PageChoixMode\Images\chooseyouragent.png" />
+    <Resource Include="PageChoixMode\Images\clipboard.png" />
+    <Resource Include="PageChoixMode\Images\double-tick 1.png" />
+    <Resource Include="PageChoixMode\Images\files.png" />
+    <Resource Include="PageChoixMode\Images\floppy-disk.png" />
+    <Resource Include="PageChoixMode\Images\folder.png" />
+    <Resource Include="PageChoixMode\Images\gear.png" />
+    <Resource Include="PageChoixMode\Images\geometry %281%29.png" />
+    <Resource Include="PageChoixMode\Images\geometry %282%29.png" />
+    <Resource Include="PageChoixMode\Images\geometry.png" />
+    <Resource Include="PageChoixMode\Images\Group 43.png" />
+    <Resource Include="PageChoixMode\Images\Group 44.png" />
+    <Resource Include="PageChoixMode\Images\lamp.png" />
+    <Resource Include="PageChoixMode\Images\log-out.png" />
+    <Resource Include="PageChoixMode\Images\question %281%29.png" />
+    <Resource Include="PageChoixMode\Images\strenght 1.png" />
     <Resource Include="modeExercice\modeExoType2\AxeImages\CARRE.png" />
     <Resource Include="modeExercice\modeExoType2\AxeImages\MOAYAN.png" />
     <Resource Include="modeExercice\modeExoType2\AxeImages\RECTANGLE.png" />

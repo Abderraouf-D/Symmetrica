@@ -25,23 +25,26 @@ namespace Projet2Cp
 {
 
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : Page
     {
         static public Boolean modeLibre , modeEns , francais=true;
         public static FaderFrame MainFrame;
-        
 
-   
+        public static  Eleve eleve;
 
 
-        public MainWindow()
+
+        public MainWindow(Boolean modeEns, Boolean francais , Eleve eleve )
         {
             InitializeComponent();
-            
-         
-            modeEns = true;
+
+            MainWindow.eleve = eleve;
+            MainWindow.modeEns = modeEns;
+            MainWindow.francais = francais; 
+
             MainFrame = new FaderFrame();
             myDock.Children.Add(MainFrame);
+
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
 
 
@@ -117,6 +120,12 @@ namespace Projet2Cp
          
 
 
+
+        }
+
+        private void logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            symmetrica.symmetricaFrm.NavigationService.Navigate(new PageChoixMode());
 
         }
 

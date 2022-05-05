@@ -18,9 +18,7 @@ using Projet2Cp;
 
 namespace MAINPAGE
 {
-    /// <summary>
-    /// Interaction logic for Page1.xaml
-    /// </summary>
+
     public partial class PagePointsPrimesNiveau2 : Page
     {
         public int niveau;
