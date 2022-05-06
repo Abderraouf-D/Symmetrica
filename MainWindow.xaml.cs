@@ -30,7 +30,7 @@ namespace Projet2Cp
         static public Boolean modeLibre , modeEns , francais=true;
         public static FaderFrame MainFrame;
         public static  Eleve eleve;
-
+         PagesNiveaux pageNiveaux = new PagesNiveaux();
         public static ResourceDictionary ResLibre; 
 
 
@@ -47,6 +47,7 @@ namespace Projet2Cp
 
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
 
+            this.Resources.MergedDictionaries.Add(ResLibre);
 
 
 
@@ -88,21 +89,21 @@ namespace Projet2Cp
             CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBLibre.Foreground = Brushes.Snow;
-            PagesNiveaux page = new PagesNiveaux();
-            MainFrame.NavigationService.Navigate(page);
+            
+            MainFrame.NavigationService.Navigate(pageNiveaux);
 
-            page.niveau = 1;
+            pageNiveaux.niveau = 1;
             PagesNiveaux.btn_niveau1_is_clicked = true;
             PagesNiveaux.btn_niveau2_is_clicked = false;
             PagesNiveaux.btn_niveau3_is_clicked = false;
-            page.BtnNiveau1.Margin = new System.Windows.Thickness(0, 0, 80, 0);
-            page.BtnNiveau2.Margin = new System.Windows.Thickness(0, 20, 80, 0);
-            page.BtnNiveau3.Margin = new System.Windows.Thickness(0, 20, 0, 0);
-            page.BorderContainer.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#A2DBA1");
-            page.BtnQuiz.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            page.BtnOuiNon.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            page.BtnTrouverLesAxes.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            page.BtnDessinerLeSymetr.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            pageNiveaux.BtnNiveau1.Margin = new System.Windows.Thickness(0, 0, 80, 0);
+            pageNiveaux.BtnNiveau2.Margin = new System.Windows.Thickness(0, 20, 80, 0);
+            pageNiveaux.BtnNiveau3.Margin = new System.Windows.Thickness(0, 20, 0, 0);
+            pageNiveaux.BorderContainer.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#A2DBA1");
+            pageNiveaux.BtnQuiz.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            pageNiveaux.BtnOuiNon.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            pageNiveaux.BtnTrouverLesAxes.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            pageNiveaux.BtnDessinerLeSymetr.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
 
 
 
@@ -122,7 +123,6 @@ namespace Projet2Cp
 
             
             modeLibre = true;
-            if (francais) ResLibre = App.FrResLibre; else ResLibre = App.ArResLibre;
        
             MainFrame.NavigationService.Navigate(new ModeLibre());
          
@@ -133,7 +133,7 @@ namespace Projet2Cp
 
         private void logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            symmetrica.symmetricaFrm.NavigationService.Navigate(new PageChoixMode());
+            symmetrica.symmetricaFrm.NavigationService.Navigate(symmetrica.pagechoix);
 
         }
 

@@ -65,7 +65,7 @@
                            VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 </StackPanel>
                </Border>
-                        <Button  Grid.Column="2" Cursor="Arrow" ToolTip="Sortir"   Click="ButtonClickLogout" HorizontalAlignment="Center"   Width="40" Height="30" x:Name="exportPng" >
+                <Button  Grid.Column="2" Cursor="Arrow" ToolTip="{DynamicResource sortir}"   Click="ButtonClickLogout" HorizontalAlignment="Center"   Width="40" Height="30" x:Name="exportPng" >
                 <Image Source="./Acceuil/logout.png" Height="30" Width="30" />
             </Button>
 
@@ -90,11 +90,11 @@
                 Foreground="Black" FontFamily="{StaticResource VigaRegular}"   
                 Background="Transparent"
                 >
-                    <MenuItem Header="Aide" 
+                    <MenuItem Header="{DynamicResource aide}" 
                           FontSize="20"
                           Padding="5,0,5,0"
                           >
-                        <MenuItem Header="A propos" FontSize="20"
+                                <MenuItem Header="{DynamicResource prp}" FontSize="20"
                               ToolTip="Comment utiliser l'application"
                               >
                             <MenuItem.Icon>
@@ -139,7 +139,7 @@
                     <StackPanel>
                         <Image x:Name="CoursImg" Source="./Acceuil/Cours.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock x:Name="TBCours"  HorizontalAlignment="Center"
-                        Text="Cours" FontSize="30"
+                        Text="{DynamicResource cours}" FontSize="30"
                         Foreground="White"
                         FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy"   
                         Margin="0"
@@ -155,7 +155,7 @@
                     <StackPanel >
                         <Image Stretch="Uniform" x:Name="ExoImg" Source="./Acceuil/Exercices.png" Width="100" Height="100"/>
                         <TextBlock  x:Name="TBExo"
-                    Text="Exercices" FontSize="25"  HorizontalAlignment="Center"
+                    Text="{DynamicResource exos}" FontSize="25"  HorizontalAlignment="Center"
                      Foreground="Snow"
                     FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy"
                     Margin="0"/>
@@ -169,7 +169,7 @@
                     <StackPanel >
                         <Image x:Name="LibreImg" Source="./Acceuil/Libre.png" Margin="1" Width="100" Height="100"/>
                         <TextBlock  x:Name="TBLibre"
-                    Text="Libre" HorizontalAlignment="Center" FontSize="30"  
+                    Text="{DynamicResource libre}" HorizontalAlignment="Center" FontSize="30"  
                      Foreground="Snow" 
                     FontFamily="{StaticResource BwStretchRegular}" FontWeight="Heavy" 
                     Margin="0"

@@ -38,8 +38,20 @@ namespace Project
         }
         private void loaded(object sender , RoutedEventArgs e)
         {
-            this.Resources.MergedDictionaries.Add(App.ArResLibre);
 
+
+            if (francais)
+            {
+                this.Resources.MergedDictionaries.Add(App.FrResLibre);
+
+                MainWindow.ResLibre = App.FrResLibre;
+            }
+            else
+            {
+                this.Resources.MergedDictionaries.Add(App.ArResLibre);
+                MainWindow.ResLibre = App.ArResLibre;
+
+            }
         }
 
 
@@ -66,6 +78,7 @@ namespace Project
             Ar.Style = (Style)Application.Current.FindResource("ButtonCentral");
 
             this.Resources.MergedDictionaries.Add(App.FrResLibre);
+            MainWindow.ResLibre = App.FrResLibre;
 
         }
         private void Ar_Click(object sender, RoutedEventArgs e)
@@ -75,6 +88,7 @@ namespace Project
 
             Fr.Style = (Style)Application.Current.FindResource("ButtonCentral");
             this.Resources.MergedDictionaries.Add(App.ArResLibre);
+            MainWindow.ResLibre = App.ArResLibre;
 
         }
 

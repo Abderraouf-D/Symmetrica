@@ -78,7 +78,7 @@
                         Height="40"
                         Width="100"
                         Style="{StaticResource ButtonCentral}"
-                        Margin="5,0,1,0"
+                        
                         Content="Français"
                         FontFamily="{StaticResource PoppinsSemiBold}"
                         FontSize="18"

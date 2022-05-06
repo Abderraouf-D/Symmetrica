@@ -53,8 +53,33 @@
     <sys:String  x:Key="pwd">كلمة المرور</sys:String>
     <sys:String  x:Key="userName">اسمك</sys:String>
     <sys:String  x:Key="go">! هيا</sys:String>
+    <!-- **************************************************************************************************************  -->
+
+
+    <!-- Strings tae Dock + Menu-->
+    <sys:String  x:Key="cours">الدروس</sys:String>
+    <sys:String  x:Key="exos">التمارين</sys:String>
+    <sys:String  x:Key="libre">حر</sys:String>
+    <sys:String  x:Key="aide">مساعدة</sys:String>
+    <sys:String  x:Key="prp">à propos...</sys:String>
+    <sys:String  x:Key="sortir">حفظ و خروج</sys:String>
+
+    <!-- **************************************************************************************************************  -->
+   
+    <!-- Strings tae page Niveaux-->
+    <sys:String  x:Key="quiz">أسئلة متعددة</sys:String>
+    <sys:String  x:Key="ON">نعم / لا</sys:String>
+    <sys:String  x:Key="dessinerSym">أرسم النظير</sys:String>
+    <sys:String  x:Key="niv1Des">! المهندس الصغير</sys:String>
+    <sys:String  x:Key="niv2Des">! مهندس حقيقي !</sys:String>
+    <sys:String  x:Key="niv3Des">! بطل الهندسة</sys:String>
+    <sys:String  x:Key="centrale">مركزي</sys:String>
+    <sys:String  x:Key="axiale">محوري</sys:String>
+    <sys:String  x:Key="titreNiv">! لنقم ببعض التناظر</sys:String>
+    <sys:String  x:Key="trvAxe">أجد المحاور</sys:String>
 
     
+    <!-- **************************************************************************************************************  -->
 
 
 

@@ -51,11 +51,31 @@
     <sys:String  x:Key="pwd">Mot de passe</sys:String>
     <sys:String  x:Key="userName">Ton Nom</sys:String>
     <sys:String  x:Key="go">GO !</sys:String>
-	
-	
-	
-	
-	
-	
+    <!-- **************************************************************************************************************  -->
+
+    <!-- Strings tae Dock + Menu-->
+    <sys:String  x:Key="cours">Cours</sys:String>
+    <sys:String  x:Key="exos">Exercices</sys:String>
+    <sys:String  x:Key="libre">Libre</sys:String>
+    <sys:String  x:Key="aide">Aide</sys:String>
+    <sys:String  x:Key="prp">à propos...</sys:String>
+    <sys:String  x:Key="sortir"> Sauvegarder et Quitter</sys:String>
+    
+    <!-- **************************************************************************************************************  -->
+
+    <!-- Strings tae page Niveaux-->
+    <sys:String  x:Key="quiz">Quiz</sys:String>
+    <sys:String  x:Key="ON">Oui / Non</sys:String>
+    <sys:String  x:Key="dessinerSym">Dessiner le symétrique</sys:String>
+    <sys:String  x:Key="niv1Des">Petit Géomètre !</sys:String>
+    <sys:String  x:Key="niv2Des">Un VRAI  Géomètre !</sys:String>
+    <sys:String  x:Key="niv3Des">Héro de la Géomètrie !</sys:String>
+    <sys:String  x:Key="centrale">Centrale</sys:String>
+    <sys:String  x:Key="axiale">Axiale</sys:String>
+    <sys:String  x:Key="titreNiv">Faisons un peu de symétrie !</sys:String>
+    <sys:String  x:Key="trvAxe">Trouver les axes</sys:String>
+
+    <!-- **************************************************************************************************************  -->
+
 
 </ResourceDictionary>

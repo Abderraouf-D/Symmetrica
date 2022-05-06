@@ -32,6 +32,7 @@ namespace Project
         public PagesNiveaux()
         {
             InitializeComponent();
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
         }
         private void ButtonAxiale_Click(object sender, RoutedEventArgs e)
         {
@@ -41,7 +42,7 @@ namespace Project
             ButtonAxiale.Foreground = Brushes.White;
             ButtonCentrale.Style = (Style)Application.Current.FindResource("ButtonCentral");
             ButtonCentrale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#009400");
-            trouverHaja.Text = "Trouver les axes";
+            trouverHaja.Text =MainWindow.francais? "Trouver les axes" : "أجد المحاور";
         }
 
         private void ButtonCentrale_Click(object sender, RoutedEventArgs e)
@@ -53,7 +54,7 @@ namespace Project
             ButtonAxiale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#009400"); 
             ButtonCentrale.Style = (Style)Application.Current.FindResource("ButtonAxial");
             ButtonCentrale.Foreground = Brushes.White;
-            trouverHaja.Text = "Points primes";
+            trouverHaja.Text = MainWindow.francais ? "Points primes": "نظير النقطة";
 
         }
 

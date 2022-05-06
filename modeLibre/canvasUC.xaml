@@ -15,7 +15,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./Styles.xaml"/>
-                <ResourceDictionary Source="./ArResLibre.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -23,6 +23,7 @@ namespace Projet2Cp
     /// </summary>
     public partial class symmetrica : Window
     {
+        public static Page pagechoix = new PageChoixMode();
         public static FaderFrame symmetricaFrm;
         public symmetrica()
         {
@@ -31,8 +32,8 @@ namespace Projet2Cp
             symGrid.Children.Add(symmetricaFrm);
             symmetricaFrm.NavigationUIVisibility = NavigationUIVisibility.Hidden;
 
-
-            symmetricaFrm.NavigationService.Navigate(new PageChoixMode());
+            
+            symmetricaFrm.NavigationService.Navigate(pagechoix);
 
 
             App.ArResLibre = this.Resources.MergedDictionaries[0];
