@@ -29,12 +29,16 @@ namespace ModeCours
         {
             MainWindow.MainFrame.NavigationService.Navigate(new P6CourAxe());
             ViexBox_P5CourAxe.Visibility = Visibility.Hidden;
+            if (!MainWindow.modeEns) MainWindow.eleve.incProgress();
+
         }
 
         private void Button_Click_Prcdt_CA_P5(object sender, RoutedEventArgs e)
         {
             MainWindow.MainFrame.NavigationService.Navigate(new P4CourAxe());
             ViexBox_P5CourAxe.Visibility = Visibility.Hidden;
+            if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
+
         }
     }
 }

@@ -35,7 +35,7 @@
                 
             </StackPanel>
 
-            <Button Background="#A2DBA1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            <Button x:Name="btnSuiv" Background="#A2DBA1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
                         Width="220" Height="70" Margin="0 0 0 30" BorderThickness="0"  
                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                         >

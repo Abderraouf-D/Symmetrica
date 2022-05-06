@@ -32,7 +32,12 @@ namespace Project
         public PagesNiveaux()
         {
             InitializeComponent();
+            this.Loaded += loaded;
+        }
+        public void loaded(Object sender ,RoutedEventArgs e)
+        {
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+
         }
         private void ButtonAxiale_Click(object sender, RoutedEventArgs e)
         {

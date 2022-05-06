@@ -22,7 +22,7 @@ namespace Project
     {
         bool francais = false;
         bool modeEns;
-
+        ResourceDictionary ResLibre= App.ArResLibre;
         public PageChoixMode()
         {
             InitializeComponent();
@@ -44,12 +44,10 @@ namespace Project
             {
                 this.Resources.MergedDictionaries.Add(App.FrResLibre);
 
-                MainWindow.ResLibre = App.FrResLibre;
             }
             else
             {
                 this.Resources.MergedDictionaries.Add(App.ArResLibre);
-                MainWindow.ResLibre = App.ArResLibre;
 
             }
         }
@@ -65,8 +63,7 @@ namespace Project
             {
                
 
-                if (modeEns) symmetrica.symmetricaFrm.NavigationService.Navigate(new MainWindow(modeEns, francais, null));
-                else symmetrica.symmetricaFrm.NavigationService.Navigate(new MainWindow(modeEns, francais, new Eleve(eleve.Text, 0)));
+                symmetrica.symmetricaFrm.NavigationService.Navigate(new MainWindow(modeEns, francais, new Eleve(eleve.Text, 0)));
             }
         }
 
@@ -78,8 +75,6 @@ namespace Project
             Ar.Style = (Style)Application.Current.FindResource("ButtonCentral");
 
             this.Resources.MergedDictionaries.Add(App.FrResLibre);
-            MainWindow.ResLibre = App.FrResLibre;
-
         }
         private void Ar_Click(object sender, RoutedEventArgs e)
         {
@@ -88,7 +83,6 @@ namespace Project
 
             Fr.Style = (Style)Application.Current.FindResource("ButtonCentral");
             this.Resources.MergedDictionaries.Add(App.ArResLibre);
-            MainWindow.ResLibre = App.ArResLibre;
 
         }
 

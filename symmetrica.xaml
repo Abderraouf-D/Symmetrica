@@ -15,8 +15,8 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary  x:Name="ArResLibre" Source="./ArResLibre.xaml" />
-                <ResourceDictionary x:Name="FrResLibre" Source="./FrResLibre.xaml" />
+                <ResourceDictionary   Source="./ArResLibre.xaml" />
+                <ResourceDictionary  Source="./FrResLibre.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

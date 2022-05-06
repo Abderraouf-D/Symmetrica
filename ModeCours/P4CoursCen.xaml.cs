@@ -27,7 +27,9 @@ namespace ModeCours
         private void Button_Click_Prcdt_CC_P4(object sender, RoutedEventArgs e)
         {
             ViexBox_P4CoursCen.Visibility = Visibility.Hidden;
-            MainWindow.MainFrame.NavigationService.Navigate(new P3CoursCen());
+            MainWindow.MainFrame.NavigationService.Navigate(new Demonstration6());
+            if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
+
 
         }
 
@@ -35,6 +37,8 @@ namespace ModeCours
         {
             ViexBox_P4CoursCen.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new P5CoursCen());
+            if (!MainWindow.modeEns) MainWindow.eleve.incProgress();
+
 
 
         }

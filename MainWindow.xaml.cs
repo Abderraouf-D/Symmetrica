@@ -30,10 +30,10 @@ namespace Projet2Cp
         static public Boolean modeLibre , modeEns , francais=true;
         public static FaderFrame MainFrame;
         public static  Eleve eleve;
-         PagesNiveaux pageNiveaux = new PagesNiveaux();
-        public static ResourceDictionary ResLibre; 
-
-
+        public static PagesNiveaux pageNiveaux = new PagesNiveaux();
+        public static ResourceDictionary ResLibre;
+         
+        
         public MainWindow(Boolean modeEns, Boolean francais , Eleve eleve )
         {
             InitializeComponent();
@@ -44,9 +44,9 @@ namespace Projet2Cp
 
             MainFrame = new FaderFrame();
             myDock.Children.Add(MainFrame);
-
+            if (francais) ResLibre = App.FrResLibre;
+            else ResLibre = App.ArResLibre;
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-
             this.Resources.MergedDictionaries.Add(ResLibre);
 
 
@@ -158,6 +158,12 @@ namespace Projet2Cp
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+
+
+
+        
+
 
 
     }

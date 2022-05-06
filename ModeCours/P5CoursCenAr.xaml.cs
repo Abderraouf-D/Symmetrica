@@ -28,6 +28,8 @@ namespace ModeCours
         {
             ViexBox_P5CoursCenAr.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new P4CoursCenAr());
+            if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
+
 
         }
 
@@ -35,6 +37,8 @@ namespace ModeCours
         {
             ViexBox_P5CoursCenAr.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new P6CoursCenAr());
+            if (!MainWindow.modeEns) MainWindow.eleve.incProgress();
+
 
 
         }

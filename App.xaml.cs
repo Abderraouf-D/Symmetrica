@@ -8,10 +8,7 @@ using System.Windows;
 
 namespace Projet2Cp
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    /// 
+
 
 
     

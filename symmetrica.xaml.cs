@@ -32,13 +32,15 @@ namespace Projet2Cp
             symGrid.Children.Add(symmetricaFrm);
             symmetricaFrm.NavigationUIVisibility = NavigationUIVisibility.Hidden;
 
-            
-            symmetricaFrm.NavigationService.Navigate(pagechoix);
-
-
             App.ArResLibre = this.Resources.MergedDictionaries[0];
             App.FrResLibre = this.Resources.MergedDictionaries[1];
-            
+            symmetricaFrm.NavigationService.Navigate(pagechoix);
+            App.ArResLibre = this.Resources.MergedDictionaries[0];
+            App.FrResLibre = this.Resources.MergedDictionaries[1];
+
+
+
+
 
         }
     }

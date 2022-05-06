@@ -29,12 +29,16 @@ namespace ModeCours
         {
             ViexBox_Demonstration6.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new P4CoursCen());
+            if (!MainWindow.modeEns) MainWindow.eleve.incProgress();
+
         }
 
         private void Button_Click_Prcdt_Demonstration6(object sender, RoutedEventArgs e)
         {
             ViexBox_Demonstration6.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new Demonstration5());
+            if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
+
         }
         private void etape6_MediaEnded(object sender, RoutedEventArgs e)
         {

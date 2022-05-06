@@ -31,6 +31,8 @@ namespace ModeCours
         {
             ViexBox_P1CourAxe.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new PagePrincCours());
+            if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
+
         }
 
         private void Button_Click_Svt_CA_P1(object sender, RoutedEventArgs e)
@@ -38,6 +40,8 @@ namespace ModeCours
 
             MainWindow.MainFrame.NavigationService.Navigate(new P2CourAxe());
             ViexBox_P1CourAxe.Visibility = Visibility.Hidden;
+            if (!MainWindow.modeEns) MainWindow.eleve.incProgress();
+        
 
         }
 

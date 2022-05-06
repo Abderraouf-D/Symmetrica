@@ -28,6 +28,7 @@ namespace ModeCours
         {
             ViexBox_P1CoursCenAr.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
+            if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
 
         }
 
@@ -35,6 +36,8 @@ namespace ModeCours
         {
             ViexBox_P1CoursCenAr.Visibility = Visibility.Hidden;
             MainWindow.MainFrame.NavigationService.Navigate(new P2CoursCenAr());
+            if (!MainWindow.modeEns) MainWindow.eleve.incProgress();
+
 
         }
         private void rotation_MediaEnded(object sender, RoutedEventArgs e)
