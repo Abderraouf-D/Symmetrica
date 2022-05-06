@@ -13,6 +13,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./Styles.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
@@ -42,10 +43,10 @@
 
             </Grid.RowDefinitions>
 
-            <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" >
-               Outils
-            </TextBlock>
-            <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="deplacer" >
+        <TextBlock FontSize="20" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Text="{DynamicResource outilsStr}"/>
+
+
+        <RadioButton IsChecked="true" ToolTip="{DynamicResource dessinerDepStr}" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="deplacer" >
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
                     <Image Margin="5,0,0,0" Source="./icons/move.png"/>
@@ -53,28 +54,28 @@
                 </StackPanel>
             </RadioButton>
 
-            <RadioButton ToolTip="Colorier" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}"  x:Name="colorier" >
+        <RadioButton ToolTip="{DynamicResource Colorier}" Grid.Row="2"  Grid.Column="0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}"  x:Name="colorier" >
             <Image Source="./icons/color.png" />
         </RadioButton>
-            <RadioButton ToolTip="Rotation" Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
+        <RadioButton ToolTip="{DynamicResource rotateStr}" Grid.Row="2"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="rotate" >
                 <Image Source="./icons/rotate.png" />
             </RadioButton>
 
-            <RadioButton ToolTip="Dupliquer" Grid.Column="0" Grid.Row="3" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="duplicate" >
+        <RadioButton ToolTip="{DynamicResource dupliStr}" Grid.Column="0" Grid.Row="3" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="duplicate" >
                 <Image Source="./icons/duplicate.png" />
 
             </RadioButton>
-            <RadioButton ToolTip="Effacer" Grid.Row="3"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
+        <RadioButton ToolTip="{DynamicResource effStr}" Grid.Row="3"  Grid.Column="1" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
                 <Image Source="./icons/eraser.png" />
 
 
             </RadioButton>
 
             <StackPanel Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" Margin="0,40,0,40" Grid.RowSpan="3">
-                <Button ToolTip="Ajouter Polygon" Margin="5,0,0,0"    Grid.Column="0" Width="20" Height="20" x:Name="addPolygon" >
+            <Button ToolTip="{DynamicResource addPolyStr}" Margin="5,0,0,0"    Grid.Column="0" Width="20" Height="20" x:Name="addPolygon" >
                     <Image Margin="2" Source="./icons/new.png" />
                 </Button>
-                <ComboBox x:Name="rayon" SelectionChanged="rayon_SelectionChanged" ToolTip="Rayon"  Margin="3,0,0,0" Height="20" Width="40" >
+            <ComboBox x:Name="rayon" SelectionChanged="rayon_SelectionChanged" ToolTip="{DynamicResource rayonStr}"  Margin="3,0,0,0" Height="20" Width="40" >
                     <ComboBoxItem  IsSelected="True">1</ComboBoxItem>
                     <ComboBoxItem>2</ComboBoxItem>
                     <ComboBoxItem>3</ComboBoxItem>
@@ -87,7 +88,7 @@
 
 
                 </ComboBox>
-                <ComboBox x:Name="nbCote" SelectionChanged="nbCote_SelectionChanged" ToolTip="Nombre de cotés" Text="Rayon" Margin="1,0,0,0" Height="20" Width="40">
+            <ComboBox x:Name="nbCote" SelectionChanged="nbCote_SelectionChanged" ToolTip="{DynamicResource nbCoteStr}" Text="Rayon" Margin="1,0,0,0" Height="20" Width="40">
                     <ComboBoxItem IsSelected="True" >3</ComboBoxItem>
                     <ComboBoxItem>4</ComboBoxItem>
                     <ComboBoxItem>5</ComboBoxItem>
@@ -99,13 +100,13 @@
             <Button Style="{StaticResource  effSty}"
                   Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center"  
                     HorizontalAlignment="Center"  
-                    Width="70" Height="40" x:Name="effacerTout"  >
-                <TextBlock FontSize="12" Text="Effacer tout"/>
+                    Width="80" Height="40" x:Name="effacerTout"  >
+            <TextBlock FontSize="12" Text="{DynamicResource effToutStr}" TextWrapping="Wrap" />
             </Button>
             
             <RadioButton Style="{StaticResource genSty}"
              Grid.Row="10" Grid.ColumnSpan="2" VerticalAlignment="Center"  
-             HorizontalAlignment="Center"  Width="70" Height="40" x:Name="genSym" ToolTip="Génerer le symetrique"  >
+             HorizontalAlignment="Center"  Width="70" Height="40" x:Name="genSym" ToolTip="{DynamicResource symStr}"  >
    
                 <Image Height="32" Width="32" Source="./icons/vertically.png" />
           
@@ -121,7 +122,7 @@
 
             <StackPanel x:Name="libreStack" Margin="5,0,0,10" Orientation="Horizontal"
                         Grid.ColumnSpan="2"
-                         ToolTip="Les repères de symetrie."
+                         ToolTip="{DynamicResource reperesStr}"
                         Grid.Row="9"
                         Height="30"
                         HorizontalAlignment="Left"

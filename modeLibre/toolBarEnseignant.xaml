@@ -13,7 +13,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./Styles.xaml"/>
+
+
             </ResourceDictionary.MergedDictionaries>
+            
         </ResourceDictionary>
 
     </UserControl.Resources>
@@ -43,11 +46,11 @@
 
         <TextBlock FontSize="20" FontWeight="Bold"  
                            VerticalAlignment="Center" HorizontalAlignment="Center" 
-                           Grid.Row="0" Grid.ColumnSpan="2" >
-                           Outils
-        </TextBlock>
+                           Grid.Row="0" Grid.ColumnSpan="2" Text="{DynamicResource outilsStr}" />
 
-        <RadioButton IsChecked="true" ToolTip="Dessiner/Déplacer/Modifier" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="deplacer" >
+
+
+        <RadioButton IsChecked="true" ToolTip="{DynamicResource dessinerDepStr}" Grid.Row="1"  Grid.ColumnSpan="2" Width="90" Height="{StaticResource ButtonHeight}" x:Name="deplacer" >
             <StackPanel Orientation="Horizontal">
                 <Image Margin="5,0,0,0" Source="./icons/pencil.png"/>
                 <Image Margin="5,0,0,0" Source="./icons/move.png"/>
@@ -56,9 +59,9 @@
         </RadioButton>
 
 
-       
 
-        <RadioButton ToolTip="Effacer" Grid.Row="2"  Grid.ColumnSpan="2" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
+
+        <RadioButton ToolTip="{DynamicResource effStr}" Grid.Row="2"  Grid.ColumnSpan="2" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" x:Name="delShape" >
             <Image Source="./icons/eraser.png" />
         </RadioButton>
 
@@ -66,8 +69,8 @@
 
 
 
-       
-            <StackPanel ToolTip="Les repères de symetrie." x:Name="ensStack"  Orientation="Horizontal"
+
+        <StackPanel ToolTip="{DynamicResource reperesStr}" x:Name="ensStack"  Orientation="Horizontal"
                         Grid.ColumnSpan="2"             
                         Grid.Row="5"
                         Height="30"
@@ -131,30 +134,30 @@
         <Button Style="{StaticResource  effSty}"
                   Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top"  
                     HorizontalAlignment="Left"  
-                    Width="70" Height="40" x:Name="effacerTout" Margin="20,16,0,0" Grid.RowSpan="2"  >
-            <TextBlock FontSize="12" Text="Effacer tout"/>
+                    Width="80" Height="40" x:Name="effacerTout" Margin="20,16,0,0" Grid.RowSpan="2"  >
+            <TextBlock FontSize="12" Text="{DynamicResource effToutStr}"/>
         </Button>
         <Button BorderThickness="0"  
                     Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                     Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center"  
                     HorizontalAlignment="Center"  
                     x:Name="EditEns"   
-                    ToolTip="Modifier le dessin courant"
+                    ToolTip="{DynamicResource editStr}"
                     >
             <Image Height="30" Width="30" Source="./icons/editer.png"/>
 
         </Button>
         <Button 
-                Style="{StaticResource validSty}" Grid.ColumnSpan="2" Grid.Row="7"  Grid.RowSpan="2"  ToolTip="Valider le déssin."
+                Style="{StaticResource validSty}" Grid.ColumnSpan="2" Grid.Row="7"  Grid.RowSpan="2"  ToolTip="{DynamicResource vldTipStr}"
                 VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Width="70" Height="40" x:Name="valider" Margin="5"  >
-            <TextBlock x:Name="vld" Text="Valider"/>
+            <TextBlock x:Name="vld" Text="{DynamicResource vldStr}"/>
         </Button>
         <Button 
                 Style="{StaticResource effSty}" Grid.ColumnSpan="2" 
                 Grid.Row="8" Grid.RowSpan="2"  VerticalAlignment="Bottom"  
                 HorizontalAlignment="Center" 
                 Width="70" Height="40" x:Name="annuler" Margin="5" IsCancel="True" Visibility="Collapsed" >
-            <TextBlock Text="Annuler"/>
+            <TextBlock Text="{DynamicResource annulStr}"/>
         </Button>
 
 

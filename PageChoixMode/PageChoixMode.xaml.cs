@@ -20,7 +20,7 @@ namespace Project
     /// </summary>s
     public partial class PageChoixMode : Page
     {
-        bool francais = true;
+        bool francais = false;
         bool modeEns;
 
         public PageChoixMode()

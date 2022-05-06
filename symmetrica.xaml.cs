@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DrWPF.Windows.Controls;
 using Project;
+using System.IO;
 namespace Projet2Cp
    
 {
@@ -32,6 +33,11 @@ namespace Projet2Cp
 
 
             symmetricaFrm.NavigationService.Navigate(new PageChoixMode());
+
+
+            App.ArResLibre = this.Resources.MergedDictionaries[0];
+            App.FrResLibre = this.Resources.MergedDictionaries[1];
+            
 
         }
     }

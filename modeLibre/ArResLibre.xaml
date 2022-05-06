@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+
+    <sys:String  x:Key="traceStr">الخطوط</sys:String>
+    <sys:String  x:Key="Colorier">تلوين</sys:String>
+    <sys:String  x:Key="rempliStr">الملء</sys:String>
+    <sys:String  x:Key="outilsStr">الأدوات</sys:String>
+    <sys:String  x:Key="dessinerDepStr">رسم/تحريك/تغيير</sys:String>
+    <sys:String  x:Key="effToutStr">مسح كل اللوحة</sys:String>
+    <sys:String  x:Key="effStr">مسح الخطوط/الأشكال</sys:String>
+    <sys:String  x:Key="symStr">التناظر</sys:String>
+    <sys:String  x:Key="addPolyStr">إضافة مضلع</sys:String>
+    <sys:String  x:Key="dupliStr">نسخ</sys:String>
+    <sys:String  x:Key="rotateStr">تدوير</sys:String>
+    <sys:String  x:Key="reperesStr">مراجع التناظر</sys:String>
+    <sys:String  x:Key="vldStr">تحقق</sys:String>
+    <sys:String  x:Key="vldTipStr">تحقق من صحة الرسم</sys:String>
+    <sys:String  x:Key="confirmStr">تأكيد</sys:String>
+    <sys:String  x:Key="editStr">تغيير الشكل المختار</sys:String>
+    <sys:String  x:Key="annulStr">إلغاء</sys:String>
+    <sys:String  x:Key="superStr">! ممتاز</sys:String>
+    <sys:String  x:Key="opsStr">! أعد الكرّة</sys:String>
+    <sys:String  x:Key="dessin1">1 شكل</sys:String>
+    <sys:String  x:Key="dessin2">2 شكل</sys:String>
+    <sys:String  x:Key="dessin3">3 شكل</sys:String>
+    <sys:String  x:Key="niv1">1 مستوى</sys:String>
+    <sys:String  x:Key="niv2">2 مستوى</sys:String>
+    <sys:String  x:Key="niv3">3 مستوى</sys:String>
+    <sys:String  x:Key="save">حفظ الرسم</sys:String>
+    <sys:String  x:Key="load">تحميل رسم</sys:String>
+    <sys:String  x:Key="exportPng">حفظ الرسم في صورة</sys:String>
+    <sys:String  x:Key="instructionElev">ارسم نظير الشكل بالنسبة للمرجع المعطى ثم اضغط على</sys:String>
+    <sys:String  x:Key="instructionEns">يرجى رسم الشكل  و اختيار  مرجع التناظر المراد ، ثم الضغط على "تأكيد"٠</sys:String>
+    <sys:String  x:Key="multipleShapesWarning">لا يمكنكم انشاء عدة اشكال في نفس التمرين</sys:String>
+    <sys:String  x:Key="succesEns">تم التغيير بنجاح</sys:String>
+    <sys:String  x:Key="retryStr">! أعادة </sys:String>
+    <sys:String  x:Key="rayonStr">نصف القطر</sys:String>
+    <sys:String  x:Key="nbCoteStr">عدد الأضلاع</sys:String>
+    <sys:String  x:Key="repereWarn">يرجى اختيار  مرجع التناظر المراد </sys:String>
+    <sys:String  x:Key="choisirDoss">يرجى اختيار الملف</sys:String>
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

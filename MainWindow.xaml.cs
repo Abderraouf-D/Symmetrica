@@ -29,9 +29,9 @@ namespace Projet2Cp
     {
         static public Boolean modeLibre , modeEns , francais=true;
         public static FaderFrame MainFrame;
-
         public static  Eleve eleve;
 
+        public static ResourceDictionary ResLibre; 
 
 
         public MainWindow(Boolean modeEns, Boolean francais , Eleve eleve )
@@ -115,7 +115,11 @@ namespace Projet2Cp
             CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBExo.Foreground = Brushes.Snow;
+
+            
             modeLibre = true;
+            if (francais) ResLibre = App.FrResLibre; else ResLibre = App.ArResLibre;
+       
             MainFrame.NavigationService.Navigate(new ModeLibre());
          
 

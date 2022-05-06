@@ -11,9 +11,17 @@ namespace Projet2Cp
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
+    /// 
+
+
+    
+
     public partial class App : Application
     {
-        
+        public static ResourceDictionary ArResLibre; 
+        public static ResourceDictionary FrResLibre;
+
+
         
     }
 }

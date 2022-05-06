@@ -21,7 +21,8 @@ namespace Projet2Cp
             canvas   =  new canvasUC(toolBar,null);
             myDock.Children.Add(canvas);
             DockPanel.SetDock(canvas, Dock.Bottom);
-
+            //----------------------------------------------------//
+            this.Resources.MergedDictionaries.Add( MainWindow.ResLibre);
 
 
             //----------------------------------------------------//

@@ -25,7 +25,9 @@ namespace Projet2Cp
         public niveauxLibre()
         { 
             InitializeComponent();
-           
+            this.Resources.MergedDictionaries.Add( MainWindow.ResLibre);
+
+            
         }
 
         public void hideNiv(int k)
@@ -58,9 +60,6 @@ namespace Projet2Cp
             
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //grid.Width = nivStack.ActualWidth;
-        }
+        
     }
 }

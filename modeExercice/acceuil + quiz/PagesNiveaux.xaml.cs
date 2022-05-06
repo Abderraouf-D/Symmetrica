@@ -223,7 +223,9 @@ namespace Project
         private void BtnDessinerLeSymetr_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.modeLibre = false;
-           
+
+            if (MainWindow.francais) MainWindow.ResLibre = App.FrResLibre; else MainWindow.ResLibre = App.ArResLibre;
+
             MainWindow.MainFrame.NavigationService.Navigate(new LibreExoEns());
         }
 

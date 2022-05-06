@@ -34,6 +34,8 @@ namespace Projet2Cp
         public ColorPicker()
         {
             InitializeComponent();
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+
             canvasUC.trace=Brushes.Black;
             canvasUC.rempli= Brushes.White;
 

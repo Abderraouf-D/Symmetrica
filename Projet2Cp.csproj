@@ -177,13 +177,13 @@
     <Compile Include="ModeCours\PagePrincCoursAr.xaml.cs">
       <DependentUpon>PagePrincCoursAr.xaml</DependentUpon>
     </Compile>
-    <Compile Include="modeExercice\BILAL\MainQuizWindow.xaml.cs">
+    <Compile Include="modeExercice\acceuil + quiz\MainQuizWindow.xaml.cs">
       <DependentUpon>MainQuizWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="modeExercice\BILAL\MainQuizWindowTeacher.xaml.cs">
+    <Compile Include="modeExercice\acceuil + quiz\MainQuizWindowTeacher.xaml.cs">
       <DependentUpon>MainQuizWindowTeacher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="modeExercice\BILAL\PagesNiveaux.xaml.cs">
+    <Compile Include="modeExercice\acceuil + quiz\PagesNiveaux.xaml.cs">
       <DependentUpon>PagesNiveaux.xaml</DependentUpon>
     </Compile>
     <Compile Include="modeExercice\modeExoType2\PagePointsPrimesNiveau1.xaml.cs">
@@ -235,6 +235,10 @@
     <Compile Include="symmetrica.xaml.cs">
       <DependentUpon>symmetrica.xaml</DependentUpon>
     </Compile>
+    <Page Include="appStylesFonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -399,15 +403,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="modeExercice\BILAL\MainQuizWindow.xaml">
+    <Page Include="modeExercice\acceuil + quiz\MainQuizWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="modeExercice\BILAL\MainQuizWindowTeacher.xaml">
+    <Page Include="modeExercice\acceuil + quiz\MainQuizWindowTeacher.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="modeExercice\BILAL\PagesNiveaux.xaml">
+    <Page Include="modeExercice\acceuil + quiz\PagesNiveaux.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -442,6 +446,14 @@
     <Page Include="modeLibre\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\ArResLibre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="modeLibre\FrResLibre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="modeLibre\LibreExoEns.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -751,17 +763,17 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="modeExercice\BILAL\Icons\Ellipse.png" />
-    <Resource Include="modeExercice\BILAL\Icons\Group 21.png" />
-    <Resource Include="modeExercice\BILAL\Icons\left arrow.png" />
-    <Resource Include="modeExercice\BILAL\Icons\right arrow.png" />
-    <Resource Include="modeExercice\BILAL\Images\double-tick 1.png" />
-    <Resource Include="modeExercice\BILAL\Images\gear.png" />
-    <Resource Include="modeExercice\BILAL\Images\geometry %281%29.png" />
-    <Resource Include="modeExercice\BILAL\Images\geometry %282%29.png" />
-    <Resource Include="modeExercice\BILAL\Images\geometry.png" />
-    <Resource Include="modeExercice\BILAL\Images\lamp.png" />
-    <Resource Include="modeExercice\BILAL\Images\strenght 1.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Icons\Ellipse.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Icons\Group 21.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Icons\left arrow.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Icons\right arrow.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Images\double-tick 1.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Images\gear.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Images\geometry %281%29.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Images\geometry %282%29.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Images\geometry.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Images\lamp.png" />
+    <Resource Include="modeExercice\acceuil + quiz\Images\strenght 1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="modeExercice\OUI_Non\Fonts\Poppins\OFL.txt" />

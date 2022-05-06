@@ -8,7 +8,10 @@
              d:DesignHeight="450" d:DesignWidth="800" x:Name="current">
 
     <UserControl.Resources>
-        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+        
+            
+            
+            <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="15" />
@@ -52,10 +55,10 @@
     <StackPanel Height="{Binding current,ElementName=Height}" Width="{Binding current,ElementName=Width}">
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <RadioButton  x:Name="Trace" Click="Trace_Click">
-                <TextBlock Text="Tracé" Foreground="Black" FontSize="10"/>
+                <TextBlock Text="{DynamicResource traceStr}" Foreground="Black" FontSize="10"/>
             </RadioButton>
             <RadioButton  x:Name="Rempli" Click="Rempli_Click">
-                <TextBlock Text="Rempli" Foreground="Black" FontSize="10"/>
+                <TextBlock Text="{DynamicResource rempliStr}" Foreground="Black" FontSize="10"/>
             </RadioButton>
 
 

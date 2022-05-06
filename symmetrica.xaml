@@ -7,6 +7,20 @@
         mc:Ignorable="d" 
         Title="SYMMETRICA" Height="1080" Width="1920" MinHeight="720" MinWidth="1024" 
         Icon="./Acceuil/logo.png">
+    <Window.Resources>
+
+
+
+
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary  x:Name="ArResLibre" Source="./modeLibre/ArResLibre.xaml" />
+                <ResourceDictionary x:Name="FrResLibre" Source="./modeLibre/FrResLibre.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid x:Name="symGrid">
         
     </Grid>

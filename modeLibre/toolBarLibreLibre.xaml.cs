@@ -27,6 +27,8 @@ namespace Projet2Cp
 
             canvasUC.rayon = rayon.SelectedIndex + 3;
             canvasUC.cote =nbCote.SelectedIndex + 3;
+            this.Resources.MergedDictionaries.Add( MainWindow.ResLibre);
+
         }
 
         private void nbCote_SelectionChanged(object sender, SelectionChangedEventArgs e)

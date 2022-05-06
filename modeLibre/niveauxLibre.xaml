@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Projet2Cp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Loaded="UserControl_Loaded">
+             >
 
     <UserControl.Resources>
 
@@ -133,7 +133,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                      </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="left" Grid.Column="0" Text="Dessin 1"/>
+                    <TextBlock HorizontalAlignment="left" Grid.Column="0" Text="{DynamicResource dessin1}"/>
 
                 </Grid>
             </RadioButton>
@@ -143,7 +143,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 2   "/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin2}"/>
 
                 </Grid>
             </RadioButton>
@@ -153,7 +153,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 3"/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin3}"/>
 
                 </Grid>
             </RadioButton>
@@ -163,7 +163,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 1"/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin1}"/>
 
                 </Grid>
             </RadioButton>
@@ -173,7 +173,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 2"/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin2}"/>
 
                 </Grid>
             </RadioButton>
@@ -183,7 +183,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 3"/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin3}"/>
 
                 </Grid>
             </RadioButton>
@@ -193,7 +193,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 1"/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin1}"/>
 
                 </Grid>
             </RadioButton>
@@ -203,7 +203,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 2"/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin2}"/>
 
                 </Grid>
             </RadioButton>
@@ -213,7 +213,7 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock  Grid.Column="0" Text="Dessin 3"/>
+                    <TextBlock  Grid.Column="0" Text="{DynamicResource dessin3}"/>
 
                 </Grid>
             </RadioButton>
@@ -227,13 +227,13 @@
                 </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="0"  Background="#A2DBA1" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
-                <TextBlock Text="NIVEAU 1" FontSize="9"  Height="13" HorizontalAlignment="Center" />
+                <TextBlock Text="{DynamicResource niv1}" FontSize="9"  Height="13" HorizontalAlignment="Center" />
             </Border>
             <Border Grid.Column="1"  Background="#FFCC00" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
-                <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" FontSize="9" Text="NIVEAU 2"  Height="13" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" FontSize="9" Text="{DynamicResource niv2}"  Height="13" HorizontalAlignment="Center"/>
             </Border>
             <Border Grid.Column="6"  Background="#EC3D3D" HorizontalAlignment="Stretch" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
-                <TextBlock FontSize="9" Text="NIVEAU 3"  Height="13" HorizontalAlignment="Center"/>
+                <TextBlock FontSize="9" Text="{DynamicResource niv3}"  Height="13" HorizontalAlignment="Center"/>
             </Border>
         </Grid>
        

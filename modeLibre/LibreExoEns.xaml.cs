@@ -24,8 +24,6 @@ namespace Projet2Cp
     {
         
         
-        TextBlock tb;
-        List<dessinExo> dessinsModeExo;
         canvasUC canvas;
 
         public LibreExoEns()
@@ -34,11 +32,15 @@ namespace Projet2Cp
              canvas = new canvasUC(toolBarEns,niv);
             myDock.Children.Add(canvas);
             DockPanel.SetDock(canvas, Dock.Bottom);
+            //----------------------------------------------------//
 
+
+            
+            this.Resources.MergedDictionaries.Add( MainWindow.ResLibre);
 
 
             //----------------------------------------------------//
-       
+
             toolBarEns.effacerTout.Click += canvas.effacerTout;
             toolBarEns.delShape.Click += canvas.delete_Click;
             toolBarEns.deplacer.Click += canvas.deplacer_Click;

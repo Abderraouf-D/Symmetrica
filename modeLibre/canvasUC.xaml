@@ -15,6 +15,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./Styles.xaml"/>
+                <ResourceDictionary Source="./ArResLibre.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         
@@ -51,13 +53,13 @@
         </Border>
         <StackPanel Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left"  Height="50" Width="150" Panel.ZIndex="100"  Orientation="Horizontal" >
             
-            <Button Cursor="Arrow" Click="save_Click" ToolTip="Sauvegarder le dessin" Margin="5,0,0,0"     Width="40" Height="40" x:Name="save" >
+            <Button Cursor="Arrow" Click="save_Click" ToolTip="{DynamicResource save}" Margin="5,0,0,0"     Width="40" Height="40" x:Name="save" >
                 <Image Margin="2" Source="./icons/floppy-disk.png" />
             </Button>
-            <Button Cursor="Arrow" Click="upload_Click"  ToolTip="Charger un dessin" Margin="5,0,0,0"     Width="40" Height="40" x:Name="upload" >
+            <Button Cursor="Arrow" Click="upload_Click"  ToolTip="{DynamicResource load}" Margin="5,0,0,0"     Width="40" Height="40" x:Name="upload" >
                 <Image Margin="2" Source="./icons/upload.png" />
             </Button>
-            <Button Cursor="Arrow" Click="exportPng_Click"  ToolTip="Exporter en png" Margin="5,0,0,0"     Width="40" Height="40" x:Name="exportPng" >
+            <Button Cursor="Arrow" Click="exportPng_Click"  ToolTip="{DynamicResource exportPng}" Margin="5,0,0,0"     Width="40" Height="40" x:Name="exportPng" >
                 <Image Margin="2" Source="./icons/export-file.png" />
             </Button>
         </StackPanel>

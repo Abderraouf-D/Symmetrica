@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace Projet2Cp
             InitializeComponent();
 
            if (!MainWindow.modeEns) EditEns.Visibility = Visibility.Collapsed;
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            
+
+
+
         }
 
        

@@ -98,6 +98,8 @@ namespace Projet2Cp
         {
 
             InitializeComponent();
+            this.Resources.MergedDictionaries.Add( MainWindow.ResLibre);
+
             canvas.Children.Remove(message);
             dessinsModeExo = chargerDessins(exoPath);
             this.TB = TB;
@@ -116,7 +118,16 @@ namespace Projet2Cp
                 
                 ((toolBarEnseignant)TB).ensStack.Visibility=Visibility.Collapsed;
                 tb = new TextBlock();
-                tb.Text = "Dessine le symétrique du déssin par rapport au repère donné puis clique sur" + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
+
+
+
+
+                tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
+
+                
+
+
+
                 tb.Foreground = Brushes.Black;
                 tb.FontSize = 18;
                 tb.TextAlignment = TextAlignment.Center;
@@ -809,7 +820,7 @@ namespace Projet2Cp
                             {
                                 currentShapePair.cSymGen(shapeMouseEnter, shapeMouseLeave, centresym);
                             }
-                        else MessageBox.Show("Veuillez sélectionner un repère de symetrie !");
+                        else MessageBox.Show((String)MainWindow.ResLibre["repereWarn"]);
 
                     }
 
@@ -1190,7 +1201,7 @@ namespace Projet2Cp
             if (!MainWindow.modeLibre & !isEditing)
             {
                 dessinerDessinNum(niv.Selected());
-                ((toolBarEnseignant)TB).vld.Text = "Valider";
+                ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["vldStr"];
             }
             answer = false;
         }
@@ -1394,9 +1405,9 @@ namespace Projet2Cp
         {
             clear();
             isEditing = true;
-            tb.Text = "Veuillez créer UNE forme, selectionner le repère de symetrie, Puis cliquer sur \"Confirmer\".";
+            tb.Text = (String)MainWindow.ResLibre["instructionEns"];
             tb.Foreground = Brushes.Red;
-            ((toolBarEnseignant)TB).vld.Text = "Confirmer";
+            ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["confirmStr"];
             ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Visible;
             niv.IsEnabled = false;
             ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Visible;
@@ -1495,11 +1506,12 @@ namespace Projet2Cp
                 canvas.Children.Remove(tb);
                 if (shapePairs.Count > 1)
                 {
-                    MessageBox.Show("Vous ne pouvez pas creer plusieurs  formes a la fois!");
+                    MessageBox.Show((String)MainWindow.ResLibre["multipleShapesWarning"]);
                 }
                 else if (axeSym == null && centresym == null)
                 {
-                    MessageBox.Show("Veuillez choisir un repère de symetrie!");
+                    MessageBox.Show((String)MainWindow.ResLibre["repereWarn"]);
+
 
                 }
                 else
@@ -1512,13 +1524,14 @@ namespace Projet2Cp
                     else
                         Utili.strTofile(exoPath, Utili.CanvasToString(((Polyline)shp).Points, null, ((Polyline)shp).Stroke, ((toolBarEnseignant)TB).selectedAxe(), new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5),step), ind); ;
                     dessinsModeExo = chargerDessins(exoPath);
-                    MessageBox.Show("Dessin modifié avec succès!");
+                    MessageBox.Show((String)MainWindow.ResLibre["succesEns"]);
+
                     canvas.Children.Remove(tb);
                     ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Collapsed;
                     niv.IsEnabled = true;
-                    ((toolBarEnseignant)TB).vld.Text = "Valider";
+                    ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["vldStr"];
                     isEditing = false;
-                    tb.Text = "Dessine le symétrique du déssin par rapport au repère donné puis clique sur"+"\""+ ((toolBarEnseignant)TB).vld.Text + "\"";
+                    tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\""+ ((toolBarEnseignant)TB).vld.Text + "\"";
                     tb.Foreground = Brushes.Black;
                     ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
 
@@ -1541,7 +1554,7 @@ namespace Projet2Cp
                         attempts++;
                         answer = true;
                         verifSym();
-                        ((toolBarEnseignant)TB).vld.Text = "Réessayer!";
+                        ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["retryStr"];
                        
                     }
                    
@@ -1551,7 +1564,7 @@ namespace Projet2Cp
                 else
                 {
                     clear();
-                    ((toolBarEnseignant)TB).vld.Text = "Valider";
+                    ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["VldStr"];
                 }
 
 
@@ -1569,7 +1582,7 @@ namespace Projet2Cp
                 {
                     shapePairs[0].sym.Stroke = Brushes.Red;
                     if (!canvas.Children.Contains(message)) canvas.Children.Add(message);
-                    message.Text = "Oooops!";
+                    message.Text = (String)MainWindow.ResLibre["opsStr"]; 
                     message.Foreground = Brushes.Red;
                     if (attempts == 3)
                     {
@@ -1603,8 +1616,8 @@ namespace Projet2Cp
                         shapePairs[0].sym.Stroke = Brushes.Green;
                         if (!canvas.Children.Contains(message)) canvas.Children.Add(message);
 
-                        message.Text = "Super!";
-                        message.Foreground = Brushes.Green;
+                        message.Text = (String)MainWindow.ResLibre["superStr"];
+                    message.Foreground = Brushes.Green;
                         showSym(shapePairs[0]);
                         shapePairs[0].jointLinesGen();
                         foreach (Ellipse el in shapePairs[1].oEllipse) canvas.Children.Remove(el);
@@ -1618,8 +1631,8 @@ namespace Projet2Cp
 
                         shapePairs[0].sym.Stroke = Brushes.Red;
                         if (!canvas.Children.Contains(message)) canvas.Children.Add(message);
-                        message.Text = "Oooops!";
-                        message.Foreground = Brushes.Red;
+                        message.Text = (String)MainWindow.ResLibre["opsStr"];
+                    message.Foreground = Brushes.Red;
                         if (attempts == 3)
                         {
                             foreach (Ellipse el in shapePairs[1].oEllipse) canvas.Children.Remove(el);
@@ -1642,10 +1655,10 @@ namespace Projet2Cp
             canvas.Children.Remove(tb);
             ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Collapsed;
             niv.IsEnabled = true;
-            ((toolBarEnseignant)TB).vld.Text = "Valider";
+            ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["vldStr"];
             isEditing = false;
             clear();
-            tb.Text = "Dessine le symétrique du déssin par rapport au repere donné puis clique sur " + "\""+((toolBarEnseignant)TB).vld.Text + "\"";
+            tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\""+((toolBarEnseignant)TB).vld.Text + "\"";
             tb.Foreground = Brushes.Black;
             ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
 
@@ -1937,7 +1950,7 @@ namespace Projet2Cp
                     }
                     else
                     {
-                        
+                    
                             polyline = (Polyline)poly.shape;
                             polyline.MouseEnter += shapeMouseEnter;
                             polyline.MouseLeave += shapeMouseLeave;
@@ -2016,10 +2029,8 @@ namespace Projet2Cp
         private string ShowFolderBrowserDialog()
         {
             var dialog = new VistaFolderBrowserDialog();
-            dialog.Description = "Veuillez choisir un dossier:";
-            dialog.UseDescriptionForTitle = true; // This applies to the Vista style dialog only, not the old dialog.
-
-            
+            dialog.Description =(String)MainWindow.ResLibre["choisirDoss"];
+            dialog.UseDescriptionForTitle = true; 
 
             if ((bool)dialog.ShowDialog())
             {
