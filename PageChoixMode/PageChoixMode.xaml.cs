@@ -26,15 +26,22 @@ namespace Project
         public PageChoixMode()
         {
             InitializeComponent();
+            this.Loaded += loaded; 
             passwd.Clear();
             eleve.Clear();
             eleve.TextAlignment = TextAlignment.Center;
             passwd.HorizontalContentAlignment = HorizontalAlignment.Center;
             eleve.VerticalContentAlignment = VerticalAlignment.Center;
-            
+
+
+
+        }
+        private void loaded(object sender , RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Add(App.ArResLibre);
+
         }
 
-      
 
         private void Go_Click(object sender, RoutedEventArgs e)
         {
@@ -55,8 +62,11 @@ namespace Project
         {
             francais = true;
             Fr.Style = (Style)Application.Current.FindResource("ButtonCentralJaune");
-        
+     
             Ar.Style = (Style)Application.Current.FindResource("ButtonCentral");
+
+            this.Resources.MergedDictionaries.Add(App.FrResLibre);
+
         }
         private void Ar_Click(object sender, RoutedEventArgs e)
         {
@@ -64,9 +74,11 @@ namespace Project
             Ar.Style = (Style)Application.Current.FindResource("ButtonCentralJaune");
 
             Fr.Style = (Style)Application.Current.FindResource("ButtonCentral");
+            this.Resources.MergedDictionaries.Add(App.ArResLibre);
+
         }
 
-       
+
 
         private void passwd_GotFocus(object sender, RoutedEventArgs e)
         {

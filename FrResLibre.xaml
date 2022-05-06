@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-
+  <!--Strings t3 le mode libre -->   
     <sys:String  x:Key="traceStr">Tracé</sys:String>
     <sys:String  x:Key="Colorier">Colorier</sys:String>
     <sys:String  x:Key="rempliStr">Rempli</sys:String>
@@ -39,10 +39,18 @@
     <sys:String  x:Key="nbCoteStr">Nombre de côtés</sys:String>
     <sys:String  x:Key="repereWarn">Veuillez sélectionner un repère de symetrie !</sys:String>
     <sys:String  x:Key="choisirDoss">Veuillez Choisir un dossier</sys:String>
+    <!-- **************************************************************************************************************  -->
+	
     
-
-	
-	
+    <!-- Strings tae la page du choix du mode  -->
+    <sys:String  x:Key="choose">ÊTES-VOUS UN :</sys:String>
+    <sys:String  x:Key="Ens">Enseignant ?</sys:String>
+    <sys:String  x:Key="EnsDes">Modifier les exercices à votre goût</sys:String>
+    <sys:String  x:Key="Elv">ÉLÈVE ?</sys:String>
+    <sys:String  x:Key="ElvDes">Apprends la symétrie en jouant !</sys:String>
+    <sys:String  x:Key="pwd">Mot de passe</sys:String>
+    <sys:String  x:Key="userName">Ton Nom</sys:String>
+    <sys:String  x:Key="go">GO !</sys:String>
 	
 	
 	

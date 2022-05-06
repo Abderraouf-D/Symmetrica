@@ -214,10 +214,10 @@ namespace Project
             }
 
 
-            
+            int lang = MainWindow.francais ? 0 : 1;
 
-           if (MainWindow.modeEns) MainWindow.MainFrame.NavigationService.Navigate(new Page1(0, path));
-           else MainWindow.MainFrame.NavigationService.Navigate(new Page_mode_eleve(0, path));
+           if (MainWindow.modeEns) MainWindow.MainFrame.NavigationService.Navigate(new Page1(lang, path));
+           else MainWindow.MainFrame.NavigationService.Navigate(new Page_mode_eleve(lang, path));
         }
 
         private void BtnDessinerLeSymetr_Click(object sender, RoutedEventArgs e)

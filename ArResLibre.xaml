@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+    <!--Strings t3 le mode libre -->
 
     <sys:String  x:Key="traceStr">الخطوط</sys:String>
     <sys:String  x:Key="Colorier">تلوين</sys:String>
@@ -40,7 +41,20 @@
     <sys:String  x:Key="repereWarn">يرجى اختيار  مرجع التناظر المراد </sys:String>
     <sys:String  x:Key="choisirDoss">يرجى اختيار الملف</sys:String>
 
+    <!-- **************************************************************************************************************  -->
 
+
+    <!-- Strings tae la page du choix du mode  -->
+    <sys:String  x:Key="choose">: هل أنت</sys:String>
+    <sys:String  x:Key="Ens">أستاذ ؟</sys:String>
+    <sys:String  x:Key="EnsDes">يمكنك تعديل التمارين بكل حرية</sys:String>
+    <sys:String  x:Key="Elv">تلميذ ؟</sys:String>
+    <sys:String  x:Key="ElvDes">! استمتع بتعلم التناظر</sys:String>
+    <sys:String  x:Key="pwd">كلمة المرور</sys:String>
+    <sys:String  x:Key="userName">اسمك</sys:String>
+    <sys:String  x:Key="go">! هيا</sys:String>
+
+    
 
 
 

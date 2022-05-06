@@ -57,6 +57,10 @@ namespace Projet2Cp
             CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours.png", UriKind.Relative));
             TBCours.Foreground = Brushes.Snow;
             TBLibre.Foreground = Brushes.Snow;
+
+
+            if (modeEns) UserName.Text = francais ? "Enseignant" : "أستاذ";
+            else UserName.Text = eleve.getNom();
             MainFrame.NavigationService.Navigate(new PagesNiveaux());
 
 

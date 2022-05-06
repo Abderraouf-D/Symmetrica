@@ -9,7 +9,7 @@ namespace Projet2Cp
     public class Eleve
     {
 
-       private  string nom { get; }
+        private String nom;
         private int progressCours { get; set; }
 
         public Eleve (string nom , int progressCours)
@@ -17,5 +17,6 @@ namespace Projet2Cp
             this .nom = nom;
             this .progressCours = progressCours;
         }
+        public String getNom() { return nom; }
     }
 }

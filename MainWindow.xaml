@@ -62,7 +62,7 @@
                     <StackPanel  Orientation="Horizontal"  >
                     <Image Height="25" Width="25" HorizontalAlignment="left"  Source="./Acceuil/user.png" />
                         <TextBlock x:Name="UserName" Margin="5" FontFamily="{StaticResource VigaRegular}" Foreground="White"
-                           VerticalAlignment="Center" HorizontalAlignment="Center">Immadeddine Mahouni</TextBlock>
+                           VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 </StackPanel>
                </Border>
                         <Button  Grid.Column="2" Cursor="Arrow" ToolTip="Sortir"   Click="ButtonClickLogout" HorizontalAlignment="Center"   Width="40" Height="30" x:Name="exportPng" >
