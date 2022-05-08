@@ -28,18 +28,17 @@ namespace ModeCours
         }
         private void ButtonClickAxe(object sender, RoutedEventArgs e)
         {
-            MainWindow.MainFrame.NavigationService.Navigate(new P1CourAxeAr());
+            navigateCourAxe();
             ph.Visibility = Visibility.Hidden;
             BtnCourAxe.Visibility = Visibility.Hidden;
             BtnCourCen.Visibility = Visibility.Hidden;
-
+            axiale = true;
         }
 
         private void BtnCourCen_Click(object sender, RoutedEventArgs e)
         {
-         axiale = false;
-
-            MainWindow.MainFrame.NavigationService.Navigate(new P1CoursCenAr());
+            navigateCourCen();
+             axiale = false;
             ph.Visibility = Visibility.Hidden;
             BtnCourAxe.Visibility = Visibility.Hidden;
             BtnCourCen.Visibility = Visibility.Hidden;
@@ -58,7 +57,7 @@ namespace ModeCours
                 pagesCours[5] = new Demonstration3Ar();
                 pagesCours[6] = new P4CourAxeAr();
                 pagesCours[7] = new P5CourAxeAr();
-                pagesCours[8] = new P5CourAxeAr();
+                pagesCours[8] = new P6CourAxeAr();
                 MainWindow.MainFrame.NavigationService.Navigate(pagesCours[MainWindow.eleve.getProgressAxe()]);
             }
             else
@@ -78,7 +77,7 @@ namespace ModeCours
                 pagesCours[5] = new Demonstration6Ar();
                 pagesCours[6] = new P4CoursCenAr();
                 pagesCours[7] = new P5CoursCenAr();
-                pagesCours[8] = new P5CoursCenAr();
+                pagesCours[8] = new P6CoursCenAr();
                 MainWindow.MainFrame.NavigationService.Navigate(pagesCours[MainWindow.eleve.getProgressCen()]);
             }
             else

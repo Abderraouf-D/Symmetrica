@@ -45,13 +45,16 @@
     <!-- Strings tae la page du choix du mode  -->
     <sys:String  x:Key="choose">ÊTES-VOUS UN :</sys:String>
     <sys:String  x:Key="Ens">Enseignant ?</sys:String>
-    <sys:String  x:Key="EnsDes">Modifier les exercices à votre goût</sys:String>
+    <sys:String  x:Key="EnsDes">Modifiez les exercices à votre goût</sys:String>
     <sys:String  x:Key="Elv">ÉLÈVE ?</sys:String>
     <sys:String  x:Key="ElvDes">Apprends la symétrie en jouant !</sys:String>
     <sys:String  x:Key="pwd">Mot de passe</sys:String>
     <sys:String  x:Key="userName">Ton Nom</sys:String>
     <sys:String  x:Key="go">GO !</sys:String>
-    <!-- **************************************************************************************************************  -->
+    <sys:String  x:Key="addUserTotip">S'inscrire/Se Connecter</sys:String>
+    <sys:String  x:Key="chooseUserTotip">Choisir un compte existant</sys:String>
+    
+        <!-- **************************************************************************************************************  -->
 
     <!-- Strings tae Dock + Menu-->
     <sys:String  x:Key="cours">Cours</sys:String>

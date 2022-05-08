@@ -1,6 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+
+
+    <Style TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
     <!--Strings t3 le mode libre -->
 
     <sys:String  x:Key="traceStr">الخطوط</sys:String>
@@ -53,6 +58,8 @@
     <sys:String  x:Key="pwd">كلمة المرور</sys:String>
     <sys:String  x:Key="userName">اسمك</sys:String>
     <sys:String  x:Key="go">! هيا</sys:String>
+    <sys:String  x:Key="addUserTotip">انشاء حساب / تسجيل الدخول</sys:String>
+    <sys:String  x:Key="chooseUserTotip">اختر حسابك</sys:String>
     <!-- **************************************************************************************************************  -->
 
 

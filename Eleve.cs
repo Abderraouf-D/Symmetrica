@@ -9,42 +9,47 @@ namespace Projet2Cp
 {
     public class Eleve
     {
-
+        private int id;
         private String nom;
-        private int progressCoursCentrale = 0 ;
-        private int progressCoursAxiale = 0 ;
+        private int progressCoursCentrale  ;
+        private int progressCoursAxiale  ;
 
-        public Eleve (string nom , int progressCours)
+        public Eleve (int Id,string nom , int progressCoursAxe,int progressCoursCentrale)
         {
-            this .nom = nom;
-            this .progressCoursCentrale = progressCours;
-            this.progressCoursCentrale = progressCours;
+            this.id = Id;
+            this.nom = String.Copy(nom);
+            this .progressCoursCentrale = progressCoursCentrale;
+            this.progressCoursAxiale = progressCoursAxe;
 
         }
         public String getNom() { return nom; }
-        
+        public int getId() { return id; }
+
 
         public void incProgress()
         {
-            if ( (MainWindow.francais && PagePrincCours.axiale) || ( !MainWindow.francais && PagePrincCoursAr.axiale))
+            if (MainWindow.francais)
             {
-                if (progressCoursAxiale < 8) progressCoursAxiale++;
-            }else
+                if (PagePrincCours.axiale) progressCoursAxiale++;
+                else progressCoursCentrale++;
+            }
+            else
             {
-                if (progressCoursCentrale < 8) progressCoursCentrale++;
-
+                if (PagePrincCoursAr.axiale) progressCoursAxiale++;
+                else progressCoursCentrale++;
             }
         }
         public void decProgress()
         {
-            if ((MainWindow.francais && !PagePrincCours.axiale) || (!MainWindow.francais && !PagePrincCoursAr.axiale))
+            if (MainWindow.francais)
             {
-                if (progressCoursAxiale > 0) progressCoursAxiale--;
+                if (PagePrincCours.axiale) progressCoursAxiale--;
+                else progressCoursCentrale--;
             }
             else
             {
-                if (progressCoursCentrale > 0) progressCoursCentrale--;
-
+                if (PagePrincCoursAr.axiale) progressCoursAxiale--;
+                else progressCoursCentrale--;
             }
         }
 

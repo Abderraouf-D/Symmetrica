@@ -30,9 +30,9 @@ namespace ModeCours
             ph.Visibility = Visibility.Hidden;
             BtnCourAxe.Visibility = Visibility.Hidden;
             BtnCourCen.Visibility = Visibility.Hidden;
-
+            axiale = true;
         }
-
+         
         private void BtnCourCen_Click(object sender, RoutedEventArgs e)
         {
             navigateCourCen();
@@ -77,7 +77,7 @@ namespace ModeCours
                 pagesCours[5] = new Demonstration6();
                 pagesCours[6] = new P4CoursCen();
                 pagesCours[7] = new P5CoursCen();
-                pagesCours[8] = new P5CoursCen();
+                pagesCours[8] = new P6CoursCen();
                 MainWindow.MainFrame.NavigationService.Navigate(pagesCours[MainWindow.eleve.getProgressCen()]);
             }
             else

@@ -6,15 +6,54 @@
       xmlns:local="clr-namespace:Project"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageChoixMode">
+      Title="PageChoixMode" >
 
 
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary >
+                    <Image x:Key="addUserImg" Height="20" Width="20" Source="./Icons/add-user.png"/>
+                    <Image x:Key="chooseUserImg" Height="20" Width="20" Source="./Icons/candidate.png"/>
+                    
+                    <TextBox BorderThickness="1"  BorderBrush="White" x:Key="eleve" GotFocus="eleve_GotFocus" TextAlignment="Center"  FontFamily="{StaticResource VigaRegular}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Height="30"   Background="{Binding Background}" SelectionBrush="White">
+                        <TextBox.Style>
+                            <Style  TargetType="{x:Type TextBox}">
+                                <Setter Property="SelectionBrush" Value="White" />
+                                
+                                    <Style.Triggers>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter Property="BorderBrush" Value="White" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="BorderBrush" Value="White" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                        <TextBox.Resources>
+                            
+
+                                    <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="15"/>
+
+    
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                            <ComboBox GotFocus="eleve_GotFocus"  x:Name="stdCombo" x:Key="stdCombo" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}"   Cursor="Hand"
+                                   FontSize="13"
+                                    Style="{DynamicResource theComboBox}"
+                                    Padding="15,5,15,5"
+                                    VerticalAlignment="Center"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Width="100"
+                                    Height="30"
+                                    ItemContainerStyle="{DynamicResource theComboBoxItem}"/>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
     </Page.Resources>
     <Grid Background="White">
         <Viewbox Stretch="Uniform">
@@ -26,7 +65,7 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
-                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="350" />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 <Border Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center">
@@ -43,13 +82,20 @@
                         
                     </Border>
                     <TextBlock Margin="0,7,0,0" Text="{DynamicResource pwd}" HorizontalAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}" />
-                    <TextBlock  FontFamily="{StaticResource PoppinsSemiBold}" TextAlignment="Center" Padding="10" Foreground="Black"><Run Text=""/><LineBreak/><Run Text="{DynamicResource EnsDes}"/></TextBlock>
+                    <TextBlock TextWrapping="Wrap"  FontFamily="{StaticResource PoppinsSemiBold}" TextAlignment="Center" Padding="10" Foreground="Black"><Run Text=""/><Run Text="{DynamicResource EnsDes}"/></TextBlock>
                 </StackPanel>
-                <StackPanel Margin="100,0,0,0" Grid.Row="1" Orientation="Vertical" Grid.Column="1">
+                <StackPanel  Margin="100,0,0,0" Grid.Row="1" Orientation="Vertical" Grid.Column="1">
                     <TextBlock FontFamily="{StaticResource PoppinsExtraBold}" FontSize="20" HorizontalAlignment="Center" Text="{DynamicResource Elv}"/>
                     <Image Margin="0,20,0,0" Source="Images\Group 44.png" Width="150" Height="150"/>
-                    <Border  Background="#bee6bd" BorderThickness="1" CornerRadius="18" Height="40" Width="150">
-                        <TextBox x:Name="eleve" GotFocus="eleve_GotFocus" TextAlignment="Center"  FontFamily="{StaticResource VigaRegular}" Padding="10" VerticalContentAlignment="Center" BorderThickness="0" Background="{Binding Background}"/>
+                    <Border    Background="#bee6bd" BorderThickness="1" CornerRadius="18" Height="40" Width="150">
+                        <Grid x:Name="userNameContainer" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="addUserBtn" Width="25" Margin="5,0,0,0" Height="25" Click="addUser" Grid.Column="1" Style="{StaticResource addBtn}" />
+
+                        </Grid>
                     </Border>
                     <TextBlock Margin="0,7,0,0" Text="{DynamicResource userName}" HorizontalAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}"/>
                     <TextBlock Text="{DynamicResource ElvDes}" TextWrapping="Wrap" FontFamily="{StaticResource PoppinsSemiBold}" TextAlignment="Center" Padding="10" Foreground="Black"/>
@@ -109,8 +155,9 @@
                         Stroke="Black"
                         StrokeThickness="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" />
                 <Border Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"  Background="White">
-                    <Button Cursor="Hand" Click="Go_Click"  Background="#FFCC00"  Height="100" Width="100" BorderBrush="Black" >
-                    <Button.Resources>
+                    <Button IsDefault="True"  Cursor="Hand" Click="Go_Click"  Background="#FFCC00"  Height="100" Width="100" BorderBrush="Black" >
+                        
+                        <Button.Resources>
                         <Style TargetType="{x:Type Button}">
                             
                             <Setter Property="Template">

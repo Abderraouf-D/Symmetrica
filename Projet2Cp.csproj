@@ -761,7 +761,9 @@
   <ItemGroup>
     <Resource Include="modeLibre\shapesExo.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Debug\Data\Users\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="modeExercice\acceuil + quiz\Icons\Ellipse.png" />
     <Resource Include="modeExercice\acceuil + quiz\Icons\Group 21.png" />
@@ -783,6 +785,8 @@
     <Resource Include="modeExercice\OUI_Non\Icons\right arrow.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="PageChoixMode\Icons\add-user.png" />
+    <Resource Include="PageChoixMode\Icons\candidate.png" />
     <Resource Include="PageChoixMode\Icons\clipboard.png" />
     <Resource Include="PageChoixMode\Icons\Cours Jaune.png" />
     <Resource Include="PageChoixMode\Icons\Cours.png" />
@@ -841,6 +845,8 @@
     <Resource Include="modeExercice\modeExoType2\Icons\rotation.png" />
     <Resource Include="modeExercice\modeExoType2\Icons\size.png" />
     <Resource Include="modeExercice\modeExoType2\Icons\vertical.png" />
+    <Resource Include="bin\Debug\Data\users.txt" />
+    <Resource Include="bin\Debug\Data\password.txt" />
     <Content Include="modeExercice\modeExoType2\Icons\yay.mp3.mp3" />
     <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\dsqdqs.png" />
     <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\ETOILE.png" />

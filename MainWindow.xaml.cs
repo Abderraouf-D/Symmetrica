@@ -21,6 +21,8 @@ using System.Windows.Threading;
 using System.Threading;
 using System.Windows.Media.Animation;
 using DrWPF.Windows.Controls;
+using System.IO;
+
 namespace Projet2Cp
 {
 
@@ -106,7 +108,7 @@ namespace Projet2Cp
             pageNiveaux.BtnDessinerLeSymetr.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
 
 
-
+           
 
         }
 
@@ -133,6 +135,7 @@ namespace Projet2Cp
 
         private void logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            save(eleve);
             symmetrica.symmetricaFrm.NavigationService.Navigate(symmetrica.pagechoix);
 
         }
@@ -150,19 +153,40 @@ namespace Projet2Cp
 
             if (francais) MainFrame.NavigationService.Navigate(new PagePrincCours());
             else MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
-
+            
 
         }
 
         private void ButtonClickLogout(object sender, RoutedEventArgs e)
         {
+            save(eleve);
             System.Windows.Application.Current.Shutdown();
         }
 
 
+        public void save(Eleve elev)
+        {
+            if (!modeEns)
+            {
+                int i;
+                for (i = 0; i < PageChoixMode.users.Length; i++)
+                {
+                    if (elev.getNom().Equals(PageChoixMode.users[i]))
+                    {
+                        break;
+                    }
+                }
+                FileStream fs = new FileStream("Data/Users/" + elev.getNom() + i.ToString() + "/data.bin", FileMode.Open);
+                BinaryWriter bw = new BinaryWriter(fs);
+                bw.Seek(0, SeekOrigin.Begin);
+                bw.Write((int)elev.getProgressCen());
+                bw.Write((int)elev.getProgressAxe());
+                fs.Close();
+                bw.Close();
+            }
+        }
 
 
-        
 
 
 

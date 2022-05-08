@@ -70,7 +70,7 @@
                         Content="{DynamicResource centrale}"
                         FontFamily="{StaticResource VigaRegular}"
                         FontSize="18"
-                        Foreground="#009400"
+                        Foreground="#1CB81C"
                         Click="ButtonCentrale_Click"
                         
                         />
