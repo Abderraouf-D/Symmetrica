@@ -91,4 +91,36 @@
     <sys:String  x:Key="chC">C</sys:String>
     <sys:String  x:Key="chD">D</sys:String>
     <sys:String  x:Key="editQuiz">Editer</sys:String>
+
+
+    <!-- **************************************************************************************************************  -->
+
+    <!-- Strings tae page Trouver les axes-->
+    <sys:String  x:Key="verify">Vérifier</sys:String>
+    <sys:String  x:Key="next">Suivant</sys:String>
+    <sys:String  x:Key="back">Précédent</sys:String>
+    <sys:String  x:Key="savebro">ENREGISTRER</sys:String>
+    <sys:String  x:Key="questionAxes">Combien d'axes de symétrie cette forme accepte-t-elle ?</sys:String>
+    <sys:String  x:Key="banner">Trouver les axes</sys:String>
+    <sys:String  x:Key="upload">Importer</sys:String>
+    <sys:String  x:Key="modifyAxes">Le nombre d'axes de symétrie que cette forme accepte :</sys:String>
+    <sys:String  x:Key="addAxes">Ajouter les axes de symétrie :</sys:String>
+    <sys:String  x:Key="buttonAdd">Ajouter</sys:String>
+    <sys:String  x:Key="buttonDeleteAll">Effacer tout</sys:String>
+    <sys:String  x:Key="okButton">OK</sys:String>
+    <sys:String  x:Key="bravoButton">Bravo !</sys:String>
+    <sys:String  x:Key="oopsButton">Oops !</sys:String>
+
+
+    <!-- **************************************************************************************************************  -->
+
+    <!-- Strings tae page Points Primes-->
+    <sys:String  x:Key="questionPointsPrimes">Donnez le point symétrique de chaque point :</sys:String>
+    <sys:String  x:Key="bannerPointsPrimes">Points Primes</sys:String>
+    <sys:String  x:Key="modifyPointsPrimes">Donnez le nom des points et leurs points primes :</sys:String>
+    <sys:String  x:Key="pointsbro">Points</sys:String>
+    <sys:String  x:Key="primesbro">Primes</sys:String>
+
+
+    <!-- **************************************************************************************************************  -->
 </ResourceDictionary>

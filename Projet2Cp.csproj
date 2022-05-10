@@ -516,6 +516,7 @@
     <Resource Include="Fonts\BwStretch-Medium.otf" />
     <Resource Include="Fonts\BwStretch-Regular.otf" />
     <Resource Include="Fonts\BwStretch-Thin.otf" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Fonts\BwStretch\Bw Stretch\Bw_Stretch_Font_Specimen.pdf" />
     <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Black.eot" />
     <None Include="Fonts\BwStretch\Bw Stretch\eot\BwStretch-Bold.eot" />

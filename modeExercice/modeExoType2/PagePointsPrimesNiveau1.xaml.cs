@@ -23,6 +23,7 @@ namespace MAINPAGE
     /// </summary>
     public partial class PagePointsPrimesNiveau1 : Page
     {
+        System.Windows.Threading.DispatcherTimer dispatcherTimer;
         public int niveau;
         public string path;
         public BitmapImage[] image;
@@ -35,7 +36,21 @@ namespace MAINPAGE
             InitializeComponent();
             this.path = path;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+            this.Resources.MergedDictionaries.Clear();
 
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            if (!MainWindow.francais)
+            {
+                ensAr.Visibility = Visibility.Visible;
+                ensFr.Visibility = Visibility.Collapsed;
+                p1ens.Margin = new Thickness(867, 456, 642, 403);
+                p2ens.Margin = new Thickness(958, 456, 554, 403);
+                p3ens.Margin = new Thickness(1044, 456, 461, 403);                
+                pr1ens.Margin = new Thickness(867, 541, 642, 331);
+                pr2ens.Margin = new Thickness(958, 541, 554, 331);
+                pr3ens.Margin = new Thickness(1049, 541, 466, 331);                
+            }
             precedent.Visibility = Visibility.Collapsed;
             image = new BitmapImage[3];
             reponse = new string[3, 3];
@@ -115,7 +130,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verify.Background = color;
-                verify.Content = "Bravo !";
+                verify.Content = MainWindow.ResLibre["bravoButton"];
                 l1.Stroke = color;
                 l2.Stroke = color;
                 l3.Stroke = color;
@@ -132,7 +147,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verify.Background = color;
-                verify.Content = "Vérifier";
+                verify.Content = MainWindow.ResLibre["verify"];
                 l1.Stroke = color;
                 l2.Stroke = color;
                 l3.Stroke = color;
@@ -165,7 +180,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verify.Background = color;
-                verify.Content = "Bravo !";
+                verify.Content = MainWindow.ResLibre["bravoButton"];
                 l1.Stroke = color;
                 l2.Stroke = color;
                 l3.Stroke = color;
@@ -182,7 +197,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verify.Background = color;
-                verify.Content = "Vérifier";
+                verify.Content = MainWindow.ResLibre["verify"];
                 l1.Stroke = color;
                 l2.Stroke = color;
                 l3.Stroke = color;
@@ -220,7 +235,7 @@ namespace MAINPAGE
                     l1.Stroke = color;
                     l2.Stroke = color;
                     l3.Stroke = color;
-                    verify.Content = "Bravo !";
+                    verify.Content = MainWindow.ResLibre["bravoButton"];
                     done[cpt] = true;
                     pr1etud.IsReadOnly = true;
                     pr2etud.IsReadOnly = true;
@@ -235,12 +250,29 @@ namespace MAINPAGE
                     l1.Stroke = color;
                     l2.Stroke = color;
                     l3.Stroke = color;
-                    verify.Content = "Oops !";
+                    verify.Content = MainWindow.ResLibre["oopsButton"];
+                    dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+                    dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
+                    dispatcherTimer.Start();
                 }
             }
 
         }
 
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (!done[cpt])
+            {
+                SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
+                bigCenterRectangle.Stroke = color;
+                smallBelowRectangle.Stroke = color;
+                verify.Background = color;
+                verify.Content = MainWindow.ResLibre["verify"];
+                l1.Stroke = color;
+                l2.Stroke = color;
+                l3.Stroke = color;                
+            }
+        }
         private void UploadButtonEns_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog
@@ -290,7 +322,7 @@ namespace MAINPAGE
                     bigCenterRectangle.Stroke = color;
                     smallBelowRectangle.Stroke = color;
                     verify.Background = color;
-                    verify.Content = "Bravo !";
+                    verify.Content = MainWindow.ResLibre["bravoButton"];
                     l1.Stroke = color;
                     l2.Stroke = color;
                     l3.Stroke = color;
@@ -307,7 +339,7 @@ namespace MAINPAGE
                     bigCenterRectangle.Stroke = color;
                     smallBelowRectangle.Stroke = color;
                     verify.Background = color;
-                    verify.Content = "Vérifier";
+                    verify.Content = MainWindow.ResLibre["verify"];
                     l1.Stroke = color;
                     l2.Stroke = color;
                     l3.Stroke = color;

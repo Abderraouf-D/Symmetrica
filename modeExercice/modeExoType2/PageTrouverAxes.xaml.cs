@@ -23,6 +23,7 @@ namespace MAINPAGE
     /// </summary>
     public partial class PageTrouverAxes : Page
     {
+        System.Windows.Threading.DispatcherTimer dispatcherTimer;
         public double crnt_angle = 0;//*
         public double crnt_size = 150;
         public double crnt_vertical = 100;
@@ -43,6 +44,11 @@ namespace MAINPAGE
             rtt = true;
             this.path = path;
             InitializeComponent();
+
+            this.Resources.MergedDictionaries.Clear();
+
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             precedent.Visibility = Visibility.Collapsed;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
 
@@ -125,7 +131,7 @@ namespace MAINPAGE
                     bigCenterRectangle.Stroke = color;
                     smallBelowRectangle.Stroke = color;
                     verifyButton.Background = color;
-                    verifyButton.Content = "Bravo !";
+                    verifyButton.Content = MainWindow.ResLibre["bravoButton"];
                     done[cpt] = true;
                     reponseBox.IsReadOnly = true;
                     for (int i = 0; i <= linecpt[cpt]; i++)
@@ -145,13 +151,30 @@ namespace MAINPAGE
                     bigCenterRectangle.Stroke = color;
                     smallBelowRectangle.Stroke = color;
                     verifyButton.Background = color;
-                    verifyButton.Content = "Oops !";
+                    verifyButton.Content = MainWindow.ResLibre["oopsButton"];
+                    dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+                    dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
+                    dispatcherTimer.Start();
+
                 }
             }
 
 
 
         }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (!done[cpt])
+            {
+                SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFrom("#A2DBA1");
+                bigCenterRectangle.Stroke = color;
+                smallBelowRectangle.Stroke = color;
+                verifyButton.Background = color;
+                verifyButton.Content = MainWindow.ResLibre["verify"];
+            }
+        }
+
         private void PlaySoundYay()
         {
             var uri = new Uri(@"Icons/yay.mp3", UriKind.Relative);
@@ -197,7 +220,7 @@ namespace MAINPAGE
                     bigCenterRectangle.Stroke = color;
                     smallBelowRectangle.Stroke = color;
                     verifyButton.Background = color;
-                    verifyButton.Content = "Bravo !";
+                    verifyButton.Content = MainWindow.ResLibre["bravoButton"];
                     reponseBox.IsReadOnly = true;
                     for (int i = 0; i <= linecpt[cpt]; i++)
                     {
@@ -212,7 +235,7 @@ namespace MAINPAGE
                     bigCenterRectangle.Stroke = color;
                     smallBelowRectangle.Stroke = color;
                     verifyButton.Background = color;
-                    verifyButton.Content = "Vérifier";
+                    verifyButton.Content = MainWindow.ResLibre["verify"];
                     reponseBox.Text = "";
                     reponseBox.IsReadOnly = false;
                     canvasEtud.Visibility = Visibility.Collapsed;
@@ -263,7 +286,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verifyButton.Background = color;
-                verifyButton.Content = "Bravo !";
+                verifyButton.Content = MainWindow.ResLibre["bravoButton"];
                 reponseBox.IsReadOnly = true;
                 canvasEtud.Visibility = Visibility.Visible;
                 reponseBox.Text = reponse[cpt].ToString();
@@ -274,7 +297,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verifyButton.Background = color;
-                verifyButton.Content = "Vérifier";
+                verifyButton.Content = MainWindow.ResLibre["verify"];
                 reponseBox.Text = "";
                 reponseBox.IsReadOnly = false;
                 canvasEtud.Visibility = Visibility.Collapsed;
@@ -307,7 +330,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verifyButton.Background = color;
-                verifyButton.Content = "Bravo !";
+                verifyButton.Content = MainWindow.ResLibre["bravoButton"];
                 reponseBox.IsReadOnly = true;
                 canvasEtud.Visibility = Visibility.Visible;
                 reponseBox.Text = reponse[cpt].ToString();
@@ -318,7 +341,7 @@ namespace MAINPAGE
                 bigCenterRectangle.Stroke = color;
                 smallBelowRectangle.Stroke = color;
                 verifyButton.Background = color;
-                verifyButton.Content = "Vérifier";
+                verifyButton.Content = MainWindow.ResLibre["verify"];
                 reponseBox.Text = "";
                 reponseBox.IsReadOnly = false;
                 canvasEtud.Visibility = Visibility.Collapsed;
@@ -547,6 +570,7 @@ namespace MAINPAGE
             hrz = false;
             sz = false;
             sliderEns.Maximum = 400;
+            sliderEns.Minimum = 0;
             vrt = true;
             if (linecpt[cpt] >= 0)
             {
@@ -562,6 +586,7 @@ namespace MAINPAGE
             vrt = false;
             sz = false;
             sliderEns.Maximum = 600;
+            sliderEns.Minimum = 0;
             hrz = true;
             if (linecpt[cpt] >= 0)
             {

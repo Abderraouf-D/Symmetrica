@@ -126,6 +126,7 @@ namespace Projet2Cp
 
             
             modeLibre = true;
+            
        
             MainFrame.NavigationService.Navigate(new ModeLibre());
          

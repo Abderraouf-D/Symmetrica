@@ -116,6 +116,8 @@ namespace Projet2Cp
                 upload.Visibility=Visibility.Collapsed;
                 save.Visibility=Visibility.Collapsed;
                 
+
+
                 ((toolBarEnseignant)TB).ensStack.Visibility=Visibility.Collapsed;
                 tb = new TextBlock();
 

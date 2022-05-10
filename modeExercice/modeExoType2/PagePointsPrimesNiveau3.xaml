@@ -19,7 +19,7 @@
                     Width="142" Height="124" Margin="66,0,0,0" 
                     HorizontalAlignment="Left" VerticalAlignment="Top"
                     />
-            <TextBlock Text="Points primes" TextWrapping="Wrap" 
+            <TextBlock Text="{DynamicResource bannerPointsPrimes}" TextWrapping="Wrap" 
                    Width="143" Height="124" FontSize="29"                    
                    VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Left"
                    FontFamily="{StaticResource PoppinsSemiBold}" 
@@ -27,7 +27,7 @@
                    />
             <Grid x:Name="GRID_ETUD" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="932" Width="1584" Grid.Column="1" Grid.Row="1" Visibility="Visible">
 
-                <TextBlock Text="Donne le point symétrique de chaque point." Width="auto" Height="auto" TextAlignment="Center"
+                <TextBlock Text="{DynamicResource questionPointsPrimes}" Width="auto" Height="auto" TextAlignment="Center"
                            FontSize="36" FontFamily="{StaticResource PoppinsBold}" HorizontalAlignment="Center" VerticalAlignment="Top"
                            Margin="65,165,69,0"/>
                 <Rectangle x:Name="bigCenterRectangle" Width="632" Height="366" Fill="Transparent" Stroke="#A2DBA1" Margin="0 0 0 100"
@@ -58,7 +58,7 @@
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
                       StrokeThickness="7" Margin="280,0,281,120"
                       X1="358" Y1="0" X2="358" Y2="185"/>
-                <Button x:Name="verify" Width="188" Height="188" Background="#A2DBA1" Content="Vérifier"
+                <Button x:Name="verify" Width="188" Height="188" Background="#A2DBA1" Content="{DynamicResource verify}"
                         FontSize="37" FontFamily="{StaticResource PoppinsBold}" Click="Verify_Click" Focusable="False"
                         BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                         VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,392,120">
@@ -72,20 +72,20 @@
                 <TextBlock x:Name="p6etud" Text="F" FontFamily="{StaticResource VigaRegular}" FontSize="48"
                        HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="864,0,0,227"/>
                 <Button x:Name="suivant" Background="#A2DBA1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                        Width="220" Height="70" Margin="0 0 65 30" BorderThickness="0"  
-                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="Suivant_Click"
-                        >
+                        Width="220" Height="70" Margin="0 0 65 30" BorderThickness="0"  Focusable="False"
+                        Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="Suivant_Click">
+                    <Button.Content>
+                        <WrapPanel>
+                            <TextBlock Text="{DynamicResource next}" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                            <TextBlock Text=" " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                            <Image Source="Icons/right arrow.png" Width="45" Height="45" />
+                        </WrapPanel>
+                    </Button.Content>
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
-                    <Button.Content>
-                        <WrapPanel>
-                            <TextBlock Text="Suivant " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
-                            <Image Source="Icons/right arrow.png" Width="45" Height="45" />
-                        </WrapPanel>
-                    </Button.Content>
                 </Button>
 
                 <Button x:Name="modify" Width="90" Height="90" Background="#A2DBA1"
@@ -104,20 +104,22 @@
                 </Button>
 
                 <Button x:Name="precedent" Background="#A2DBA1" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                        Width="241" Height="70" Margin="65 0 0 30" BorderThickness="0"  
+                        Width="241" Height="70" Margin="65,0,0,30" BorderThickness="0" Focusable="False" 
                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="Precedent_Click">
+                    <Button.Content>
+                        <WrapPanel>
+                            <Image Source="Icons/left arrow.png" Width="45" Height="45" />
+                            <TextBlock Text=" " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                            <TextBlock Text="{DynamicResource back}" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                        </WrapPanel>
+                    </Button.Content>
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
-                    <Button.Content>
-                        <WrapPanel>
-                            <Image Source="Icons/left arrow.png" Width="45" Height="45" />
-                            <TextBlock Text=" Précédent" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
-                        </WrapPanel>
-                    </Button.Content>
                 </Button>
+                
                 <TextBlock x:Name="p1etud" Text="A" FontFamily="{StaticResource VigaRegular}" FontSize="48"
                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="419,0,0,227"/>
                 <TextBlock x:Name="p2etud" Text="B" FontFamily="{StaticResource VigaRegular}" FontSize="48"
@@ -155,7 +157,7 @@
                 <Button Background="#A2DBA1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                         Width="250" Height="auto" Margin="0 0 0 50" BorderThickness="0"  Focusable="False"
                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Name="Save"
-                        Content="ENREGISTRER" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32"
+                        Content="{DynamicResource savebro}" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32"
                         Click="Save_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -185,7 +187,7 @@
                            StrokeThickness="7" RadiusX="26.5" RadiusY="26.5"/>
                 <Image x:Name="imageEns" Height="400" Width="600" Stretch="Uniform" 
                            Margin="155,266,829,266" />
-                <Button x:Name="uploadButtonEns" Width="184" Height="114" Background="#A2DBA1" Content="Importer"
+                <Button x:Name="uploadButtonEns" Width="184" Height="114" Background="#A2DBA1" Content="{DynamicResource upload}"
                         FontSize="37" FontFamily="{StaticResource PoppinsBold}" Focusable="False"
                         BorderThickness="0" BorderBrush="Transparent" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
                         VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="360,0,0,125" Click="UploadButtonEns_Click"
@@ -197,9 +199,9 @@
                     </Button.Resources>
                 </Button>
 
-                <TextBlock Width="620" Height="auto" TextWrapping="Wrap"
+                <TextBlock Width="620" Height="auto" TextWrapping="Wrap" TextAlignment="Center"
                            FontSize="36" FontFamily="{StaticResource PoppinsBold}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Margin="857,312,107,512" x:Name="textBlockEns"><Run Text="Donnez le nom des points et leurs "/><Run Text="points primes"/><Run Text=" :"/></TextBlock>
+                           Margin="857,312,107,512" x:Name="textBlockEns" Text="{DynamicResource modifyPointsPrimes}" ></TextBlock>
 
 
 
@@ -209,7 +211,7 @@
                 <Button Background="#A2DBA1" HorizontalAlignment="Center" VerticalAlignment="Center"
                         Width="80" Height="auto" Margin="1130,665,374,215" BorderThickness="0"  Focusable="False"
                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Name="OKEns"
-                        Content="OK" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32"
+                        Content="{DynamicResource okButton}" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32"
                         Click="OKEns_Click_OK">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -218,49 +220,118 @@
                     </Button.Resources>
                 </Button>
 
-                <Rectangle Width="628" Height="172" Fill="Transparent" Stroke="#A2DBA1"
+                <Grid x:Name="ensAr" Visibility="Collapsed">
+                    <Rectangle Width="628" Height="172" Fill="Transparent" Stroke="#A2DBA1"
+                           HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                           StrokeThickness="7" RadiusX="26.5" RadiusY="26.5"
+                           Margin="782,0,174,312"/>
+                    <Line Width="628" Height="188" Stroke="#A2DBA1"
+                      HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                      StrokeThickness="7" Margin="782,0,174,312"
+                      X1="0" Y1="100" X2="650" Y2="100"/>
+                    <Line Width="96" Height="169" Stroke="#A2DBA1"
+                      HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                      StrokeThickness="7" Margin="870,0,618,312"
+                      X1="89.5" Y1="0" X2="89.5" Y2="185"/>
+                    <Line Width="183" Height="169" Stroke="#A2DBA1"
+                      HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                      StrokeThickness="7" Margin="870,0,531,312"
+                      X1="179" Y1="0" X2="179" Y2="185"/>
+                    <Line Width="274" Height="169" Stroke="#A2DBA1"
+                      HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                      StrokeThickness="7" Margin="870,0,440,312"
+                      X1="268.5" Y1="0" X2="268.5" Y2="185"/>
+                    <Line Width="361" Height="169" Stroke="#A2DBA1"
+                      HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                      StrokeThickness="7" Margin="870,0,353,312"
+                      X1="358" Y1="0" X2="358" Y2="185"/>
+
+
+
+                    <Rectangle Width="120" Height="50" Fill="#A2DBA1"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    StrokeThickness="7"
+                    Margin="1454,0,10,417" RadiusY="18.222" RadiusX="18.222"/>
+                    <Rectangle Width="120" Height="50" Fill="#A2DBA1"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    StrokeThickness="7"
+                    Margin="1454,0,10,331" RadiusY="33.627" RadiusX="18.222"/>
+                    <Line Width="361" Height="169" Stroke="#A2DBA1"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    StrokeThickness="7" Margin="957,0,266,312"
+                    X1="358" Y1="0" X2="358" Y2="185"/>
+                    <Line Width="96" Height="169" Stroke="#A2DBA1"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    StrokeThickness="7" Margin="782,0,706,312"
+                    X1="89.5" Y1="0" X2="89.5" Y2="185"/>
+
+                    <TextBlock Text="{DynamicResource pointsbro}" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                           Margin="1454,465,15,417" TextAlignment="Center"/>
+                    <TextBlock Text=":" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                           Margin="1371,465,98,417" TextAlignment="Center" Foreground="#A2DBA1"/>
+                    <TextBlock Text="{DynamicResource primesbro}" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                    Margin="1454,551,15,331" TextAlignment="Center"/>
+                    <TextBlock Text=":" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                    Margin="1371,551,98,331" TextAlignment="Center" Foreground="#A2DBA1"/>
+
+                </Grid>
+                <Grid x:Name="ensFr">
+
+                    <Rectangle Width="628" Height="172" Fill="Transparent" Stroke="#A2DBA1"
                            HorizontalAlignment="Center" VerticalAlignment="Bottom"
                            StrokeThickness="7" RadiusX="26.5" RadiusY="26.5"
                            Margin="939,0,17,312"/>
-                <Line Width="628" Height="188" Stroke="#A2DBA1"
+                    <Line Width="628" Height="188" Stroke="#A2DBA1"
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
                       StrokeThickness="7" Margin="939,0,17,312"
                       X1="0" Y1="100" X2="650" Y2="100"/>
-                <Line Width="96" Height="169" Stroke="#A2DBA1"
+                    <Line Width="96" Height="169" Stroke="#A2DBA1"
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
                       StrokeThickness="7" Margin="1027,0,461,312"
                       X1="89.5" Y1="0" X2="89.5" Y2="185"/>
-                <Line Width="183" Height="169" Stroke="#A2DBA1"
+                    <Line Width="183" Height="169" Stroke="#A2DBA1"
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
                       StrokeThickness="7" Margin="1027,0,374,312"
                       X1="179" Y1="0" X2="179" Y2="185"/>
-                <Line Width="274" Height="169" Stroke="#A2DBA1"
+                    <Line Width="274" Height="169" Stroke="#A2DBA1"
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
                       StrokeThickness="7" Margin="1027,0,283,312"
                       X1="268.5" Y1="0" X2="268.5" Y2="185"/>
-                <Line Width="361" Height="169" Stroke="#A2DBA1"
+                    <Line Width="361" Height="169" Stroke="#A2DBA1"
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
                       StrokeThickness="7" Margin="1027,0,196,312"
                       X1="358" Y1="0" X2="358" Y2="185"/>
 
 
 
-                <Rectangle Width="120" Height="50" Fill="#A2DBA1"
+                    <Rectangle Width="120" Height="50" Fill="#A2DBA1"
                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
                     StrokeThickness="7"
                     Margin="777,0,687,417" RadiusY="18.222" RadiusX="18.222"/>
-                <Rectangle Width="120" Height="50" Fill="#A2DBA1"
+                    <Rectangle Width="120" Height="50" Fill="#A2DBA1"
                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
                     StrokeThickness="7"
                     Margin="777,0,687,331" RadiusY="33.627" RadiusX="18.222"/>
-                <TextBlock Text="Points" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                    <Line Width="361" Height="169" Stroke="#A2DBA1"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    StrokeThickness="7" Margin="1116,0,107,315"
+                    X1="358" Y1="0" X2="358" Y2="185"/>
+                    <Line Width="96" Height="169" Stroke="#A2DBA1"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    StrokeThickness="7" Margin="939,0,549,312"
+                    X1="89.5" Y1="0" X2="89.5" Y2="185"/>
+
+                    <TextBlock Text="{DynamicResource pointsbro}" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
                            Margin="777,465,692,417" TextAlignment="Center"/>
-                <TextBlock Text=":" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                    <TextBlock Text=":" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
                            Margin="857,465,612,417" TextAlignment="Center" Foreground="#A2DBA1"/>
-                <TextBlock Text="Primes" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                    <TextBlock Text="{DynamicResource primesbro}" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
                     Margin="782,551,687,331" TextAlignment="Center"/>
-                <TextBlock Text=":" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
+                    <TextBlock Text=":" FontFamily="{StaticResource PoppinsBlack}" FontSize="30" Background="Transparent"
                     Margin="857,551,612,331" TextAlignment="Center" Foreground="#A2DBA1"/>
+
+                </Grid>
+                
                 <TextBox x:Name="p1ens" Width="74" Height="64" MaxLength="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Margin="948,465,562,403" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
                     FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
@@ -303,14 +374,7 @@
                 <TextBox x:Name="pr7ens" Width="74" Height="64" MaxLength="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Margin="1482,551,28,317" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
                     FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
-                <Line Width="361" Height="169" Stroke="#A2DBA1"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    StrokeThickness="7" Margin="1116,0,107,315"
-                    X1="358" Y1="0" X2="358" Y2="185"/>
-                <Line Width="96" Height="169" Stroke="#A2DBA1"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    StrokeThickness="7" Margin="939,0,549,312"
-                    X1="89.5" Y1="0" X2="89.5" Y2="185"/>
+                
                 
             </Grid>
 

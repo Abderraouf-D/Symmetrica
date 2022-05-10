@@ -34,16 +34,17 @@ namespace Projet2Cp
         private void nbCote_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            canvasUC.cote = nbCote.SelectedIndex + 3;
 
-            canvasUC.rayon = nbCote.SelectedIndex + 3; 
 
         }
 
         private void rayon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            canvasUC.cote = rayon.SelectedIndex+3;
-            
+            canvasUC.rayon = rayon.SelectedIndex + 3;
+
+
 
         }
         public string selectedAxe()

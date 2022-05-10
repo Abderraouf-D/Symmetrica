@@ -101,6 +101,36 @@
     <sys:String  x:Key="editQuiz">تعديل</sys:String>
 
 
+    <!-- Strings tae page Trouver les axes-->
+    <sys:String  x:Key="verify">التحقق</sys:String>
+    <sys:String  x:Key="next">التالي</sys:String>
+    <sys:String  x:Key="back">الرجوع</sys:String>
+    <sys:String  x:Key="savebro">الحفظ</sys:String>
+    <sys:String  x:Key="questionAxes">كم عدد محاور التناظر التي يقبلها هذا الشكل ؟</sys:String>
+    <sys:String  x:Key="banner">ابحث عن المحاور</sys:String>
+    <sys:String  x:Key="upload">تحميل</sys:String>
+    <sys:String  x:Key="modifyAxes">: عدد محاور التناظر التي يقبلها هذا الشكل</sys:String>
+    <sys:String  x:Key="addAxes">: اضافة محاور التناظر</sys:String>
+    <sys:String  x:Key="buttonAdd">اضافة</sys:String>
+    <sys:String  x:Key="buttonDeleteAll">حذف الكل</sys:String>
+    <sys:String  x:Key="okButton">حسنا</sys:String>
+    <sys:String  x:Key="bravoButton">! مرحى</sys:String>
+    <sys:String  x:Key="oopsButton">! أخطئت</sys:String>
+
+
+    <!-- **************************************************************************************************************  -->
+
+    <!-- Strings tae page Points Primes-->
+    <sys:String  x:Key="questionPointsPrimes">: استخرج النقطة النظيرة لكل نقطة</sys:String>
+    <sys:String  x:Key="bannerPointsPrimes">النقاط المتناظرة</sys:String>
+    <sys:String  x:Key="modifyPointsPrimes">: اكتب اسم النقاط و النقاظ المكافئة لها</sys:String>
+    <sys:String  x:Key="pointsbro">النقاط</sys:String>
+    <sys:String  x:Key="primesbro">النظائر</sys:String>
+
+
+    <!-- **************************************************************************************************************  -->
+
+
 
 
 
