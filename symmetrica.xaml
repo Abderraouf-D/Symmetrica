@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projet2Cp"
         mc:Ignorable="d" 
         Title="SYMMETRICA" Height="1080" Width="1920" MinHeight="720" MinWidth="1024" 
-        Icon="./Acceuil/logo.png">
+        Icon="./Acceuil/logo.png" WindowState="Maximized">
     <Window.Resources>
 
 
@@ -17,6 +17,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary   Source="./ArResLibre.xaml" />
                 <ResourceDictionary  Source="./FrResLibre.xaml" />
+                
+
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

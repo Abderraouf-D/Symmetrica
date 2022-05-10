@@ -39,18 +39,55 @@ namespace Project
             this.fich1 = fich1;
             this.fich2 = fich2;
             this.fich3 = fich3;
-            StreamReader sr = new StreamReader(fich1);
-            a = sr.ReadLine();
-            Question.Text = sr.ReadLine();
-            ChoixA.Content = sr.ReadLine();
-            ChoixB.Content = sr.ReadLine();
-            ChoixC.Content = sr.ReadLine();
-            ChoixD.Content = sr.ReadLine();
-            sr.Close();
 
 
-            if(!MainWindow.modeEns) edtText.Visibility=teacherButton.Visibility=Visibility.Collapsed;
+
+
+            affichQuiz(fich1);
+
+
+            
+
+
+
+
+
+
+
+
+
+
+            if (!MainWindow.modeEns) edtText.Visibility=teacherButton.Visibility=Visibility.Collapsed;
         }
+
+
+        public  void affichQuiz(string path)
+        {
+            String[] questions = File.ReadAllLines(path);
+
+            if (MainWindow.francais)
+            {
+                a = questions[0];
+                Question.Text = questions[1];
+                ChoixA.Content = questions[2];
+                ChoixB.Content = questions[3];
+                ChoixC.Content = questions[4];
+                ChoixD.Content = questions[5];
+
+
+
+            }
+            else
+            {
+                a = questions[6];
+                Question.Text = questions[7];
+                ChoixA.Content = questions[8];
+                ChoixB.Content = questions[9];
+                ChoixC.Content = questions[10];
+                ChoixD.Content = questions[11];
+            }
+        }
+
 
         private void ChoixD_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -175,28 +212,15 @@ namespace Project
             }
             if (suivantCounter <= 3 && suivantCounter == 2)
             {
-                StreamReader sr = new StreamReader(fich2);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Content = sr.ReadLine();
-                ChoixB.Content = sr.ReadLine();
-                ChoixC.Content = sr.ReadLine();
-                ChoixD.Content = sr.ReadLine();
-                sr.Close();
+                affichQuiz(fich2);
+
                 btnSuivant.Visibility = Visibility.Visible;
                 btnPrecedent.Visibility = Visibility.Visible;
 
             }
             if (suivantCounter <= 3 && suivantCounter == 3)
             {
-                StreamReader sr = new StreamReader(fich3);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Content = sr.ReadLine();
-                ChoixB.Content = sr.ReadLine();
-                ChoixC.Content = sr.ReadLine();
-                ChoixD.Content = sr.ReadLine();
-                sr.Close();
+                affichQuiz(fich3);
                 btnSuivant.Visibility = Visibility.Hidden;
                 btnPrecedent.Visibility = Visibility.Visible;
             }
@@ -224,30 +248,17 @@ namespace Project
             }
             if (suivantCounter >= 1 && suivantCounter == 1)
             {
-                
-              
-                StreamReader sr = new StreamReader(fich1);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Content = sr.ReadLine();
-                ChoixB.Content = sr.ReadLine();
-                ChoixC.Content = sr.ReadLine();
-                ChoixD.Content = sr.ReadLine();
-                sr.Close();
+
+
+                affichQuiz(fich1);
                 btnPrecedent.Visibility = Visibility.Hidden;
                 btnSuivant.Visibility = Visibility.Visible;
             }
             if (suivantCounter >= 1 && suivantCounter == 2)
             {
-               
-                StreamReader sr = new StreamReader(fich2);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Content = sr.ReadLine();
-                ChoixB.Content = sr.ReadLine();
-                ChoixC.Content = sr.ReadLine();
-                ChoixD.Content = sr.ReadLine();
-                sr.Close();
+
+                affichQuiz(fich2);
+
                 btnPrecedent.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Visible;
             }

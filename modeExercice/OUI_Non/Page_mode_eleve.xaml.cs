@@ -287,8 +287,7 @@ namespace OUI_Non
             if (i >= 0) i--;
 
             Imageselector();
-            //ouibtn.IsEnabled = false;
-            //nonbtn.IsEnabled = false;
+           
 
         }
 

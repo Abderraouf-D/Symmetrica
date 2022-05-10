@@ -38,7 +38,15 @@ namespace Projet2Cp
             App.ArResLibre = this.Resources.MergedDictionaries[0];
             App.FrResLibre = this.Resources.MergedDictionaries[1];
 
+            this.Hide();
 
+            SplashScreen SC = new SplashScreen(@"/Acceuil/splash.png");
+            
+            SC.Show(false);
+            System.Threading.Thread.Sleep(1000);
+            SC.Close(TimeSpan.FromSeconds(1));
+           
+            this.Show();
 
 
 

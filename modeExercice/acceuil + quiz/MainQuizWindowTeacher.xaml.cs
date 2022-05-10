@@ -41,10 +41,20 @@ namespace Project
                     path = fich3;
                     break;
             }
+
+
             suivantCounter = i;
             this.fich1 = fich1;
             this.fich2 = fich2;
             this.fich3 = fich3;
+
+
+
+            
+
+
+
+            
             StreamReader sr = new StreamReader(path);
             a = sr.ReadLine();
             Question.Text = sr.ReadLine();
@@ -64,6 +74,11 @@ namespace Project
             }
             if (suivantCounter <= 3 && suivantCounter == 2)
             {
+
+
+
+
+
                 StreamReader sr = new StreamReader(fich2);
                 a = sr.ReadLine();
                 Question.Text = sr.ReadLine();
@@ -175,6 +190,37 @@ namespace Project
                   case 3: path = fich3;
                      break;
             }
+
+
+
+
+            String[] questions = new String[12];
+
+            File.ReadAllLines(path).CopyTo(questions, 0);
+
+            if (MainWindow.francais)
+            {
+                questions[0] = reponse.ToString();
+                questions[1] = Question.Text; 
+                questions[2] = ChoixA.Text;
+                questions[3] = ChoixB.Text;
+                questions[4] = ChoixC.Text;
+                questions[5] = ChoixD.Text;
+
+
+            }else
+            {
+                questions[6] = reponse.ToString();
+                questions[7] = Question.Text;
+                questions[8] = ChoixA.Text;
+                questions[9] = ChoixB.Text;
+                questions[10] = ChoixC.Text;
+                questions[11] = ChoixD.Text;
+            }
+            File.WriteAllLines(path,questions);
+            
+
+            /*
             StreamWriter sw = new StreamWriter(path);
             sw.WriteLine(reponse.ToString());
             sw.WriteLine(Question.Text);
@@ -182,7 +228,12 @@ namespace Project
             sw.WriteLine(ChoixB.Text);
             sw.WriteLine(ChoixC.Text);
             sw.WriteLine(ChoixD.Text);
-            sw.Close();
+            sw.Close();*/
+
+
+
+
+
             MainWindow.MainFrame.NavigationService.Navigate(new MainQuizWindow(fich1, fich2,fich3));
 
 

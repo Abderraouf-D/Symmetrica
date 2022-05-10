@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projet2Cp {
+namespace Projet2Cp{
     using System;
     
     

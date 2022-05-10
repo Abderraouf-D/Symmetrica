@@ -204,11 +204,11 @@
     <Compile Include="modeExercice\OUI_Non\Page_mode_eleve.xaml.cs">
       <DependentUpon>Page_mode_eleve.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Strings.Designer.cs" />
+    <Compile Include="StringsAr.Designer.cs" />
     <Compile Include="PageChoixMode\PageChoixMode.xaml.cs">
       <DependentUpon>PageChoixMode.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Strings.Designer.cs" />
-    <Compile Include="StringsAr.Designer.cs" />
     <Compile Include="modeLibre\canvasUC.xaml.cs">
       <DependentUpon>canvasUC.xaml</DependentUpon>
     </Compile>
@@ -847,6 +847,7 @@
     <Resource Include="modeExercice\modeExoType2\Icons\vertical.png" />
     <Resource Include="bin\Debug\Data\users.txt" />
     <Resource Include="bin\Debug\Data\password.txt" />
+    <Resource Include="Acceuil\splash.png" />
     <Content Include="modeExercice\modeExoType2\Icons\yay.mp3.mp3" />
     <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\dsqdqs.png" />
     <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\ETOILE.png" />

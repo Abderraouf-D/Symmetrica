@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projet2Cp {
+namespace Projet2Cp
+{
     using System;
     
     
@@ -39,7 +40,7 @@ namespace Projet2Cp {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OUI_Non.StringsAr", typeof(StringsAr).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Projet2Cp.StringsAr", typeof(StringsAr).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
