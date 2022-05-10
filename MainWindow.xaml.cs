@@ -49,6 +49,7 @@ namespace Projet2Cp
             if (francais) ResLibre = App.FrResLibre;
             else ResLibre = App.ArResLibre;
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            
             this.Resources.MergedDictionaries.Add(ResLibre);
 
 

@@ -43,13 +43,13 @@ namespace Projet2Cp
         {
             if (MainWindow.francais)
             {
-                if (PagePrincCours.axiale) progressCoursAxiale--;
-                else progressCoursCentrale--;
+                if (PagePrincCours.axiale) progressCoursAxiale = (progressCoursAxiale - 1) % 9;
+                else progressCoursCentrale = (progressCoursCentrale - 1) % 9;
             }
             else
             {
-                if (PagePrincCoursAr.axiale) progressCoursAxiale--;
-                else progressCoursCentrale--;
+                if (PagePrincCoursAr.axiale) progressCoursAxiale = (progressCoursAxiale - 1) % 9;
+                else progressCoursCentrale = (progressCoursCentrale - 1) % 9;
             }
         }
 

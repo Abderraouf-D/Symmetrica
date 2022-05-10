@@ -41,29 +41,39 @@ namespace Project
                     path = fich3;
                     break;
             }
-
-
             suivantCounter = i;
             this.fich1 = fich1;
             this.fich2 = fich2;
             this.fich3 = fich3;
+            affichQuiz(path);
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
 
 
+            if (MainWindow.francais) stckA.FlowDirection = stckB.FlowDirection = stckC.FlowDirection = stckD.FlowDirection = FlowDirection.LeftToRight;
+            else stckA.FlowDirection = stckB.FlowDirection = stckC.FlowDirection = stckD.FlowDirection = FlowDirection.RightToLeft;
+        }
+        public void affichQuiz(string path)
+        {
+            String[] questions = File.ReadAllLines(path);
 
-            
-
-
-
-            
-            StreamReader sr = new StreamReader(path);
-            a = sr.ReadLine();
-            Question.Text = sr.ReadLine();
-            ChoixA.Text = sr.ReadLine();
-            ChoixB.Text = sr.ReadLine();
-            ChoixC.Text = sr.ReadLine();
-            ChoixD.Text = sr.ReadLine();
-            sr.Close();
-
+            if (MainWindow.francais)
+            {
+                a = questions[0];
+                Question.Text = questions[1];
+                ChoixA.Text = questions[2];
+                ChoixB.Text= questions[3];
+                ChoixC.Text = questions[4];
+                ChoixD.Text = questions[5];
+            }
+            else
+            {
+                a = questions[6];
+                Question.Text = questions[7];
+                ChoixA.Text = questions[8];
+                ChoixB.Text = questions[9];
+                ChoixC.Text = questions[10];
+                ChoixD.Text = questions[11];
+            }
         }
         private void ButtonSuivant_Click(object sender, RoutedEventArgs e)
         {
@@ -74,33 +84,14 @@ namespace Project
             }
             if (suivantCounter <= 3 && suivantCounter == 2)
             {
-
-
-
-
-
-                StreamReader sr = new StreamReader(fich2);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Text = sr.ReadLine();
-                ChoixB.Text = sr.ReadLine();
-                ChoixC.Text = sr.ReadLine();
-                ChoixD.Text = sr.ReadLine();
-                sr.Close();
+                affichQuiz(fich2);
                 btnSuivant.Visibility = Visibility.Visible;
                 btnPrecedent.Visibility = Visibility.Visible;
 
             }
             if (suivantCounter <= 3 && suivantCounter == 3)
             {
-                StreamReader sr = new StreamReader(fich3);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Text = sr.ReadLine();
-                ChoixB.Text = sr.ReadLine();
-                ChoixC.Text = sr.ReadLine();
-                ChoixD.Text = sr.ReadLine();
-                sr.Close();
+                affichQuiz(fich3);
                 btnSuivant.Visibility = Visibility.Hidden;
                 btnPrecedent.Visibility = Visibility.Visible;
             }
@@ -114,29 +105,15 @@ namespace Project
             }
             if (suivantCounter >=1 && suivantCounter == 1)
             {
-               
-                StreamReader sr = new StreamReader(fich1);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Text = sr.ReadLine();
-                ChoixB.Text = sr.ReadLine();
-                ChoixC.Text = sr.ReadLine();
-                ChoixD.Text = sr.ReadLine();
-                sr.Close();
+
+                affichQuiz(fich1);
                 btnPrecedent.Visibility = Visibility.Hidden;
                 btnSuivant.Visibility = Visibility.Visible;
             }
             if (suivantCounter >= 1 && suivantCounter == 2)
             {
-                
-                StreamReader sr = new StreamReader(fich2);
-                a = sr.ReadLine();
-                Question.Text = sr.ReadLine();
-                ChoixA.Text = sr.ReadLine();
-                ChoixB.Text = sr.ReadLine();
-                ChoixC.Text = sr.ReadLine();
-                ChoixD.Text = sr.ReadLine();
-                sr.Close();
+
+                affichQuiz(fich2);
                 btnPrecedent.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Visible;
             }
@@ -148,37 +125,14 @@ namespace Project
         {
             String num_suiv = suivantCounter.ToString();
            
-            int reponse;
-            if (reponse_de_user.Text.CompareTo("A") == 0)
-            {
-                reponse = 1;
-            }
-            else
-            {
-                if (reponse_de_user.Text.CompareTo("B") == 0)
-                {
-                    reponse = 2;
-                }
-                else
-                {
-                    if (reponse_de_user.Text.CompareTo("C") == 0)
-                    {
-                        reponse = 3;
-                    }
-                    else
-                    {
-                        if (reponse_de_user.Text.CompareTo("D") == 0)
-                        {
-                            reponse = 4;
-                        }
-                        else
-                        {
-                            reponse_de_user.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#EC3D3D");
-                            return;
-                        }
-                    }
-                }
-            }
+            int reponse = 1;
+            var checkedValue = choices.Children.OfType<RadioButton>()
+                 .FirstOrDefault(r => r.IsChecked.HasValue && r.IsChecked.Value);
+            if (choA.IsChecked==true) reponse = 1; 
+            if (choB.IsChecked==true) reponse = 2; 
+            if (choC.IsChecked==true) reponse = 3; 
+            if (choD.IsChecked==true) reponse = 4; 
+            
 
             string path=null;
             switch (suivantCounter)
@@ -191,9 +145,6 @@ namespace Project
                      break;
             }
 
-
-
-
             String[] questions = new String[12];
 
             File.ReadAllLines(path).CopyTo(questions, 0);
@@ -201,14 +152,13 @@ namespace Project
             if (MainWindow.francais)
             {
                 questions[0] = reponse.ToString();
-                questions[1] = Question.Text; 
+                questions[1] = Question.Text;
                 questions[2] = ChoixA.Text;
                 questions[3] = ChoixB.Text;
                 questions[4] = ChoixC.Text;
                 questions[5] = ChoixD.Text;
-
-
-            }else
+            }
+            else
             {
                 questions[6] = reponse.ToString();
                 questions[7] = Question.Text;
@@ -217,26 +167,8 @@ namespace Project
                 questions[10] = ChoixC.Text;
                 questions[11] = ChoixD.Text;
             }
-            File.WriteAllLines(path,questions);
-            
-
-            /*
-            StreamWriter sw = new StreamWriter(path);
-            sw.WriteLine(reponse.ToString());
-            sw.WriteLine(Question.Text);
-            sw.WriteLine(ChoixA.Text);
-            sw.WriteLine(ChoixB.Text);
-            sw.WriteLine(ChoixC.Text);
-            sw.WriteLine(ChoixD.Text);
-            sw.Close();*/
-
-
-
-
-
+            File.WriteAllLines(path, questions);
             MainWindow.MainFrame.NavigationService.Navigate(new MainQuizWindow(fich1, fich2,fich3));
-
-
         }
     }
 }

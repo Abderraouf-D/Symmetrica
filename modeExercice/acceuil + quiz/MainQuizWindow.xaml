@@ -13,10 +13,9 @@
             <RowDefinition Height="auto" />
 
         </Grid.RowDefinitions>
-        <Image VerticalAlignment="Center" HorizontalAlignment="Left" Source="Icons\Group 21.png" Height="90"  Width="90" Margin="95,0,0,0"/>
+        <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="Icons\Group 21.png" Height="90"  Width="90" Margin="46,0,0,0" />
 
-        <Viewbox Grid.Row="1" x:Name="ViewBoxContainer" Stretch="Uniform" >
-            <Grid x:Name="GridPrimaire">
+        <Viewbox Grid.Row="0" x:Name="ViewBoxContainer" Stretch="Uniform"  Panel.ZIndex="-1">            <Grid x:Name="GridPrimaire">
                 <Grid x:Name="GridSecondaire" Background="White" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -119,15 +118,15 @@
                         <Border x:Name="ressayerImage" Visibility="Hidden" Width="80" Height="80" Grid.ColumnSpan="2" Margin="300,91,300,41" BorderThickness="2" CornerRadius="100" BorderBrush="Black" Background="#EC3D3D">
                             <StackPanel Orientation="Vertical">
                                 <Image Source="Images\strenght 1.png" Width="40" Height="40" Margin="18,8,18,0"/>
-                                <TextBlock Foreground="White" FontFamily="{StaticResource PoppinsRegular}" Text="Réssayer" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Foreground="White" FontFamily="{StaticResource PoppinsRegular}" Text="{DynamicResource Ressayer}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </StackPanel>
                         </Border>
 
                         <StackPanel x:Name="falseText" Visibility="Hidden" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                            <TextBlock Text="Oops !" Foreground="#EC3D3D" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
-                            <TextBlock FontFamily="{StaticResource VigaRegular}" Foreground="#EC3D3D" HorizontalAlignment="Center" Text="Essayez à nouveau, n'échouez pas !"/>
+                            <TextBlock Text="{DynamicResource Oops}" Foreground="#EC3D3D" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
+                            <TextBlock FontFamily="{StaticResource VigaRegular}" Foreground="#EC3D3D" HorizontalAlignment="Center" Text="{DynamicResource Essayez_a_nouveau}"/>
                         </StackPanel>
-                        <TextBlock x:Name="trueText" Visibility="Hidden" VerticalAlignment="Top" Grid.ColumnSpan="2" Text="Excellent !" Foreground="#A2DBA1" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="trueText" Visibility="Hidden" VerticalAlignment="Top" Grid.ColumnSpan="2" Text="{DynamicResource Excellent}" Foreground="#A2DBA1" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
                     </Grid>
 
                     <Button x:Name="btnPrecedent" Grid.Row="2" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="30,0,430,10" Click="ButtonPrecedent_Click">

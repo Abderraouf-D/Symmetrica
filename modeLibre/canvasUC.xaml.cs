@@ -1861,20 +1861,23 @@ namespace Projet2Cp
                 // save the data to the stream
                 encoder.Save(outStream);
             }
-            
-         
+
+            if (MainWindow.francais) MessageBox.Show(String.Format("Sauvgardé dans {0}", path.ToString())); 
+            else MessageBox.Show(String.Format("{0} حفظ في ", path.ToString()));
         }
 
 
 
         private void exportPng_Click(object sender, RoutedEventArgs e)
         {
-            string path;
+            string path="";
             string fileDrawing=""; 
             
                 int i = 0;
-                path = ShowFolderBrowserDialog();
-            fileDrawing = path + "/MonDessinImage" + i.ToString() + ".png";
+            path = ShowFolderBrowserDialog();
+            if (String.IsNullOrEmpty(path)) path = Directory.GetCurrentDirectory();
+
+         fileDrawing = path + "/MonDessinImage" + i.ToString() + ".png";
 
             while (File.Exists(fileDrawing))
                 {

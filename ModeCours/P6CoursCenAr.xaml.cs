@@ -23,7 +23,6 @@ namespace ModeCours
         public P6CoursCenAr()
         {
             InitializeComponent();
-            btnSuiv.Visibility = Visibility.Collapsed;
         }
         private void Button_Click_Prcdt_CC_P6(object sender, RoutedEventArgs e)
         {
@@ -32,6 +31,12 @@ namespace ModeCours
             if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
 
 
+        }
+
+        private void btnSuiv_Click(object sender, RoutedEventArgs e)
+        {
+            ViexBox_P6CoursCenAr.Visibility = Visibility.Hidden;
+            MainWindow.MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
         }
     }
 }

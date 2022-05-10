@@ -23,14 +23,19 @@ namespace ModeCours
         public P6CourAxeAr()
         {
             InitializeComponent();
-            btnSuiv.Visibility = Visibility.Collapsed;
         }
         private void Button_Click_Prcdt_CA_P6(object sender, RoutedEventArgs e)
         {
             MainWindow.MainFrame.NavigationService.Navigate(new P5CourAxeAr());
-            ViexBox_P6CourAxe.Visibility = Visibility.Hidden;
+            ViexBox_P6CourAxeAr.Visibility = Visibility.Hidden;
             if (!MainWindow.modeEns) MainWindow.eleve.decProgress();
 
+        }
+
+        private void btnSuiv_Click(object sender, RoutedEventArgs e)
+        {
+            ViexBox_P6CourAxeAr.Visibility = Visibility.Hidden;
+            MainWindow.MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
         }
     }
 }

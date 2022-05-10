@@ -153,7 +153,6 @@ namespace Project
                 path3 += "_centrale.txt"; 
             }
             
-
             MainQuizWindow pageQuiz = new MainQuizWindow(path1, path2, path3);
             MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
         }

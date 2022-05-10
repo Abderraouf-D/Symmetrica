@@ -51,12 +51,17 @@
                 </Button.Resources>
                 <Button.Content>
                     <WrapPanel>
-                        <TextBlock Text="Suivant " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                        <TextBlock FlowDirection="RightToLeft" Text="  التالي " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
                         <Image Source="Icons/right arrow.png" Width="45" Height="45" />
                     </WrapPanel>
                 </Button.Content>
             </Button>
-
+            <Border Height="70" Width="150" Background="#A2DBA1" BorderBrush="Green" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 30">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="7/9" Margin="16 10 10 10" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                    <Image Source="Icons/book-pages.png" Width="60" Height="auto" />
+                </StackPanel>
+            </Border>
             <Button Background="#A2DBA1" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                         Width="241" Height="70" Margin="0 0 0 30" BorderThickness="0"  
                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
@@ -70,7 +75,7 @@
                 <Button.Content>
                     <WrapPanel>
                         <Image Source="Icons/left arrow.png" Width="45" Height="45" />
-                        <TextBlock Text=" Précédent" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
+                        <TextBlock FlowDirection="RightToLeft" Text=" الرجوع  " FontFamily="{StaticResource PoppinsSemiBold}" FontSize="32" />
                     </WrapPanel>
                 </Button.Content>
             </Button>

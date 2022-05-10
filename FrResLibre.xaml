@@ -79,6 +79,16 @@
     <sys:String  x:Key="trvAxe">Trouver les axes</sys:String>
 
     <!-- **************************************************************************************************************  -->
+    <!-- Strings tae la page Quiz  -->
 
-
+    <sys:String  x:Key="Ressayer">Réssayer</sys:String>
+    <sys:String  x:Key="Oops">Oops !</sys:String>
+    <sys:String  x:Key="Essayez_a_nouveau">Essayez à nouveau, n'échouez pas !</sys:String>
+    <sys:String  x:Key="Excellent">Excellent !</sys:String>
+    <sys:String  x:Key="Entrer_la_bonne">Entrer la bonne réponse :</sys:String>
+    <sys:String  x:Key="chA">A</sys:String>
+    <sys:String  x:Key="chB">B</sys:String>
+    <sys:String  x:Key="chC">C</sys:String>
+    <sys:String  x:Key="chD">D</sys:String>
+    <sys:String  x:Key="editQuiz">Editer</sys:String>
 </ResourceDictionary>

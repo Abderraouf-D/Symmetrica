@@ -39,29 +39,12 @@ namespace Project
             this.fich1 = fich1;
             this.fich2 = fich2;
             this.fich3 = fich3;
-
-
-
-
             affichQuiz(fich1);
-
-
-            
-
-
-
-
-
-
-
-
-
-
             if (!MainWindow.modeEns) edtText.Visibility=teacherButton.Visibility=Visibility.Collapsed;
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
         }
 
-
-        public  void affichQuiz(string path)
+        public void affichQuiz(string path)
         {
             String[] questions = File.ReadAllLines(path);
 
@@ -73,9 +56,6 @@ namespace Project
                 ChoixB.Content = questions[3];
                 ChoixC.Content = questions[4];
                 ChoixD.Content = questions[5];
-
-
-
             }
             else
             {
@@ -213,7 +193,6 @@ namespace Project
             if (suivantCounter <= 3 && suivantCounter == 2)
             {
                 affichQuiz(fich2);
-
                 btnSuivant.Visibility = Visibility.Visible;
                 btnPrecedent.Visibility = Visibility.Visible;
 
@@ -256,9 +235,7 @@ namespace Project
             }
             if (suivantCounter >= 1 && suivantCounter == 2)
             {
-
                 affichQuiz(fich2);
-
                 btnPrecedent.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Visible;
             }

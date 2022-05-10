@@ -87,6 +87,18 @@
 
     
     <!-- **************************************************************************************************************  -->
+    <!-- Strings tae la page Quiz  -->
+
+    <sys:String  x:Key="Ressayer">أعد المحاولة</sys:String>
+    <sys:String  x:Key="Oops">! مهلا</sys:String>
+    <sys:String  x:Key="Essayez_a_nouveau">! حاول مرة أخرى لا تفشل</sys:String>
+    <sys:String  x:Key="Excellent">! ممتاز</sys:String>
+    <sys:String  x:Key="Entrer_la_bonne">: أدخل الإجابة الصحيحة</sys:String>
+    <sys:String  x:Key="chA">أ</sys:String>
+    <sys:String  x:Key="chB">ب</sys:String>
+    <sys:String  x:Key="chC">ج</sys:String>
+    <sys:String  x:Key="chD">د</sys:String>
+    <sys:String  x:Key="editQuiz">تعديل</sys:String>
 
 
 

@@ -7,19 +7,57 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="1000"
       Title="MainQuizWindowTeacher">
+    <Page.Resources>
+        <Style  TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Height" Value="22" />
+            <Setter Property="Width" Value="22" />
+            <Setter Property="Margin" Value="0.5" />
 
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Border BorderBrush="Black" BorderThickness="1.5" CornerRadius="5" Background="{TemplateBinding Background}">
+                            <Grid>
+
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gray" />
+                                <Setter Property="Foreground" Value="White" />
+
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#FFCC00" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid x:Name="grid_principale">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
 
         </Grid.RowDefinitions>
-        <Image VerticalAlignment="Center" HorizontalAlignment="Left" Source="Icons\Group 21.png" Height="90"  Width="90" Margin="95,0,0,0"/>
+        <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="Icons\Group 21.png" Height="90"  Width="90" Margin="46,0,0,0" />
 
-        <Viewbox Stretch="Uniform" Grid.Row="1">
+        <Viewbox Grid.Row="0" x:Name="ViewBoxContainer" Stretch="Uniform"  Panel.ZIndex="-1">
             <Grid Background="White" Height="367">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*" />
+                    <RowDefinition  />
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="0.7*" />
                 </Grid.RowDefinitions>
@@ -35,7 +73,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0">
+                    <StackPanel x:Name="stckA" Grid.Column="0">
 
                         <Border 
                             CornerRadius="15" 
@@ -44,7 +82,11 @@
                             Height="40" 
                             Margin="30,70,10,20"  
                             Width="300" >
-                            <TextBox 
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> <Run Text="  -"/> <Run Text="{DynamicResource chA}"/> <Run Text="-"/></TextBlock>
+                                <TextBox 
+                                    
+                                 Margin="10,0,0,0"
                                 Padding="6"
                                 x:Name="ChoixA"
                                 Background="White" 
@@ -54,6 +96,7 @@
                                 Text=""
                                 VerticalAlignment="Center"
                             />
+                            </StackPanel>
                         </Border>
                         <Border 
                             Height="40" 
@@ -64,20 +107,25 @@
                             BorderThickness="2" 
                             
                             >
-                            <TextBox 
+                            <StackPanel x:Name="stckB" Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> <Run Text="  -"/> <Run Text="{DynamicResource chB}"/> <Run Text="-"/></TextBlock>
+                                <TextBox 
+                                 Margin="10,0,0,0"
                                 Padding="6"
-                                Text=""
-                                VerticalAlignment="Center"
-                                x:Name="ChoixC"
+                                x:Name="ChoixB"
                                 Background="White" 
                                 FontFamily="{StaticResource PoppinsSemiBold}" 
                                 FontSize="10"
-                                HorizontalAlignment="Center" />
+                                HorizontalAlignment="Center"
+                                Text=""
+                                VerticalAlignment="Center"
+                            />
+                            </StackPanel>
                         </Border>
 
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1">
+                    <StackPanel x:Name="stckC" Grid.Column="1">
 
                         <Border
                             Height="40" 
@@ -87,15 +135,20 @@
                             BorderBrush="Black" 
                             BorderThickness="2" 
                             >
-                            <TextBox
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> <Run Text="  -"/> <Run Text="{DynamicResource chC}"/> <Run Text="-"/></TextBlock>
+                                <TextBox 
+                                 Margin="10,0,0,0"
                                 Padding="6"
-                                Text=""
-                                x:Name="ChoixB"
-                                VerticalAlignment="Center"
+                                x:Name="ChoixC"
                                 Background="White" 
                                 FontFamily="{StaticResource PoppinsSemiBold}" 
                                 FontSize="10"
-                                HorizontalAlignment="Center" BorderThickness="1,1,1,1"/>
+                                HorizontalAlignment="Center"
+                                Text=""
+                                VerticalAlignment="Center"
+                            />
+                            </StackPanel>
                         </Border>
                         <Border
                             Height="40" 
@@ -105,15 +158,20 @@
                             BorderBrush="Black" 
                             BorderThickness="2" 
                             >
-                            <TextBox 
+                            <StackPanel x:Name="stckD" Orientation="Horizontal">
+                                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center"> <Run Text="  -"/> <Run Foreground="Black" Text="{DynamicResource chD}"/> <Run Text="-"/></TextBlock>
+                                <TextBox 
+                                 Margin="10,0,0,0"
                                 Padding="6"
-                                Text=""
                                 x:Name="ChoixD"
-                                VerticalAlignment="Center"
                                 Background="White" 
                                 FontFamily="{StaticResource PoppinsSemiBold}" 
                                 FontSize="10"
-                                HorizontalAlignment="Center"/>
+                                HorizontalAlignment="Center"
+                                Text=""
+                                VerticalAlignment="Center"
+                            />
+                            </StackPanel>
                         </Border>
 
                     </StackPanel>
@@ -160,10 +218,26 @@
                     </Button.Resources>
                 </Button>
 
-                <Border VerticalAlignment="Top" Width="210" Height="40" Grid.Row="1" CornerRadius="10" BorderBrush="Black" BorderThickness="2">
-                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock FontFamily="{StaticResource PoppinsSemiBold}" Text="Entrer la bonne réponse : " />
-                        <TextBox x:Name="reponse_de_user" MaxLength="1" CharacterCasing="Upper" TextAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}" Width="40" BorderBrush="Black"/>
+                <Border VerticalAlignment="Top" Width="210" Height="60" Grid.Row="1" CornerRadius="10" BorderBrush="Black" BorderThickness="2">
+                    <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="0,5,0,5" FontFamily="{StaticResource PoppinsSemiBold}" Text="{DynamicResource Entrer_la_bonne}" />
+                        <!--<TextBox Margin="0,5,0,5" x:Name="reponse_de_user" MaxLength="1" CharacterCasing="Upper" TextAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}" Width="40" BorderBrush="Black"/>-->
+                        <StackPanel HorizontalAlignment="Center" x:Name="choices" Orientation="Horizontal">
+                            <RadioButton x:Name="choA" IsChecked="True"  GroupName="answer" >
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chA}" />
+                            </RadioButton>
+                            <RadioButton x:Name="choB"  GroupName="answer" >
+                                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chB}" /> 
+                            </RadioButton>
+                            <RadioButton x:Name="choC"  GroupName="answer" >
+                                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chC}" />
+                            </RadioButton>
+                            <RadioButton x:Name="choD"  GroupName="answer" >
+                                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chD}" />
+                            </RadioButton>
+                            
+                        </StackPanel>
+
                     </StackPanel>
                 </Border>
 

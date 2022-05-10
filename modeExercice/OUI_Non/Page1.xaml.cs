@@ -15,7 +15,7 @@ namespace OUI_Non
     /// </summary>
     public partial class Page1 : Page
     {
-        
+        private int langue;
         private int i = 0;// ce variable sera utilise pour savoir le question qui est affiche
      //   private string[] image_folder_paths  ;
         private string[] answers = new string[3];
@@ -59,7 +59,7 @@ namespace OUI_Non
             String_load(j);
             this.path_images = path+"\\"+"img.txt";
             this.path_answers = path + "\\" + "ans.txt";
-         
+            langue = j; 
             Read_answers();
             Imageselector();
 
@@ -197,11 +197,13 @@ namespace OUI_Non
                
                    
 
-                        if (answers[i].Equals("OUI", StringComparison.OrdinalIgnoreCase))
+                        if (answers[i].Equals("OUI", StringComparison.OrdinalIgnoreCase) || answers[i].Equals("نعم", StringComparison.OrdinalIgnoreCase))
                         {
                             if(i<2)      i++;
                             btnretry.Visibility = Visibility.Visible;
-                            retry_txt.Text = "Bravo!";
+                            if (langue == 0)
+                                retry_txt.Text = "Bravo!";
+                            else retry_txt.Text = "أحسنت!"; 
                             btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                             Border.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                            
@@ -210,7 +212,10 @@ namespace OUI_Non
                         }
                         else
                         {
-                            retry_txt.Text = "Ressayer";
+                            if (langue == 0)
+                                retry_txt.Text = "Réessayer";
+                            else
+                                retry_txt.Text = "اعد المحاولة";
                             btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#EC3D3D")); 
                             Border.Background = (Brush)(new BrushConverter().ConvertFrom("#DFEC3D3D"));
                             ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#EE2E2E"));
@@ -241,19 +246,25 @@ namespace OUI_Non
                 // on definit ce qui se passe qui on click sur btn oui reponse vraie donc incremenation de value de prgbar et affichage de prochaine image
                 // si la reponse est fausse on affiche le btn ressayer + changement de couleur (background..ect)
                 
-                        if (answers[i].Equals("NON", StringComparison.OrdinalIgnoreCase))
+                        if (answers[i].Equals("NON", StringComparison.OrdinalIgnoreCase) || answers[i].Equals("لا", StringComparison.OrdinalIgnoreCase))
                         {
                              if (i < 2) i++;
                             btnretry.Visibility = Visibility.Visible;
+                        if (langue == 0)
                             retry_txt.Text = "Bravo!";
-                            btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
+                        else retry_txt.Text = "! أحسنت"  ;
+                    btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                             Border.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                             
                 }
                         else
                         {
-                            retry_txt.Text = "Ressayer";
-                            btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#EC3D3D"));
+                            if (langue == 0 )
+                            retry_txt.Text = "Réessayer";
+                            else
+                           retry_txt.Text = "اعد المحاولة";
+
+                              btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#EC3D3D"));
                             Border.Background = (Brush)(new BrushConverter().ConvertFrom("#DFEC3D3D"));
                             ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#EE2E2E"));
                             nonbtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#EE2E2E"));
@@ -268,7 +279,7 @@ namespace OUI_Non
 
         private void Btnretry_Click(object sender, RoutedEventArgs e)
         {
-            if(retry_txt.Text == "Bravo!")
+            if(retry_txt.Text == "Bravo!" ||  retry_txt.Text == "! أحسنت")
             {
                 Imageselector();
 
@@ -337,8 +348,14 @@ namespace OUI_Non
         private void sauv_btn_Click(object sender, RoutedEventArgs e)
         {
             answers[i] = reponse.Text;
-            if ((reponse.Text.Equals("oui", StringComparison.OrdinalIgnoreCase) || reponse.Text.Equals("non", StringComparison.OrdinalIgnoreCase)) && File.Exists(images[i]))
-            { write_answer();
+
+
+            string repOui = langue == 0 ? "oui" : "نعم";
+            string repNon = langue == 0 ? "non" : "لا";
+
+            if ((reponse.Text.Equals(repOui, StringComparison.OrdinalIgnoreCase) || reponse.Text.Equals(repNon, StringComparison.OrdinalIgnoreCase)) && File.Exists(images[i]))
+            {
+                write_answer();
                 sauv_btn.Visibility = Visibility.Collapsed;
                 upload_btn.Visibility = Visibility.Collapsed;
                 ouibtn.Visibility = Visibility.Visible;
@@ -347,7 +364,10 @@ namespace OUI_Non
                 ans_input.Visibility = Visibility.Collapsed;
 
             }
-            else MessageBox.Show("SVP entrer oui ou non");
+            else { 
+                if (langue == 0 ) MessageBox.Show("Veuillez introdurie OUI ou NON");
+                else MessageBox.Show("يرجى ادخال نعم أو لا");
+            }
            
 
 
