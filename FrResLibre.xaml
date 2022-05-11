@@ -53,6 +53,10 @@
     <sys:String  x:Key="go">GO !</sys:String>
     <sys:String  x:Key="addUserTotip">S'inscrire/Se Connecter</sys:String>
     <sys:String  x:Key="chooseUserTotip">Choisir un compte existant</sys:String>
+    <sys:String  x:Key="delUserTip">Supprimer  un compte</sys:String>
+    <sys:String  x:Key="ancPwd">Ancient mot de passe</sys:String>
+    <sys:String  x:Key="nouvPwd">Nouveau mot de passe</sys:String>
+    <sys:String  x:Key="modifPwd">Modifier le mot de passe</sys:String>
     
         <!-- **************************************************************************************************************  -->
 

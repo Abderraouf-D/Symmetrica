@@ -13,10 +13,23 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary >
-                    <Image x:Key="addUserImg" Height="20" Width="20" Source="./Icons/add-user.png"/>
-                    <Image x:Key="chooseUserImg" Height="20" Width="20" Source="./Icons/candidate.png"/>
-                    
-                    <TextBox BorderThickness="1"  BorderBrush="White" x:Key="eleve" GotFocus="eleve_GotFocus" TextAlignment="Center"  FontFamily="{StaticResource VigaRegular}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Height="30"   Background="{Binding Background}" SelectionBrush="White">
+                    <Image x:Key="addUserImg" Height="23" Width="23" Source="./Icons/add-user.png"/>
+                    <Image x:Key="chooseUserImg" Height="23" Width="23" Source="./Icons/candidate.png"/>
+
+                    <Button x:Key="modifyPwd" ToolTip="{DynamicResource modifPwd}" Width="30" Margin="5,0,0,0" Height="30" Click="modifPwd" Grid.Column="1" Style="{StaticResource addBtn}" >
+                        <Image Source="images/gear.png" Width="25" Height="25" />
+                    </Button>
+                    <StackPanel x:Key="confCancel" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                        <Button IsDefault="True" x:Name="confirmPwd" ToolTip="{DynamicResource confirmStr}" Width="30" Margin="5,0,0,0" Height="30" Click="confirmerPwd" Grid.Column="1" Style="{StaticResource addBtn}" >
+                            <Image Source="Icons/check.png" Width="25" Height="25" />
+                        </Button>
+                        <Button x:Name="annPwd" ToolTip="{DynamicResource annulStr}" Width="30" Margin="5,0,0,0" Height="30" Click="annulerPwd" Grid.Column="1" Style="{StaticResource addBtn}" >
+                            <Image Source="Icons/cancel.png" Width="25" Height="25" />
+                        </Button>
+                    </StackPanel>
+
+                    <TextBox ToolTip="{DynamicResource userName}" BorderThickness="1"  BorderBrush="White" x:Key="eleve" GotFocus="eleve_GotFocus" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource VigaRegular}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="140" Height="30"   Background="{Binding Background}" SelectionBrush="White">
                         <TextBox.Style>
                             <Style  TargetType="{x:Type TextBox}">
                                 <Setter Property="SelectionBrush" Value="White" />
@@ -41,14 +54,17 @@
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                            <ComboBox GotFocus="eleve_GotFocus"  x:Name="stdCombo" x:Key="stdCombo" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}"   Cursor="Hand"
-                                   FontSize="13"
+                            <ComboBox
+                                HorizontalAlignment="center" GotFocus="eleve_GotFocus"  x:Name="stdCombo" x:Key="stdCombo" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}"   Cursor="Hand"
+                                   ToolTip="{DynamicResource userName}"
+                               
+                                FontSize="13"
                                     Style="{DynamicResource theComboBox}"
                                     Padding="15,5,15,5"
                                     VerticalAlignment="Center"
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    Width="100"
+                                    Width="140"
                                     Height="30"
                                     ItemContainerStyle="{DynamicResource theComboBoxItem}"/>
                 </ResourceDictionary>
@@ -65,7 +81,7 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
-                    <RowDefinition Height="350" />
+                    <RowDefinition Height="360" />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 <Border Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center">
@@ -81,24 +97,33 @@
                         <PasswordBox   GotFocus="passwd_GotFocus" x:Name="passwd"   FontFamily="{StaticResource VigaRegular}" Padding="10" VerticalContentAlignment="Center" BorderThickness="0" Background="{Binding Background}"/>
                         
                     </Border>
-                    <TextBlock Margin="0,7,0,0" Text="{DynamicResource pwd}" HorizontalAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}" />
+                    <TextBlock x:Name="pwdText" Margin="0,7,0,0" Text="{DynamicResource pwd}" HorizontalAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}" />
+                    <Border x:Name="pwdButtons">
+                        
+                    </Border>
+
                     <TextBlock TextWrapping="Wrap"  FontFamily="{StaticResource PoppinsSemiBold}" TextAlignment="Center" Padding="10" Foreground="Black"><Run Text=""/><Run Text="{DynamicResource EnsDes}"/></TextBlock>
                 </StackPanel>
                 <StackPanel  Margin="100,0,0,0" Grid.Row="1" Orientation="Vertical" Grid.Column="1">
                     <TextBlock FontFamily="{StaticResource PoppinsExtraBold}" FontSize="20" HorizontalAlignment="Center" Text="{DynamicResource Elv}"/>
                     <Image Margin="0,20,0,0" Source="Images\Group 44.png" Width="150" Height="150"/>
                     <Border    Background="#bee6bd" BorderThickness="1" CornerRadius="18" Height="40" Width="150">
-                        <Grid x:Name="userNameContainer" >
+                        <Grid HorizontalAlignment="Center" x:Name="userNameContainer" Height="38" VerticalAlignment="Bottom" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="addUserBtn" Width="25" Margin="5,0,0,0" Height="25" Click="addUser" Grid.Column="1" Style="{StaticResource addBtn}" />
 
                         </Grid>
                     </Border>
                     <TextBlock Margin="0,7,0,0" Text="{DynamicResource userName}" HorizontalAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}"/>
-                    <TextBlock Text="{DynamicResource ElvDes}" TextWrapping="Wrap" FontFamily="{StaticResource PoppinsSemiBold}" TextAlignment="Center" Padding="10" Foreground="Black"/>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button x:Name="addUserBtn"  Width="30" Margin="5,0,0,0" Height="30" Click="addUser" Grid.Column="1" Style="{StaticResource addBtn}" />
+                        <Button ToolTip="{DynamicResource delUserTip}"  x:Name="delUserBtn" Width="30" Margin="5,0,0,0" Height="30" Click="delUser" Grid.Column="1" Style="{StaticResource addBtn}" >
+                            <Image Height="23" Width="23" Source="Icons/remUser.png"/>
+                        </Button>
+                    </StackPanel>
+                    <TextBlock Text="{DynamicResource ElvDes}" TextWrapping="Wrap" FontFamily="{StaticResource PoppinsSemiBold}" TextAlignment="Center" Padding="10" HorizontalAlignment="Center" Foreground="Black"/>
                 </StackPanel>
 
                 <Border 

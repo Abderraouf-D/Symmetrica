@@ -178,7 +178,7 @@ namespace Projet2Cp
                         break;
                     }
                 }
-                FileStream fs = new FileStream("Data/Users/" + elev.getNom() + i.ToString() + "/data.bin", FileMode.Open);
+                FileStream fs = new FileStream("Data/Users/" + elev.getNom() + eleve.getId().ToString() + "/data.bin", FileMode.Open);
                 BinaryWriter bw = new BinaryWriter(fs);
                 bw.Seek(0, SeekOrigin.Begin);
                 bw.Write((int)elev.getProgressCen());

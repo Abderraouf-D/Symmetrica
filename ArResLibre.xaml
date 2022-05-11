@@ -60,6 +60,12 @@
     <sys:String  x:Key="go">! هيا</sys:String>
     <sys:String  x:Key="addUserTotip">انشاء حساب / تسجيل الدخول</sys:String>
     <sys:String  x:Key="chooseUserTotip">اختر حسابك</sys:String>
+    <sys:String  x:Key="delUserTip">حذف الحساب</sys:String>
+    <sys:String  x:Key="ancPwd">كلمة المرور القديمة</sys:String>
+    <sys:String  x:Key="nouvPwd">كلمة المرور الجديدة</sys:String>
+    <sys:String  x:Key="modifPwd">تغيير كلمة المرور</sys:String>
+
+
     <!-- **************************************************************************************************************  -->
 
 

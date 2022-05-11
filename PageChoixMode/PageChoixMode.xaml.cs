@@ -16,32 +16,43 @@ using System.Windows.Shapes;
 using Projet2Cp; 
 namespace Project
 {
-    /// <summary>
-    /// Interaction logic for PageChoixMode.xaml
-    /// </summary>s
+    
     public partial class PageChoixMode : Page
     {
         bool francais = false;
         bool modeEns;
+
+        bool ancientPwd = true, modifyingPwd = false; 
+
         ResourceDictionary ResLibre= App.ArResLibre;
         Eleve student;
-        public static string[] users = File.ReadAllLines("Data/users.txt");
-        int studentsCount;
+
+
+        public static string[] users =  File.ReadAllLines("Data/users.txt");
+        public static List<String> userCombo ; 
+
         ComboBox studentsCombo; 
         TextBox studentBox;
         bool combo = false;
-          String stdName = null;
+        String stdName = null;
         public PageChoixMode()
         {
             InitializeComponent();
+
+            
+
+
             this.Loaded += loaded; 
             passwd.Clear();
             passwd.HorizontalContentAlignment = HorizontalAlignment.Center;
-            studentsCount = Int16.Parse(users[0]);
         }
         private void loaded(object sender , RoutedEventArgs e)
         {
+
+            updateUserCombo();
             
+
+
             if (francais)
             {
                 ResLibre = App.FrResLibre;
@@ -56,12 +67,14 @@ namespace Project
 
             }
 
+           
 
-                studentsCombo = (ComboBox)this.FindResource("stdCombo");
-                studentsCombo.ItemsSource = users.Skip(1);  
+
+            studentsCombo = (ComboBox)this.FindResource("stdCombo");
+                studentsCombo.ItemsSource = userCombo;  
                 studentBox = (TextBox)this.FindResource("eleve");
 
-            if ( !combo )
+            if ( combo )
             {
                 toggleToCombo();
                
@@ -70,6 +83,13 @@ namespace Project
             {
                 toggleToBox();
                
+            }
+            if (pwdButtons.Child != null)
+            {
+                if (!pwdButtons.Child.Equals(this.FindResource("modifyPwd"))) toggleToModifyPwd();
+            }else
+            {
+                toggleToModifyPwd();
             }
             
         }
@@ -86,14 +106,15 @@ namespace Project
 
         private void Go()
         {
-           if (combo)
-            {
-                if (studentsCombo.SelectedIndex != -1) stdName = studentsCombo.SelectedItem.ToString();
-                else stdName = String.Empty;
-            }
-            else stdName = studentBox.Text; 
+            if (!modifyingPwd) { 
+                if (combo)
+                {
+                    if (studentsCombo.SelectedIndex != -1) stdName = studentsCombo.SelectedItem.ToString();
+                    else stdName = String.Empty;
+                }
+                else stdName = studentBox.Text;
 
-            if (String.IsNullOrEmpty(passwd.Password)  & String.IsNullOrEmpty(stdName.Trim()))
+            if (String.IsNullOrEmpty(passwd.Password) & String.IsNullOrEmpty(stdName.Trim()))
             {
                 if (francais) MessageBox.Show("Veuillez remplir l'un des champs!");
                 else MessageBox.Show("يرجى ملء الخانة المناسبة");
@@ -104,6 +125,7 @@ namespace Project
                 if (account())
                     symmetrica.symmetricaFrm.NavigationService.Navigate(new MainWindow(modeEns, francais, student));
             }
+        }
         }
 
         private void Fr_Click(object sender, RoutedEventArgs e)
@@ -143,39 +165,194 @@ namespace Project
             modeEns = true;
 
         }
+
+        private void modifPwd(object sender, RoutedEventArgs e)
+        {
+            pwdButtons.Child=(StackPanel) this.FindResource("confCancel");
+            pwdText.SetResourceReference(TextBlock.TextProperty, "ancPwd");
+
+            pwdText.Foreground = Brushes.Red;
+            modifyingPwd = true;
+
+            
+
+
+        }
+        private void confirmerPwd(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(passwd.Password))
+            {
+                if (ancientPwd)
+                {
+                    String[] pwd = File.ReadAllLines("Data/password.txt");
+                    if (passwd.Password == pwd[0])
+                    {
+
+
+                        pwdText.SetResourceReference(TextBlock.TextProperty, "nouvPwd");
+
+                        passwd.Clear();
+                        ancientPwd = false;
+                    }
+                    else
+                    {
+                        if (francais) MessageBox.Show("Mot de passe incorrecte!");
+                        else MessageBox.Show("! كلمة المرور خاطئة");
+
+                    }
+
+                }
+                else
+                {
+                    string[] pwd = { passwd.Password };
+                    File.WriteAllLines("Data/password.txt", pwd);
+                    toggleToModifyPwd();
+                    if (francais) MessageBox.Show("Mot de passe modifié!");
+                    else MessageBox.Show("! تم تغيير كلمة المرور");
+
+
+                }
+            }
+
+
+
+        }
+        private void annulerPwd(object sender, RoutedEventArgs e)
+        {
+
+            toggleToModifyPwd();
+
+
+
+
+        }
+
+
         private void addUser(object sender, RoutedEventArgs e)
         {
             if (userNameContainer.Children.Contains(studentBox)) toggleToCombo();
             else toggleToBox();
 
         }
+
+     
+
+        private void delUser(object sender, RoutedEventArgs e)
+        {
+            if (users.Length != 0)
+            {
+                if (stdName.Trim().Length != 0)
+                {
+
+                    if (combo)
+                    {
+                        if (studentsCombo.SelectedIndex != -1) stdName = studentsCombo.SelectedItem.ToString();
+                        else stdName = String.Empty;
+                    }
+                    else stdName = studentBox.Text;
+
+                    int i;
+                    bool contains = false;
+                    for (i = 0; i < users.Length; i++)
+                    {
+                        if (users[i].Contains(stdName.Trim()))
+                        {
+                            contains = true;
+                            break;
+                        }
+                    }
+
+
+
+                    if (!contains)
+                    {
+                        if (MainWindow.francais) MessageBox.Show("Ce compte n'existe pas");
+                        else MessageBox.Show("هذا الحساب غير موجود");
+                    }
+                    else
+                    {
+                        string mssg = francais ? "Voulez vous supprimer ce compte?" : "هل تريد حذف هذا الحساب  ؟";
+
+                        if (MessageBox.Show(mssg, "!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        {
+                            string[] tmp = users[i].Split(';');
+                            users = users.Where(w => w != users[i]).ToArray();
+                            File.WriteAllText("Data/users.txt", string.Empty);
+                            File.WriteAllLines("Data/users.txt", users);
+
+                            i = Int32.Parse(tmp[1]);
+                            updateUserCombo();
+                            studentsCombo.ItemsSource = userCombo;
+                            studentsCombo.SelectedIndex = -1;
+                            String folder = "./Data/Users/" + tmp[0] + i.ToString();
+                            try { Directory.Delete(folder, true); }
+                            catch (Exception exe)
+                            {
+                                MessageBox.Show(exe.Message);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+
         private void eleve_GotFocus(object sender, RoutedEventArgs e)
         {
             passwd.Clear();
             modeEns = false;
+            if (modifyingPwd) { toggleToModifyPwd();  }
+        }
+
+
+        private void toggleToModifyPwd()
+        {
+            pwdText.SetResourceReference(TextBlock.TextProperty, "pwd");
+
+            pwdText.Foreground = Brushes.Black;
+            ancientPwd = true;
+            modifyingPwd = false;
+            passwd.Clear();
+            pwdButtons.Child = (Button)this.FindResource("modifyPwd");
         }
 
         private void toggleToCombo()
         {
             combo = true;
-            userNameContainer.Children.Remove(studentBox);
-            userNameContainer.Children.Add ( studentsCombo);
-            Grid.SetColumn(studentsCombo,0);
-            addUserBtn.Content = this.FindResource("addUserImg");
-            addUserBtn.ToolTip= (String)ResLibre["addUserTotip"];
+            if (!userNameContainer.Children.Contains(studentsCombo))
+            {
+
+
+                userNameContainer.Children.Remove(studentBox);
+                userNameContainer.Children.Add(studentsCombo);
+                Grid.SetColumn(studentsCombo, 0);
+                addUserBtn.Content = this.FindResource("addUserImg");
+                addUserBtn.ToolTip = (String)ResLibre["addUserTotip"];
+            }
         }
         private void  toggleToBox() {
-            combo = false;
-            userNameContainer.Children.Remove(studentsCombo);
-            userNameContainer.Children.Add(studentBox);
-            Grid.SetColumn(studentBox, 0);
-            addUserBtn.Content = this.FindResource("chooseUserImg");
-            addUserBtn.ToolTip = (String)ResLibre["chooseUserTotip"];
+            if (!userNameContainer.Children.Contains(studentBox))
+            {
+                combo = false;
+                userNameContainer.Children.Remove(studentsCombo);
+                userNameContainer.Children.Add(studentBox);
+                Grid.SetColumn(studentBox, 0);
+                addUserBtn.Content = this.FindResource("chooseUserImg");
+                addUserBtn.ToolTip = (String)ResLibre["chooseUserTotip"];
+            }
 
 
         }
 
-
+        private  void updateUserCombo()
+        {
+            userCombo = users.ToList();
+            for (int i = 0; i < userCombo.Count; i++)
+            {
+                userCombo[i] = userCombo[i].Substring(0, userCombo[i].Length - 2);
+            }
+        }
 
         public Boolean account()
         {
@@ -183,23 +360,32 @@ namespace Project
             if (!modeEns)
             {
                 int i;
+                bool contains = false ;
                 for (i = 0; i < users.Length; i++)
                 {
-                    if (stdName.Trim().Equals(users[i]))
+                    if (users[i].Contains(stdName.Trim()))
                     {
+                        contains = true;
                         break;
                     }
                 }
-                if (users.Contains(stdName.Trim()))
+
+
+
+                if (contains)
                 {
 
-                   
+
+                    string [] tmp = users[i].Split(';');
+
+                    i = Int32.Parse(tmp[1]);
+
                     FileStream fs1 = new FileStream("Data/Users/" + stdName.Trim() + i.ToString() + "/data.bin", FileMode.Open);
                     BinaryReader br = new BinaryReader(fs1);
                     int cent, axe ; 
                     cent = br.ReadInt32();
                     axe = br.ReadInt32();
-                    student = new Eleve(i, stdName.Trim(), axe, cent); 
+                    student = new Eleve(Int32.Parse(tmp[1]), stdName.Trim(), axe, cent); 
                     br.Close();
                     fs1.Close();
 
@@ -211,11 +397,13 @@ namespace Project
                     if (MessageBox.Show(mssg, "!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
                         String[] usersUp = new string[users.Length + 1];
+
                         users.CopyTo(usersUp, 0);
-                        usersUp[usersUp.Length - 1] = stdName.Trim();
-                        usersUp[0] = (Int32.Parse(users[0]) + 1).ToString();
+                        usersUp[usersUp.Length - 1] = stdName.Trim()+";"+i.ToString();
+
                         File.WriteAllLines("Data/users.txt", usersUp);
                         users = usersUp;
+
 
                         student = new Eleve(i, stdName.Trim(), 0, 0);
 
@@ -233,6 +421,10 @@ namespace Project
                             fs.Close();
                             bw.Close();
                         }
+
+                        userCombo.Add(stdName.Trim());
+                        updateUserCombo();
+                        studentsCombo.ItemsSource = userCombo;
 
                     }
                     else done = false; 
