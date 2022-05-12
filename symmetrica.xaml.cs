@@ -37,6 +37,7 @@ namespace Projet2Cp
             symmetricaFrm.NavigationService.Navigate(pagechoix);
             App.ArResLibre = this.Resources.MergedDictionaries[0];
             App.FrResLibre = this.Resources.MergedDictionaries[1];
+            
 
             this.Hide();
 

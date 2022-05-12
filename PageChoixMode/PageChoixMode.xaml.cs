@@ -27,7 +27,7 @@ namespace Project
         ResourceDictionary ResLibre= App.ArResLibre;
         Eleve student;
 
-
+        public static MainWindow mainWin;
         public static string[] users =  File.ReadAllLines("Data/users.txt");
         public static List<String> userCombo ; 
 
@@ -122,8 +122,11 @@ namespace Project
             else
             {
 
-                if (account())
-                    symmetrica.symmetricaFrm.NavigationService.Navigate(new MainWindow(modeEns, francais, student));
+                    if (account())
+                    {
+                        if ( mainWin == null ) mainWin = new MainWindow(modeEns, francais, student);
+                        symmetrica.symmetricaFrm.NavigationService.Navigate(mainWin);
+                    }
             }
         }
         }
@@ -239,7 +242,7 @@ namespace Project
 
         private void delUser(object sender, RoutedEventArgs e)
         {
-            if (users.Length != 0)
+            if (users.Length != 0 && stdName!= null)
             {
                 if (stdName.Trim().Length != 0)
                 {

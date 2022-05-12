@@ -265,7 +265,7 @@
                 CornerRadius="30"
                 Background="#A2DBA1"
                 Margin="0,30,0,30"
-                Name="BorderContainer"
+                x:Name="BorderContainer"
                 >
                     <Border.Effect>
                         <DropShadowEffect ShadowDepth="1" BlurRadius="10"/>

@@ -221,7 +221,6 @@
                 <Border VerticalAlignment="Top" Width="210" Height="60" Grid.Row="1" CornerRadius="10" BorderBrush="Black" BorderThickness="2">
                     <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Margin="0,5,0,5" FontFamily="{StaticResource PoppinsSemiBold}" Text="{DynamicResource Entrer_la_bonne}" />
-                        <!--<TextBox Margin="0,5,0,5" x:Name="reponse_de_user" MaxLength="1" CharacterCasing="Upper" TextAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}" Width="40" BorderBrush="Black"/>-->
                         <StackPanel HorizontalAlignment="Center" x:Name="choices" Orientation="Horizontal">
                             <RadioButton x:Name="choA" IsChecked="True"  GroupName="answer" >
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chA}" />

@@ -65,7 +65,7 @@ namespace Projet2Cp
 
             if (modeEns) UserName.Text = francais ? "Enseignant" : "أستاذ";
             else UserName.Text = eleve.getNom();
-            MainFrame.NavigationService.Navigate(new PagesNiveaux());
+            MainFrame.NavigationService.Navigate(pageNiveaux);
 
 
             
@@ -95,18 +95,18 @@ namespace Projet2Cp
             
             MainFrame.NavigationService.Navigate(pageNiveaux);
 
-            pageNiveaux.niveau = 1;
-            PagesNiveaux.btn_niveau1_is_clicked = true;
-            PagesNiveaux.btn_niveau2_is_clicked = false;
-            PagesNiveaux.btn_niveau3_is_clicked = false;
-            pageNiveaux.BtnNiveau1.Margin = new System.Windows.Thickness(0, 0, 80, 0);
-            pageNiveaux.BtnNiveau2.Margin = new System.Windows.Thickness(0, 20, 80, 0);
-            pageNiveaux.BtnNiveau3.Margin = new System.Windows.Thickness(0, 20, 0, 0);
-            pageNiveaux.BorderContainer.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#A2DBA1");
-            pageNiveaux.BtnQuiz.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            pageNiveaux.BtnOuiNon.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            pageNiveaux.BtnTrouverLesAxes.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            pageNiveaux.BtnDessinerLeSymetr.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            //pageNiveaux.niveau = 1;
+            //PagesNiveaux.btn_niveau1_is_clicked = true;
+            //PagesNiveaux.btn_niveau2_is_clicked = false;
+            //PagesNiveaux.btn_niveau3_is_clicked = false;
+            //pageNiveaux.BtnNiveau1.Margin = new System.Windows.Thickness(0, 0, 80, 0);
+            //pageNiveaux.BtnNiveau2.Margin = new System.Windows.Thickness(0, 20, 80, 0);
+            //pageNiveaux.BtnNiveau3.Margin = new System.Windows.Thickness(0, 20, 0, 0);
+            //pageNiveaux.BorderContainer.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#A2DBA1");
+            //pageNiveaux.BtnQuiz.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            //pageNiveaux.BtnOuiNon.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            //pageNiveaux.BtnTrouverLesAxes.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
+            //pageNiveaux.BtnDessinerLeSymetr.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
 
 
            

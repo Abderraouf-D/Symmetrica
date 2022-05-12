@@ -26,17 +26,27 @@ namespace Project
         public static Boolean btn_niveau2_is_clicked = false;
         public static Boolean btn_niveau3_is_clicked = false;
         public string path;
-        public int niveau = 1; 
+        PageTrouverAxes trouvAxes=null;
+        PagePointsPrimesNiveau1 PointPrm1; 
+        PagePointsPrimesNiveau2 PointPrm2; 
+        PagePointsPrimesNiveau3 PointPrm3; 
+
+        public int niveau =1; 
 
 
         public PagesNiveaux()
         {
             InitializeComponent();
             this.Loaded += loaded;
+
+
         }
         public void loaded(Object sender ,RoutedEventArgs e)
         {
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+
+
+
 
         }
         private void ButtonAxiale_Click(object sender, RoutedEventArgs e)
@@ -159,6 +169,8 @@ namespace Project
 
         private void BtnTrouverLesAxes_Click(object sender, RoutedEventArgs e)
         {
+
+
             path = "Exercices";
             if (btn_axiale_is_clicked) path += "\\TrouverAxes";
             else path += "\\PointsPrimes";
@@ -176,26 +188,48 @@ namespace Project
                     path += "\\niveau3";
                     break;
             }
+            
+
+            
+            if (btn_axiale_is_clicked) { 
+
+                     if (trouvAxes == null) trouvAxes = new PageTrouverAxes(path);
 
 
-            if (btn_axiale_is_clicked) MainWindow.MainFrame.NavigationService.Navigate(new PageTrouverAxes(path));
-            else {
+                MainWindow.MainFrame.NavigationService.Navigate(trouvAxes); 
+            
+            
+            }
+            else
+            {
 
                 switch (niveau)
                 {
 
                     case 1:
-                        MainWindow.MainFrame.NavigationService.Navigate(new PagePointsPrimesNiveau1(path));
-                        break;
+                        {
+                            if (PointPrm1 == null) PointPrm1 = new PagePointsPrimesNiveau1(path);
+
+                            MainWindow.MainFrame.NavigationService.Navigate(PointPrm1);
+                            break;
+                        }
                     case 2:
-                        MainWindow.MainFrame.NavigationService.Navigate(new PagePointsPrimesNiveau2(path));
-                        break;
+                        {
+                            if (PointPrm2 == null) PointPrm2 = new PagePointsPrimesNiveau2(path);
+
+                            MainWindow.MainFrame.NavigationService.Navigate(PointPrm2);
+                            break;
+                        }
                     case 3:
-                        MainWindow.MainFrame.NavigationService.Navigate(new PagePointsPrimesNiveau3(path));
-                        break;
+                        {
+                            if (PointPrm3 == null) PointPrm3 = new PagePointsPrimesNiveau3(path);
+
+                            MainWindow.MainFrame.NavigationService.Navigate(PointPrm3);
+                            break;
+                        }
                 }
-                
-                    };
+
+            };
 
         }
 

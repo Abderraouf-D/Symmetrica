@@ -31,7 +31,7 @@ namespace MAINPAGE
         private bool firsttime = true;//*
         public int tempt = 0;
         public bool rtt, vrt, hrz, sz;
-        readonly string path;
+        public string path;
         public List<Line>[] line;
         public BitmapImage[] image;
         public int[] reponse;

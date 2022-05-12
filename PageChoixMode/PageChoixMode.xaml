@@ -16,15 +16,48 @@
                     <Image x:Key="addUserImg" Height="23" Width="23" Source="./Icons/add-user.png"/>
                     <Image x:Key="chooseUserImg" Height="23" Width="23" Source="./Icons/candidate.png"/>
 
-                    <Button x:Key="modifyPwd" ToolTip="{DynamicResource modifPwd}" Width="30" Margin="5,0,0,0" Height="30" Click="modifPwd" Grid.Column="1" Style="{StaticResource addBtn}" >
+
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontSize" Value="15" />
+                        <Setter Property="SnapsToDevicePixels" Value="True" />
+
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="{TemplateBinding Background}">
+                                        <Grid>
+
+                                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                                        </Grid>
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFCC00" />
+
+                                        </Trigger>
+
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+
+                    <Button x:Key="modifyPwd" ToolTip="{DynamicResource modifPwd}" Width="30" Margin="5,0,0,0" Height="30" Click="modifPwd" Grid.Column="1"  >
                         <Image Source="images/gear.png" Width="25" Height="25" />
                     </Button>
                     <StackPanel x:Key="confCancel" Orientation="Horizontal" HorizontalAlignment="Center">
 
-                        <Button IsDefault="True" x:Name="confirmPwd" ToolTip="{DynamicResource confirmStr}" Width="30" Margin="5,0,0,0" Height="30" Click="confirmerPwd" Grid.Column="1" Style="{StaticResource addBtn}" >
+                        <Button IsDefault="True" x:Name="confirmPwd" ToolTip="{DynamicResource confirmStr}" Width="30" Margin="5,0,0,0" Height="30" Click="confirmerPwd" Grid.Column="1"  >
                             <Image Source="Icons/check.png" Width="25" Height="25" />
                         </Button>
-                        <Button x:Name="annPwd" ToolTip="{DynamicResource annulStr}" Width="30" Margin="5,0,0,0" Height="30" Click="annulerPwd" Grid.Column="1" Style="{StaticResource addBtn}" >
+                        <Button x:Name="annPwd" ToolTip="{DynamicResource annulStr}" Width="30" Margin="5,0,0,0" Height="30" Click="annulerPwd" Grid.Column="1"  >
                             <Image Source="Icons/cancel.png" Width="25" Height="25" />
                         </Button>
                     </StackPanel>
@@ -118,8 +151,8 @@
                     </Border>
                     <TextBlock Margin="0,7,0,0" Text="{DynamicResource userName}" HorizontalAlignment="Center" FontFamily="{StaticResource PoppinsSemiBold}"/>
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="addUserBtn"  Width="30" Margin="5,0,0,0" Height="30" Click="addUser" Grid.Column="1" Style="{StaticResource addBtn}" />
-                        <Button ToolTip="{DynamicResource delUserTip}"  x:Name="delUserBtn" Width="30" Margin="5,0,0,0" Height="30" Click="delUser" Grid.Column="1" Style="{StaticResource addBtn}" >
+                        <Button x:Name="addUserBtn"  Width="30" Margin="5,0,0,0" Height="30" Click="addUser" Grid.Column="1"  />
+                        <Button ToolTip="{DynamicResource delUserTip}"  x:Name="delUserBtn" Width="30" Margin="5,0,0,0" Height="30" Click="delUser" Grid.Column="1"  >
                             <Image Height="23" Width="23" Source="Icons/remUser.png"/>
                         </Button>
                     </StackPanel>

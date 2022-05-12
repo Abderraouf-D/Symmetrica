@@ -15,7 +15,8 @@
         </Grid.RowDefinitions>
         <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="Icons\Group 21.png" Height="90"  Width="90" Margin="46,0,0,0" />
 
-        <Viewbox Grid.Row="0" x:Name="ViewBoxContainer" Stretch="Uniform"  Panel.ZIndex="-1">            <Grid x:Name="GridPrimaire">
+        <Viewbox Margin="0,50,0,0" Grid.Row="0"  x:Name="ViewBoxContainer" Stretch="Uniform"  Panel.ZIndex="-1">           
+            <Grid x:Name="GridPrimaire">
                 <Grid x:Name="GridSecondaire" Background="White" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
