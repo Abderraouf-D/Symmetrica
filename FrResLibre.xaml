@@ -57,8 +57,9 @@
     <sys:String  x:Key="ancPwd">Ancient mot de passe</sys:String>
     <sys:String  x:Key="nouvPwd">Nouveau mot de passe</sys:String>
     <sys:String  x:Key="modifPwd">Modifier le mot de passe</sys:String>
-    
-        <!-- **************************************************************************************************************  -->
+    <sys:String  x:Key="logo">Page d'acceuil</sys:String>
+
+    <!-- **************************************************************************************************************  -->
 
     <!-- Strings tae Dock + Menu-->
     <sys:String  x:Key="cours">Cours</sys:String>

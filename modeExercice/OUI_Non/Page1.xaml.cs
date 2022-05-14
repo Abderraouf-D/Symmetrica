@@ -203,7 +203,7 @@ namespace OUI_Non
                             btnretry.Visibility = Visibility.Visible;
                             if (langue == 0)
                                 retry_txt.Text = "Bravo!";
-                            else retry_txt.Text = "أحسنت!"; 
+                            else retry_txt.Text = "! أحسنت"; 
                             btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                             Border.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                            
@@ -298,6 +298,13 @@ namespace OUI_Non
         private void Button_suiv_Click(object sender, RoutedEventArgs e)
         {        
             if (i < 2)   i++;
+            if (btnretry.Visibility == Visibility.Visible) { 
+                btnretry.Visibility = Visibility.Hidden;
+                Border.Background = (Brush)(new BrushConverter().ConvertFrom("#A2DBA1"));
+                ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+                nonbtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+
+            }
             Imageselector();
            
         }
@@ -306,6 +313,14 @@ namespace OUI_Non
         private void Button_prece_Click(object sender, RoutedEventArgs e)
         {            
             if (i >= 0) i--;
+            if (btnretry.Visibility == Visibility.Visible)
+            {
+                btnretry.Visibility = Visibility.Hidden;
+                Border.Background = (Brush)(new BrushConverter().ConvertFrom("#A2DBA1"));
+                ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+                nonbtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+
+            }
             Imageselector();
         }
 

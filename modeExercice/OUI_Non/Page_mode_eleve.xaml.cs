@@ -30,7 +30,7 @@ namespace OUI_Non
         private string path_images;
         private string path_answers;
         private string path_folder;
-        
+        private int langue; 
 
         public Page_mode_eleve()
         {
@@ -46,7 +46,7 @@ namespace OUI_Non
             this.path_folder = path;
             Read_answers();
             Imageselector();
-
+            langue = j; 
         }
 
 
@@ -170,8 +170,7 @@ namespace OUI_Non
         {
 
             Read_answers();
-            //suivbtn.IsEnabled = false;
-            //prebtn.IsEnabled = false;
+            
 
 
             if (btnretry.Visibility == Visibility.Hidden)
@@ -182,7 +181,8 @@ namespace OUI_Non
 
 
 
-                if (answers[i].Equals("OUI", StringComparison.OrdinalIgnoreCase))
+                if (answers[i].Equals("OUI", StringComparison.OrdinalIgnoreCase) || answers[i].Equals("نعم", StringComparison.OrdinalIgnoreCase))
+
                 {
                     if (i < 2) i++;
                     btnretry.Visibility = Visibility.Visible;
@@ -195,7 +195,10 @@ namespace OUI_Non
                 }
                 else
                 {
-                    retry_txt.Text = "Ressayer";
+                    if (langue == 0)
+                        retry_txt.Text = "Réessayer";
+                    else
+                        retry_txt.Text = "اعد المحاولة";
                     btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#EC3D3D"));
                     Border.Background = (Brush)(new BrushConverter().ConvertFrom("#DFEC3D3D"));
                     ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#EE2E2E"));
@@ -219,26 +222,31 @@ namespace OUI_Non
         private void Btn_non(object sender, RoutedEventArgs e)
         {
             Read_answers();
-            //suivbtn.IsEnabled = false;
-            //prebtn.IsEnabled = false;
+            
             if (btnretry.Visibility == Visibility.Hidden)
             {
 
                 // on definit ce qui se passe qui on click sur btn oui reponse vraie donc incremenation de value de prgbar et affichage de prochaine image
                 // si la reponse est fausse on affiche le btn ressayer + changement de couleur (background..ect)
 
-                if (answers[i].Equals("NON", StringComparison.OrdinalIgnoreCase))
+                if (answers[i].Equals("NON", StringComparison.OrdinalIgnoreCase) || answers[i].Equals("لا", StringComparison.OrdinalIgnoreCase))
+
                 {
                     if (i < 2) i++;
                     btnretry.Visibility = Visibility.Visible;
-                    retry_txt.Text = "Bravo!";
+                    if (langue == 0)
+                        retry_txt.Text = "Bravo!";
+                    else retry_txt.Text = "! أحسنت";
                     btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                     Border.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
 
                 }
                 else
                 {
-                    retry_txt.Text = "Ressayer";
+                    if (langue == 0)
+                        retry_txt.Text = "Réessayer";
+                    else
+                        retry_txt.Text = "اعد المحاولة";
                     btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#EC3D3D"));
                     Border.Background = (Brush)(new BrushConverter().ConvertFrom("#DFEC3D3D"));
                     ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#EE2E2E"));
@@ -254,7 +262,7 @@ namespace OUI_Non
 
         private void Btnretry_Click(object sender, RoutedEventArgs e)
         {
-            if (retry_txt.Text == "Bravo!")
+            if (retry_txt.Text == "Bravo!" || retry_txt.Text == "! أحسنت")
             {
                 Imageselector();
 
@@ -274,10 +282,16 @@ namespace OUI_Non
         {
 
             if (i < 2) i++;
+            if (btnretry.Visibility == Visibility.Visible)
+            {
+                btnretry.Visibility = Visibility.Hidden;
+                Border.Background = (Brush)(new BrushConverter().ConvertFrom("#A2DBA1"));
+                ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+                nonbtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
 
+            }
             Imageselector();
-            //ouibtn.IsEnabled = false;
-            //nonbtn.IsEnabled = false;
+            
         }
 
 
@@ -285,7 +299,14 @@ namespace OUI_Non
         {
 
             if (i >= 0) i--;
+            if (btnretry.Visibility == Visibility.Visible)
+            {
+                btnretry.Visibility = Visibility.Hidden;
+                Border.Background = (Brush)(new BrushConverter().ConvertFrom("#A2DBA1"));
+                ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+                nonbtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
 
+            }
             Imageselector();
            
 

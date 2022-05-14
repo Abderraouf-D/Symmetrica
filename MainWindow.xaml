@@ -129,7 +129,7 @@
                             <MenuItem.Icon>
 
                                 <Image 
-                                Source="./Acceuil/question (1).png" Height="25" Width="25" Stretch="Uniform"
+                                Source="./Acceuil/question (1).png" Height="15" Width="15" Stretch="Uniform"
                                 />
 
                             </MenuItem.Icon>
@@ -149,7 +149,7 @@
                 <RowDefinition Height="2.2*"/>
                 <RowDefinition Height="2.2*"/>
             </Grid.RowDefinitions>
-            <Border x:Name="logo" MouseLeftButtonDown="logo_MouseLeftButtonDown" Cursor="Hand" Background="#1CB81C" Grid.Row="0" CornerRadius="7" BorderThickness="2,1,2,2" BorderBrush="Black"  Width="Auto" >
+            <Border ToolTip="{DynamicResource logo}" x:Name="logo" MouseLeftButtonDown="logo_MouseLeftButtonDown" Cursor="Hand" Background="#1CB81C" Grid.Row="0" CornerRadius="7" BorderThickness="2,1,2,2" BorderBrush="Black"  Width="Auto" >
                 
                     <StackPanel  Orientation="Horizontal"   >
                     <Border CornerRadius="0,15,0,15" Panel.ZIndex="-1" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="50" BorderThickness="0" Background="White">

@@ -124,7 +124,7 @@ namespace Projet2Cp
 
 
 
-                tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
+                tb.Text = (String)MainWindow.ResLibre["instructionElev"] + " " + ((toolBarEnseignant)TB).vld.Text ;
 
                 
 
