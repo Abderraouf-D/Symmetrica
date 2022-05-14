@@ -56,7 +56,7 @@ namespace Project
             ButtonAxiale.Style = (Style)Application.Current.FindResource("ButtonAxial");
             ButtonAxiale.Foreground = Brushes.White;
             ButtonCentrale.Style = (Style)Application.Current.FindResource("ButtonCentral");
-            ButtonCentrale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#009400");
+            ButtonCentrale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#3fde0b");
             trouverHaja.Text =MainWindow.francais? "Trouver les axes" : "أجد المحاور";
         }
 
@@ -66,7 +66,7 @@ namespace Project
             btn_axiale_is_clicked = false;
 
             ButtonAxiale.Style = (Style)Application.Current.FindResource("ButtonCentral");
-            ButtonAxiale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#009400"); 
+            ButtonAxiale.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#3fde0b"); 
             ButtonCentrale.Style = (Style)Application.Current.FindResource("ButtonAxial");
             ButtonCentrale.Foreground = Brushes.White;
             trouverHaja.Text = MainWindow.francais ? "Points primes": "نظير النقطة";

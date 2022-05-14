@@ -361,7 +361,7 @@
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="BorderOne"
                             CornerRadius="{TemplateBinding Border.CornerRadius}" 
-                            Background="#1CB81C" 
+                            Background="#3fde0b" 
                             BorderBrush="Black" 
                             BorderThickness="2,2,2,2" >
                         <ContentPresenter 

@@ -47,11 +47,9 @@ namespace Projet2Cp
             MainFrame = new FaderFrame();
             myDock.Children.Add(MainFrame);
           
-            if (francais) ResLibre = App.FrResLibre;
-            else ResLibre = App.ArResLibre;
+           
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             
-            this.Resources.MergedDictionaries.Add(ResLibre);
 
 
 
@@ -96,19 +94,7 @@ namespace Projet2Cp
             
             MainFrame.NavigationService.Navigate(pageNiveaux);
 
-            //pageNiveaux.niveau = 1;
-            //PagesNiveaux.btn_niveau1_is_clicked = true;
-            //PagesNiveaux.btn_niveau2_is_clicked = false;
-            //PagesNiveaux.btn_niveau3_is_clicked = false;
-            //pageNiveaux.BtnNiveau1.Margin = new System.Windows.Thickness(0, 0, 80, 0);
-            //pageNiveaux.BtnNiveau2.Margin = new System.Windows.Thickness(0, 20, 80, 0);
-            //pageNiveaux.BtnNiveau3.Margin = new System.Windows.Thickness(0, 20, 0, 0);
-            //pageNiveaux.BorderContainer.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#A2DBA1");
-            //pageNiveaux.BtnQuiz.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            //pageNiveaux.BtnOuiNon.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            //pageNiveaux.BtnTrouverLesAxes.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-            //pageNiveaux.BtnDessinerLeSymetr.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#82AF81");
-
+            
 
            
 
@@ -134,6 +120,14 @@ namespace Projet2Cp
 
 
 
+        }
+
+        private void loaded (Object sender , RoutedEventArgs e)
+        {
+            if (francais) ResLibre = App.FrResLibre;
+            else ResLibre = App.ArResLibre;
+            this.Resources.MergedDictionaries.Add(ResLibre);
+            francais = PageChoixMode.francais;
         }
 
         private void logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

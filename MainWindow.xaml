@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet2Cp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        >
+         Loaded="loaded">
     <Page.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent" />
@@ -40,7 +40,7 @@
             </Setter>
         </Style>
         <Style x:Key="Dock" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#1CB81C" />
+            <Setter Property="Background" Value="#3fde0b" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -141,7 +141,7 @@
         </Grid>
             </Border>
         
-            <Grid Width="150"  DockPanel.Dock="Left" Grid.Column="0" Grid.Row="1">
+            <Grid Width="150"  DockPanel.Dock="Left" Grid.Column="0" Grid.Row="1" >
             <Grid.RowDefinitions>
                 <RowDefinition  Height="60"/>
 
@@ -149,7 +149,7 @@
                 <RowDefinition Height="2.2*"/>
                 <RowDefinition Height="2.2*"/>
             </Grid.RowDefinitions>
-            <Border ToolTip="{DynamicResource logo}" x:Name="logo" MouseLeftButtonDown="logo_MouseLeftButtonDown" Cursor="Hand" Background="#1CB81C" Grid.Row="0" CornerRadius="7" BorderThickness="2,1,2,2" BorderBrush="Black"  Width="Auto" >
+            <Border ToolTip="{DynamicResource logo}" Background="#3fde0b" x:Name="logo" MouseLeftButtonDown="logo_MouseLeftButtonDown" Cursor="Hand"  Grid.Row="0" CornerRadius="7" BorderThickness="2,1,2,2" BorderBrush="Black"  Width="Auto" >
                 
                     <StackPanel  Orientation="Horizontal"   >
                     <Border CornerRadius="0,15,0,15" Panel.ZIndex="-1" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50" Width="50" BorderThickness="0" Background="White">
@@ -173,7 +173,7 @@
 
 
 
-            <Button Cursor="Hand" Style="{StaticResource Dock}" Background="#1CB81C" Height="Auto" Grid.Row="1" Click="ButtonClickCours" ClickMode="Press" >
+            <Button Cursor="Hand" Style="{StaticResource Dock}"  Height="Auto" Grid.Row="1" Click="ButtonClickCours" ClickMode="Press" >
 
                 
                     <StackPanel>
@@ -190,7 +190,7 @@
 
 
 
-            <Button Cursor="Hand" Style="{StaticResource Dock}" x:Name="ButtonExo"  Background="#1CB81C" Click="ButtonClickExo" ClickMode="Press"  Height="Auto" Grid.Row="2">
+            <Button Cursor="Hand" Style="{StaticResource Dock}" x:Name="ButtonExo"   Click="ButtonClickExo" ClickMode="Press"  Height="Auto" Grid.Row="2">
                
                     <StackPanel >
                         <Image Stretch="Uniform" x:Name="ExoImg" Source="./Acceuil/Exercices.png" Width="100" Height="100"/>
@@ -204,7 +204,7 @@
             </Button>
 
 
-            <Button Cursor="Hand" Style="{StaticResource Dock}" Background="#1CB81C" Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
+            <Button Cursor="Hand" Style="{StaticResource Dock}"  Grid.Row="3" Click="ButtonClickLibre" ClickMode="Press" >
                 
                     <StackPanel >
                         <Image x:Name="LibreImg" Source="./Acceuil/Libre.png" Margin="1" Width="100" Height="100"/>

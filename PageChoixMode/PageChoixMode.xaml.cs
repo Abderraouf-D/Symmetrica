@@ -19,7 +19,7 @@ namespace Project
     
     public partial class PageChoixMode : Page
     {
-        bool francais = false;
+        public static bool francais = false;
         bool modeEns;
 
         bool ancientPwd = true, modifyingPwd = false; 
