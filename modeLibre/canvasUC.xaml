@@ -7,22 +7,22 @@
   
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-   
 
-    
+
+
 
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./Styles.xaml"/>
-                
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
+
     </UserControl.Resources>
     <Grid>
         <Border x:Name="cnvBorder" Background="White">
-        <Canvas x:Name="canvas"
+            <Canvas x:Name="canvas"
                 
                 
                 MouseLeftButtonDown="canvas_MouseLeftButtonDown"
@@ -40,8 +40,8 @@
                                     Storyboard.TargetName="message" 
                                     Storyboard.TargetProperty="(TextBlock.Opacity)"
                                     From="1.0" To="0.0" Duration="0:0:1" 
-                                    AutoReverse="True" RepeatBehavior="Forever" />  
-                                </Storyboard>   
+                                    AutoReverse="True" RepeatBehavior="Forever" />
+                                </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                     </TextBlock.Triggers>
@@ -50,8 +50,8 @@
 
             </Canvas>
         </Border>
-        <StackPanel Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left"  Height="50" Width="150" Panel.ZIndex="100"  Orientation="Horizontal" >
-            
+        <StackPanel Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"  Height="50" Width="186" Panel.ZIndex="100"  Orientation="Horizontal" >
+
             <Button Cursor="Arrow" Click="save_Click" ToolTip="{DynamicResource save}" Margin="5,0,0,0"     Width="40" Height="40" x:Name="save" >
                 <Image Margin="2" Source="./icons/floppy-disk.png" />
             </Button>
@@ -60,6 +60,9 @@
             </Button>
             <Button Cursor="Arrow" Click="exportPng_Click"  ToolTip="{DynamicResource exportPng}" Margin="5,0,0,0"     Width="40" Height="40" x:Name="exportPng" >
                 <Image Margin="2" Source="./icons/export-file.png" />
+            </Button>
+            <Button Cursor="Arrow" Click="showGrid_Click"  ToolTip="{DynamicResource showGrid}" Margin="5,5,0,5"     Width="40" Height="40" x:Name="exportPng_Copy" >
+                <Image Margin="2" Source="./icons/grid.png" />
             </Button>
         </StackPanel>
     </Grid>

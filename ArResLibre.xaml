@@ -45,6 +45,7 @@
     <sys:String  x:Key="nbCoteStr">عدد الأضلاع</sys:String>
     <sys:String  x:Key="repereWarn">يرجى اختيار  مرجع التناظر المراد </sys:String>
     <sys:String  x:Key="choisirDoss">يرجى اختيار الملف</sys:String>
+    <sys:String  x:Key="showGrid">اظهار/اخفاءالمعلم</sys:String>
 
     <!-- **************************************************************************************************************  -->
 

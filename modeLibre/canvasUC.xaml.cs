@@ -17,19 +17,19 @@ using System.Windows.Shapes;
 using static Projet2Cp.Utili;
 using Ookii;
 using Ookii.Dialogs.Wpf;
-
+using Project;
 namespace Projet2Cp
 {
 
     public partial class canvasUC : UserControl
     {
 
-        private string exoPath = @".\Exercices\DessinerSym\shapesExo.txt";
+        private string exoPath;
 
         private List<ShapePair> shapePairs { get; set; } //represents the pairs of shapes
         private Point mousePosition; //mouse position in canvas
         private Point actualPoint;//actual point to draw in 
-        
+        private bool gridClick = false; 
         public static double step = 25; // the step of the grid 
         public PointCollection shapepc; // the current shape being drawn  , and a holder for his symetrix 
         private ShapePair currentShapePair;
@@ -101,7 +101,6 @@ namespace Projet2Cp
             this.Resources.MergedDictionaries.Add( MainWindow.ResLibre);
 
             canvas.Children.Remove(message);
-            dessinsModeExo = chargerDessins(exoPath);
             this.TB = TB;
             if (MainWindow.modeLibre)
             {
@@ -116,15 +115,13 @@ namespace Projet2Cp
                 upload.Visibility=Visibility.Collapsed;
                 save.Visibility=Visibility.Collapsed;
                 
-
-
                 ((toolBarEnseignant)TB).ensStack.Visibility=Visibility.Collapsed;
                 tb = new TextBlock();
 
 
 
 
-                tb.Text = (String)MainWindow.ResLibre["instructionElev"] + " " + ((toolBarEnseignant)TB).vld.Text ;
+                tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
 
                 
 
@@ -221,7 +218,7 @@ namespace Projet2Cp
         {
             Point oldCenter = new Point(e.PreviousSize.Width * 0.5, e.PreviousSize.Height * 0.5);
             Point newCenter = new Point(canvas.ActualWidth * 0.5, canvas.ActualHeight * 0.5);
-            gridDrawing(step);
+                gridDrawing(step);
             bool sym = false; 
             for (int i = 0; i < shapePairs.Count; i++)
             {
@@ -242,6 +239,10 @@ namespace Projet2Cp
         //==========================================================================================================//
         void load(object sender, RoutedEventArgs e)
         {
+            if ( PagesNiveaux.btn_axiale_is_clicked) exoPath = @".\Exercices\DessinerSym\shapesExoAxiale.txt";
+            else exoPath = @".\Exercices\DessinerSym\shapesExoCentrale.txt";
+            dessinsModeExo = chargerDessins(exoPath);
+
             gridDrawing(step);
             if (!MainWindow.modeLibre) dessinerDessinNum(niv.Selected());
         }
@@ -330,6 +331,7 @@ namespace Projet2Cp
             if (step * alpha > 50 || step * alpha < 15)
                 return;
             step *= alpha;
+
             gridDrawing(step);
             PointCollection pc = polyline.Points; //originPointCollection
             Point paz;
@@ -389,7 +391,13 @@ namespace Projet2Cp
                 }
 
 
-                if (MainWindow.modeLibre) shapePairs[i].jointLinesGen();
+                if (MainWindow.modeLibre)
+                {
+                    if (!MainWindow.modeEns)
+                    {
+                        shapePairs[i].jointLinesGen();
+                    }
+                }
                 else
                 {
                     if (shapePairs[0].sym != null)
@@ -397,6 +405,7 @@ namespace Projet2Cp
                         if ((shapePairs[0].sym.Visibility == Visibility.Visible)) shapePairs[0].jointLinesGen();
                     }
                 }
+                
             }
         }
         //=======================================================================================================//
@@ -424,13 +433,18 @@ namespace Projet2Cp
                 DashStyle = new DashStyle()
                 {
                     Dashes = { 5, 3 }
-                },
-
-                Brush = Brushes.Black,
+                },                
                 Thickness = 1,
                 DashCap = PenLineCap.Flat,
             };
-
+            if (!gridClick)
+            {
+                GD.Pen.Brush = Brushes.Black;
+            }
+            else
+            {
+                GD.Pen.Brush = Brushes.Transparent;
+            }
             GD.Geometry = GG;
             res.Drawing = GD;
             canvas.Background = res;
@@ -449,12 +463,18 @@ namespace Projet2Cp
              while(marche < canvas.ActualWidth)
             {
                 num = new TextBlock()
-                {
-                    Foreground = Brushes.Green,
+                {                    
                     IsHitTestVisible = false,
 
                 };
-                
+                if (!gridClick)
+                {
+                    num.Foreground = Brushes.Green;
+                }
+                else
+                {
+                    num.Foreground = Brushes.Transparent;
+                }
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
                 Panel.SetZIndex(num, -10);
@@ -472,12 +492,19 @@ namespace Projet2Cp
             while (marche > 0)
             {
                 num = new TextBlock()
-                {
-                    Foreground = Brushes.Green,
+                {                    
                     IsHitTestVisible = false,
 
 
                 };
+                if (!gridClick)
+                {
+                    num.Foreground = Brushes.Green;
+                }
+                else
+                {
+                    num.Foreground = Brushes.Transparent;
+                }
                 marche -= step;
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
@@ -496,11 +523,18 @@ namespace Projet2Cp
             {
                 num = new TextBlock()
                 {
-                    IsHitTestVisible = false,
-                    Foreground = Brushes.Green,
+                    IsHitTestVisible = false,                    
                     
 
                 };
+                if (!gridClick)
+                {
+                    num.Foreground = Brushes.Green;
+                }
+                else
+                {
+                    num.Foreground = Brushes.Transparent;
+                }
                 marche += step;
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
@@ -521,10 +555,17 @@ namespace Projet2Cp
                 num = new TextBlock()
                 {
                     
-                    IsHitTestVisible = false,
-                    Foreground = Brushes.Green,
+                    IsHitTestVisible = false,                    
                     
                 };
+                if (!gridClick)
+                {
+                    num.Foreground = Brushes.Green;
+                }
+                else
+                {
+                    num.Foreground = Brushes.Transparent;
+                }
                 marche -= step;
                 num.Text = i.ToString();
                 canvas.Children.Add(num);
@@ -537,6 +578,7 @@ namespace Projet2Cp
                 nums.Add(num);
 
             }
+            
             
         }
 
@@ -1831,7 +1873,7 @@ namespace Projet2Cp
 
 
 
-        //////////////////////////////////////////////// save & Upload //////////////////////////////
+        //////////////////////////////////////////////// save & Upload ///////////////////
 
         public void ExportToPng(Uri path, Canvas surface)
         {
@@ -1863,23 +1905,20 @@ namespace Projet2Cp
                 // save the data to the stream
                 encoder.Save(outStream);
             }
-
-            if (MainWindow.francais) MessageBox.Show(String.Format("Sauvgardé dans {0}", path.ToString())); 
-            else MessageBox.Show(String.Format("{0} حفظ في ", path.ToString()));
+            
+         
         }
 
 
 
         private void exportPng_Click(object sender, RoutedEventArgs e)
         {
-            string path="";
+            string path;
             string fileDrawing=""; 
             
                 int i = 0;
-            path = ShowFolderBrowserDialog();
-            if (String.IsNullOrEmpty(path)) path = Directory.GetCurrentDirectory();
-
-         fileDrawing = path + "/MonDessinImage" + i.ToString() + ".png";
+                path = ShowFolderBrowserDialog();
+            fileDrawing = path + "/MonDessinImage" + i.ToString() + ".png";
 
             while (File.Exists(fileDrawing))
                 {
@@ -1890,6 +1929,11 @@ namespace Projet2Cp
 
         }
 
+        private void showGrid_Click(object sender, RoutedEventArgs e)
+        {
+            gridClick = !gridClick;
+            gridDrawing(step);            
+        }
 
         private void save_Click(object sender, RoutedEventArgs e)
         {

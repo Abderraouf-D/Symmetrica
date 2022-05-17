@@ -788,6 +788,7 @@
     <Resource Include="modeExercice\OUI_Non\Icons\right arrow.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="modeLibre\icons\grid.png" />
     <Resource Include="PageChoixMode\Icons\cancel.png" />
     <Resource Include="PageChoixMode\Icons\check.png" />
     <Resource Include="PageChoixMode\Icons\remUser.png" />
@@ -926,7 +927,6 @@
     <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\line2.txt" />
     <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\line3.txt" />
     <Resource Include="bin\Debug\Exercices\TrouverAxes\niveau3\reponses.txt" />
-    <Resource Include="bin\Debug\Exercices\DessinerSym\shapesExo.txt" />
     <Content Include="bin\Debug\ModeCours\videos\etape1.mp4" />
     <Content Include="bin\Debug\ModeCours\videos\etape1Cen.mp4" />
     <Content Include="bin\Debug\ModeCours\videos\etape2.mp4" />

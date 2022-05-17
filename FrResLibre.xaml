@@ -39,6 +39,9 @@
     <sys:String  x:Key="nbCoteStr">Nombre de côtés</sys:String>
     <sys:String  x:Key="repereWarn">Veuillez sélectionner un repère de symetrie !</sys:String>
     <sys:String  x:Key="choisirDoss">Veuillez Choisir un dossier</sys:String>
+    <sys:String  x:Key="showGrid">Afficher/Cacher la grille</sys:String>
+
+
     <!-- **************************************************************************************************************  -->
 	
     

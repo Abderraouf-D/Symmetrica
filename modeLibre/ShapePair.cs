@@ -78,7 +78,8 @@ namespace Projet2Cp
             for (int i = 0; i < shapepc.Count; i++)
                 shapepc[i] += opo;
             drawEllipses(false);
-            jointLinesGen();
+            if (!MainWindow.modeEns)
+                jointLinesGen();
         }
         //============================================================================================================================//
         //                                                  JOINT_LINES_GEN                                                           //
@@ -210,7 +211,7 @@ namespace Projet2Cp
 
 
             }
-
+            if(!MainWindow.modeEns)
             jointLinesGen();
 
 
@@ -223,11 +224,12 @@ namespace Projet2Cp
         private void drawEllipses(bool isOrigin) //draws the ellipseCollection of either origin or sym on canvas
         {
             PointCollection shapepc;
-
+            
             if (isOrigin)
             {
                 for (int i = 0; i < oEllipse.Count; i++)
                 {
+
                     canvas.Children.Remove(oEllipse[i]);
                     canvas.Children.Remove(otb[i]);
                 }
@@ -251,8 +253,9 @@ namespace Projet2Cp
                 }
 
                 sEllipse = new List<Ellipse>();
+                if(!MainWindow.modeEns)
                 stb = new List<TextBlock>();
-
+                         
                 if (sym is Polygon)
                     shapepc = ((Polygon)sym).Points;
                 else
@@ -264,6 +267,8 @@ namespace Projet2Cp
 
             Ellipse ellipse;
             TextBlock tb;
+            Random despacito = new Random();
+            List<int> characterCode = new List<int>();
             for (int i = 0; i < shapepc.Count; i++)
             {
                 ellipse = new Ellipse()
@@ -297,9 +302,42 @@ namespace Projet2Cp
                 }
                 else
                 {
-                    tb.Text += "'";
+                    
+                    if (!MainWindow.modeEns || otb.Count > 13)
+                    {
+                        tb.Text += "'";
+                        if (stb.Count != otb.Count)
+                        {
+                            stb.Add(tb);                            
+                        }
+                        else
+                        {
+                            stb[i] = tb;
+                        }
+                    }
+                    else
+                    {                        
+                        if (stb.Count != otb.Count)
+                        {
+                            int a = despacito.Next(1, 27 - otb.Count);
+                            while (characterCode.Contains(a))
+                            {
+                                a = despacito.Next(1, 27 - otb.Count);
+                            }
+                            tb.Text = char.ToString(Convert.ToChar(Convert.ToChar(otb[otb.Count - 1].Text) + a));
+                            stb.Add(tb);
+                            characterCode.Add(a);
+                        }
+                        else
+                        {
+                            tb.Text = stb[i].Text;
+                            stb[i] = tb;
+
+                        }
+
+                    }
+
                     sEllipse.Add(ellipse);
-                    stb.Add(tb);
                 }
 
                 canvas.Children.Add(ellipse);
@@ -428,7 +466,7 @@ namespace Projet2Cp
                 drawEllipses((revTrans == origin));
 
             }
-
+            if(!MainWindow.modeEns)
             jointLinesGen();
         }
 
@@ -511,7 +549,7 @@ namespace Projet2Cp
                 drawEllipses((revTrans == origin));
 
             }
-
+            if(!MainWindow.modeEns)
             jointLinesGen();
         }
 
@@ -577,7 +615,7 @@ namespace Projet2Cp
                 sym = newer;
                 drawEllipses(false);
             }
-
+            if(!MainWindow.modeEns)
             jointLinesGen();
         }
 
@@ -638,7 +676,7 @@ namespace Projet2Cp
                 sym = newer;
                 drawEllipses(false);
             }
-
+            if(!MainWindow.modeEns)
             jointLinesGen();
 
         }
