@@ -199,7 +199,7 @@ namespace OUI_Non
 
                         if (answers[i].Equals("OUI", StringComparison.OrdinalIgnoreCase) || answers[i].Equals("نعم", StringComparison.OrdinalIgnoreCase))
                         {
-                            if(i<2)      i++;
+                           
                             btnretry.Visibility = Visibility.Visible;
                             if (langue == 0)
                                 retry_txt.Text = "Bravo!";
@@ -248,12 +248,12 @@ namespace OUI_Non
                 
                         if (answers[i].Equals("NON", StringComparison.OrdinalIgnoreCase) || answers[i].Equals("لا", StringComparison.OrdinalIgnoreCase))
                         {
-                             if (i < 2) i++;
+                            
                             btnretry.Visibility = Visibility.Visible;
                         if (langue == 0)
                             retry_txt.Text = "Bravo!";
                         else retry_txt.Text = "! أحسنت"  ;
-                    btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
+                                btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                             Border.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                             
                 }
@@ -279,16 +279,21 @@ namespace OUI_Non
 
         private void Btnretry_Click(object sender, RoutedEventArgs e)
         {
-            if(retry_txt.Text == "Bravo!" ||  retry_txt.Text == "! أحسنت")
+            if (retry_txt.Text == "Bravo!" || retry_txt.Text == "! أحسنت")
             {
-                Imageselector();
 
-            }        
+
+            }
+            else
+            {
+
                 btnretry.Visibility = Visibility.Hidden;
                 Border.Background = (Brush)(new BrushConverter().ConvertFrom("#A2DBA1"));
                 ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
                 nonbtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
            
+
+            }
           
 
 
@@ -312,7 +317,7 @@ namespace OUI_Non
 
         private void Button_prece_Click(object sender, RoutedEventArgs e)
         {            
-            if (i >= 0) i--;
+            if (i > 0) i--;
             if (btnretry.Visibility == Visibility.Visible)
             {
                 btnretry.Visibility = Visibility.Hidden;
