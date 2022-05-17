@@ -125,6 +125,7 @@ namespace Project
                     if (account())
                     {
                         if ( mainWin == null ) mainWin = new MainWindow(modeEns, francais, student);
+                        MainWindow.eleve = student;
                         symmetrica.symmetricaFrm.NavigationService.Navigate(mainWin);
                     }
             }
@@ -133,7 +134,9 @@ namespace Project
 
         private void Fr_Click(object sender, RoutedEventArgs e)
         {
-            francais = true;
+            if (mainWin != null) MainWindow.francais = francais = true;
+            else francais = true;
+
             Fr.Style = (Style)Application.Current.FindResource("ButtonCentralJaune");
      
             Ar.Style = (Style)Application.Current.FindResource("ButtonCentral");
@@ -148,7 +151,10 @@ namespace Project
         }
         private void Ar_Click(object sender, RoutedEventArgs e)
         {
-            francais = false;
+
+            if (mainWin != null) MainWindow.francais = francais = false;
+
+            else francais = false;
             Ar.Style = (Style)Application.Current.FindResource("ButtonCentralJaune");
 
             Fr.Style = (Style)Application.Current.FindResource("ButtonCentral");
@@ -165,7 +171,8 @@ namespace Project
         {
             studentBox.Clear();
             studentsCombo.SelectedValue = -1;
-            modeEns = true;
+            if (mainWin != null) MainWindow.modeEns = modeEns = true;
+            else modeEns = true;
 
         }
 
@@ -242,6 +249,12 @@ namespace Project
 
         private void delUser(object sender, RoutedEventArgs e)
         {
+            if (combo)
+            {
+                if (studentsCombo.SelectedIndex != -1) stdName = studentsCombo.SelectedItem.ToString();
+                else stdName = String.Empty;
+            }
+            else stdName = studentBox.Text;
             if (users.Length != 0 && stdName!= null)
             {
                 if (stdName.Trim().Length != 0)
@@ -304,7 +317,9 @@ namespace Project
         private void eleve_GotFocus(object sender, RoutedEventArgs e)
         {
             passwd.Clear();
-            modeEns = false;
+            if (mainWin != null) MainWindow.modeEns = modeEns = false;
+            else modeEns = false;
+
             if (modifyingPwd) { toggleToModifyPwd();  }
         }
 
@@ -360,8 +375,15 @@ namespace Project
         public Boolean account()
         {
             Boolean done = true; 
+
             if (!modeEns)
             {
+                if (combo)
+                {
+                    if (studentsCombo.SelectedIndex != -1) stdName = studentsCombo.SelectedItem.ToString();
+                    else stdName = String.Empty;
+                }
+
                 int i;
                 bool contains = false ;
                 for (i = 0; i < users.Length; i++)

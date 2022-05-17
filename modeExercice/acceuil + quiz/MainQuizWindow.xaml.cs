@@ -36,11 +36,18 @@ namespace Project
         public MainQuizWindow(String fich1 , String fich2 , String fich3)
         {
             InitializeComponent();
+            this.Loaded +=loaded; 
             this.fich1 = fich1;
             this.fich2 = fich2;
             this.fich3 = fich3;
+           
+        }
+
+        private void loaded(Object sender , RoutedEventArgs e)
+        {
             affichQuiz(fich1);
-            if (!MainWindow.modeEns) edtText.Visibility=teacherButton.Visibility=Visibility.Collapsed;
+            if (!MainWindow.modeEns) edtText.Visibility = teacherButton.Visibility = Visibility.Collapsed;
+            else edtText.Visibility = teacherButton.Visibility = Visibility.Visible;
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
         }
 

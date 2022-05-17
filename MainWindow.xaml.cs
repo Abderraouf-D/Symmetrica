@@ -62,9 +62,7 @@ namespace Projet2Cp
             TBLibre.Foreground = Brushes.Snow;
 
 
-            if (modeEns) UserName.Text = francais ? "Enseignant" : "أستاذ";
-            else UserName.Text = eleve.getNom();
-            MainFrame.NavigationService.Navigate(pageNiveaux);
+            
 
 
             
@@ -124,10 +122,28 @@ namespace Projet2Cp
 
         private void loaded (Object sender , RoutedEventArgs e)
         {
+
+            if (modeEns) UserName.Text = francais ? "Enseignant" : "أستاذ";
+            else UserName.Text = eleve.getNom();
             if (francais) ResLibre = App.FrResLibre;
             else ResLibre = App.ArResLibre;
             this.Resources.MergedDictionaries.Add(ResLibre);
             francais = PageChoixMode.francais;
+
+
+
+            SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
+
+            CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours Jaune.png", UriKind.Relative));
+            TBCours.Foreground = color;
+            LibreImg.Source = new BitmapImage(new Uri("./Acceuil/Libre.png", UriKind.Relative));
+            ExoImg.Source = new BitmapImage(new Uri("./Acceuil/Exercices.png", UriKind.Relative));
+            TBLibre.Foreground = Brushes.Snow;
+            TBExo.Foreground = Brushes.Snow;
+
+            if (francais) MainFrame.NavigationService.Navigate(new PagePrincCours());
+            else MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
+
         }
 
         private void logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

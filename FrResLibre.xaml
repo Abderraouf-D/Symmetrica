@@ -86,7 +86,7 @@
     <!-- **************************************************************************************************************  -->
     <!-- Strings tae la page Quiz  -->
 
-    <sys:String  x:Key="Ressayer">Réssayer</sys:String>
+    <sys:String  x:Key="Ressayer">Réessayer</sys:String>
     <sys:String  x:Key="Oops">Oops !</sys:String>
     <sys:String  x:Key="Essayez_a_nouveau">Essayez à nouveau, n'échouez pas !</sys:String>
     <sys:String  x:Key="Excellent">Excellent !</sys:String>
@@ -96,6 +96,11 @@
     <sys:String  x:Key="chC">C</sys:String>
     <sys:String  x:Key="chD">D</sys:String>
     <sys:String  x:Key="editQuiz">Editer</sys:String>
+    <sys:String  x:Key="suivant">Suivant</sys:String>
+    <sys:String  x:Key="precedent">Précédent</sys:String>
+    <sys:String  x:Key="editer">Editer</sys:String>
+    <sys:String  x:Key="enreg">Enregistrer</sys:String>
+    <sys:String  x:Key="bkmrk">QUIZ</sys:String>
 
 
     <!-- **************************************************************************************************************  -->

@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.IO;
+using System.Globalization;
 
 namespace Projet2Cp
 {
@@ -24,7 +25,7 @@ namespace Projet2Cp
 
             if (pts == null) return null;
 
-            return String.Format("{0}-{1}-{2}-{3}-{4}-{5}-{6}", rempli == null, pts.ToString(), (rempli != null)? rempli.ToString():null, trace.ToString(),repere,oldCenter.ToString(),step.ToString());  
+            return String.Format("{0}-{1}-{2}-{3}-{4}-{5}-{6}", rempli == null, pts.ToString(new CultureInfo("fr-FR")), (rempli != null)? rempli.ToString(new CultureInfo("fr-FR")) :null, trace.ToString(new CultureInfo("fr-FR")),repere,oldCenter.ToString(new CultureInfo("fr-FR")),step.ToString(new CultureInfo("fr-FR")));  
         } 
         public static void strTofile(string filename, string str, int ind)
         {

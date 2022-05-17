@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Project"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="1000"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="MainQuizWindowTeacher">
     <Page.Resources>
         <Style  TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
@@ -53,9 +53,10 @@
 
         </Grid.RowDefinitions>
         <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="Icons\Group 21.png" Height="90"  Width="90" Margin="46,0,0,0" />
+        <TextBlock TextWrapping="Wrap" Text="{DynamicResource bkmrk}" Background="#A2DBA1" TextAlignment="Center" FontSize="20" FontFamily="{StaticResource VigaRegular}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="65"  Width="88" Margin="46,10,0,0" />
 
         <Viewbox Grid.Row="0" x:Name="ViewBoxContainer" Stretch="Uniform"  Panel.ZIndex="-1">
-            <Grid Background="White" Height="367">
+            <Grid Background="White" Height="367" Margin="0,20,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition  />
                     <RowDefinition Height="3*" />
@@ -193,10 +194,10 @@
                     <TextBlock x:Name="trueText" Visibility="Hidden" VerticalAlignment="Top" Grid.ColumnSpan="2" Text="Excellent !" Foreground="#A2DBA1" FontFamily="{StaticResource VigaRegular}" FontSize="30" HorizontalAlignment="Center"/>
                 </Grid>
 
-                <Button x:Name="btnPrecedent" Grid.Row="2" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="30,0,430,10" Click="ButtonPrecedent_Click">
+                <Button x:Name="btnPrecedent" Grid.Row="1" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="25,230,550,20" Click="ButtonPrecedent_Click" Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Icons/left arrow.png" Height="15" Width="15" Margin="0,0,7,0"/>
-                        <TextBlock Text="Précédent" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                        <TextBlock Text="{DynamicResource precedent}" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"/>
                     </StackPanel>
 
                     <Button.Resources>
@@ -206,9 +207,9 @@
                     </Button.Resources>
                 </Button>
 
-                <Button x:Name="btnSuivant" Grid.Row="2" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="430,0,30,10" Click="ButtonSuivant_Click">
+                <Button x:Name="btnSuivant" Grid.Row="1" Height="30" Width="100" Foreground="Black" Background="#A2DBA1" Margin="553,234,28,20" Click="ButtonSuivant_Click" Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Suivant" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"  />
+                        <TextBlock Text="{DynamicResource suivant}" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"  />
                         <Image Source="Icons/right arrow.png" Height="15" Width="15" Margin="10,0,0,0"/>
                     </StackPanel>
                     <Button.Resources>
@@ -226,7 +227,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chA}" />
                             </RadioButton>
                             <RadioButton x:Name="choB"  GroupName="answer" >
-                                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chB}" /> 
+                                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chB}" />
                             </RadioButton>
                             <RadioButton x:Name="choC"  GroupName="answer" >
                                 <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chC}" />
@@ -234,7 +235,7 @@
                             <RadioButton x:Name="choD"  GroupName="answer" >
                                 <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Text="{DynamicResource chD}" />
                             </RadioButton>
-                            
+
                         </StackPanel>
 
                     </StackPanel>
@@ -242,7 +243,7 @@
 
                 <Button Visibility="Visible" x:Name="btn_enregistrer" Foreground="Black" Click="btn_enregistrer_Click" Grid.Row="2" Height="30" Width="100" Background="#A2DBA1" HorizontalAlignment="Center" VerticalAlignment="Top" >
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Enregistrer" FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"  />
+                        <TextBlock Text="{DynamicResource enreg}"  FontSize="12" FontFamily="{StaticResource PoppinsSemiBold}"  />
                     </StackPanel>
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
