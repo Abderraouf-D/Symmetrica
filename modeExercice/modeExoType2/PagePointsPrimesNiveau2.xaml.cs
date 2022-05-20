@@ -64,6 +64,22 @@ namespace MAINPAGE
                 pr4ens.Margin = new Thickness(1133, 551, 377, 317);
                 pr5ens.Margin = new Thickness(1223, 551, 287, 317);
             }
+            else
+            {
+                ensAr.Visibility = Visibility.Collapsed;
+                ensFr.Visibility = Visibility.Visible;
+                p1ens.Margin = new Thickness(1035, 465, 475, 403);
+                p2ens.Margin = new Thickness(1123, 465, 386, 403);
+                p3ens.Margin = new Thickness(1215, 465, 297, 403);
+                p4ens.Margin = new Thickness(1301, 465, 204, 403);
+                p5ens.Margin = new Thickness(1393, 465, 117, 403);
+
+                pr1ens.Margin = new Thickness(1035, 551, 475, 317);
+                pr2ens.Margin = new Thickness(1123, 551, 386, 317);
+                pr3ens.Margin = new Thickness(1215, 551, 297, 317);
+                pr4ens.Margin = new Thickness(1306, 551, 204, 317);
+                pr5ens.Margin = new Thickness(1393, 551, 117, 317);
+            }
             image = new BitmapImage[3];
             reponse = new string[3, 5];
             point = new string[3, 5];

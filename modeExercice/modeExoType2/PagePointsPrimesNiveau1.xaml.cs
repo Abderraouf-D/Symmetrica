@@ -46,7 +46,6 @@ namespace MAINPAGE
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
-            this.path = path;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -60,6 +59,17 @@ namespace MAINPAGE
                 pr1ens.Margin = new Thickness(867, 541, 642, 331);
                 pr2ens.Margin = new Thickness(958, 541, 554, 331);
                 pr3ens.Margin = new Thickness(1049, 541, 466, 331);
+            }
+            else
+            {
+                ensAr.Visibility = Visibility.Collapsed;
+                ensFr.Visibility = Visibility.Visible;
+                p1ens.Margin = new Thickness(1123, 456, 386, 403);
+                p2ens.Margin = new Thickness(1215, 456, 297, 403);
+                p3ens.Margin = new Thickness(1301, 456, 204, 403);
+                pr1ens.Margin = new Thickness(1123, 541, 386, 331);
+                pr2ens.Margin = new Thickness(1215, 541, 297, 331);
+                pr3ens.Margin = new Thickness(1306, 541, 209, 331);
             }
             precedent.Visibility = Visibility.Collapsed;
             image = new BitmapImage[3];
