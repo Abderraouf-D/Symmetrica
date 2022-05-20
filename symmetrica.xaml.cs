@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using DrWPF.Windows.Controls;
 using Project;
 using System.IO;
+using System.Threading;
+using System.Globalization;
+
 namespace Projet2Cp
    
 {
@@ -28,6 +31,7 @@ namespace Projet2Cp
         public symmetrica()
         {
             InitializeComponent();
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("fr-FR");
             symmetricaFrm = new FaderFrame();
             symGrid.Children.Add(symmetricaFrm);
             symmetricaFrm.NavigationUIVisibility = NavigationUIVisibility.Hidden;
