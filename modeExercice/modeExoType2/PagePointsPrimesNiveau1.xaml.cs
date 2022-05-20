@@ -34,11 +34,19 @@ namespace MAINPAGE
         public PagePointsPrimesNiveau1(string path)
         {
             InitializeComponent();
-            this.path = path;
-            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+            
+           
+        }
+
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            this.path = path;
+            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             if (!MainWindow.francais)
             {
@@ -46,10 +54,10 @@ namespace MAINPAGE
                 ensFr.Visibility = Visibility.Collapsed;
                 p1ens.Margin = new Thickness(867, 456, 642, 403);
                 p2ens.Margin = new Thickness(958, 456, 554, 403);
-                p3ens.Margin = new Thickness(1044, 456, 461, 403);                
+                p3ens.Margin = new Thickness(1044, 456, 461, 403);
                 pr1ens.Margin = new Thickness(867, 541, 642, 331);
                 pr2ens.Margin = new Thickness(958, 541, 554, 331);
-                pr3ens.Margin = new Thickness(1049, 541, 466, 331);                
+                pr3ens.Margin = new Thickness(1049, 541, 466, 331);
             }
             precedent.Visibility = Visibility.Collapsed;
             image = new BitmapImage[3];
@@ -95,8 +103,12 @@ namespace MAINPAGE
             p1etud.Text = point[0, 0];
             p2etud.Text = point[0, 1];
             p3etud.Text = point[0, 2];
-           
+
         }
+
+
+
+
 
         private void Button_Click_Modify(object sender, RoutedEventArgs e)
         {
@@ -213,6 +225,7 @@ namespace MAINPAGE
             p3etud.Text = point[cpt, 2];
         }
 
+       
         private void Verify_Click(object sender, RoutedEventArgs e)
         {
             if ((pr1etud.Text.Length != 0) && (pr2etud.Text.Length != 0) && (pr3etud.Text.Length != 0))

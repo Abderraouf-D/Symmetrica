@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MAINPAGE"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageTrouverAxes">
+      Title="PageTrouverAxes" Loaded="loaded">
     <Page.Resources>
         <Style  TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>

@@ -32,6 +32,14 @@ namespace MAINPAGE
         public PagePointsPrimesNiveau2(string path)
         {            
             InitializeComponent();
+            
+        }
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
             this.path = path;
             precedent.Visibility = Visibility.Collapsed;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
@@ -47,16 +55,16 @@ namespace MAINPAGE
                 p2ens.Margin = new Thickness(955, 465, 554, 403);
                 p3ens.Margin = new Thickness(1046, 465, 466, 403);
                 p4ens.Margin = new Thickness(1130, 465, 375, 403);
-                p5ens.Margin = new Thickness(1223, 465, 287, 403);                
+                p5ens.Margin = new Thickness(1223, 465, 287, 403);
                 pr1ens.Margin = new Thickness(865, 551, 645, 317);
                 pr2ens.Margin = new Thickness(955, 551, 554, 317);
                 pr3ens.Margin = new Thickness(1046, 551, 466, 317);
                 pr4ens.Margin = new Thickness(1133, 551, 377, 317);
-                pr5ens.Margin = new Thickness(1223, 551, 287, 317);               
+                pr5ens.Margin = new Thickness(1223, 551, 287, 317);
             }
             image = new BitmapImage[3];
-            reponse = new string[3,5];
-            point = new string[3,5];
+            reponse = new string[3, 5];
+            point = new string[3, 5];
             done = new bool[3];
             string fileline;
             StreamReader sr = new StreamReader(path + "/images.txt");
@@ -94,11 +102,12 @@ namespace MAINPAGE
             sr.Close();
             imageEtud.Source = image[cpt];
             imageEns.Source = image[cpt];
-            p1etud.Text = point[0,0];
-            p2etud.Text = point[0,1];
-            p3etud.Text = point[0,2];
-            p4etud.Text = point[0,3];
-            p5etud.Text = point[0,4];
+            p1etud.Text = point[0, 0];
+            p2etud.Text = point[0, 1];
+            p3etud.Text = point[0, 2];
+            p4etud.Text = point[0, 3];
+            p5etud.Text = point[0, 4];
+
         }
 
         private void Button_Click_Modify(object sender, RoutedEventArgs e)

@@ -41,10 +41,16 @@ namespace MAINPAGE
 
         public PageTrouverAxes(string path)
         {
-            rtt = true;
-            this.path = path;
+            
             InitializeComponent();
 
+            
+        }
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
+            rtt = true;
+            this.path = path;
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
@@ -104,7 +110,6 @@ namespace MAINPAGE
             sr.Close();
             srp.Close();
         }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (reponseBox.Text.Length == 0)

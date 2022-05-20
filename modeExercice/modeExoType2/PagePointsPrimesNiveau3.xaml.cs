@@ -34,12 +34,18 @@ namespace MAINPAGE
         public PagePointsPrimesNiveau3(string path)
         {
             InitializeComponent();
-            this.path = path;
-            precedent.Visibility = Visibility.Collapsed;
-            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+            
+        }
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            this.path = path;
+            precedent.Visibility = Visibility.Collapsed;
+            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             if (!MainWindow.francais)
             {
@@ -107,7 +113,10 @@ namespace MAINPAGE
             p5etud.Text = point[0, 4];
             p6etud.Text = point[0, 5];
             p7etud.Text = point[0, 6];
+
         }
+
+
 
         private void Button_Click_Modify(object sender, RoutedEventArgs e)
         {

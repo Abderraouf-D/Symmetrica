@@ -195,7 +195,7 @@ namespace Project
 
                      if (trouvAxes == null) trouvAxes = new PageTrouverAxes(path);
 
-
+                trouvAxes.path = path;
                 MainWindow.MainFrame.NavigationService.Navigate(trouvAxes); 
             
             
@@ -209,13 +209,14 @@ namespace Project
                     case 1:
                         {
                             if (PointPrm1 == null) PointPrm1 = new PagePointsPrimesNiveau1(path);
-
+                            PointPrm1.path = path;
                             MainWindow.MainFrame.NavigationService.Navigate(PointPrm1);
                             break;
                         }
                     case 2:
                         {
                             if (PointPrm2 == null) PointPrm2 = new PagePointsPrimesNiveau2(path);
+                            PointPrm2.path = path;
 
                             MainWindow.MainFrame.NavigationService.Navigate(PointPrm2);
                             break;
@@ -223,6 +224,7 @@ namespace Project
                     case 3:
                         {
                             if (PointPrm3 == null) PointPrm3 = new PagePointsPrimesNiveau3(path);
+                            PointPrm3.path = path;
 
                             MainWindow.MainFrame.NavigationService.Navigate(PointPrm3);
                             break;

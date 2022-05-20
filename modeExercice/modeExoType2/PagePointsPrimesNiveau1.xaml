@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:MAINPAGE"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PagePointsPrimesNiveau1">
+      Title="PagePointsPrimesNiveau1"
+      Loaded="loaded">
 
     <Page.Resources>
         <Style  TargetType="{x:Type Button}">
