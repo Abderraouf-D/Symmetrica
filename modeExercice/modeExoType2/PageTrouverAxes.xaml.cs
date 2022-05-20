@@ -43,14 +43,14 @@ namespace MAINPAGE
         {
             
             InitializeComponent();
+            this.path = path;
 
-            
+
         }
 
         private void loaded(object sender, RoutedEventArgs e)
         {
             rtt = true;
-            this.path = path;
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);

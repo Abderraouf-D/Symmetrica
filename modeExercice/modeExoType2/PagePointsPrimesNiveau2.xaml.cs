@@ -30,9 +30,12 @@ namespace MAINPAGE
         public int cpt = 0;
         public bool[] done;
         public PagePointsPrimesNiveau2(string path)
-        {            
+        {
+
             InitializeComponent();
-            
+            this.path = path;
+
+
         }
 
         private void loaded(object sender, RoutedEventArgs e)
@@ -40,7 +43,6 @@ namespace MAINPAGE
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
-            this.path = path;
             precedent.Visibility = Visibility.Collapsed;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
             this.Resources.MergedDictionaries.Clear();

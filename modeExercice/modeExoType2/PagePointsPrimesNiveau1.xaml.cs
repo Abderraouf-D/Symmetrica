@@ -34,8 +34,10 @@ namespace MAINPAGE
         public PagePointsPrimesNiveau1(string path)
         {
             InitializeComponent();
-            
-           
+            this.path = path;
+
+
+
         }
 
 

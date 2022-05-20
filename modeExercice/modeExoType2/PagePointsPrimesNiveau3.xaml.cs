@@ -34,7 +34,9 @@ namespace MAINPAGE
         public PagePointsPrimesNiveau3(string path)
         {
             InitializeComponent();
-            
+            this.path = path;
+
+
         }
 
         private void loaded(object sender, RoutedEventArgs e)
