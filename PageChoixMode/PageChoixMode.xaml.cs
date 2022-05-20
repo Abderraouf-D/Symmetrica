@@ -131,6 +131,7 @@ namespace Project
                        
 
                         MainWindow.eleve = student;
+                        mainWin.showmodecours();
                         symmetrica.symmetricaFrm.NavigationService.Navigate(mainWin);
                     }
             }

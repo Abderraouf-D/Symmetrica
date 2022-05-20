@@ -65,14 +65,30 @@ namespace Projet2Cp
             
 
 
-            
-                 
+
+
+
         }
 
 
 
 
+        public void showmodecours()
+        {
+            SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
 
+            CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours Jaune.png", UriKind.Relative));
+            TBCours.Foreground = color;
+            LibreImg.Source = new BitmapImage(new Uri("./Acceuil/Libre.png", UriKind.Relative));
+            ExoImg.Source = new BitmapImage(new Uri("./Acceuil/Exercices.png", UriKind.Relative));
+            TBLibre.Foreground = Brushes.Snow;
+            TBExo.Foreground = Brushes.Snow;
+
+            if (francais) MainFrame.NavigationService.Navigate(new PagePrincCours());
+            else MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
+
+
+        }
 
 
 
@@ -132,17 +148,7 @@ namespace Projet2Cp
 
 
 
-            SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCC00"));
-
-            CoursImg.Source = new BitmapImage(new Uri("./Acceuil/Cours Jaune.png", UriKind.Relative));
-            TBCours.Foreground = color;
-            LibreImg.Source = new BitmapImage(new Uri("./Acceuil/Libre.png", UriKind.Relative));
-            ExoImg.Source = new BitmapImage(new Uri("./Acceuil/Exercices.png", UriKind.Relative));
-            TBLibre.Foreground = Brushes.Snow;
-            TBExo.Foreground = Brushes.Snow;
-
-            if (francais) MainFrame.NavigationService.Navigate(new PagePrincCours());
-            else MainFrame.NavigationService.Navigate(new PagePrincCoursAr());
+            
 
         }
 
