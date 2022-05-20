@@ -47,6 +47,7 @@ namespace MAINPAGE
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+            else Save.Visibility = modify.Visibility = Visibility.Visible;
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             if (!MainWindow.francais)

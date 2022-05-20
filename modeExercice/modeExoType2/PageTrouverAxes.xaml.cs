@@ -57,7 +57,7 @@ namespace MAINPAGE
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             precedent.Visibility = Visibility.Collapsed;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
-
+            else Save.Visibility = modify.Visibility = Visibility.Visible;
             StreamReader srp = new StreamReader(path + "/images.txt");
             StreamReader sr = new StreamReader(path + "/reponses.txt");
             StreamReader srl;

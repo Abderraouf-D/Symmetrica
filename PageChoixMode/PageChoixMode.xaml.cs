@@ -20,10 +20,11 @@ namespace Project
     public partial class PageChoixMode : Page
     {
         public static bool francais = false;
+        public static bool ChangedModeEns = false;
         bool modeEns;
 
-        bool ancientPwd = true, modifyingPwd = false; 
-
+        bool ancientPwd = true, modifyingPwd = false;
+        bool oldMode; 
         ResourceDictionary ResLibre= App.ArResLibre;
         Eleve student;
 
@@ -48,6 +49,8 @@ namespace Project
         }
         private void loaded(object sender , RoutedEventArgs e)
         {
+            oldMode = modeEns;
+
 
             updateUserCombo();
             
@@ -97,7 +100,7 @@ namespace Project
 
         private void Go_Click(object sender, RoutedEventArgs e)
         {
-
+            if (modeEns != oldMode) ChangedModeEns = true;
             Go();
 
 
@@ -125,6 +128,8 @@ namespace Project
                     if (account())
                     {
                         if ( mainWin == null ) mainWin = new MainWindow(modeEns, francais, student);
+                       
+
                         MainWindow.eleve = student;
                         symmetrica.symmetricaFrm.NavigationService.Navigate(mainWin);
                     }
@@ -148,6 +153,7 @@ namespace Project
 
 
 
+
         }
         private void Ar_Click(object sender, RoutedEventArgs e)
         {
@@ -163,6 +169,7 @@ namespace Project
             if (combo) addUserBtn.ToolTip = (String)ResLibre["addUserTotip"];
             else addUserBtn.ToolTip = (String)ResLibre["addUserTotip"];
 
+
         }
 
 
@@ -171,6 +178,8 @@ namespace Project
         {
             studentBox.Clear();
             studentsCombo.SelectedValue = -1;
+
+           
             if (mainWin != null) MainWindow.modeEns = modeEns = true;
             else modeEns = true;
 

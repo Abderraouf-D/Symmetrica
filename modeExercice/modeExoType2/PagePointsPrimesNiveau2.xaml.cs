@@ -45,6 +45,7 @@ namespace MAINPAGE
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
             precedent.Visibility = Visibility.Collapsed;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+            else Save.Visibility = modify.Visibility = Visibility.Visible;
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
