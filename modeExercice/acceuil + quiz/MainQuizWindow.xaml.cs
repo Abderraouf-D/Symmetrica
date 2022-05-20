@@ -33,17 +33,17 @@ namespace Project
         public String fich3;
         public String a;
 
-        public MainQuizWindow(String fich1 , String fich2 , String fich3)
+        public MainQuizWindow(String fich1, String fich2, String fich3)
         {
             InitializeComponent();
-            this.Loaded +=loaded; 
+            this.Loaded += loaded;
             this.fich1 = fich1;
             this.fich2 = fich2;
             this.fich3 = fich3;
-           
+
         }
 
-        private void loaded(Object sender , RoutedEventArgs e)
+        private void loaded(Object sender, RoutedEventArgs e)
         {
             affichQuiz(fich1);
             if (!MainWindow.modeEns) edtText.Visibility = teacherButton.Visibility = Visibility.Collapsed;
@@ -86,19 +86,19 @@ namespace Project
                 return;
             }
             object resource = Application.Current.FindResource("ButtonQuizStyleMouseEnter");
-            ChoixD.Style = (Style)resource;    
+            ChoixD.Style = (Style)resource;
         }
 
         private void ChoixD_MouseLeave(object sender, MouseEventArgs e)
         {
             if (isClickedChoixD)
-            { 
+            {
                 isClickedChoixA = false;
                 isClickedChoixB = false;
                 isClickedChoixC = false;
-                return; 
+                return;
             }
-                
+
 
             object resource = Application.Current.FindResource("ButtonQuizStyle");
             ChoixD.Style = (Style)resource;
@@ -169,11 +169,11 @@ namespace Project
         private void ChoixA_MouseLeave(object sender, MouseEventArgs e)
         {
             if (isClickedChoixA)
-            { 
+            {
                 isClickedChoixC = false;
                 isClickedChoixD = false;
                 isClickedChoixB = false;
-                return; 
+                return;
             }
 
             ChoixA.Style = (Style)Application.Current.FindResource("ButtonQuizStyle");
@@ -183,7 +183,7 @@ namespace Project
         {
             bravoImage.Visibility = Visibility.Hidden;
             ressayerImage.Visibility = Visibility.Hidden;
-            trueText.Visibility = Visibility.Hidden;    
+            trueText.Visibility = Visibility.Hidden;
             falseText.Visibility = Visibility.Hidden;
             isClickedChoixA = false;
             isClickedChoixD = false;
@@ -250,21 +250,28 @@ namespace Project
 
         private void ChoixA_Click(object sender, RoutedEventArgs e)
         {
-            
+
             isClickedChoixA = true;
             ChoixA.Style = (Style)Application.Current.FindResource("ButtonQuizStyleMouseEnter");
             ChoixB.Style = (Style)Application.Current.FindResource("ButtonQuizStyle");
             ChoixC.Style = (Style)Application.Current.FindResource("ButtonQuizStyle");
             ChoixD.Style = (Style)Application.Current.FindResource("ButtonQuizStyle");
 
-            if(a.CompareTo("1")==0 )
+            if (a.CompareTo("1") == 0)
             {
                 ChoixA.Style = (Style)Application.Current.FindResource("ButtonQuizStyleTrue");
                 bravoImage.Visibility = Visibility.Visible;
                 trueText.Visibility = Visibility.Visible;
                 ressayerImage.Visibility = Visibility.Hidden;
                 falseText.Visibility = Visibility.Hidden;
-                btnSuivant.Visibility= Visibility.Visible;
+                if (suivantCounter == 3)
+                {
+                    btnSuivant.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    btnSuivant.Visibility = Visibility.Visible;
+                }
             }
             else
             {
@@ -275,7 +282,7 @@ namespace Project
                 falseText.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Hidden;
             }
-            
+
         }
 
         private void ChoixB_Click(object sender, RoutedEventArgs e)
@@ -292,7 +299,15 @@ namespace Project
                 trueText.Visibility = Visibility.Visible;
                 ressayerImage.Visibility = Visibility.Hidden;
                 falseText.Visibility = Visibility.Hidden;
-                btnSuivant.Visibility = Visibility.Visible;
+                if (suivantCounter == 3)
+                {
+                    btnSuivant.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    btnSuivant.Visibility = Visibility.Visible;
+                }
+
             }
             else
             {
@@ -302,7 +317,6 @@ namespace Project
                 ressayerImage.Visibility = Visibility.Visible;
                 falseText.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Hidden;
-
             }
         }
 
@@ -320,7 +334,14 @@ namespace Project
                 trueText.Visibility = Visibility.Visible;
                 ressayerImage.Visibility = Visibility.Hidden;
                 falseText.Visibility = Visibility.Hidden;
-                btnSuivant.Visibility = Visibility.Visible;
+                if (suivantCounter == 3)
+                {
+                    btnSuivant.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    btnSuivant.Visibility = Visibility.Visible;
+                }
             }
             else
             {
@@ -348,14 +369,21 @@ namespace Project
                 trueText.Visibility = Visibility.Visible;
                 ressayerImage.Visibility = Visibility.Hidden;
                 falseText.Visibility = Visibility.Hidden;
-                btnSuivant.Visibility = Visibility.Visible;
+                if (suivantCounter == 3)
+                {
+                    btnSuivant.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    btnSuivant.Visibility = Visibility.Visible;
+                }
             }
             else
             {
                 ChoixD.Style = (Style)Application.Current.FindResource("ButtonQuizStyleFalse");
                 bravoImage.Visibility = Visibility.Hidden;
                 trueText.Visibility = Visibility.Hidden;
-                ressayerImage.Visibility = Visibility.Visible;  
+                ressayerImage.Visibility = Visibility.Visible;
                 falseText.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Hidden;
             }
@@ -364,7 +392,7 @@ namespace Project
 
         private void teacherButton_Click(object sender, RoutedEventArgs e)
         {
-            MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher(suivantCounter,fich1,fich2, fich3);
+            MainQuizWindowTeacher pageQuiz = new MainQuizWindowTeacher(suivantCounter, fich1, fich2, fich3);
             MainWindow.MainFrame.NavigationService.Navigate(pageQuiz);
         }
     }

@@ -1608,7 +1608,7 @@ namespace Projet2Cp
                 else
                 {
                     clear();
-                    ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["VldStr"];
+                    ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["vldStr"];
                 }
 
 

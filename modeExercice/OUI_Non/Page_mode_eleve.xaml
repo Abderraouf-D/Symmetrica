@@ -18,11 +18,10 @@
     <Page.Resources>
         <Style  TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
-
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border  Background="{TemplateBinding Background}">
+                        <Border CornerRadius="10"  Background="{TemplateBinding Background}">
                             <Grid>
                                 <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Grid>
@@ -147,31 +146,18 @@
                         <TextBlock x:Name="preced_txt" Text="Précédent" FontSize="36" FontFamily="Poppins"/>
                     </StackPanel>
 
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                            
-                        </Style>
-                    </Button.Resources>
+                   
                 </Button>
                 <Button Height="55  "  Width="206" HorizontalAlignment="Center"   Margin="200,0,200,100" x:Name="btnretry" Visibility="Hidden" Click="Btnretry_Click">
                     <TextBlock Text="Ressayer" FontSize="36" FontFamily="Viga" x:Name="retry_txt" />
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="20"/>
-                        </Style>
-                    </Button.Resources>
+                   
                 </Button>
                 <Button Height="70" Width="241" Background="#A2DBA1" Click="Button_suiv_Click" x:Name="suivbtn">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="suiv_txt" Text="Suivant" FontSize="36" FontFamily="Poppins"  />
                         <Image Source="./Icons/right arrow.png " Height="45" Width="45" Margin="10,0,0,0"/>
                     </StackPanel>
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Button.Resources>
+                    
 
                 </Button>
             </StackPanel>
