@@ -84,7 +84,7 @@
     <!-- Strings tae page Niveaux-->
     <sys:String  x:Key="quiz">أسئلة متعددة</sys:String>
     <sys:String  x:Key="ON">نعم / لا</sys:String>
-    <sys:String  x:Key="dessinerSym">النقاط المتناظر</sys:String>
+    <sys:String  x:Key="dessinerSym">أرسم النظير</sys:String>
     <sys:String  x:Key="niv1Des">! المهندس الصغير</sys:String>
     <sys:String  x:Key="niv2Des">! مهندس حقيقي !</sys:String>
     <sys:String  x:Key="niv3Des">! بطل الهندسة</sys:String>
