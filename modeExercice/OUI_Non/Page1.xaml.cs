@@ -93,7 +93,7 @@ namespace OUI_Non
 
 
 
-                        ONimg.Visibility = Visibility.Visible;
+                       ONimg.Visibility = Visibility.Visible;
                
                        ONimg.Source=  convertImg( Path.GetFullPath(images[i]));
                

@@ -1918,6 +1918,8 @@ namespace Projet2Cp
             
                 int i = 0;
                 path = ShowFolderBrowserDialog();
+                if (path == null) return;
+
             fileDrawing = path + "/MonDessinImage" + i.ToString() + ".png";
 
             while (File.Exists(fileDrawing))
@@ -2040,6 +2042,7 @@ namespace Projet2Cp
             if (string.IsNullOrEmpty(fileDrawing)) {
                 int i = 0;
                 path = ShowFolderBrowserDialog();
+                if (path == null) return;
                 fileDrawing = path + "/MonDessin" + i.ToString() + ".sym";
                 while (File.Exists(fileDrawing)) {
                     fileDrawing = path + "/MonDessin" + i.ToString() + ".sym";
