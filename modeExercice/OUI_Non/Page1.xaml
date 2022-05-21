@@ -113,13 +113,15 @@
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
 
                         <Button  x:Name="ouibtn" Height="57" Width="135"  Background="#FFFFFF" BorderBrush="#801CB81C" 
-                                BorderThickness="5" Opacity="0.9" Click="Btn_oui" HorizontalAlignment="Left" >
+                                 Opacity="0.9" Click="Btn_oui" HorizontalAlignment="Left" >
 
                             <TextBlock x:Name="oui_txt" Text="Oui" FontSize="36" FontFamily="Viga" />
 
                             <Button.Resources>
-                                <Style TargetType="{x:Type Border}">
+                                <Style TargetType="{x:Type Border}" >
                                     <Setter Property="CornerRadius" Value="20"/>
+                                    <Setter Property="BorderThickness" Value="5"/>
+                                    <Setter Property="BorderBrush" Value="#801CB81C"/>
                                 </Style>
                             </Button.Resources>
 
@@ -145,8 +147,10 @@
                         <Button x:Name="nonbtn" Height="57" Width="135"  Background="#FFFFFF" BorderBrush="#801CB81C" BorderThickness="5"   Margin="400,0,0,0" Click="Btn_non">
                             <TextBlock x:Name="non_txt" Text="Non" FontSize="36" FontFamily="Viga"/>
                             <Button.Resources>
-                                <Style TargetType="{x:Type Border}">
+                                <Style TargetType="{x:Type Border}" >
                                     <Setter Property="CornerRadius" Value="20"/>
+                                    <Setter Property="BorderThickness" Value="5"/>
+                                    <Setter Property="BorderBrush" Value="#801CB81C"/>
                                 </Style>
                             </Button.Resources>
 
