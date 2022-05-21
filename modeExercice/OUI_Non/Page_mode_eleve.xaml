@@ -39,6 +39,30 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ON" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.6" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" Value="0.7" />
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
 
@@ -103,7 +127,7 @@
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
 
-                        <Button Foreground="Black"  x:Name="ouibtn"  Height="57" Width="135"  Background="#FFFFFF"  Click="Btn_oui" HorizontalAlignment="Left" >
+                        <Button Style="{StaticResource ON}" BorderBrush="#801CB81C" Foreground="Black"  x:Name="ouibtn"  Height="57" Width="135"  Background="#FFFFFF"  Click="Btn_oui" HorizontalAlignment="Left" >
 
                             <TextBlock x:Name="oui_txt" Text="Oui" FontSize="36" FontFamily="Viga" />
 
@@ -111,7 +135,7 @@
                                 <Style TargetType="{x:Type Border}" >
                                     <Setter Property="CornerRadius" Value="20"/>
                                     <Setter Property="BorderThickness" Value="5"/>
-                                    <Setter Property="BorderBrush" Value="#801CB81C"/>
+                                   
                                 </Style>
                             </Button.Resources>
 
@@ -121,13 +145,12 @@
 
 
 
-                        <Button x:Name="nonbtn" Height="57" Width="135" Foreground="Black"  Background="#FFFFFF" BorderBrush="#801CB81C" BorderThickness="5"   Margin="400,0,0,0" Click="Btn_non">
+                        <Button x:Name="nonbtn" Height="57" Width="135" Foreground="Black" Style="{StaticResource ON}" Background="#FFFFFF" BorderBrush="#801CB81C" BorderThickness="5"   Margin="400,0,0,0" Click="Btn_non">
                             <TextBlock x:Name="non_txt" Text="Non" FontSize="36" FontFamily="Viga"/>
                             <Button.Resources>
                                 <Style TargetType="{x:Type Border}" >
                                     <Setter Property="CornerRadius" Value="20"/>
                                     <Setter Property="BorderThickness" Value="5"/>
-                                    <Setter Property="BorderBrush" Value="#801CB81C"/>
                                 </Style>
                             </Button.Resources>
 
@@ -158,7 +181,11 @@
                 </Button>
                 <Button Height="55  "  Width="206" HorizontalAlignment="Center"   Margin="200,0,200,100" x:Name="btnretry" Visibility="Hidden" Click="Btnretry_Click">
                     <TextBlock Text="Ressayer" FontSize="36" FontFamily="Viga" x:Name="retry_txt" />
-                   
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
                 </Button>
                 <Button Height="70" Width="241" Background="#A2DBA1" Click="Button_suiv_Click" x:Name="suivbtn">
                     <StackPanel Orientation="Horizontal">
