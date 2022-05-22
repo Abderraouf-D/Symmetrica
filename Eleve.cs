@@ -41,15 +41,22 @@ namespace Projet2Cp
         }
         public void decProgress()
         {
+           
             if (MainWindow.francais)
             {
-                if (PagePrincCours.axiale) progressCoursAxiale = (progressCoursAxiale - 1) % 9;
-                else progressCoursCentrale = (progressCoursCentrale - 1) % 9;
+                if (progressCoursAxiale != 0)
+                {
+                    if (PagePrincCours.axiale) progressCoursAxiale = (progressCoursAxiale - 1) % 9;
+                    else progressCoursCentrale = (progressCoursCentrale - 1) % 9;
+                }
             }
             else
             {
-                if (PagePrincCoursAr.axiale) progressCoursAxiale = (progressCoursAxiale - 1) % 9;
-                else progressCoursCentrale = (progressCoursCentrale - 1) % 9;
+                if (progressCoursCentrale != 0)
+                {
+                    if (PagePrincCoursAr.axiale) progressCoursAxiale = (progressCoursAxiale - 1) % 9;
+                    else progressCoursCentrale = (progressCoursCentrale - 1) % 9;
+                }
             }
         }
 

@@ -44,7 +44,9 @@ namespace Project
         public void loaded(Object sender ,RoutedEventArgs e)
         {
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
-
+           if ( btn_axiale_is_clicked) trouverHaja.Text = MainWindow.francais ? "Trouver les axes" : "ابحث عن المحاور";
+            else trouverHaja.Text =MainWindow.francais? "Trouver les axes" : "ابحث عن المحاور";
+          
 
 
 
