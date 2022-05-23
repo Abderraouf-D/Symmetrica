@@ -122,7 +122,7 @@
                     <Border     Height="400" Width="800"  BorderThickness="2" Background="Transparent"
                             BorderBrush="#1c1d32" CornerRadius="15" Padding="8"  >
 
-                        <Image  x:Name="ONimg" Stretch="Fill"  MaxHeight="400" MaxWidth="800"  />
+                        <Image  x:Name="ONimg" Stretch="Uniform"  MaxHeight="400" MaxWidth="800"  />
 
                     </Border>
 
