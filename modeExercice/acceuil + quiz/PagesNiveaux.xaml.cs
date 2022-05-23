@@ -26,7 +26,7 @@ namespace Project
         public static Boolean btn_niveau2_is_clicked = false;
         public static Boolean btn_niveau3_is_clicked = false;
         public string path;
-        PageTrouverAxes trouvAxes=null;
+        PageTrouverAxes[] trouvAxes = new PageTrouverAxes[3];
         PagePointsPrimesNiveau1 PointPrm1; 
         PagePointsPrimesNiveau2 PointPrm2; 
         PagePointsPrimesNiveau3 PointPrm3; 
@@ -45,7 +45,7 @@ namespace Project
         {
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
            if ( btn_axiale_is_clicked) trouverHaja.Text = MainWindow.francais ? "Trouver les axes" : "ابحث عن المحاور";
-            else trouverHaja.Text =MainWindow.francais? "Trouver les axes" : "ابحث عن المحاور";
+            else trouverHaja.Text =MainWindow.francais ? "Points primes" : "النقاط المتناظرة";
           
 
 
@@ -193,14 +193,10 @@ namespace Project
             
 
             
-            if (btn_axiale_is_clicked) { 
-
-                     if (trouvAxes == null || PageChoixMode.ChangedModeEns) {trouvAxes = new PageTrouverAxes(path);; PageChoixMode.ChangedModeEns = false; }
-
-                trouvAxes.path = path;
-                MainWindow.MainFrame.NavigationService.Navigate(trouvAxes); 
-            
-            
+            if (btn_axiale_is_clicked) {
+                if (trouvAxes[niveau - 1] == null || PageChoixMode.ChangedModeEns) { trouvAxes[niveau - 1] = new PageTrouverAxes(path); PageChoixMode.ChangedModeEns = false; }
+                trouvAxes[niveau - 1].path = path;
+                MainWindow.MainFrame.NavigationService.Navigate(trouvAxes[niveau - 1]);                
             }
             else
             {

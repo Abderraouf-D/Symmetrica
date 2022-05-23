@@ -34,53 +34,13 @@ namespace MAINPAGE
 
             InitializeComponent();
             this.path = path;
-
-
-        }
-
-        private void loaded(object sender, RoutedEventArgs e)
-        {
-            this.Resources.MergedDictionaries.Clear();
-
-            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
             precedent.Visibility = Visibility.Collapsed;
-            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
-            else Save.Visibility = modify.Visibility = Visibility.Visible;
+            
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            if (!MainWindow.francais)
-            {
-                ensAr.Visibility = Visibility.Visible;
-                ensFr.Visibility = Visibility.Collapsed;
-                p1ens.Margin = new Thickness(865, 465, 645, 403);
-                p2ens.Margin = new Thickness(955, 465, 554, 403);
-                p3ens.Margin = new Thickness(1046, 465, 466, 403);
-                p4ens.Margin = new Thickness(1130, 465, 375, 403);
-                p5ens.Margin = new Thickness(1223, 465, 287, 403);
-                pr1ens.Margin = new Thickness(865, 551, 645, 317);
-                pr2ens.Margin = new Thickness(955, 551, 554, 317);
-                pr3ens.Margin = new Thickness(1046, 551, 466, 317);
-                pr4ens.Margin = new Thickness(1133, 551, 377, 317);
-                pr5ens.Margin = new Thickness(1223, 551, 287, 317);
-            }
-            else
-            {
-                ensAr.Visibility = Visibility.Collapsed;
-                ensFr.Visibility = Visibility.Visible;
-                p1ens.Margin = new Thickness(1035, 465, 475, 403);
-                p2ens.Margin = new Thickness(1123, 465, 386, 403);
-                p3ens.Margin = new Thickness(1215, 465, 297, 403);
-                p4ens.Margin = new Thickness(1301, 465, 204, 403);
-                p5ens.Margin = new Thickness(1393, 465, 117, 403);
 
-                pr1ens.Margin = new Thickness(1035, 551, 475, 317);
-                pr2ens.Margin = new Thickness(1123, 551, 386, 317);
-                pr3ens.Margin = new Thickness(1215, 551, 297, 317);
-                pr4ens.Margin = new Thickness(1306, 551, 204, 317);
-                pr5ens.Margin = new Thickness(1393, 551, 117, 317);
-            }
             image = new BitmapImage[3];
             reponse = new string[3, 5];
             point = new string[3, 5];
@@ -91,7 +51,7 @@ namespace MAINPAGE
             {
                 if ((fileline = sr.ReadLine()) != null)
                 {
-                    image[i] = new BitmapImage(new Uri(fileline, UriKind.RelativeOrAbsolute));
+                    image[i] = convertImg(System.IO.Path.GetFullPath(fileline));
                 }
             }
             sr.Close();
@@ -127,7 +87,49 @@ namespace MAINPAGE
             p4etud.Text = point[0, 3];
             p5etud.Text = point[0, 4];
 
+
         }
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+            else Save.Visibility = modify.Visibility = Visibility.Visible;
+            if (!MainWindow.francais)
+            {
+                ensAr.Visibility = Visibility.Visible;
+                ensFr.Visibility = Visibility.Collapsed;
+                p1ens.Margin = new Thickness(865, 465, 645, 403);
+                p2ens.Margin = new Thickness(955, 465, 554, 403);
+                p3ens.Margin = new Thickness(1046, 465, 466, 403);
+                p4ens.Margin = new Thickness(1130, 465, 375, 403);
+                p5ens.Margin = new Thickness(1223, 465, 287, 403);
+                pr1ens.Margin = new Thickness(865, 551, 645, 317);
+                pr2ens.Margin = new Thickness(955, 551, 554, 317);
+                pr3ens.Margin = new Thickness(1046, 551, 466, 317);
+                pr4ens.Margin = new Thickness(1133, 551, 377, 317);
+                pr5ens.Margin = new Thickness(1223, 551, 287, 317);
+            }
+            else
+            {
+                ensAr.Visibility = Visibility.Collapsed;
+                ensFr.Visibility = Visibility.Visible;
+                p1ens.Margin = new Thickness(1035, 465, 475, 403);
+                p2ens.Margin = new Thickness(1123, 465, 386, 403);
+                p3ens.Margin = new Thickness(1215, 465, 297, 403);
+                p4ens.Margin = new Thickness(1301, 465, 204, 403);
+                p5ens.Margin = new Thickness(1393, 465, 117, 403);
+
+                pr1ens.Margin = new Thickness(1035, 551, 475, 317);
+                pr2ens.Margin = new Thickness(1123, 551, 386, 317);
+                pr3ens.Margin = new Thickness(1215, 551, 297, 317);
+                pr4ens.Margin = new Thickness(1306, 551, 204, 317);
+                pr5ens.Margin = new Thickness(1393, 551, 117, 317);
+            }
+        }
+
 
         private void Button_Click_Modify(object sender, RoutedEventArgs e)
         {
@@ -211,6 +213,21 @@ namespace MAINPAGE
             p5etud.Text = point[cpt, 4];
         }
 
+        private BitmapImage convertImg(string path)
+        {
+            BitmapImage image = new BitmapImage();
+            if (!string.IsNullOrEmpty(path))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                image.UriSource = new Uri(path);
+                image.EndInit();
+
+            }
+
+            return image;
+        }
         private void Precedent_Click(object sender, RoutedEventArgs e)
         {
             cpt--;
@@ -357,8 +374,19 @@ namespace MAINPAGE
             };
             if (op.ShowDialog() == true)
             {
-                imageEns.Source = new BitmapImage(new Uri(op.FileName));
-                imageEtud.Source = new BitmapImage(new Uri(op.FileName));
+
+                try
+                {
+                    String filepath = op.FileName;
+                    String name = System.IO.Path.GetFileName(filepath);
+                    File.Copy(filepath, System.IO.Path.GetFullPath(image[cpt].UriSource.AbsolutePath), true);
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                imageEns.Source = convertImg(op.FileName);
+                imageEtud.Source = convertImg(op.FileName);
             }
         }
         private void PlaySoundYay()
@@ -445,18 +473,12 @@ namespace MAINPAGE
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            StreamWriter sw = new StreamWriter(path + "/images.txt");
-            for (int i = 0; i < 3; i++)
-            {
-                sw.WriteLine(image[i].UriSource);
-            }
-            sw.Close();
-            sw = new StreamWriter(path + "/reponses.txt");
+            StreamWriter sw = new StreamWriter(path + "/reponses.txt");
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    sw.WriteLine(reponse[i,j]);
+                    sw.WriteLine(reponse[i, j]);
                 }
             }
             sw.Close();

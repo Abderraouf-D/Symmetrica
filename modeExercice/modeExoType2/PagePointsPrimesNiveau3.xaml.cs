@@ -34,22 +34,73 @@ namespace MAINPAGE
         public PagePointsPrimesNiveau3(string path)
         {
             InitializeComponent();
+
             this.path = path;
+            precedent.Visibility = Visibility.Collapsed;
+            
+
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+
+            image = new BitmapImage[3];
+            reponse = new string[3, 7];
+            point = new string[3, 7];
+            done = new bool[3];
+            string fileline;
+            StreamReader sr = new StreamReader(path + "/images.txt");
+            for (int i = 0; i < 3; i++)
+            {
+                if ((fileline = sr.ReadLine()) != null)
+                {
+                    image[i] = convertImg(System.IO.Path.GetFullPath(fileline));
+                }
+            }
+            sr.Close();
+            sr = new StreamReader(path + "/reponses.txt");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if ((fileline = sr.ReadLine()) != null)
+                    {
+                        reponse[i, j] = fileline;
+                    }
+                }
+            }
+            sr.Close();
+            sr = new StreamReader(path + "/points.txt");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if ((fileline = sr.ReadLine()) != null)
+                    {
+                        point[i, j] = fileline;
+                    }
+                }
+            }
+            sr.Close();
+            imageEtud.Source = image[cpt];
+            imageEns.Source = image[cpt];
+            p1etud.Text = point[0, 0];
+            p2etud.Text = point[0, 1];
+            p3etud.Text = point[0, 2];
+            p4etud.Text = point[0, 3];
+            p5etud.Text = point[0, 4];
+            p6etud.Text = point[0, 5];
+            p7etud.Text = point[0, 6];
+
 
 
         }
 
+       
         private void loaded(object sender, RoutedEventArgs e)
         {
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
-            this.path = path;
-            precedent.Visibility = Visibility.Collapsed;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
             else Save.Visibility = modify.Visibility = Visibility.Visible;
-
-            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             if (!MainWindow.francais)
             {
                 ensAr.Visibility = Visibility.Visible;
@@ -89,57 +140,7 @@ namespace MAINPAGE
                 pr6ens.Margin = new Thickness(1393, 551, 117, 317);
                 pr7ens.Margin = new Thickness(1482, 551, 28, 317);
             }
-            image = new BitmapImage[3];
-            reponse = new string[3, 7];
-            point = new string[3, 7];
-            done = new bool[3];
-            string fileline;
-            StreamReader sr = new StreamReader(path + "/images.txt");
-            for (int i = 0; i < 3; i++)
-            {
-                if ((fileline = sr.ReadLine()) != null)
-                {
-                    image[i] = new BitmapImage(new Uri(fileline, UriKind.RelativeOrAbsolute));
-                }
-            }
-            sr.Close();
-            sr = new StreamReader(path + "/reponses.txt");
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 7; j++)
-                {
-                    if ((fileline = sr.ReadLine()) != null)
-                    {
-                        reponse[i, j] = fileline;
-                    }
-                }
-            }
-            sr.Close();
-            sr = new StreamReader(path + "/points.txt");
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 7; j++)
-                {
-                    if ((fileline = sr.ReadLine()) != null)
-                    {
-                        point[i, j] = fileline;
-                    }
-                }
-            }
-            sr.Close();
-            imageEtud.Source = image[cpt];
-            imageEns.Source = image[cpt];
-            p1etud.Text = point[0, 0];
-            p2etud.Text = point[0, 1];
-            p3etud.Text = point[0, 2];
-            p4etud.Text = point[0, 3];
-            p5etud.Text = point[0, 4];
-            p6etud.Text = point[0, 5];
-            p7etud.Text = point[0, 6];
-
         }
-
-
 
         private void Button_Click_Modify(object sender, RoutedEventArgs e)
         {
@@ -413,8 +414,19 @@ namespace MAINPAGE
             };
             if (op.ShowDialog() == true)
             {
-                imageEns.Source = new BitmapImage(new Uri(op.FileName));
-                imageEtud.Source = new BitmapImage(new Uri(op.FileName));
+
+                try
+                {
+                    String filepath = op.FileName;
+                    String name = System.IO.Path.GetFileName(filepath);
+                    File.Copy(filepath, System.IO.Path.GetFullPath(image[cpt].UriSource.AbsolutePath), true);
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                imageEns.Source = convertImg(op.FileName);
+                imageEtud.Source = convertImg(op.FileName);
             }
         }
         private void PlaySoundYay()
@@ -426,7 +438,21 @@ namespace MAINPAGE
             player.Play();
         }
 
-        
+        private BitmapImage convertImg(string path)
+        {
+            BitmapImage image = new BitmapImage();
+            if (!string.IsNullOrEmpty(path))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                image.UriSource = new Uri(path);
+                image.EndInit();
+
+            }
+
+            return image;
+        }
         private void OKEns_Click_OK(object sender, RoutedEventArgs e)
         {
             if ((pr1ens.Text.Length != 0) && (pr2ens.Text.Length != 0) && (pr3ens.Text.Length != 0) && (pr4ens.Text.Length != 0) && (pr5ens.Text.Length != 0) && (p1ens.Text.Length != 0) && (p2ens.Text.Length != 0) && (p3ens.Text.Length != 0) && (p4ens.Text.Length != 0) && (p5ens.Text.Length != 0))
@@ -479,13 +505,7 @@ namespace MAINPAGE
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            StreamWriter sw = new StreamWriter(path + "/images.txt");
-            for (int i = 0; i < 3; i++)
-            {
-                sw.WriteLine(image[i].UriSource);
-            }
-            sw.Close();
-            sw = new StreamWriter(path + "/reponses.txt");
+            StreamWriter sw = new StreamWriter(path + "/reponses.txt");
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 7; j++)

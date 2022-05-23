@@ -48,8 +48,7 @@ namespace MAINPAGE
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             precedent.Visibility = Visibility.Collapsed;
-            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
-            else Save.Visibility = modify.Visibility = Visibility.Visible;
+            
             StreamReader srp = new StreamReader(path + "/images.txt");
             StreamReader sr = new StreamReader(path + "/reponses.txt");
             StreamReader srl;
@@ -110,7 +109,9 @@ namespace MAINPAGE
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
-            
+            if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
+            else Save.Visibility = modify.Visibility = Visibility.Visible;
+
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -393,13 +394,7 @@ namespace MAINPAGE
             {
                 sw.WriteLine(reponse[i]);
             }
-            sw.Close();
-            sw = new StreamWriter(path + "/images.txt");
-            for (int i = 0; i < 3; i++)
-            {
-                sw.WriteLine(image[i].UriSource);
-            }
-            sw.Close();
+            sw.Close();            
             for (int j = 0; j < 3; j++)
             {
                 sw = new StreamWriter(path + "/line" + (j + 1).ToString() + ".txt");
