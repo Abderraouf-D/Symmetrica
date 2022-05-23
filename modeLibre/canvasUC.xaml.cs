@@ -1944,7 +1944,7 @@ namespace Projet2Cp
                 SaveDrawing();
             }catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally { }
 
@@ -1957,15 +1957,17 @@ namespace Projet2Cp
              }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally { }
         }
 
         public bool OpenDrawing()
         {
-            
-            OpenFileDialog dlg = new OpenFileDialog();
+            fileDrawing = null;
+
+            OpenFileDialog dlg  = new OpenFileDialog();
+            dlg.Filter =" symmetrica files |*.sym";
             if (dlg.ShowDialog() == true)
             {
                 fileDrawing= dlg.FileName;
@@ -2038,7 +2040,8 @@ namespace Projet2Cp
         }
         public void SaveDrawing()
         {
-            string path; 
+            string path;
+            fileDrawing = null;
             if (string.IsNullOrEmpty(fileDrawing)) {
                 int i = 0;
                 path = ShowFolderBrowserDialog();

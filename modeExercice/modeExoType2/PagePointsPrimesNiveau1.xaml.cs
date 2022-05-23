@@ -310,16 +310,16 @@ namespace MAINPAGE
             };
             if (op.ShowDialog() == true)
             {
-                //try
-                //{
-                //    String filepath = op.FileName;
-                //    String name = System.IO.Path.GetFileName(filepath);
-                //    File.Copy(filepath, System.IO.Path.GetFullPath(image[cpt]), true);
-                //}
-                //catch (IOException ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
+                try
+                {
+                    String filepath = op.FileName;
+                    String name = System.IO.Path.GetFileName(filepath);
+                    File.Copy(filepath, System.IO.Path.GetFullPath(image[cpt].UriSource.AbsolutePath), true);
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 imageEns.Source = new BitmapImage(new Uri(op.FileName));
                 imageEtud.Source = new BitmapImage(new Uri(op.FileName));
             

@@ -44,16 +44,8 @@ namespace MAINPAGE
             
             InitializeComponent();
             this.path = path;
-
-
-        }
-
-        private void loaded(object sender, RoutedEventArgs e)
-        {
             rtt = true;
-            this.Resources.MergedDictionaries.Clear();
 
-            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             precedent.Visibility = Visibility.Collapsed;
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
@@ -76,7 +68,7 @@ namespace MAINPAGE
                 }
                 if ((fileline = srp.ReadLine()) != null)
                 {
-                    image[i] = new BitmapImage(new Uri(fileline, UriKind.RelativeOrAbsolute));
+                    image[i] = convertImg(System.IO.Path.GetFullPath(fileline));
                 }
                 line[i] = new List<Line>();
                 done[i] = false;
@@ -109,6 +101,16 @@ namespace MAINPAGE
             imageEns.Source = image[cpt];
             sr.Close();
             srp.Close();
+
+
+        }
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+
+            this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -217,7 +219,10 @@ namespace MAINPAGE
                 for (int i = 0; i <= linecpt[cpt]; i++)
                 {
                     canvasEns.Children.Remove(line[cpt][i]);
-                    canvasEtud.Children.Add(line[cpt][i]);
+                    if (!canvasEtud.Children.Contains(line[cpt][i]))
+                    {
+                        canvasEtud.Children.Add(line[cpt][i]);
+                    }
                 }
                 if (done[cpt])
                 {
@@ -249,6 +254,23 @@ namespace MAINPAGE
             }
         }
 
+
+        private BitmapImage convertImg(string path)
+        {
+            BitmapImage image = new BitmapImage();
+            if (!string.IsNullOrEmpty(path))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                image.UriSource = new Uri(path);
+                image.EndInit();
+
+            }
+
+            return image;
+        }
+
         private void UploadButtonEns_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog
@@ -260,8 +282,19 @@ namespace MAINPAGE
             };
             if (op.ShowDialog() == true)
             {
-                imageEns.Source = new BitmapImage(new Uri(op.FileName));
-                imageEtud.Source = new BitmapImage(new Uri(op.FileName));
+
+                try
+                {
+                    String filepath = op.FileName;
+                    String name = System.IO.Path.GetFileName(filepath);
+                    File.Copy(filepath, System.IO.Path.GetFullPath(image[cpt].UriSource.AbsolutePath), true);
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                imageEns.Source = convertImg( op.FileName);
+                imageEtud.Source =convertImg( op.FileName);
             }
         }
 
