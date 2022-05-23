@@ -1455,6 +1455,8 @@ namespace Projet2Cp
             ((toolBarEnseignant)TB).annuler.Visibility = Visibility.Visible;
             niv.IsEnabled = false;
             ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Visible;
+            trace = Brushes.Black;
+
 
 
 
@@ -1545,6 +1547,8 @@ namespace Projet2Cp
 
         public void valider_Click(Object sender, RoutedEventArgs e)
         {
+
+
             if (isEditing)
             {
                 canvas.Children.Remove(tb);
@@ -2087,7 +2091,7 @@ namespace Projet2Cp
             var dialog = new VistaFolderBrowserDialog();
             dialog.Description =(String)MainWindow.ResLibre["choisirDoss"];
             dialog.UseDescriptionForTitle = true; 
-
+            
             if ((bool)dialog.ShowDialog())
             {
                 return dialog.SelectedPath;

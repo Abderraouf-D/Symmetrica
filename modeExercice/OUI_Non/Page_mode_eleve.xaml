@@ -16,6 +16,7 @@
 
 
     <Page.Resources>
+        
         <Style  TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
@@ -82,7 +83,7 @@
 
                 </Grid.RowDefinitions>
 
-                <Image Source="./Icons/ouinon.png" Height="133" Width="145"  Grid.Row="0" Margin="-2,0,1056,5" VerticalAlignment="Bottom"  ></Image>
+                <Image x:Name="btn_ticket"  Source="./Icons/ouinon.png" Height="133" Width="145"  Grid.Row="0" Margin="-2,0,1056,5" VerticalAlignment="Bottom"  ></Image>
 
 
                 <StackPanel   Height="108" Orientation="Vertical" Grid.Row="1" Margin="50,0,0,5"  >

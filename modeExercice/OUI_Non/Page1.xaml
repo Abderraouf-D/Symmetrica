@@ -8,6 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
     <Page.Resources>
+       
         <Style  TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
 
@@ -78,7 +79,7 @@
 
                 </Grid.RowDefinitions>
 
-                <Image Source="./Icons/ouinon.png" Width="145"  Grid.Row="0" Margin="0,0,1059,25" RenderTransformOrigin="0.741,0.46"  />
+                <Image x:Name="btn_ticket" Source="./Icons/ouinon.png" Width="145"  Grid.Row="0" Margin="0,0,1059,25" RenderTransformOrigin="0.741,0.46"  />
 
                 
                 <Button   Grid.Row ="0" x:Name="editer" Width="90" Height="90" Background="#A2DBA1" Margin="1096,72,33,1"
@@ -137,7 +138,7 @@
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
 
                         <Button Style="{StaticResource ON}"  x:Name="ouibtn" Height="57" Width="135"  Background="#FFFFFF" BorderBrush="#801CB81C" 
-                                 Opacity="0.9" Click="Btn_oui" HorizontalAlignment="Left" >
+                                  Click="Btn_oui" HorizontalAlignment="Left" >
 
                             <TextBlock x:Name="oui_txt" Text="Oui" FontSize="36" FontFamily="Viga" />
 

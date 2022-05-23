@@ -122,7 +122,8 @@ namespace OUI_Non
                 oui_txt.Text =Strings.oui_txt;
                 non_txt.Text = Strings.non_txt;
                 retry_txt.Text = Strings.retry_txt;
-                
+                btn_ticket.Source = new BitmapImage(new Uri("./Icons/ouinon.png", UriKind.Relative));
+
 
 
             }
@@ -141,7 +142,8 @@ namespace OUI_Non
                 describtion_txt2.Text = StringsAr.describtion_txt2;
                 oui_txt.Text = StringsAr.non_txt;
                 non_txt.Text = StringsAr.oui_txt;
-           
+                btn_ticket.Source = new BitmapImage(new Uri("./Icons/oui-non_AR.png", UriKind.Relative));
+
 
             }
         }

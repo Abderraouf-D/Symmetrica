@@ -788,6 +788,7 @@
     <Resource Include="modeExercice\OUI_Non\Icons\right arrow.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="modeExercice\OUI_Non\Icons\oui-non_AR.png" />
     <Resource Include="modeLibre\icons\grid.png" />
     <Resource Include="PageChoixMode\Icons\cancel.png" />
     <Resource Include="PageChoixMode\Icons\check.png" />

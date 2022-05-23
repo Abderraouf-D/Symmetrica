@@ -123,9 +123,8 @@ namespace OUI_Non
                 retry_txt.Text = Strings.retry_txt;
                 anstxt.Text = Strings.ans_txt;
                 sauv_btn.Content =Strings.btn_sauvgarder;
-                upload_btn.Content= Strings.btn_modifier;
-                
-
+                upload_btn.Content= Strings.btn_modifier;                
+                btn_ticket.Source= new BitmapImage(new Uri("./Icons/ouinon.png", UriKind.Relative));
             }
 
 
@@ -145,7 +144,8 @@ namespace OUI_Non
                 anstxt.Text = StringsAr.ans_txt;
                 sauv_btn.Content = StringsAr.btn_sauvgarder;
                 upload_btn.Content = StringsAr.btn_modifier;
-               
+                btn_ticket.Source = new BitmapImage(new Uri("./Icons/oui-non_AR.png", UriKind.Relative));
+
             }
         }
 
@@ -403,7 +403,19 @@ namespace OUI_Non
                 anstxt.Visibility = Visibility.Visible;
                 ans_input.Visibility = Visibility.Visible;
                 upload_btn.Visibility = Visibility.Visible;
+                if (btnretry.Visibility == Visibility.Visible)
+                {
+                    btnretry.Visibility = Visibility.Hidden;
+                    Border.Background = (Brush)(new BrushConverter().ConvertFrom("#A2DBA1"));
+                    ouibtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+                    nonbtn.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#801CB81C"));
+
+                }
+
+
+
                 mode_editer_active = true;
+
 
             }
             
