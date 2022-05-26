@@ -69,7 +69,7 @@
     <sys:String  x:Key="exos">Exercices</sys:String>
     <sys:String  x:Key="libre">Libre</sys:String>
     <sys:String  x:Key="aide">Aide</sys:String>
-    <sys:String  x:Key="prp">à propos...</sys:String>
+    <sys:String  x:Key="prp">Notice d'utilisation ...</sys:String>
     <sys:String  x:Key="sortir"> Sauvegarder et Quitter</sys:String>
     
     <!-- **************************************************************************************************************  -->

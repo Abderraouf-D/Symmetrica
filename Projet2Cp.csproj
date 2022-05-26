@@ -517,6 +517,7 @@
     <Resource Include="Fonts\BwStretch-Medium.otf" />
     <Resource Include="Fonts\BwStretch-Regular.otf" />
     <Resource Include="Fonts\BwStretch-Thin.otf" />
+    <None Include="bin\Debug\Data\notice.pdf" />
     <None Include="bin\Debug\Data\Users\Imad3\data.bin" />
     <None Include="bin\Debug\Data\Users\Younes4\data.bin" />
     <None Include="bin\Debug\Projet2Cp.exe.config" />

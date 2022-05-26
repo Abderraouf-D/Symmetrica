@@ -176,6 +176,12 @@ namespace Projet2Cp
 
         }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(System.IO.Path.GetFullPath("Data/notice.pdf"));
+
+        }
+
         private void ButtonClickLogout(object sender, RoutedEventArgs e)
         {
             save(eleve);

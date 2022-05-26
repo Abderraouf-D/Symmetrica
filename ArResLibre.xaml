@@ -76,7 +76,7 @@
     <sys:String  x:Key="exos">التمارين</sys:String>
     <sys:String  x:Key="libre">حر</sys:String>
     <sys:String  x:Key="aide">مساعدة</sys:String>
-    <sys:String  x:Key="prp">...حول </sys:String>
+    <sys:String  x:Key="prp">...دليل الإستعمال  </sys:String>
     <sys:String  x:Key="sortir">حفظ و خروج</sys:String>
 
     <!-- **************************************************************************************************************  -->

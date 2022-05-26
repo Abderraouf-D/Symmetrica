@@ -123,9 +123,7 @@
                           FontSize="20"
                           Padding="5,0,5,0"
                           >
-                                <MenuItem Header="{DynamicResource prp}" FontSize="20"
-                              ToolTip="Comment utiliser l'application"
-                              >
+                                <MenuItem IsCheckable="true" Header="{DynamicResource prp}" FontSize="20" Click="MenuItem_Click">
                             <MenuItem.Icon>
 
                                 <Image 
