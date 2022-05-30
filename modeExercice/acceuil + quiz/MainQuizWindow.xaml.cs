@@ -46,8 +46,8 @@ namespace Project
         private void loaded(Object sender, RoutedEventArgs e)
         {
             affichQuiz(fich1);
-            if (!MainWindow.modeEns) edtText.Visibility = teacherButton.Visibility = Visibility.Collapsed;
-            else edtText.Visibility = teacherButton.Visibility = Visibility.Visible;
+            if (!MainWindow.modeEns)  teacherButton.Visibility = Visibility.Collapsed;
+            else  teacherButton.Visibility = Visibility.Visible;
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
         }
 

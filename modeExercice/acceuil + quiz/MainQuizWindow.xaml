@@ -75,7 +75,7 @@
                             </Button.Content>
                         </Button>
 
-                        <TextBlock HorizontalAlignment="Center" x:Name="edtText" Foreground="Black" Text="{DynamicResource editer}" FontFamily="{StaticResource PoppinsMedium}"/>
+                        <TextBlock Visibility="Hidden" HorizontalAlignment="Center" x:Name="edtText" Foreground="Black" Text="{DynamicResource editer}" FontFamily="{StaticResource PoppinsMedium}"/>
                     </StackPanel>
 
 

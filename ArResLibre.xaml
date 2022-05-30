@@ -109,7 +109,7 @@
     <sys:String  x:Key="editQuiz">تعديل</sys:String>
     <sys:String  x:Key="suivant">التالي</sys:String>
     <sys:String  x:Key="precedent">الرجوع</sys:String>
-    <sys:String  x:Key="editer">تعديل</sys:String>
+    <sys:String  x:Key="editer">Editer</sys:String>
     <sys:String  x:Key="enreg">حفظ</sys:String>
     <sys:String  x:Key="bkmrk">أسئلة متعددة</sys:String>
 

@@ -188,7 +188,9 @@ namespace OUI_Non
                 {
                    
                     btnretry.Visibility = Visibility.Visible;
-                    retry_txt.Text = "Bravo!";
+                    if (langue == 0)
+                        retry_txt.Text = "Bravo!";
+                    else retry_txt.Text = "! أحسنت";
                     btnretry.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
                     Border.Background = (Brush)(new BrushConverter().ConvertFrom("#FF32DA85"));
 

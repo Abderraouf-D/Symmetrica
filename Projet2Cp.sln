@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projet2Cp", "Projet2Cp.csproj", "{16F38865-38F5-42AC-9650-02C1CA9E4DCC}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Symmetrica", "..\Setup\Setup.vdproj", "{E6B8BF00-67F4-4C56-B83D-5300D84F821A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,9 @@ Global
 		{16F38865-38F5-42AC-9650-02C1CA9E4DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16F38865-38F5-42AC-9650-02C1CA9E4DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16F38865-38F5-42AC-9650-02C1CA9E4DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6B8BF00-67F4-4C56-B83D-5300D84F821A}.Debug|Any CPU.ActiveCfg = Release
+		{E6B8BF00-67F4-4C56-B83D-5300D84F821A}.Debug|Any CPU.Build.0 = Release
+		{E6B8BF00-67F4-4C56-B83D-5300D84F821A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

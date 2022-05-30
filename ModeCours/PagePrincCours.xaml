@@ -23,7 +23,7 @@
 
             <Border Width="818" Height="75" Background="#A2DBA1" CornerRadius="15" Margin="50">
 
-                <TextBlock x:Name="Tchoix" Text="Choisissez le cours que vous voullez lire:" FontSize="41" Foreground = "Black" FontFamily="{StaticResource VigaRegular}" FontWeight="Heavy" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock x:Name="Tchoix" Text="Choisissez le cours que vous voulez lire:" FontSize="41" Foreground = "Black" FontFamily="{StaticResource VigaRegular}" FontWeight="Heavy" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             </Border>
         </Viewbox>

@@ -178,7 +178,9 @@ namespace Projet2Cp
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(System.IO.Path.GetFullPath("Data/notice.pdf"));
+            try { System.Diagnostics.Process.Start(@"file:///"+System.IO.Path.GetFullPath("Data/notice.pdf")); 
+            }
+            catch (Exception ex ) { MessageBox.Show(ex.Message); }
 
         }
 

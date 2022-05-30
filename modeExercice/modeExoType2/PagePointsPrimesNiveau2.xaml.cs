@@ -95,6 +95,14 @@ namespace MAINPAGE
             this.Resources.MergedDictionaries.Clear();
 
             this.Resources.MergedDictionaries.Add(MainWindow.ResLibre);
+            if (done[cpt])
+            {
+                verify.Content = MainWindow.ResLibre["bravoButton"];
+            }
+            else
+            {
+                verify.Content = MainWindow.ResLibre["verify"];
+            }
             if (!MainWindow.modeEns) Save.Visibility = modify.Visibility = Visibility.Collapsed;
             else Save.Visibility = modify.Visibility = Visibility.Visible;
             if (!MainWindow.francais)

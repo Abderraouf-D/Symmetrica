@@ -109,13 +109,22 @@ namespace Project
 
         private void Go()
         {
-            if (!modifyingPwd) { 
+            if (!modifyingPwd) {
                 if (combo)
                 {
                     if (studentsCombo.SelectedIndex != -1) stdName = studentsCombo.SelectedItem.ToString();
                     else stdName = String.Empty;
                 }
-                else stdName = studentBox.Text;
+                else { stdName = studentBox.Text;
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(stdName, "^[a-zA-Z0-9]*$"))
+                    {
+                        if ( francais )MessageBox.Show("Le nom peut contenir que des caractères alphanumeriques");
+                        else MessageBox.Show("    يمكن للاسم أن يحتوي  على أحرف أبجدية  أو أرقام فقط");
+                        return;
+                    }
+                   
+
+                }
 
             if (String.IsNullOrEmpty(passwd.Password) & String.IsNullOrEmpty(stdName.Trim()))
             {
@@ -127,6 +136,7 @@ namespace Project
 
                     if (account())
                     {
+                        
                         if ( mainWin == null ) mainWin = new MainWindow(modeEns, francais, student);
                        
 
@@ -392,6 +402,14 @@ namespace Project
                 {
                     if (studentsCombo.SelectedIndex != -1) stdName = studentsCombo.SelectedItem.ToString();
                     else stdName = String.Empty;
+                    if (stdName != null && student != null)
+                    {
+                        if (!String.Equals(stdName.Trim(), student.getNom()))
+                        {
+                            ChangedModeEns = true;
+
+                        }
+                    }
                 }
 
                 int i;

@@ -121,7 +121,7 @@ namespace Projet2Cp
 
 
 
-                tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\"" + ((toolBarEnseignant)TB).vld.Text + "\"";
+                tb.Text = (String)MainWindow.ResLibre["instructionElev"] + " " + ((toolBarEnseignant)TB).vld.Text + " ";
 
                 
 
@@ -805,11 +805,12 @@ namespace Projet2Cp
                         }
                     }
 
-                    if (stop) //hiya nrmlm bla ma nverifyi ...
-                    {
-                        i--;
-                        currentShapePair = shapePairs[i];
-                    }
+                if (stop) //hiya nrmlm bla ma nverifyi ...
+                {
+                    i--;
+                    currentShapePair = shapePairs[i];
+                }
+                else return;
                 if (currentShapePair.IsTransformable)
                 {
                     if (isGomme)
@@ -1579,7 +1580,8 @@ namespace Projet2Cp
                     niv.IsEnabled = true;
                     ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["vldStr"];
                     isEditing = false;
-                    tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\""+ ((toolBarEnseignant)TB).vld.Text + "\"";
+                    tb.Text = (String)MainWindow.ResLibre["instructionElev"] + " " + ((toolBarEnseignant)TB).vld.Text + " ";
+
                     tb.Foreground = Brushes.Black;
                     ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
 
@@ -1706,7 +1708,8 @@ namespace Projet2Cp
             ((toolBarEnseignant)TB).vld.Text = (String)MainWindow.ResLibre["vldStr"];
             isEditing = false;
             clear();
-            tb.Text = (String)MainWindow.ResLibre["instructionElev"] + "\""+((toolBarEnseignant)TB).vld.Text + "\"";
+            tb.Text = (String)MainWindow.ResLibre["instructionElev"] + " " + ((toolBarEnseignant)TB).vld.Text + " ";
+
             tb.Foreground = Brushes.Black;
             ((toolBarEnseignant)TB).ensStack.Visibility = Visibility.Collapsed;
 
@@ -1784,7 +1787,7 @@ namespace Projet2Cp
 
                 }
             }catch (Exception ex) {
-               
+                MessageBox.Show("Erreur ..." + ex.Message);
             }
             finally
             {

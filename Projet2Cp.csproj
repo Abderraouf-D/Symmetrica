@@ -7,13 +7,28 @@
     <ProjectGuid>{16F38865-38F5-42AC-9650-02C1CA9E4DCC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Projet2Cp</RootNamespace>
-    <AssemblyName>Projet2Cp</AssemblyName>
+    <AssemblyName>Symmetrica</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +49,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ookii.Dialogs.Wpf, Version=5.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158, processorArchitecture=MSIL">
@@ -517,6 +543,7 @@
     <Resource Include="Fonts\BwStretch-Medium.otf" />
     <Resource Include="Fonts\BwStretch-Regular.otf" />
     <Resource Include="Fonts\BwStretch-Thin.otf" />
+    <None Include="app.manifest" />
     <None Include="bin\Debug\Data\notice.pdf" />
     <None Include="bin\Debug\Data\Users\Imad3\data.bin" />
     <None Include="bin\Debug\Data\Users\Younes4\data.bin" />
@@ -767,7 +794,18 @@
   <ItemGroup>
     <Resource Include="modeLibre\shapesExo.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="modeExercice\acceuil + quiz\Icons\Ellipse.png" />
     <Resource Include="modeExercice\acceuil + quiz\Icons\Group 21.png" />
@@ -968,6 +1006,7 @@
     <Content Include="bin\Debug\videos\etape3Cen.mp4" />
     <Content Include="bin\Debug\videos\rotation.mp4" />
     <Content Include="bin\Debug\videos\videoplier.mp4" />
+    <Resource Include="logo.ico" />
     <Content Include="modeExercice\modeExoType2\Icons\yay.mp3.mp3" />
     <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\dsqdqs.png" />
     <Resource Include="modeExercice\modeExoType2\ImagesPointsPrimes\ETOILE.png" />
@@ -1013,30 +1052,14 @@
     <Resource Include="ModeCours\Img\propriete-intellectuelle.png" />
     <Resource Include="ModeCours\Img\remarques.png" />
     <Resource Include="ModeCours\Img\ruler.png" />
-    <EmbeddedResource Include="ModeCours\videos\etape1.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <Content Include="ModeCours\videos\etape1Cen.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ModeCours\videos\etape2.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ModeCours\videos\etape2Cen.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ModeCours\videos\etape3.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ModeCours\videos\etape3Cen.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ModeCours\videos\rotation.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ModeCours\videos\videoplier.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="ModeCours\videos\etape1.mp4" />
+    <Content Include="ModeCours\videos\etape1Cen.mp4" />
+    <Content Include="ModeCours\videos\etape2.mp4" />
+    <Content Include="ModeCours\videos\etape2Cen.mp4" />
+    <Content Include="ModeCours\videos\etape3.mp4" />
+    <Content Include="ModeCours\videos\etape3Cen.mp4" />
+    <Content Include="ModeCours\videos\rotation.mp4" />
+    <Content Include="ModeCours\videos\videoplier.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

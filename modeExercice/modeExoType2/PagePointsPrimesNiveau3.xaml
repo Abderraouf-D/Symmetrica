@@ -64,9 +64,9 @@
                            StrokeThickness="7" RadiusX="26.5" RadiusY="26.5"
                            Margin="388,0,392,120"/>
                 <Image x:Name="imageEtud" Height="325" Width="600" Stretch="Uniform" Margin="0 0 0 100"/>
-                <Line x:Name="l1" Width="804" Height="188" Stroke="#A2DBA1"
+                <Line x:Name="l1" Width="616" Height="188" Stroke="#A2DBA1"
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                      StrokeThickness="7" Margin="388,0,392,120"
+                      StrokeThickness="7" Margin="388,0,580,120"
                       X1="0" Y1="100" X2="700" Y2="100"/>
                 <Line x:Name="l2" Width="632" Height="185" Stroke="#A2DBA1"
                       HorizontalAlignment="Center" VerticalAlignment="Bottom"
@@ -145,7 +145,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                
+
                 <TextBlock x:Name="p1etud" Text="A" FontFamily="{StaticResource VigaRegular}" FontSize="48"
                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="419,0,0,227"/>
                 <TextBlock x:Name="p2etud" Text="B" FontFamily="{StaticResource VigaRegular}" FontSize="48"
@@ -156,28 +156,29 @@
                 HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="682,0,0,227"/>
                 <TextBlock x:Name="p5etud" Text="E" FontFamily="{StaticResource VigaRegular}" FontSize="48"
                 HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="774,0,0,227" RenderTransformOrigin="0.482,0.525"/>
-                <TextBox x:Name="pr1etud" Width="70" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <TextBox x:Name="pr1etud" Width="70" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" ForceCursor="True"
                     Margin="400,737,1114,131" MaxLength="1" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
                     FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
-                <TextBox x:Name="pr2etud" Width="63" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center"
-                         Margin="492,737,1029,131" MaxLength="1" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
+                
+                <TextBox x:Name="pr2etud" Width="70" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" ForceCursor="True"
+                         Margin="485,737,1029,131" MaxLength="1" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
                          FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper">
                 </TextBox>
-                <TextBox x:Name="pr3etud" Width="75" Height="64" MaxLength="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                Margin="573,737,936,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
-                FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
+                <TextBox x:Name="pr3etud" Width="75" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" ForceCursor="True"
+                    Margin="573,737,936,131" MaxLength="1" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
+                    FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
                 <TextBox x:Name="pr4etud" Width="74" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                Margin="663,737,847,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
+                Margin="663,737,847,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}" ForceCursor="True"
                 FontSize="40" MaxLength="1" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
                 <TextBox x:Name="pr5etud" Width="69" Height="64" MaxLength="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                Margin="755,737,760,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
+                Margin="755,737,760,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}" ForceCursor="True"
                 FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
                 <TextBox x:Name="pr6etud" Width="76" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                Margin="839,737,669,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
+                Margin="839,737,669,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}" ForceCursor="True"
                 FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"
                      MaxLength="1"/>
                 <TextBox x:Name="pr7etud" Width="76" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Margin="923,737,585,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
+                    Margin="923,737,585,131" Background="Transparent" FontFamily="{StaticResource VigaRegular}" ForceCursor="True"
                     FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"
                     MaxLength="1"/>
                 <Button Background="#A2DBA1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
@@ -199,11 +200,12 @@
                     HorizontalAlignment="Center" VerticalAlignment="Bottom"
                     StrokeThickness="7" Margin="560,0,392,120"
                     X1="358" Y1="0" X2="358" Y2="185"/>
-                
-                
-                
+
+
+
                 <TextBlock x:Name="p7etud" Text="G" FontFamily="{StaticResource VigaRegular}" FontSize="48"
                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="948,0,0,227"/>
+                
 
             </Grid>
             <Grid x:Name="GRID_ENS" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="932" Width="1584" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
@@ -357,7 +359,7 @@
                     Margin="857,551,612,331" TextAlignment="Center" Foreground="#A2DBA1"/>
 
                 </Grid>
-                
+
                 <TextBox x:Name="p1ens" Width="74" Height="64" MaxLength="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Margin="948,465,562,403" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
                     FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
@@ -400,8 +402,8 @@
                 <TextBox x:Name="pr7ens" Width="74" Height="64" MaxLength="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Margin="1482,551,28,317" Background="Transparent" FontFamily="{StaticResource VigaRegular}"
                     FontSize="40" TextAlignment="Center" BorderThickness="0" CharacterCasing="Upper"/>
-                
-                
+
+
             </Grid>
 
         </Grid>
