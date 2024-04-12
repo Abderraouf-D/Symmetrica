@@ -1,0 +1,1 @@
+A C#/.NET desktop application for teaching axial and central symmetry to youngsters by providing a modern drawing interface with symmetry tools, mini exercises customizable by teachers using the app for their courses, and an interactive animated course for better understanding
